@@ -1,0 +1,19 @@
+PODS:
+  - CTKFlagPhoneNumber (0.1.0):
+    - libPhoneNumber-iOS
+  - libPhoneNumber-iOS (0.9.10)
+
+DEPENDENCIES:
+  - CTKFlagPhoneNumber (from `../`)
+
+EXTERNAL SOURCES:
+  CTKFlagPhoneNumber:
+    :path: ../
+
+SPEC CHECKSUMS:
+  CTKFlagPhoneNumber: 6bf95399ec2d74475cfabac79d4a10d50d9068fe
+  libPhoneNumber-iOS: f721ae4d5854bce60934f9fb9b0b28e8e68913cb
+
+PODFILE CHECKSUM: c7e6d857831de07cf76cc59dba55f27bb6abf052
+
+COCOAPODS: 1.2.1

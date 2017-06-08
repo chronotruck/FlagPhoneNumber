@@ -1,0 +1,1020 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		02DE4673AD6C62876E09378FA1F646B2 /* libPhoneNumber-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8A7FB534F22340BF7E3350BFC9B2E7 /* libPhoneNumber-iOS-dummy.m */; };
+		075020A8520C48F7C952F58EBE9A76A8 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB0DED5CEFD3E01F9CF10039A2D5D6E5 /* CoreTelephony.framework */; };
+		0AA1EC7AFB090DFE0E5CE588C6474F4E /* NBMetadataCoreTest.h in Headers */ = {isa = PBXBuildFile; fileRef = 4BF23B099FCBD8A59FD154E8E540E6A4 /* NBMetadataCoreTest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0CC15D8669CC8037F14E361D77E6CE64 /* NBPhoneNumberUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EDA3B27CD4DC9FF0750A6C65A012DBA /* NBPhoneNumberUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0E02B04299745DB30809400FEA6D820D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639548036C8B57BAA55442A0162D4FA2 /* Utils.swift */; };
+		171A8EB91EE9B81500FB7832 /* SwiftCountryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 171A8EB81EE9B81500FB7832 /* SwiftCountryView.xib */; };
+		19FE64571A1EDF647C0E1036B6D78F3D /* NBPhoneNumberDesc.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D36C1278D87C3765C9B4F3ED5A0D4BF /* NBPhoneNumberDesc.m */; };
+		20CAB918E084B3ED6B3C24E57ACBABE3 /* NBMetadataCoreTestMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FE895893F4A74D359262A9F21926D85 /* NBMetadataCoreTestMapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29AB5191E8340F43269857CA6A2B2454 /* NBAsYouTypeFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = A16B26AFEBE49464D503F1F725795061 /* NBAsYouTypeFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		30A591E13C304D4C953F06A1A9B98246 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7546C3B58CD31A5066A06793D4710615 /* Foundation.framework */; };
+		383F5076A65D5982AB874880E8C63F47 /* NBMetadataCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 306643371590FF48AD4EF3220911CDDC /* NBMetadataCore.m */; };
+		3BF7BEF97D8C314D78053E23C899966E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7546C3B58CD31A5066A06793D4710615 /* Foundation.framework */; };
+		4681F4426DCD73C4413698B987EAF19A /* NBMetadataCoreTestMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = C47EE84F6AE47D71B0005406F33FA4E4 /* NBMetadataCoreTestMapper.m */; };
+		58D3E9AF8591351EB1C28581628D5D39 /* libPhoneNumber_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3315CBF60FEE8263EE8E5334F4C54953 /* libPhoneNumber_iOS.framework */; };
+		604211EB83E6EE140C4EFABDEC38CCA3 /* NBNumberFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = D24CFD84CECC42AD946D7198CD3C6C36 /* NBNumberFormat.m */; };
+		6840EEF64032C63D0488D3C42C4BB971 /* NBNumberFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = A5F7BCF4850AA693EC0289DF2787EBD8 /* NBNumberFormat.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		690A85B3558DE89A85010A032A8D48FD /* Flags.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94EDBD71607D70A05F562AC143F3BCE7 /* Flags.xcassets */; };
+		6C14778CB2B78A22572289E55A46F7A2 /* NBPhoneMetaData.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB462D342833B3809FE3F044FDF4EEF /* NBPhoneMetaData.m */; };
+		73CEE053F5782DB635C0745CB249DACC /* NBPhoneNumberUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 16063A88894305375DEB27F29D6A5500 /* NBPhoneNumberUtil.m */; };
+		7CA300CB6EA117DB2F594DC4AD8072D3 /* Pods-CTKFlagPhoneNumber_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 599605CBC8851725E260F19DF982CDC5 /* Pods-CTKFlagPhoneNumber_Example-dummy.m */; };
+		7DA1BD03E77362D195CFC07BC74C0E4C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7546C3B58CD31A5066A06793D4710615 /* Foundation.framework */; };
+		880CCC63D5DB3D3F55061EAE0D071125 /* CTKFlagPhoneNumber.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BDCE582919EA262F85ED28B006D8213C /* CTKFlagPhoneNumber.bundle */; };
+		8B3D2156BF6C83ED59D3331E15FADF39 /* Pods-CTKFlagPhoneNumber_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D511B5FE7DF63635C8ED3013EEC94E8 /* Pods-CTKFlagPhoneNumber_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A2B075EF76A7C9FEC17893BB2DAC4D14 /* NBMetadataCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 642E17EB1455B2785961E6C3E4809164 /* NBMetadataCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A9D236036AB63EE9CBE1412A873A4494 /* NBPhoneNumberDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = B772C07E44794948C4DA3E0F9255A6FE /* NBPhoneNumberDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AF194607860283131E966F0E4085ED9D /* libPhoneNumber-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D18A97EA6E2929C92472177762980BA7 /* libPhoneNumber-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B06A8BECD2D912742583C7A357568F75 /* NBPhoneNumber.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FC0DA44BBEA7217EAE4F8A58B5ADCB6 /* NBPhoneNumber.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B2854E69F9049DCF9B7472532251EF7E /* NBMetadataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D11E097C431EDF01A92657D322865F0E /* NBMetadataHelper.m */; };
+		BA406D6D254C13761EBBE45480A3DA1D /* NBMetadataCoreMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BA038A9648CF6886E697091C05295C8 /* NBMetadataCoreMapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BA542D77F78CFBF82A924F91D512CC2B /* NBPhoneNumberDesc.h in Headers */ = {isa = PBXBuildFile; fileRef = DCB12AA0EE19AA7F512E4803C47605AB /* NBPhoneNumberDesc.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BB3A73BD6D55E5990BD62DF4464A8D0B /* CTKFlagPhoneNumber-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 42176252FEB8597D7CDA392C3654D8F2 /* CTKFlagPhoneNumber-dummy.m */; };
+		C24145CFFE54694B6725D0BB5C1A93C4 /* countryCodes.json in Resources */ = {isa = PBXBuildFile; fileRef = F19FE787FBEB9361959700FE07706E32 /* countryCodes.json */; };
+		CA9D97A9FAE15A5B841299A2687C45DE /* NBMetadataCoreTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFDC36F2248274FEBCE15ABCF14CE93 /* NBMetadataCoreTest.m */; };
+		CC39B425597C86CC1BDB4475F9AE54E3 /* SwiftCountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EFD35E1ECCA5AA6BE79DD7F37FBCC8 /* SwiftCountryView.swift */; };
+		DDC3EC4901AC770031909C0250C52D5F /* NBPhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 4340EA5DB7A978296BD82423E422A699 /* NBPhoneNumber.m */; };
+		E3F9451547D4FB568764118A61A47F88 /* NBPhoneNumberDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = 702EB112F5B61CD2651A0D03FAD47448 /* NBPhoneNumberDefines.m */; };
+		E66419A3D1CE11CFC25219FE3D08EB79 /* NBMetadataHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D9CAF763C6830EDDAECAC6C3C71535A /* NBMetadataHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E8BBE20C1321D293ABF3A62BEB115234 /* SwiftCountryPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7549FA524C7919D03E704B7C4EC1979E /* SwiftCountryPicker.swift */; };
+		F1289BF2F67BC75BDF139E282B23CCC1 /* NBAsYouTypeFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2B6ACFE5E8CB76075661AD99D3A70A /* NBAsYouTypeFormatter.m */; };
+		F20EC8F6C1C520695059AEEE7E86B68F /* NBPhoneMetaData.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D0DCB3D84636C4E61BCC2DD41B100DC /* NBPhoneMetaData.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F7E26D491BDBA3B9DA39B11A4C1A6E09 /* CTKFlagPhoneNumber-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B7BBB5CEB5829BF519C25A3251A2894A /* CTKFlagPhoneNumber-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FD2C23F54421847AE89BB5968A8E009A /* CTKFlagPhoneNumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BB83F5753EDDD858EA7C633E3F5025 /* CTKFlagPhoneNumberTextField.swift */; };
+		FFB0E11796729791117F70CBBE58C178 /* NBMetadataCoreMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F77B9449193AAF7AE8FFE89247193FD /* NBMetadataCoreMapper.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1866ACAB4AA836218DD0CDDF0F6B9245 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C0D95305C0CB452CBAF5837782E37EBC;
+			remoteInfo = "libPhoneNumber-iOS";
+		};
+		26D4A64C517B6F2057C4B8C47A724A44 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 20F292C0DBEE4D814737DD8985AA94FA;
+			remoteInfo = "CTKFlagPhoneNumber-CTKFlagPhoneNumber";
+		};
+		5785DF27FA12EED5720C8BA9C2CB7A3C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C0D95305C0CB452CBAF5837782E37EBC;
+			remoteInfo = "libPhoneNumber-iOS";
+		};
+		AC81EE878555B8CA4C620D9AB82DC884 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9DE369559C04E5A7C012C2BE5B89B069;
+			remoteInfo = CTKFlagPhoneNumber;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0900FD97ADD3BB41B87A15C30564668B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0D36C1278D87C3765C9B4F3ED5A0D4BF /* NBPhoneNumberDesc.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NBPhoneNumberDesc.m; path = libPhoneNumber/NBPhoneNumberDesc.m; sourceTree = "<group>"; };
+		0D9CAF763C6830EDDAECAC6C3C71535A /* NBMetadataHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBMetadataHelper.h; path = libPhoneNumber/NBMetadataHelper.h; sourceTree = "<group>"; };
+		16063A88894305375DEB27F29D6A5500 /* NBPhoneNumberUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NBPhoneNumberUtil.m; path = libPhoneNumber/NBPhoneNumberUtil.m; sourceTree = "<group>"; };
+		171A8EB81EE9B81500FB7832 /* SwiftCountryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwiftCountryView.xib; sourceTree = "<group>"; };
+		2B0E584BAE7294D3431D1B8E7ADDD325 /* Pods_CTKFlagPhoneNumber_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CTKFlagPhoneNumber_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C6EEBE3B3FEA6868357935DAC8ADAF3 /* libPhoneNumber-iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "libPhoneNumber-iOS.xcconfig"; sourceTree = "<group>"; };
+		2FC0DA44BBEA7217EAE4F8A58B5ADCB6 /* NBPhoneNumber.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBPhoneNumber.h; path = libPhoneNumber/NBPhoneNumber.h; sourceTree = "<group>"; };
+		2FE895893F4A74D359262A9F21926D85 /* NBMetadataCoreTestMapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBMetadataCoreTestMapper.h; path = libPhoneNumber/NBMetadataCoreTestMapper.h; sourceTree = "<group>"; };
+		2FFDC36F2248274FEBCE15ABCF14CE93 /* NBMetadataCoreTest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NBMetadataCoreTest.m; path = libPhoneNumber/NBMetadataCoreTest.m; sourceTree = "<group>"; };
+		306643371590FF48AD4EF3220911CDDC /* NBMetadataCore.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NBMetadataCore.m; path = libPhoneNumber/NBMetadataCore.m; sourceTree = "<group>"; };
+		3315CBF60FEE8263EE8E5334F4C54953 /* libPhoneNumber_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = libPhoneNumber_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		33282E7B23854D21ED3C6CBE28DA3616 /* libPhoneNumber-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "libPhoneNumber-iOS.modulemap"; sourceTree = "<group>"; };
+		3EDA3B27CD4DC9FF0750A6C65A012DBA /* NBPhoneNumberUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBPhoneNumberUtil.h; path = libPhoneNumber/NBPhoneNumberUtil.h; sourceTree = "<group>"; };
+		42176252FEB8597D7CDA392C3654D8F2 /* CTKFlagPhoneNumber-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CTKFlagPhoneNumber-dummy.m"; sourceTree = "<group>"; };
+		4340EA5DB7A978296BD82423E422A699 /* NBPhoneNumber.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NBPhoneNumber.m; path = libPhoneNumber/NBPhoneNumber.m; sourceTree = "<group>"; };
+		46174CCE8F0CFBC06878196D90B7E8C7 /* libPhoneNumber-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "libPhoneNumber-iOS-prefix.pch"; sourceTree = "<group>"; };
+		4BF23B099FCBD8A59FD154E8E540E6A4 /* NBMetadataCoreTest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBMetadataCoreTest.h; path = libPhoneNumber/NBMetadataCoreTest.h; sourceTree = "<group>"; };
+		4DC61669BC05B95F7F72A69961F90072 /* Pods-CTKFlagPhoneNumber_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CTKFlagPhoneNumber_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		4F77B9449193AAF7AE8FFE89247193FD /* NBMetadataCoreMapper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NBMetadataCoreMapper.m; path = libPhoneNumber/NBMetadataCoreMapper.m; sourceTree = "<group>"; };
+		599605CBC8851725E260F19DF982CDC5 /* Pods-CTKFlagPhoneNumber_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CTKFlagPhoneNumber_Example-dummy.m"; sourceTree = "<group>"; };
+		5A69AA2EDC3438A58293E675A6FEB639 /* Pods-CTKFlagPhoneNumber_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CTKFlagPhoneNumber_Example-frameworks.sh"; sourceTree = "<group>"; };
+		5C7EA87568DDB91AF44EFD2BC2C0522B /* Pods-CTKFlagPhoneNumber_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CTKFlagPhoneNumber_Example.release.xcconfig"; sourceTree = "<group>"; };
+		639548036C8B57BAA55442A0162D4FA2 /* Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		642E17EB1455B2785961E6C3E4809164 /* NBMetadataCore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBMetadataCore.h; path = libPhoneNumber/NBMetadataCore.h; sourceTree = "<group>"; };
+		66E49231BEF61F000776D32F1A285DE2 /* Pods-CTKFlagPhoneNumber_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-CTKFlagPhoneNumber_Example.modulemap"; sourceTree = "<group>"; };
+		702EB112F5B61CD2651A0D03FAD47448 /* NBPhoneNumberDefines.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NBPhoneNumberDefines.m; path = libPhoneNumber/NBPhoneNumberDefines.m; sourceTree = "<group>"; };
+		72BB83F5753EDDD858EA7C633E3F5025 /* CTKFlagPhoneNumberTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CTKFlagPhoneNumberTextField.swift; sourceTree = "<group>"; };
+		7546C3B58CD31A5066A06793D4710615 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		7549FA524C7919D03E704B7C4EC1979E /* SwiftCountryPicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SwiftCountryPicker.swift; sourceTree = "<group>"; };
+		7C20C8FE2F4447398C748558C1AF8781 /* Pods-CTKFlagPhoneNumber_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CTKFlagPhoneNumber_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		7D0DCB3D84636C4E61BCC2DD41B100DC /* NBPhoneMetaData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBPhoneMetaData.h; path = libPhoneNumber/NBPhoneMetaData.h; sourceTree = "<group>"; };
+		89EFD35E1ECCA5AA6BE79DD7F37FBCC8 /* SwiftCountryView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SwiftCountryView.swift; sourceTree = "<group>"; };
+		8D511B5FE7DF63635C8ED3013EEC94E8 /* Pods-CTKFlagPhoneNumber_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CTKFlagPhoneNumber_Example-umbrella.h"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		94EDBD71607D70A05F562AC143F3BCE7 /* Flags.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Flags.xcassets; sourceTree = "<group>"; };
+		9805D40B1304F09A51433AFA50550FE6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9BA038A9648CF6886E697091C05295C8 /* NBMetadataCoreMapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBMetadataCoreMapper.h; path = libPhoneNumber/NBMetadataCoreMapper.h; sourceTree = "<group>"; };
+		9CA81FE2F7A58724A06E8C53C6860C1E /* CTKFlagPhoneNumber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CTKFlagPhoneNumber.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E949971F4C9346C0A95BD53B8C20CC2 /* CTKFlagPhoneNumber.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CTKFlagPhoneNumber.xcconfig; sourceTree = "<group>"; };
+		A16B26AFEBE49464D503F1F725795061 /* NBAsYouTypeFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBAsYouTypeFormatter.h; path = libPhoneNumber/NBAsYouTypeFormatter.h; sourceTree = "<group>"; };
+		A5F7BCF4850AA693EC0289DF2787EBD8 /* NBNumberFormat.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBNumberFormat.h; path = libPhoneNumber/NBNumberFormat.h; sourceTree = "<group>"; };
+		B4F9F93ADD28A52DE1327D43232142ED /* Pods-CTKFlagPhoneNumber_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CTKFlagPhoneNumber_Example-resources.sh"; sourceTree = "<group>"; };
+		B772C07E44794948C4DA3E0F9255A6FE /* NBPhoneNumberDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBPhoneNumberDefines.h; path = libPhoneNumber/NBPhoneNumberDefines.h; sourceTree = "<group>"; };
+		B7BBB5CEB5829BF519C25A3251A2894A /* CTKFlagPhoneNumber-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CTKFlagPhoneNumber-umbrella.h"; sourceTree = "<group>"; };
+		BB0DED5CEFD3E01F9CF10039A2D5D6E5 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/CoreTelephony.framework; sourceTree = DEVELOPER_DIR; };
+		BBB462D342833B3809FE3F044FDF4EEF /* NBPhoneMetaData.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NBPhoneMetaData.m; path = libPhoneNumber/NBPhoneMetaData.m; sourceTree = "<group>"; };
+		BDCE582919EA262F85ED28B006D8213C /* CTKFlagPhoneNumber.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CTKFlagPhoneNumber.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE2B6ACFE5E8CB76075661AD99D3A70A /* NBAsYouTypeFormatter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NBAsYouTypeFormatter.m; path = libPhoneNumber/NBAsYouTypeFormatter.m; sourceTree = "<group>"; };
+		BE42467BA2BF3D2DBCD28E3647C3A1D3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0395475F5262B314D65F68F8A3755FC /* Pods-CTKFlagPhoneNumber_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CTKFlagPhoneNumber_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		C1B0573BBE636BD24A5B4E6BB024FC13 /* CTKFlagPhoneNumber.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = CTKFlagPhoneNumber.modulemap; sourceTree = "<group>"; };
+		C311EC47B3ADFAE407AF89E8C84E17F9 /* CTKFlagPhoneNumber-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CTKFlagPhoneNumber-prefix.pch"; sourceTree = "<group>"; };
+		C47EE84F6AE47D71B0005406F33FA4E4 /* NBMetadataCoreTestMapper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NBMetadataCoreTestMapper.m; path = libPhoneNumber/NBMetadataCoreTestMapper.m; sourceTree = "<group>"; };
+		C83027EDEFC921DC87B87E318D6B5CC5 /* ResourceBundle-CTKFlagPhoneNumber-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-CTKFlagPhoneNumber-Info.plist"; sourceTree = "<group>"; };
+		D11E097C431EDF01A92657D322865F0E /* NBMetadataHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NBMetadataHelper.m; path = libPhoneNumber/NBMetadataHelper.m; sourceTree = "<group>"; };
+		D18A97EA6E2929C92472177762980BA7 /* libPhoneNumber-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "libPhoneNumber-iOS-umbrella.h"; sourceTree = "<group>"; };
+		D24CFD84CECC42AD946D7198CD3C6C36 /* NBNumberFormat.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NBNumberFormat.m; path = libPhoneNumber/NBNumberFormat.m; sourceTree = "<group>"; };
+		DCB12AA0EE19AA7F512E4803C47605AB /* NBPhoneNumberDesc.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBPhoneNumberDesc.h; path = libPhoneNumber/NBPhoneNumberDesc.h; sourceTree = "<group>"; };
+		F19FE787FBEB9361959700FE07706E32 /* countryCodes.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; path = countryCodes.json; sourceTree = "<group>"; };
+		F87447DBDA3599F396D88D28F00B25F3 /* libPhoneNumber_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = libPhoneNumber_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA8A7FB534F22340BF7E3350BFC9B2E7 /* libPhoneNumber-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "libPhoneNumber-iOS-dummy.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		03F935490D37F65C37FDDDD4E78E1CD8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0E6722DB98ABE413ED4CA3FAE7138EC2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				075020A8520C48F7C952F58EBE9A76A8 /* CoreTelephony.framework in Frameworks */,
+				30A591E13C304D4C953F06A1A9B98246 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1184D007CCAC7B0058CA2B4A845E8DC5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3BF7BEF97D8C314D78053E23C899966E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF042D9AACC26263B8AA1835AA3C9049 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7DA1BD03E77362D195CFC07BC74C0E4C /* Foundation.framework in Frameworks */,
+				58D3E9AF8591351EB1C28581628D5D39 /* libPhoneNumber_iOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		05186DF623605DBECC231534447DDD1A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F19FE787FBEB9361959700FE07706E32 /* countryCodes.json */,
+				94EDBD71607D70A05F562AC143F3BCE7 /* Flags.xcassets */,
+				171A8EB81EE9B81500FB7832 /* SwiftCountryView.xib */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		1F76A6A26341325A80DAC18F276853A5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8BDBF355671573A91527368F60EE5DD0 /* CTKFlagPhoneNumber */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		2E3C23D2029F2B945B3DFEB044DC414D /* libPhoneNumber-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				A16B26AFEBE49464D503F1F725795061 /* NBAsYouTypeFormatter.h */,
+				BE2B6ACFE5E8CB76075661AD99D3A70A /* NBAsYouTypeFormatter.m */,
+				642E17EB1455B2785961E6C3E4809164 /* NBMetadataCore.h */,
+				306643371590FF48AD4EF3220911CDDC /* NBMetadataCore.m */,
+				9BA038A9648CF6886E697091C05295C8 /* NBMetadataCoreMapper.h */,
+				4F77B9449193AAF7AE8FFE89247193FD /* NBMetadataCoreMapper.m */,
+				4BF23B099FCBD8A59FD154E8E540E6A4 /* NBMetadataCoreTest.h */,
+				2FFDC36F2248274FEBCE15ABCF14CE93 /* NBMetadataCoreTest.m */,
+				2FE895893F4A74D359262A9F21926D85 /* NBMetadataCoreTestMapper.h */,
+				C47EE84F6AE47D71B0005406F33FA4E4 /* NBMetadataCoreTestMapper.m */,
+				0D9CAF763C6830EDDAECAC6C3C71535A /* NBMetadataHelper.h */,
+				D11E097C431EDF01A92657D322865F0E /* NBMetadataHelper.m */,
+				A5F7BCF4850AA693EC0289DF2787EBD8 /* NBNumberFormat.h */,
+				D24CFD84CECC42AD946D7198CD3C6C36 /* NBNumberFormat.m */,
+				7D0DCB3D84636C4E61BCC2DD41B100DC /* NBPhoneMetaData.h */,
+				BBB462D342833B3809FE3F044FDF4EEF /* NBPhoneMetaData.m */,
+				2FC0DA44BBEA7217EAE4F8A58B5ADCB6 /* NBPhoneNumber.h */,
+				4340EA5DB7A978296BD82423E422A699 /* NBPhoneNumber.m */,
+				B772C07E44794948C4DA3E0F9255A6FE /* NBPhoneNumberDefines.h */,
+				702EB112F5B61CD2651A0D03FAD47448 /* NBPhoneNumberDefines.m */,
+				DCB12AA0EE19AA7F512E4803C47605AB /* NBPhoneNumberDesc.h */,
+				0D36C1278D87C3765C9B4F3ED5A0D4BF /* NBPhoneNumberDesc.m */,
+				3EDA3B27CD4DC9FF0750A6C65A012DBA /* NBPhoneNumberUtil.h */,
+				16063A88894305375DEB27F29D6A5500 /* NBPhoneNumberUtil.m */,
+				C71A54A6ACE42920E4879D85DB460F6D /* Support Files */,
+			);
+			path = "libPhoneNumber-iOS";
+			sourceTree = "<group>";
+		};
+		3B0CDD42F0BFF642C18629839B4D4500 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2E3C23D2029F2B945B3DFEB044DC414D /* libPhoneNumber-iOS */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		48ABAC0C219DBF86B0B0D8F68C662F08 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				D87BC992B60CE53A4BE4EDC1E0D6BFFC /* Pods-CTKFlagPhoneNumber_Example */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		5FDF7F5BAD4BC17332F7238B404D2ED3 /* MRCountryPicker */ = {
+			isa = PBXGroup;
+			children = (
+				7549FA524C7919D03E704B7C4EC1979E /* SwiftCountryPicker.swift */,
+				89EFD35E1ECCA5AA6BE79DD7F37FBCC8 /* SwiftCountryView.swift */,
+			);
+			path = MRCountryPicker;
+			sourceTree = "<group>";
+		};
+		65AC84EB4B470C13EA26B82F8D413CD4 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D21B855BEEE035D20E9D528E7C6E9E76 /* CTKFlagPhoneNumber */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		78858A8A62E760528428AFE5997F94C0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3315CBF60FEE8263EE8E5334F4C54953 /* libPhoneNumber_iOS.framework */,
+				A2626FE77799364BE5E5536245CCD8CE /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				65AC84EB4B470C13EA26B82F8D413CD4 /* Development Pods */,
+				78858A8A62E760528428AFE5997F94C0 /* Frameworks */,
+				3B0CDD42F0BFF642C18629839B4D4500 /* Pods */,
+				E9EABBE12D3924DE066F80F40C292C39 /* Products */,
+				48ABAC0C219DBF86B0B0D8F68C662F08 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		8BDBF355671573A91527368F60EE5DD0 /* CTKFlagPhoneNumber */ = {
+			isa = PBXGroup;
+			children = (
+				05186DF623605DBECC231534447DDD1A /* Resources */,
+			);
+			path = CTKFlagPhoneNumber;
+			sourceTree = "<group>";
+		};
+		A2626FE77799364BE5E5536245CCD8CE /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				BB0DED5CEFD3E01F9CF10039A2D5D6E5 /* CoreTelephony.framework */,
+				7546C3B58CD31A5066A06793D4710615 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		BA07ED1983E6905F5AAADC7623759EA1 /* CTKFlagPhoneNumber */ = {
+			isa = PBXGroup;
+			children = (
+				72BB83F5753EDDD858EA7C633E3F5025 /* CTKFlagPhoneNumberTextField.swift */,
+				639548036C8B57BAA55442A0162D4FA2 /* Utils.swift */,
+				5FDF7F5BAD4BC17332F7238B404D2ED3 /* MRCountryPicker */,
+			);
+			path = CTKFlagPhoneNumber;
+			sourceTree = "<group>";
+		};
+		C71A54A6ACE42920E4879D85DB460F6D /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				0900FD97ADD3BB41B87A15C30564668B /* Info.plist */,
+				33282E7B23854D21ED3C6CBE28DA3616 /* libPhoneNumber-iOS.modulemap */,
+				2C6EEBE3B3FEA6868357935DAC8ADAF3 /* libPhoneNumber-iOS.xcconfig */,
+				FA8A7FB534F22340BF7E3350BFC9B2E7 /* libPhoneNumber-iOS-dummy.m */,
+				46174CCE8F0CFBC06878196D90B7E8C7 /* libPhoneNumber-iOS-prefix.pch */,
+				D18A97EA6E2929C92472177762980BA7 /* libPhoneNumber-iOS-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/libPhoneNumber-iOS";
+			sourceTree = "<group>";
+		};
+		D21B855BEEE035D20E9D528E7C6E9E76 /* CTKFlagPhoneNumber */ = {
+			isa = PBXGroup;
+			children = (
+				BA07ED1983E6905F5AAADC7623759EA1 /* CTKFlagPhoneNumber */,
+				1F76A6A26341325A80DAC18F276853A5 /* Resources */,
+				EB74128990BF72C9841291500C2649B3 /* Support Files */,
+			);
+			name = CTKFlagPhoneNumber;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		D87BC992B60CE53A4BE4EDC1E0D6BFFC /* Pods-CTKFlagPhoneNumber_Example */ = {
+			isa = PBXGroup;
+			children = (
+				9805D40B1304F09A51433AFA50550FE6 /* Info.plist */,
+				66E49231BEF61F000776D32F1A285DE2 /* Pods-CTKFlagPhoneNumber_Example.modulemap */,
+				7C20C8FE2F4447398C748558C1AF8781 /* Pods-CTKFlagPhoneNumber_Example-acknowledgements.markdown */,
+				4DC61669BC05B95F7F72A69961F90072 /* Pods-CTKFlagPhoneNumber_Example-acknowledgements.plist */,
+				599605CBC8851725E260F19DF982CDC5 /* Pods-CTKFlagPhoneNumber_Example-dummy.m */,
+				5A69AA2EDC3438A58293E675A6FEB639 /* Pods-CTKFlagPhoneNumber_Example-frameworks.sh */,
+				B4F9F93ADD28A52DE1327D43232142ED /* Pods-CTKFlagPhoneNumber_Example-resources.sh */,
+				8D511B5FE7DF63635C8ED3013EEC94E8 /* Pods-CTKFlagPhoneNumber_Example-umbrella.h */,
+				C0395475F5262B314D65F68F8A3755FC /* Pods-CTKFlagPhoneNumber_Example.debug.xcconfig */,
+				5C7EA87568DDB91AF44EFD2BC2C0522B /* Pods-CTKFlagPhoneNumber_Example.release.xcconfig */,
+			);
+			name = "Pods-CTKFlagPhoneNumber_Example";
+			path = "Target Support Files/Pods-CTKFlagPhoneNumber_Example";
+			sourceTree = "<group>";
+		};
+		E9EABBE12D3924DE066F80F40C292C39 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BDCE582919EA262F85ED28B006D8213C /* CTKFlagPhoneNumber.bundle */,
+				9CA81FE2F7A58724A06E8C53C6860C1E /* CTKFlagPhoneNumber.framework */,
+				F87447DBDA3599F396D88D28F00B25F3 /* libPhoneNumber_iOS.framework */,
+				2B0E584BAE7294D3431D1B8E7ADDD325 /* Pods_CTKFlagPhoneNumber_Example.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EB74128990BF72C9841291500C2649B3 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				C1B0573BBE636BD24A5B4E6BB024FC13 /* CTKFlagPhoneNumber.modulemap */,
+				9E949971F4C9346C0A95BD53B8C20CC2 /* CTKFlagPhoneNumber.xcconfig */,
+				42176252FEB8597D7CDA392C3654D8F2 /* CTKFlagPhoneNumber-dummy.m */,
+				C311EC47B3ADFAE407AF89E8C84E17F9 /* CTKFlagPhoneNumber-prefix.pch */,
+				B7BBB5CEB5829BF519C25A3251A2894A /* CTKFlagPhoneNumber-umbrella.h */,
+				BE42467BA2BF3D2DBCD28E3647C3A1D3 /* Info.plist */,
+				C83027EDEFC921DC87B87E318D6B5CC5 /* ResourceBundle-CTKFlagPhoneNumber-Info.plist */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/CTKFlagPhoneNumber";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		02090CA1E63B767872B16399711DAB5E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B3D2156BF6C83ED59D3331E15FADF39 /* Pods-CTKFlagPhoneNumber_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6DA06860F85D91705D9DE967C288BF81 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7E26D491BDBA3B9DA39B11A4C1A6E09 /* CTKFlagPhoneNumber-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F95569131C7F28DBFC5EB4035D47EA7E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF194607860283131E966F0E4085ED9D /* libPhoneNumber-iOS-umbrella.h in Headers */,
+				29AB5191E8340F43269857CA6A2B2454 /* NBAsYouTypeFormatter.h in Headers */,
+				A2B075EF76A7C9FEC17893BB2DAC4D14 /* NBMetadataCore.h in Headers */,
+				BA406D6D254C13761EBBE45480A3DA1D /* NBMetadataCoreMapper.h in Headers */,
+				0AA1EC7AFB090DFE0E5CE588C6474F4E /* NBMetadataCoreTest.h in Headers */,
+				20CAB918E084B3ED6B3C24E57ACBABE3 /* NBMetadataCoreTestMapper.h in Headers */,
+				E66419A3D1CE11CFC25219FE3D08EB79 /* NBMetadataHelper.h in Headers */,
+				6840EEF64032C63D0488D3C42C4BB971 /* NBNumberFormat.h in Headers */,
+				F20EC8F6C1C520695059AEEE7E86B68F /* NBPhoneMetaData.h in Headers */,
+				B06A8BECD2D912742583C7A357568F75 /* NBPhoneNumber.h in Headers */,
+				A9D236036AB63EE9CBE1412A873A4494 /* NBPhoneNumberDefines.h in Headers */,
+				BA542D77F78CFBF82A924F91D512CC2B /* NBPhoneNumberDesc.h in Headers */,
+				0CC15D8669CC8037F14E361D77E6CE64 /* NBPhoneNumberUtil.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		20F292C0DBEE4D814737DD8985AA94FA /* CTKFlagPhoneNumber-CTKFlagPhoneNumber */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4E31CA9021104780802133449F3A663D /* Build configuration list for PBXNativeTarget "CTKFlagPhoneNumber-CTKFlagPhoneNumber" */;
+			buildPhases = (
+				6E1247FD959AF9AC382536B44E553E36 /* Sources */,
+				03F935490D37F65C37FDDDD4E78E1CD8 /* Frameworks */,
+				132682B0A217CC6AB5B27899D83CC7CD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "CTKFlagPhoneNumber-CTKFlagPhoneNumber";
+			productName = "CTKFlagPhoneNumber-CTKFlagPhoneNumber";
+			productReference = BDCE582919EA262F85ED28B006D8213C /* CTKFlagPhoneNumber.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		6C1521740C170237A57FECE37D1B4762 /* Pods-CTKFlagPhoneNumber_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 079747863F36E0FBC7DD70E1EBA4BCAA /* Build configuration list for PBXNativeTarget "Pods-CTKFlagPhoneNumber_Example" */;
+			buildPhases = (
+				0FC93F646398B342F6C601EA0078EF74 /* Sources */,
+				1184D007CCAC7B0058CA2B4A845E8DC5 /* Frameworks */,
+				02090CA1E63B767872B16399711DAB5E /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A95664F220525BFB712C334E3E3D8FCE /* PBXTargetDependency */,
+				9B6F2FE6FF88673C8A1B82B029F021BB /* PBXTargetDependency */,
+			);
+			name = "Pods-CTKFlagPhoneNumber_Example";
+			productName = "Pods-CTKFlagPhoneNumber_Example";
+			productReference = 2B0E584BAE7294D3431D1B8E7ADDD325 /* Pods_CTKFlagPhoneNumber_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		9DE369559C04E5A7C012C2BE5B89B069 /* CTKFlagPhoneNumber */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2B089D805E92E429B4CEC0FAF36FAF7D /* Build configuration list for PBXNativeTarget "CTKFlagPhoneNumber" */;
+			buildPhases = (
+				6AF0FE505B6AAC937B978107B310A199 /* Sources */,
+				CF042D9AACC26263B8AA1835AA3C9049 /* Frameworks */,
+				A4BE6E8FCE275935A00C1E877D186A2B /* Resources */,
+				6DA06860F85D91705D9DE967C288BF81 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				14531A7EBE51D9B932659512926B580B /* PBXTargetDependency */,
+				45C5FC937EBB1C098C0B1B78E6491FE6 /* PBXTargetDependency */,
+			);
+			name = CTKFlagPhoneNumber;
+			productName = CTKFlagPhoneNumber;
+			productReference = 9CA81FE2F7A58724A06E8C53C6860C1E /* CTKFlagPhoneNumber.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		C0D95305C0CB452CBAF5837782E37EBC /* libPhoneNumber-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A32B4168FB024BCBE0A227420029067 /* Build configuration list for PBXNativeTarget "libPhoneNumber-iOS" */;
+			buildPhases = (
+				403872A975E86DA3C6D946D2C7DE011C /* Sources */,
+				0E6722DB98ABE413ED4CA3FAE7138EC2 /* Frameworks */,
+				F95569131C7F28DBFC5EB4035D47EA7E /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "libPhoneNumber-iOS";
+			productName = "libPhoneNumber-iOS";
+			productReference = F87447DBDA3599F396D88D28F00B25F3 /* libPhoneNumber_iOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = E9EABBE12D3924DE066F80F40C292C39 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9DE369559C04E5A7C012C2BE5B89B069 /* CTKFlagPhoneNumber */,
+				20F292C0DBEE4D814737DD8985AA94FA /* CTKFlagPhoneNumber-CTKFlagPhoneNumber */,
+				C0D95305C0CB452CBAF5837782E37EBC /* libPhoneNumber-iOS */,
+				6C1521740C170237A57FECE37D1B4762 /* Pods-CTKFlagPhoneNumber_Example */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		132682B0A217CC6AB5B27899D83CC7CD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C24145CFFE54694B6725D0BB5C1A93C4 /* countryCodes.json in Resources */,
+				690A85B3558DE89A85010A032A8D48FD /* Flags.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4BE6E8FCE275935A00C1E877D186A2B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				880CCC63D5DB3D3F55061EAE0D071125 /* CTKFlagPhoneNumber.bundle in Resources */,
+				171A8EB91EE9B81500FB7832 /* SwiftCountryView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0FC93F646398B342F6C601EA0078EF74 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CA300CB6EA117DB2F594DC4AD8072D3 /* Pods-CTKFlagPhoneNumber_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		403872A975E86DA3C6D946D2C7DE011C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				02DE4673AD6C62876E09378FA1F646B2 /* libPhoneNumber-iOS-dummy.m in Sources */,
+				F1289BF2F67BC75BDF139E282B23CCC1 /* NBAsYouTypeFormatter.m in Sources */,
+				383F5076A65D5982AB874880E8C63F47 /* NBMetadataCore.m in Sources */,
+				FFB0E11796729791117F70CBBE58C178 /* NBMetadataCoreMapper.m in Sources */,
+				CA9D97A9FAE15A5B841299A2687C45DE /* NBMetadataCoreTest.m in Sources */,
+				4681F4426DCD73C4413698B987EAF19A /* NBMetadataCoreTestMapper.m in Sources */,
+				B2854E69F9049DCF9B7472532251EF7E /* NBMetadataHelper.m in Sources */,
+				604211EB83E6EE140C4EFABDEC38CCA3 /* NBNumberFormat.m in Sources */,
+				6C14778CB2B78A22572289E55A46F7A2 /* NBPhoneMetaData.m in Sources */,
+				DDC3EC4901AC770031909C0250C52D5F /* NBPhoneNumber.m in Sources */,
+				E3F9451547D4FB568764118A61A47F88 /* NBPhoneNumberDefines.m in Sources */,
+				19FE64571A1EDF647C0E1036B6D78F3D /* NBPhoneNumberDesc.m in Sources */,
+				73CEE053F5782DB635C0745CB249DACC /* NBPhoneNumberUtil.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6AF0FE505B6AAC937B978107B310A199 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB3A73BD6D55E5990BD62DF4464A8D0B /* CTKFlagPhoneNumber-dummy.m in Sources */,
+				FD2C23F54421847AE89BB5968A8E009A /* CTKFlagPhoneNumberTextField.swift in Sources */,
+				E8BBE20C1321D293ABF3A62BEB115234 /* SwiftCountryPicker.swift in Sources */,
+				CC39B425597C86CC1BDB4475F9AE54E3 /* SwiftCountryView.swift in Sources */,
+				0E02B04299745DB30809400FEA6D820D /* Utils.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E1247FD959AF9AC382536B44E553E36 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		14531A7EBE51D9B932659512926B580B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "CTKFlagPhoneNumber-CTKFlagPhoneNumber";
+			target = 20F292C0DBEE4D814737DD8985AA94FA /* CTKFlagPhoneNumber-CTKFlagPhoneNumber */;
+			targetProxy = 26D4A64C517B6F2057C4B8C47A724A44 /* PBXContainerItemProxy */;
+		};
+		45C5FC937EBB1C098C0B1B78E6491FE6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libPhoneNumber-iOS";
+			target = C0D95305C0CB452CBAF5837782E37EBC /* libPhoneNumber-iOS */;
+			targetProxy = 1866ACAB4AA836218DD0CDDF0F6B9245 /* PBXContainerItemProxy */;
+		};
+		9B6F2FE6FF88673C8A1B82B029F021BB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libPhoneNumber-iOS";
+			target = C0D95305C0CB452CBAF5837782E37EBC /* libPhoneNumber-iOS */;
+			targetProxy = 5785DF27FA12EED5720C8BA9C2CB7A3C /* PBXContainerItemProxy */;
+		};
+		A95664F220525BFB712C334E3E3D8FCE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CTKFlagPhoneNumber;
+			target = 9DE369559C04E5A7C012C2BE5B89B069 /* CTKFlagPhoneNumber */;
+			targetProxy = AC81EE878555B8CA4C620D9AB82DC884 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1D74A84DCA7C876F5B934CD8624444A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C6EEBE3B3FEA6868357935DAC8ADAF3 /* libPhoneNumber-iOS.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/libPhoneNumber-iOS/libPhoneNumber-iOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/libPhoneNumber-iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/libPhoneNumber-iOS/libPhoneNumber-iOS.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = libPhoneNumber_iOS;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		345CC476DF4A7516DBD2220CF5035FF3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		36CF995FA073E605CEBBA4696EE1E3D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C7EA87568DDB91AF44EFD2BC2C0522B /* Pods-CTKFlagPhoneNumber_Example.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-CTKFlagPhoneNumber_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CTKFlagPhoneNumber_Example/Pods-CTKFlagPhoneNumber_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_CTKFlagPhoneNumber_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		57998E0D3249D625D500E6A3815479B4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E949971F4C9346C0A95BD53B8C20CC2 /* CTKFlagPhoneNumber.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/CTKFlagPhoneNumber";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/CTKFlagPhoneNumber/ResourceBundle-CTKFlagPhoneNumber-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = CTKFlagPhoneNumber;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		717E77604BFBB04BEAF56608A1CB2EDE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8F47B14B079776A0EDC551E23F0DF9A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C6EEBE3B3FEA6868357935DAC8ADAF3 /* libPhoneNumber-iOS.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/libPhoneNumber-iOS/libPhoneNumber-iOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/libPhoneNumber-iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/libPhoneNumber-iOS/libPhoneNumber-iOS.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = libPhoneNumber_iOS;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		91B5C11A03D5D51C2DA5E62A5263BEAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E949971F4C9346C0A95BD53B8C20CC2 /* CTKFlagPhoneNumber.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/CTKFlagPhoneNumber/CTKFlagPhoneNumber-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CTKFlagPhoneNumber/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/CTKFlagPhoneNumber/CTKFlagPhoneNumber.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = CTKFlagPhoneNumber;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		935AED573583D6F642A082AC04023223 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C0395475F5262B314D65F68F8A3755FC /* Pods-CTKFlagPhoneNumber_Example.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-CTKFlagPhoneNumber_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CTKFlagPhoneNumber_Example/Pods-CTKFlagPhoneNumber_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_CTKFlagPhoneNumber_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		98F55B3ACC4CE84EDDEB8614BEEE954C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E949971F4C9346C0A95BD53B8C20CC2 /* CTKFlagPhoneNumber.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/CTKFlagPhoneNumber/CTKFlagPhoneNumber-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CTKFlagPhoneNumber/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/CTKFlagPhoneNumber/CTKFlagPhoneNumber.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = CTKFlagPhoneNumber;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A7488BA59E2CF8D6B1FF1B7D19328855 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E949971F4C9346C0A95BD53B8C20CC2 /* CTKFlagPhoneNumber.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/CTKFlagPhoneNumber";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/CTKFlagPhoneNumber/ResourceBundle-CTKFlagPhoneNumber-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = CTKFlagPhoneNumber;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		079747863F36E0FBC7DD70E1EBA4BCAA /* Build configuration list for PBXNativeTarget "Pods-CTKFlagPhoneNumber_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				935AED573583D6F642A082AC04023223 /* Debug */,
+				36CF995FA073E605CEBBA4696EE1E3D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2B089D805E92E429B4CEC0FAF36FAF7D /* Build configuration list for PBXNativeTarget "CTKFlagPhoneNumber" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				91B5C11A03D5D51C2DA5E62A5263BEAE /* Debug */,
+				98F55B3ACC4CE84EDDEB8614BEEE954C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				345CC476DF4A7516DBD2220CF5035FF3 /* Debug */,
+				717E77604BFBB04BEAF56608A1CB2EDE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3A32B4168FB024BCBE0A227420029067 /* Build configuration list for PBXNativeTarget "libPhoneNumber-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D74A84DCA7C876F5B934CD8624444A6 /* Debug */,
+				8F47B14B079776A0EDC551E23F0DF9A7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4E31CA9021104780802133449F3A663D /* Build configuration list for PBXNativeTarget "CTKFlagPhoneNumber-CTKFlagPhoneNumber" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				57998E0D3249D625D500E6A3815479B4 /* Debug */,
+				A7488BA59E2CF8D6B1FF1B7D19328855 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

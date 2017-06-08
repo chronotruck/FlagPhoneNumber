@@ -1,0 +1,6 @@
+framework module CTKFlagPhoneNumber {
+  umbrella header "CTKFlagPhoneNumber-umbrella.h"
+
+  export *
+  module * { export * }
+}
