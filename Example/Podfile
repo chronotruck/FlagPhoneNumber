@@ -1,0 +1,6 @@
+platform :ios, '8.3'
+use_frameworks!
+
+target 'CTKFlagPhoneNumber_Example' do
+  pod 'CTKFlagPhoneNumber', :path => '../'
+end
