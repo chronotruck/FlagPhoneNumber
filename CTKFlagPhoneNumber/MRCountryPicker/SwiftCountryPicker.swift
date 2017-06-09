@@ -93,8 +93,8 @@ open class MRCountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewData
     
     func countryNamesByCode() -> [Country] {
         var countries = [Country]()
-        let frameworkBundle = Bundle(for: type(of: self))
-        guard let jsonPath = frameworkBundle.path(forResource: "Assets/countryCodes", ofType: "json"), let jsonData = try? Data(contentsOf: URL(fileURLWithPath: jsonPath)) else {
+        let frameworkBundle = Bundle.ctk_frameworkBundle()
+        guard let jsonPath = frameworkBundle.path(forResource: "countryCodes", ofType: "json"), let jsonData = try? Data(contentsOf: URL(fileURLWithPath: jsonPath)) else {
             return countries
         }
         
