@@ -37,9 +37,25 @@ public class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, MRCo
 	var countryCode: String?
 	var phoneCode: String?
 	private var phoneNumber: String?
+	
+	
+	init() {
+		super.init(frame: .zero)
 		
-	private func initialize() {
 		borderStyle = .roundedRect
+	}
+	
+	public override init(frame: CGRect) {
+		super.init(frame: frame)
+		
+		borderStyle = .roundedRect
+	}
+	
+	required public init?(coder aDecoder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+	
+	private func setup() {
 		leftViewMode = UITextFieldViewMode.always
 		keyboardType = .numberPad
 		inputAccessoryView = getToolBar(self, title: "Done", selector: #selector(resetKeyBoard))
@@ -52,7 +68,7 @@ public class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, MRCo
 	}
 	
 	override public func draw(_ rect: CGRect) {
-		initialize()
+		setup()
 		
 		leftView = UIView(frame: CGRect(x: 0, y: 0, width: 37, height: 29))
 		
@@ -91,17 +107,7 @@ public class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, MRCo
 	}
 	
 	public func getPhoneNumber() -> String? {
-		if var number = phoneNumber {
-			
-			number = number.replacingOccurrences(of: "(", with: "")
-			number = number.replacingOccurrences(of: ")", with: "")
-			number = number.replacingOccurrences(of: " ", with: "")
-			number = number.replacingOccurrences(of: "-", with: "")
-			number = number.replacingOccurrences(of: "+", with: "")
-			
-			return number
-		}
-		return nil
+		return phoneNumber
 	}
 	
 	
@@ -117,21 +123,48 @@ public class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, MRCo
 			return true
 		} else {
 			let text = textField.text! + string
+			
 			do {
 				let phoneNumber: NBPhoneNumber = try phoneUtil.parse(text, defaultRegion: countryCode)
-				let formattedString: String = try phoneUtil.format(phoneNumber, numberFormat: .INTERNATIONAL)
 				
-				textField.text = formattedString
-			}
-			catch _ {
+				if phoneUtil.isValidNumber(phoneNumber) {
+					do {
+						let internationalPhoneNumber: String = try phoneUtil.format(phoneNumber, numberFormat: .INTERNATIONAL)
+						
+						textField.text = internationalPhoneNumber
+						return false
+					} catch _ {
+						return true
+					}
+				} else {
+					return true
+				}
+			} catch _ {
 				return true
 			}
-			return false
 		}
 	}
 	
 	public func textFieldDidEndEditing(_ textField: UITextField) {
-		self.phoneNumber = textField.text
+		let text = textField.text!
+		
+		do {
+			let phoneNumber: NBPhoneNumber = try phoneUtil.parse(text, defaultRegion: countryCode)
+			
+			if phoneUtil.isValidNumber(phoneNumber) {
+				do {
+					let e164PhoneNumber: String = try phoneUtil.format(phoneNumber, numberFormat: .E164)
+					
+					self.phoneNumber = e164PhoneNumber
+				} catch _ {
+					self.phoneNumber = nil
+				}
+			} else {
+				self.phoneNumber = nil
+			}
+		} catch _ {
+			self.phoneNumber = nil
+		}
 	}
 	
 
@@ -143,7 +176,6 @@ public class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, MRCo
 		
 		text = phoneCode
 		
-		//		flagButton.setImage(UIImage.getFlag(from: countryCode), for: .normal)
 		flagButton.setImage(flag, for: .normal)
 	}
 }
