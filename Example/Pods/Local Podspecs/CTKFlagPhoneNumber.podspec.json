@@ -1,18 +1,18 @@
 {
   "name": "CTKFlagPhoneNumber",
   "version": "0.1.0",
-  "summary": "A short description of CTKFlagPhoneNumber.",
-  "description": "TODO: Add long description of the pod here.",
+  "summary": "A formatted phone number UITextField with country flag picker.",
+  "description": "CTKFlagPhoneNumber is a phone number textfield that allows you to choose the country code thanks to a picker. It uses libPhoneNumber to format the number in the textfield according to country code.",
   "homepage": "https://github.com/chronotruck/CTKFlagPhoneNumber",
   "license": {
-    "type": "MIT",
+    "type": "Apache License 2.0",
     "file": "LICENSE"
   },
   "authors": {
     "grifas": "aurelien.grifasi@chronotruck.com"
   },
   "source": {
-    "git": "https://github.com/grifas/CTKFlagPhoneNumber.git",
+    "git": "https://github.com/chronotruck/CTKFlagPhoneNumber.git",
     "tag": "0.1.0"
   },
   "platforms": {
@@ -28,8 +28,5 @@
     "libPhoneNumber-iOS": [
 
     ]
-  },
-  "xcconfig": {
-    "SWIFT_VERSION": "3.0"
   }
 }
