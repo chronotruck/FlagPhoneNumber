@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 s.name             = 'CTKFlagPhoneNumber'
 s.version          = '0.1.0'
-s.summary          = 'A short description of CTKFlagPhoneNumber.'
+s.summary          = 'A formatted phone number UITextField with country flag picker.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,14 +18,14 @@ s.summary          = 'A short description of CTKFlagPhoneNumber.'
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
 s.description      = <<-DESC
-TODO: Add long description of the pod here.
+CTKFlagPhoneNumber is a phone number textfield that allows you to choose the country code thanks to a picker. It uses libPhoneNumber to format the number in the textfield according to country code.
 DESC
 
-s.homepage         = 'https://github.com/grifas/CTKFlagPhoneNumber'
+s.homepage         = 'https://github.com/chronotruck/CTKFlagPhoneNumber'
 # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-s.license          = { :type => 'MIT', :file => 'LICENSE' }
+s.license          = { :type => 'Apache License 2.0', :file => 'LICENSE' }
 s.author           = { 'grifas' => 'aurelien.grifasi@chronotruck.com' }
-s.source           = { :git => 'https://github.com/grifas/CTKFlagPhoneNumber.git', :tag => s.version.to_s }
+s.source           = { :git => 'https://github.com/chronotruck/CTKFlagPhoneNumber.git', :tag => s.version.to_s }
 # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
 s.ios.deployment_target = '8.0'
@@ -39,6 +39,8 @@ s.resource_bundles = {'CTKFlagPhoneNumber' => ['CTKFlagPhoneNumber/Resources/**/
 
 # s.public_header_files = 'Pod/Classes/**/*.h'
 # s.frameworks = 'UIKit', 'MapKit'
+
 s.dependency 'libPhoneNumber-iOS'
+s.xcconfig = { 'SWIFT_VERSION' => '3.0' }
 
 end
