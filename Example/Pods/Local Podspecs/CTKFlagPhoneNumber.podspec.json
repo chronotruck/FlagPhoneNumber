@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "summary": "A short description of CTKFlagPhoneNumber.",
   "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/grifas/CTKFlagPhoneNumber",
+  "homepage": "https://github.com/chronotruck/CTKFlagPhoneNumber",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -28,5 +28,8 @@
     "libPhoneNumber-iOS": [
 
     ]
+  },
+  "xcconfig": {
+    "SWIFT_VERSION": "3.0"
   }
 }
