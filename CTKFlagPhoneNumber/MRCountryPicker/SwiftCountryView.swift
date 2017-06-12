@@ -28,7 +28,7 @@ class NibLoadingView: UIView {
     }
     
     fileprivate func loadViewFromNib() -> UIView {
-        let bundle = Bundle.ctk_frameworkBundle()
+        let bundle = Bundle.CTKFrameworkBundle()
         let nib = UINib(nibName: String(describing: type(of: self)), bundle: bundle)
         let nibView = nib.instantiate(withOwner: self, options: nil).first as! UIView
         

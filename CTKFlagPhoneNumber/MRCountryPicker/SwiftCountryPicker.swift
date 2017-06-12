@@ -11,7 +11,7 @@ struct Country {
     var phoneCode: String?
     var flag: UIImage? {
         guard let code = self.code else { return nil }
-        return UIImage(named: code.uppercased(), in: Bundle.ctk_frameworkBundle(), compatibleWith: nil) ?? UIImage(named: "unknown", in: Bundle.ctk_frameworkBundle(), compatibleWith: nil) 
+        return UIImage(named: code.uppercased(), in: Bundle.CTKFrameworkBundle(), compatibleWith: nil) ?? UIImage(named: "unknown", in: Bundle.CTKFrameworkBundle(), compatibleWith: nil) 
     }
 
     init(code: String?, name: String?, phoneCode: String?) {
@@ -93,7 +93,7 @@ open class MRCountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewData
     
     func countryNamesByCode() -> [Country] {
         var countries = [Country]()
-        let frameworkBundle = Bundle.ctk_frameworkBundle()
+        let frameworkBundle = Bundle.CTKFrameworkBundle()
         guard let jsonPath = frameworkBundle.path(forResource: "countryCodes", ofType: "json"), let jsonData = try? Data(contentsOf: URL(fileURLWithPath: jsonPath)) else {
             return countries
         }
