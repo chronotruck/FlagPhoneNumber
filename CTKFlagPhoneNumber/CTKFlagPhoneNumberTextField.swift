@@ -58,7 +58,7 @@ public class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, MRCo
 	private func setup() {
 		leftViewMode = UITextFieldViewMode.always
 		keyboardType = .numberPad
-		inputAccessoryView = getToolBar(self, title: "Done", selector: #selector(resetKeyBoard))
+		inputAccessoryView = getToolBar(target: self, selector: #selector(resetKeyBoard))
 		delegate = self
 		
 		countryPicker.countryPickerDelegate = self
