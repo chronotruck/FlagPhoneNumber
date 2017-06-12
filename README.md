@@ -6,7 +6,7 @@
 [![Platform](https://img.shields.io/cocoapods/p/CTKFlagPhoneNumber.svg?style=flat)](http://cocoapods.org/pods/CTKFlagPhoneNumber)
 [![Language](https://img.shields.io/badge/language-swift-brightgreen.svg?style=flat)](https://developer.apple.com/swift)
 
-![sample](Screenshots/screenshot.gif)
+![sample](Screenshot/screenshot.gif)
 
 
 ## Example
