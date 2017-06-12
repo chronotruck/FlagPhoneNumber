@@ -17,7 +17,7 @@ import Foundation
 import libPhoneNumber_iOS
 
 extension Bundle {
-	static func ctk_frameworkBundle() -> Bundle {
+	static public func CTKFrameworkBundle() -> Bundle {
 		let bundle = Bundle(for: CTKFlagPhoneNumberTextField.self)
 		if let path = bundle.path(forResource: "CTKFlagPhoneNumber", ofType: "bundle") {
 			return Bundle(path: path)!
