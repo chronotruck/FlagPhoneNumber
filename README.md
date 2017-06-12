@@ -1,6 +1,6 @@
 # CTKFlagPhoneNumber
 
-[![CI Status](http://img.shields.io/travis/grifas/CTKFlagPhoneNumber.svg?style=flat)](https://travis-ci.org/grifas/CTKFlagPhoneNumber)
+[![CI Status](http://img.shields.io/travis/grifas/CTKFlagPhoneNumber.svg?style=flat)](https://travis-ci.org/chronotruck/CTKFlagPhoneNumber)
 [![Version](https://img.shields.io/cocoapods/v/CTKFlagPhoneNumber.svg?style=flat)](http://cocoapods.org/pods/CTKFlagPhoneNumber)
 [![License](https://img.shields.io/cocoapods/l/CTKFlagPhoneNumber.svg?style=flat)](http://cocoapods.org/pods/CTKFlagPhoneNumber)
 [![Platform](https://img.shields.io/cocoapods/p/CTKFlagPhoneNumber.svg?style=flat)](http://cocoapods.org/pods/CTKFlagPhoneNumber)
