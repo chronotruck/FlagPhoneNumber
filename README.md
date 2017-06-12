@@ -4,6 +4,10 @@
 [![Version](https://img.shields.io/cocoapods/v/CTKFlagPhoneNumber.svg?style=flat)](http://cocoapods.org/pods/CTKFlagPhoneNumber)
 [![License](https://img.shields.io/cocoapods/l/CTKFlagPhoneNumber.svg?style=flat)](http://cocoapods.org/pods/CTKFlagPhoneNumber)
 [![Platform](https://img.shields.io/cocoapods/p/CTKFlagPhoneNumber.svg?style=flat)](http://cocoapods.org/pods/CTKFlagPhoneNumber)
+[![Language](https://img.shields.io/badge/language-swift-brightgreen.svg?style=flat)](https://developer.apple.com/swift)
+
+![sample](Screenshots/screenshot.gif)
+
 
 ## Example
 
@@ -26,4 +30,4 @@ grifas, aurelien.grifasi@chronotruck.com
 
 ## License
 
-CTKFlagPhoneNumber is available under the MIT license. See the LICENSE file for more info.
+CTKFlagPhoneNumber is available under the Apache license. See the LICENSE file for more info.
