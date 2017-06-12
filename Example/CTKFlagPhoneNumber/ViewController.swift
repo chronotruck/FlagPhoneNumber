@@ -17,15 +17,16 @@ class ViewController: UIViewController {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
 		
+		title = "CTKFlagPhoneNumber"
+		
 		phoneNumberTextField = CTKFlagPhoneNumberTextField(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 16, height: 50))
 		phoneNumberTextField.center = view.center
 		view.addSubview(phoneNumberTextField)
 
-		let button = UIButton(type: .roundedRect)
+		let button = UIButton(type: .system)
 		button.frame = CGRect(x: 0, y: 0, width: 50, height: 44)
 		button.center = CGPoint(x: view.center.x, y: view.center.y + 60)
 		button.setTitle("Ok", for: .normal)
-		button.backgroundColor = .green
 		button.addTarget(self, action: #selector(validate), for: .touchUpInside)
 		view.addSubview(button)
 	}
