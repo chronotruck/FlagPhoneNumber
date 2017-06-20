@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
 s.name             = 'CTKFlagPhoneNumber'
-s.version          = '0.1.4'
+s.version          = '0.1.5'
 s.summary          = 'A formatted phone number UITextField with country flag picker.'
 
 # This description is used to generate tags and improve search results.
@@ -22,9 +22,9 @@ CTKFlagPhoneNumber is a phone number textfield that allows you to choose the cou
 DESC
 
 s.homepage         = 'https://github.com/chronotruck/CTKFlagPhoneNumber'
-# s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+s.screenshots      = 'https://github.com/chronotruck/CTKFlagPhoneNumber/Screenshot/screenshot.gif'
 s.license          = { :type => 'Apache License 2.0', :file => 'LICENSE' }
-s.author           = { 'grifas' => 'aurelien.grifasi@chronotruck.com' }
+s.author           = { 'Aurélien Grifasi' => 'aurelien.grifasi@chronotruck.com' }
 s.source           = { :git => 'https://github.com/chronotruck/CTKFlagPhoneNumber.git', :tag => s.version.to_s }
 # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 

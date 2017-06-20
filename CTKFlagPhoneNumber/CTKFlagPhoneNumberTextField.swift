@@ -33,10 +33,18 @@ public class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, MRCo
 	private var flagButton: UIButton!
 	private lazy var countryPicker: MRCountryPicker = MRCountryPicker()
 	private lazy var phoneUtil: NBPhoneNumberUtil = NBPhoneNumberUtil()
+	private var formatter: NBAsYouTypeFormatter?
 	
-	var countryCode: String?
-	var phoneCode: String?
+	private var phoneCode: String?
 	private var phoneNumber: String?
+	
+	private var countryCode: String? {
+		didSet {
+			if let countryCode = countryCode {
+				formatter = NBAsYouTypeFormatter(regionCode: countryCode)
+			}
+		}
+	}
 	
 	
 	init() {
@@ -59,6 +67,7 @@ public class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, MRCo
 		leftViewMode = UITextFieldViewMode.always
 		keyboardType = .numberPad
 		inputAccessoryView = getToolBar(target: self, selector: #selector(resetKeyBoard))
+		addTarget(self, action: #selector(update), for: .editingChanged)
 		delegate = self
 		
 		countryPicker.countryPickerDelegate = self
@@ -110,39 +119,20 @@ public class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, MRCo
 		return phoneNumber
 	}
 	
+	@objc private func update() {
+		text = text?.trimmingCharacters(in: CharacterSet(charactersIn: "+0123456789").inverted)
+		text = text?.replacingOccurrences(of: " ", with: "")
+		text = text?.replacingOccurrences(of: "-", with: "")
+		text = formatter?.inputString(text)
+	}
 	
 	// UITextFieldDelegate
-
+	
 	public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-		
-		if string == "" && textField.text == phoneCode {
+		if string == "" && text == phoneCode {
 			return false
 		}
-		
-		if range.length > 0 {
-			return true
-		} else {
-			let text = textField.text! + string
-			
-			do {
-				let phoneNumber: NBPhoneNumber = try phoneUtil.parse(text, defaultRegion: countryCode)
-				
-				if phoneUtil.isValidNumber(phoneNumber) {
-					do {
-						let internationalPhoneNumber: String = try phoneUtil.format(phoneNumber, numberFormat: .INTERNATIONAL)
-						
-						textField.text = internationalPhoneNumber
-						return false
-					} catch _ {
-						return true
-					}
-				} else {
-					return true
-				}
-			} catch _ {
-				return true
-			}
-		}
+		return true
 	}
 	
 	public func textFieldDidEndEditing(_ textField: UITextField) {
@@ -156,6 +146,8 @@ public class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, MRCo
 					let e164PhoneNumber: String = try phoneUtil.format(phoneNumber, numberFormat: .E164)
 					
 					self.phoneNumber = e164PhoneNumber
+					textField.text = self.phoneNumber
+					textField.sendActions(for: .editingChanged)
 				} catch _ {
 					self.phoneNumber = nil
 				}
@@ -173,9 +165,9 @@ public class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, MRCo
 	public func countryPhoneCodePicker(_ picker: MRCountryPicker, didSelectCountryWithName name: String, countryCode: String, phoneCode: String, flag: UIImage) {
 		self.phoneCode = phoneCode
 		self.countryCode = countryCode
-		
-		text = phoneCode
-		
+	
 		flagButton.setImage(flag, for: .normal)
+		text = phoneCode
+		sendActions(for: .editingChanged)
 	}
 }
