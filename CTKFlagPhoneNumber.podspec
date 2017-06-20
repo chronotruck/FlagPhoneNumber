@@ -22,7 +22,7 @@ CTKFlagPhoneNumber is a phone number textfield that allows you to choose the cou
 DESC
 
 s.homepage         = 'https://github.com/chronotruck/CTKFlagPhoneNumber'
-s.screenshots      = 'https://github.com/chronotruck/CTKFlagPhoneNumber/Screenshot/screenshot.gif'
+s.screenshots      = 'https://github.com/chronotruck/CTKFlagPhoneNumber/blob/master/Screenshot/screenshot.gif'
 s.license          = { :type => 'Apache License 2.0', :file => 'LICENSE' }
 s.author           = { 'Aurélien Grifasi' => 'aurelien.grifasi@chronotruck.com' }
 s.source           = { :git => 'https://github.com/chronotruck/CTKFlagPhoneNumber.git', :tag => s.version.to_s }
