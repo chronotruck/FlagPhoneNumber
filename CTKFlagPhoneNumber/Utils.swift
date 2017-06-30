@@ -20,10 +20,11 @@ This function returns a tool bar for AccessoryInputView
 func getToolBar(target: Any, selector: Selector) -> UIToolbar {
 	let doneToolbar: UIToolbar = UIToolbar()
 	let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-	let done: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: target, action: selector)
+	let doneButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: target, action: selector)
 	
+	doneButton.accessibilityLabel = "doneButton"
 	doneToolbar.barStyle = UIBarStyle.default
-	doneToolbar.items = [flexSpace, done]
+	doneToolbar.items = [flexSpace, doneButton]
 	doneToolbar.sizeToFit()
 	
 	return doneToolbar
