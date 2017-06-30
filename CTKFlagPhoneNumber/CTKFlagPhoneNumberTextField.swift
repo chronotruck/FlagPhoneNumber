@@ -63,19 +63,6 @@ public class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, MRCo
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	private func setup() {
-		leftViewMode = UITextFieldViewMode.always
-		keyboardType = .numberPad
-		inputAccessoryView = getToolBar(target: self, selector: #selector(resetKeyBoard))
-		addTarget(self, action: #selector(update), for: .editingChanged)
-		delegate = self
-		
-		countryPicker.countryPickerDelegate = self
-		countryPicker.showPhoneNumbers = true
-		
-		addTarget(self, action: #selector(displayNumberKeyBoard), for: .touchDown)
-	}
-	
 	override public func draw(_ rect: CGRect) {
 		setup()
 		
@@ -91,6 +78,19 @@ public class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, MRCo
 	
 	override public func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
 		return false
+	}
+	
+	private func setup() {
+		leftViewMode = UITextFieldViewMode.always
+		keyboardType = .numberPad
+		inputAccessoryView = getToolBar(target: self, selector: #selector(resetKeyBoard))
+		addTarget(self, action: #selector(update), for: .editingChanged)
+		delegate = self
+		
+		countryPicker.countryPickerDelegate = self
+		countryPicker.showPhoneNumbers = true
+		
+		addTarget(self, action: #selector(displayNumberKeyBoard), for: .touchDown)
 	}
 	
 	@objc private func displayNumberKeyBoard() {
