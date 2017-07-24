@@ -21,14 +21,24 @@ class ViewController: UIViewController {
 		
 		phoneNumberTextField = CTKFlagPhoneNumberTextField(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 16, height: 50))
 		phoneNumberTextField.center = view.center
+		
 		view.addSubview(phoneNumberTextField)
 
 		let button = UIButton(type: .system)
+		
 		button.frame = CGRect(x: 0, y: 0, width: 50, height: 44)
 		button.center = CGPoint(x: view.center.x, y: view.center.y + 60)
 		button.setTitle("Ok", for: .normal)
 		button.addTarget(self, action: #selector(validate), for: .touchUpInside)
+
 		view.addSubview(button)
+	}
+	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		
+		phoneNumberTextField.setFlag(with: "FR")
+		phoneNumberTextField.set(phoneNumber: "0600000001")
 	}
 	
 	func validate() {

@@ -24,6 +24,17 @@ it, simply add the following line to your Podfile:
 pod "CTKFlagPhoneNumber"
 ```
 
+##Usage
+
+###Possibilities
+
+You can manually change the choosen flag and the phone number with:  
+```swift
+phoneNumberTextField.setFlag(with: "FR")
+phoneNumberTextField.set(phoneNumber: "0600000001")
+
+```
+
 ## Author
 
 grifas, aurelien.grifasi@chronotruck.com
