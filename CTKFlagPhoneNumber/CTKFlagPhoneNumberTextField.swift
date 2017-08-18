@@ -50,30 +50,17 @@ public class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, MRCo
 	init() {
 		super.init(frame: .zero)
 		
-		borderStyle = .roundedRect
+		setup()
 	}
 	
 	public override init(frame: CGRect) {
 		super.init(frame: frame)
 		
-		borderStyle = .roundedRect
+		setup()
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
-	}
-	
-	override public func draw(_ rect: CGRect) {
-		setup()
-		
-		leftView = UIView(frame: CGRect(x: 0, y: 0, width: 37, height: 29))
-		
-		flagButton = UIButton(frame: CGRect(x: 8, y: 0, width: 29, height: 29))
-		flagButton.addTarget(self, action: #selector(displayCountryKeyboard), for: .touchUpInside)
-		
-		leftView?.addSubview(flagButton)
-		
-		countryPicker.setCountry(Locale.current.regionCode!)
 	}
 	
 	override public func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
@@ -81,6 +68,7 @@ public class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, MRCo
 	}
 	
 	private func setup() {
+		borderStyle = .roundedRect
 		leftViewMode = UITextFieldViewMode.always
 		keyboardType = .numberPad
 		inputAccessoryView = getToolBar(target: self, selector: #selector(resetKeyBoard))
@@ -91,6 +79,16 @@ public class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, MRCo
 		countryPicker.showPhoneNumbers = true
 		
 		addTarget(self, action: #selector(displayNumberKeyBoard), for: .touchDown)
+		
+		leftView = UIView(frame: CGRect(x: 0, y: 0, width: 37, height: 29))
+		
+		flagButton = UIButton(frame: CGRect(x: 8, y: 0, width: 29, height: 29))
+		flagButton.accessibilityLabel = "flagButton"
+		flagButton.addTarget(self, action: #selector(displayCountryKeyboard), for: .touchUpInside)
+		
+		leftView?.addSubview(flagButton)
+		
+		countryPicker.setCountry(Locale.current.regionCode!)
 	}
 	
 	@objc private func displayNumberKeyBoard() {
