@@ -41,10 +41,10 @@ class ViewController: UIViewController {
 		phoneNumberTextField.set(phoneNumber: "0600000001")
 	}
 	
-	func validate() {
+	@objc func validate() {
 		let phoneNumber: String? = phoneNumberTextField.getPhoneNumber()
 		
-		print(phoneNumber)
+		print(phoneNumber ?? "No phone number")
 	}
 }
 
