@@ -138,8 +138,9 @@ public class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, MRCo
 				do {
 					let e164PhoneNumber: String = try phoneUtil.format(parsedPhoneNumber, numberFormat: .E164)
 					
-                    self.phoneNumber = e164PhoneNumber
-                    setFlag(with: phoneUtil.getRegionCode(for: parsedPhoneNumber))
+					self.phoneNumber = e164PhoneNumber
+					setFlag(with: phoneUtil.getRegionCode(for: parsedPhoneNumber))
+
 					text = self.phoneNumber
 					sendActions(for: .editingChanged)
 				} catch _ {
