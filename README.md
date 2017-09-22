@@ -29,15 +29,18 @@ pod "CTKFlagPhoneNumber"
 
 ## Usage
 
+You can instance it in storyboards or .xibs.
+
 You can programmatically change the choosen flag:
 ```swift
 phoneNumberTextField.setFlag(with: "FR")
 ```
 
-and the phone number:  
+and the phone number:
 ```swift
 phoneNumberTextField.set(phoneNumber: "0600000001")
 ```
+This function updates the flag according to the phone number
 
 You can also get the phone number to E164 format:
 ```swift
