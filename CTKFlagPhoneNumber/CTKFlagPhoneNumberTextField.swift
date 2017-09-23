@@ -125,6 +125,24 @@ public class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, MRCo
         let rect = CGRect(x: 0, y: bounds.size.height / 2 - height / 2, width: width, height: height)
         return rect
     }
+    
+    public override func textRect(forBounds bounds: CGRect) -> CGRect {
+        var textRect = super.textRect(forBounds: bounds)
+        let spaceBetweenLeftViewAndText = textRect.minX - leftViewRect(forBounds: bounds).maxX
+        if spaceBetweenLeftViewAndText > 0 {
+            textRect.origin.x -= spaceBetweenLeftViewAndText
+            textRect.size.width += spaceBetweenLeftViewAndText
+        }
+        return textRect
+    }
+    
+    public override func editingRect(forBounds bounds: CGRect) -> CGRect {
+        return textRect(forBounds: bounds)
+    }
+    
+    public override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+        return textRect(forBounds:bounds)
+    }
 	
 	@objc private func displayNumberKeyBoard() {
 		if inputView != nil {
