@@ -30,6 +30,13 @@ extension Bundle {
 
 public class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, MRCountryPickerDelegate {
 	
+	private static let FlagSize = CGSize(width: 32, height: 32)
+	
+	public var flagButtonEdgeInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8) {
+		didSet {
+			layoutSubviews()
+		}
+	}
 	private var flagButton: UIButton!
 	private lazy var countryPicker: MRCountryPicker = MRCountryPicker()
 	private lazy var phoneUtil: NBPhoneNumberUtil = NBPhoneNumberUtil()
@@ -61,7 +68,7 @@ public class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, MRCo
 	
 	required public init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
-
+		
 		setup()
 	}
 	
@@ -82,15 +89,63 @@ public class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, MRCo
 		
 		addTarget(self, action: #selector(displayNumberKeyBoard), for: .touchDown)
 		
-		leftView = UIView(frame: CGRect(x: 0, y: 0, width: 37, height: 29))
+		leftView = UIView()
 		
-		flagButton = UIButton(frame: CGRect(x: 8, y: 0, width: 29, height: 29))
+		flagButton = UIButton()
 		flagButton.accessibilityLabel = "flagButton"
 		flagButton.addTarget(self, action: #selector(displayCountryKeyboard), for: .touchUpInside)
 		
 		leftView?.addSubview(flagButton)
 		
 		countryPicker.setCountry(Locale.current.regionCode!)
+	}
+	
+	public override func layoutSubviews() {
+		super.layoutSubviews()
+		
+		leftView?.frame = leftViewRect(forBounds: frame)
+		flagButton.frame = CGRect(x: flagButtonEdgeInsets.left, y: flagButtonEdgeInsets.top, width: CTKFlagPhoneNumberTextField.FlagSize.width, height: CTKFlagPhoneNumberTextField.FlagSize.height)
+	}
+	
+	public override var intrinsicContentSize: CGSize {
+		var intrinsicContentSize = super.intrinsicContentSize
+		let leftViewHeight = leftViewSize.height
+		
+		intrinsicContentSize.height = max(intrinsicContentSize.height, leftViewHeight)
+		return intrinsicContentSize
+	}
+	
+	private var leftViewSize: CGSize {
+		return CGSize(
+			width: CTKFlagPhoneNumberTextField.FlagSize.width + flagButtonEdgeInsets.left + flagButtonEdgeInsets.right,
+			height: CTKFlagPhoneNumberTextField.FlagSize.height + flagButtonEdgeInsets.top + flagButtonEdgeInsets.bottom)
+	}
+	
+	public override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
+		let width = min(bounds.size.width, leftViewSize.width)
+		let height = min(bounds.size.height, leftViewSize.height)
+		let rect = CGRect(x: 0, y: bounds.size.height / 2 - height / 2, width: width, height: height)
+		
+		return rect
+	}
+	
+	public override func textRect(forBounds bounds: CGRect) -> CGRect {
+		var textRect = super.textRect(forBounds: bounds)
+		let spaceBetweenLeftViewAndText = textRect.minX - leftViewRect(forBounds: bounds).maxX
+		
+		if spaceBetweenLeftViewAndText > 0 {
+			textRect.origin.x -= spaceBetweenLeftViewAndText
+			textRect.size.width += spaceBetweenLeftViewAndText
+		}
+		return textRect
+	}
+	
+	public override func editingRect(forBounds bounds: CGRect) -> CGRect {
+		return textRect(forBounds: bounds)
+	}
+	
+	public override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+		return textRect(forBounds:bounds)
 	}
 	
 	@objc private func displayNumberKeyBoard() {
@@ -167,13 +222,13 @@ public class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, MRCo
 		set(phoneNumber: textField.text!)
 	}
 	
-
+	
 	// MRCountryPickerDelegate
 	
 	public func countryPhoneCodePicker(_ picker: MRCountryPicker, didSelectCountryWithName name: String, countryCode: String, phoneCode: String, flag: UIImage) {
 		self.phoneCode = phoneCode
 		self.countryCode = countryCode
-	
+		
 		flagButton.setImage(flag, for: .normal)
 		text = phoneCode
 		sendActions(for: .editingChanged)
