@@ -41,6 +41,7 @@ s.resource_bundles = {'CTKFlagPhoneNumber' => ['CTKFlagPhoneNumber/Resources/**/
 # s.frameworks = 'UIKit', 'MapKit'
 
 s.dependency 'libPhoneNumber-iOS'
+s.dependency 'FlagKit'
 #s.xcconfig = { 'SWIFT_VERSION' => '3.0' }
 
 end

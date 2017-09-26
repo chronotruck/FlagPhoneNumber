@@ -18,8 +18,8 @@ class ViewController: UIViewController {
 		// Do any additional setup after loading the view, typically from a nib.
 		
 		title = "CTKFlagPhoneNumber"
-		
-		phoneNumberTextField = CTKFlagPhoneNumberTextField(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 16, height: 50))
+
+		phoneNumberTextField = CTKFlagPhoneNumberTextField(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 16, height: 50))		
 		phoneNumberTextField.center = view.center
 		
 		view.addSubview(phoneNumberTextField)

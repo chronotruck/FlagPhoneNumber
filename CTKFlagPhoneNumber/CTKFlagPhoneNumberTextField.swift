@@ -14,11 +14,15 @@
 
 
 import Foundation
+import FlagKit
 import libPhoneNumber_iOS
 
 extension Bundle {
-	static public func CTKFrameworkBundle() -> Bundle {
+	static public var FlagIcons = FlagKit.assetBundle
+	
+	static public func CTKFlagPhoneNumber() -> Bundle {
 		let bundle = Bundle(for: CTKFlagPhoneNumberTextField.self)
+
 		if let path = bundle.path(forResource: "CTKFlagPhoneNumber", ofType: "bundle") {
 			return Bundle(path: path)!
 		}
@@ -28,7 +32,17 @@ extension Bundle {
 	}
 }
 
-public class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, MRCountryPickerDelegate {
+public class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, CountryPickerDelegate {
+	
+	public var bundleFlagIcons: Bundle? {
+		didSet {
+			if let bundle = bundleFlagIcons {
+				Bundle.FlagIcons = bundle
+				
+				countryPicker.reloadAllComponents()
+			}
+		}
+	}
 	
 	private static let FlagSize = CGSize(width: 32, height: 32)
 	
@@ -38,7 +52,7 @@ public class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, MRCo
 		}
 	}
 	private var flagButton: UIButton!
-	private lazy var countryPicker: MRCountryPicker = MRCountryPicker()
+	private lazy var countryPicker: CountryPicker = CountryPicker()
 	private lazy var phoneUtil: NBPhoneNumberUtil = NBPhoneNumberUtil()
 	private var formatter: NBAsYouTypeFormatter?
 	
@@ -92,6 +106,9 @@ public class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, MRCo
 		leftView = UIView()
 		
 		flagButton = UIButton()
+		flagButton.contentHorizontalAlignment = .fill
+		flagButton.contentVerticalAlignment = .fill
+		flagButton.imageView?.contentMode = .scaleAspectFit
 		flagButton.accessibilityLabel = "flagButton"
 		flagButton.addTarget(self, action: #selector(displayCountryKeyboard), for: .touchUpInside)
 		
@@ -223,9 +240,9 @@ public class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, MRCo
 	}
 	
 	
-	// MRCountryPickerDelegate
+	// CountryPickerDelegate
 	
-	public func countryPhoneCodePicker(_ picker: MRCountryPicker, didSelectCountryWithName name: String, countryCode: String, phoneCode: String, flag: UIImage) {
+	public func countryPhoneCodePicker(_ picker: CountryPicker, didSelectCountryWithName name: String, countryCode: String, phoneCode: String, flag: UIImage) {
 		self.phoneCode = phoneCode
 		self.countryCode = countryCode
 		
