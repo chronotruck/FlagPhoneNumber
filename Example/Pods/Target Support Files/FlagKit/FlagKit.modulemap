@@ -1,0 +1,6 @@
+framework module FlagKit {
+  umbrella header "FlagKit-umbrella.h"
+
+  export *
+  module * { export * }
+}
