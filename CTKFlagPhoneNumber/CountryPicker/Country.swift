@@ -6,7 +6,7 @@ struct Country {
 	var phoneCode: String?
 	var flag: UIImage? {
 		guard let code = self.code else { return nil }
-		return UIImage(named: code.uppercased(), in: Bundle.FlagIcons, compatibleWith: nil) ?? UIImage(named: "unknown", in: Bundle.CTKFlagPhoneNumber(), compatibleWith: nil)
+		return UIImage(named: code.uppercased(), in: Bundle.FlagIcons, compatibleWith: nil) ?? #imageLiteral(resourceName: "unknown")
 	}
 	
 	init(code: String?, name: String?, phoneCode: String?) {
