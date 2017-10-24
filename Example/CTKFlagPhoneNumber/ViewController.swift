@@ -19,7 +19,9 @@ class ViewController: UIViewController {
 		
 		title = "CTKFlagPhoneNumber"
 
-		phoneNumberTextField = CTKFlagPhoneNumberTextField(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 16, height: 50))		
+		//		Bundle.FlagIcons = Bundle(for: ViewController.self)
+
+		phoneNumberTextField = CTKFlagPhoneNumberTextField(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 16, height: 50))
 		phoneNumberTextField.center = view.center
 		
 		view.addSubview(phoneNumberTextField)

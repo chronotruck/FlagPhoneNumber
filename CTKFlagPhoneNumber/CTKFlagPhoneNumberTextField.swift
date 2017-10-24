@@ -33,17 +33,7 @@ extension Bundle {
 }
 
 public class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, CountryPickerDelegate {
-	
-	public var bundleFlagIcons: Bundle? {
-		didSet {
-			if let bundle = bundleFlagIcons {
-				Bundle.FlagIcons = bundle
-				
-				countryPicker.reloadAllComponents()
-			}
-		}
-	}
-	
+		
 	private static let FlagSize = CGSize(width: 32, height: 32)
 	
 	public var flagButtonEdgeInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8) {

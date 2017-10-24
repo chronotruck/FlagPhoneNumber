@@ -48,6 +48,14 @@ print(phoneNumberTextField.getPhoneNumber())
 // Output: +33600000001
 ```
 
+## Customization
+
+FlagKit is used by default but you can customize the list with your own flag icons assets:
+```swift
+Bundle.FlagIcons = YOUR_FLAG_ICONS_BUNDLE
+```
+Be sure to set it before initializing a CTKFlagPhoneNumber instance.
+
 ## Conception
 This library is high inspired of MRCountryPicker library and use libPhoneNumber-iOS library.
 https://github.com/xtrinch/MRCountryPicker / https://github.com/iziz/libPhoneNumber-iOS 
