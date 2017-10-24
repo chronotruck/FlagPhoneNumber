@@ -12,11 +12,11 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		6CDA27AA5830658A41FEA4D4 /* Pods_CTKFlagPhoneNumber_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B0F982F100B078C3B2F686 /* Pods_CTKFlagPhoneNumber_Example.framework */; };
+		F65337E684B3478B8B6D18E1 /* Pods_CTKFlagPhoneNumber_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 767C53D5F6A9D14B9CBB846B /* Pods_CTKFlagPhoneNumber_Example.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0AF6D23BCE7990AA62688447 /* Pods-CTKFlagPhoneNumber_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CTKFlagPhoneNumber_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CTKFlagPhoneNumber_Example/Pods-CTKFlagPhoneNumber_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		2F76FC9BAF95B1BC0B71FFA0 /* Pods-CTKFlagPhoneNumber_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CTKFlagPhoneNumber_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-CTKFlagPhoneNumber_Example/Pods-CTKFlagPhoneNumber_Example.release.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* CTKFlagPhoneNumber_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CTKFlagPhoneNumber_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -24,10 +24,10 @@
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		A6B0F982F100B078C3B2F686 /* Pods_CTKFlagPhoneNumber_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CTKFlagPhoneNumber_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		767C53D5F6A9D14B9CBB846B /* Pods_CTKFlagPhoneNumber_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CTKFlagPhoneNumber_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		80229816A5135F328B6C7B05 /* Pods-CTKFlagPhoneNumber_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CTKFlagPhoneNumber_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CTKFlagPhoneNumber_Example/Pods-CTKFlagPhoneNumber_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		CEF9C8A9CECCBFB4545EC1B0 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		DDD4AE2C457B6F4EA4B9D78A /* CTKFlagPhoneNumber.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = CTKFlagPhoneNumber.podspec; path = ../CTKFlagPhoneNumber.podspec; sourceTree = "<group>"; };
-		E19DB3BCD454CAAFFFDFF7EC /* Pods-CTKFlagPhoneNumber_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CTKFlagPhoneNumber_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-CTKFlagPhoneNumber_Example/Pods-CTKFlagPhoneNumber_Example.release.xcconfig"; sourceTree = "<group>"; };
 		EDC927EFF87F6FBDDFCD548B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -36,38 +36,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6CDA27AA5830658A41FEA4D4 /* Pods_CTKFlagPhoneNumber_Example.framework in Frameworks */,
+				F65337E684B3478B8B6D18E1 /* Pods_CTKFlagPhoneNumber_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1B257CE480AA32E296507C48 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				0AF6D23BCE7990AA62688447 /* Pods-CTKFlagPhoneNumber_Example.debug.xcconfig */,
-				E19DB3BCD454CAAFFFDFF7EC /* Pods-CTKFlagPhoneNumber_Example.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		22AA1340BC3602330BACFC53 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				A6B0F982F100B078C3B2F686 /* Pods_CTKFlagPhoneNumber_Example.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for CTKFlagPhoneNumber */,
 				607FACD11AFB9204008FA782 /* Products */,
-				1B257CE480AA32E296507C48 /* Pods */,
-				22AA1340BC3602330BACFC53 /* Frameworks */,
+				DCA2FC0F889A07C6D9D70A6D /* Pods */,
+				B9D967BA25838D0D1888147C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -111,6 +94,23 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
+		B9D967BA25838D0D1888147C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				767C53D5F6A9D14B9CBB846B /* Pods_CTKFlagPhoneNumber_Example.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DCA2FC0F889A07C6D9D70A6D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				80229816A5135F328B6C7B05 /* Pods-CTKFlagPhoneNumber_Example.debug.xcconfig */,
+				2F76FC9BAF95B1BC0B71FFA0 /* Pods-CTKFlagPhoneNumber_Example.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -118,12 +118,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "CTKFlagPhoneNumber_Example" */;
 			buildPhases = (
-				8A9222D849A506FC9F18DDE8 /* [CP] Check Pods Manifest.lock */,
+				2C466469156F10FC2E6DAA52 /* [CP] Check Pods Manifest.lock */,
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				D3BD5EFE445B73AE4A87AEFB /* [CP] Embed Pods Frameworks */,
-				63F4C5E238B6D6F73B21B712 /* [CP] Copy Pods Resources */,
+				D40414452EDCB5B06F74AF2F /* [CP] Embed Pods Frameworks */,
+				FC6B59364280C4599ED4E98F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -183,22 +183,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		63F4C5E238B6D6F73B21B712 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CTKFlagPhoneNumber_Example/Pods-CTKFlagPhoneNumber_Example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8A9222D849A506FC9F18DDE8 /* [CP] Check Pods Manifest.lock */ = {
+		2C466469156F10FC2E6DAA52 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -216,7 +201,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D3BD5EFE445B73AE4A87AEFB /* [CP] Embed Pods Frameworks */ = {
+		D40414452EDCB5B06F74AF2F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -224,18 +209,31 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CTKFlagPhoneNumber_Example/Pods-CTKFlagPhoneNumber_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/CTKFlagPhoneNumber/CTKFlagPhoneNumber.framework",
-				"${BUILT_PRODUCTS_DIR}/FlagKit/FlagKit.framework",
 				"${BUILT_PRODUCTS_DIR}/libPhoneNumber-iOS/libPhoneNumber_iOS.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CTKFlagPhoneNumber.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FlagKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libPhoneNumber_iOS.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CTKFlagPhoneNumber_Example/Pods-CTKFlagPhoneNumber_Example-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FC6B59364280C4599ED4E98F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CTKFlagPhoneNumber_Example/Pods-CTKFlagPhoneNumber_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -317,7 +315,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -365,7 +363,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -377,11 +375,12 @@
 		};
 		607FACF01AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0AF6D23BCE7990AA62688447 /* Pods-CTKFlagPhoneNumber_Example.debug.xcconfig */;
+			baseConfigurationReference = 80229816A5135F328B6C7B05 /* Pods-CTKFlagPhoneNumber_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 38CD3GCJU3;
 				INFOPLIST_FILE = CTKFlagPhoneNumber/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
@@ -393,11 +392,12 @@
 		};
 		607FACF11AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E19DB3BCD454CAAFFFDFF7EC /* Pods-CTKFlagPhoneNumber_Example.release.xcconfig */;
+			baseConfigurationReference = 2F76FC9BAF95B1BC0B71FFA0 /* Pods-CTKFlagPhoneNumber_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 38CD3GCJU3;
 				INFOPLIST_FILE = CTKFlagPhoneNumber/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
