@@ -1,8 +1,6 @@
 PODS:
-  - CTKFlagPhoneNumber (0.1.12):
-    - FlagKit
+  - CTKFlagPhoneNumber (0.2.0):
     - libPhoneNumber-iOS
-  - FlagKit (1.1.1)
   - libPhoneNumber-iOS (0.9.12)
 
 DEPENDENCIES:
@@ -13,10 +11,9 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  CTKFlagPhoneNumber: 78dcd5c4697cf3d76f266a5e32fab6f4b01de68b
-  FlagKit: 8e37733affacc62ba877217195b82c8b44ccfcaf
+  CTKFlagPhoneNumber: 4f444ca1e698c5cd1b664f310f33b4fbfc87a9bb
   libPhoneNumber-iOS: b8a1038a101c78616c4df87815ac1556349faf98
 
-PODFILE CHECKSUM: c7e6d857831de07cf76cc59dba55f27bb6abf052
+PODFILE CHECKSUM: 76dfbd20ddd9e7b17fd49e7ee2054d7a2a239cf8
 
-COCOAPODS: 1.4.0.beta.1
+COCOAPODS: 1.4.0.beta.2

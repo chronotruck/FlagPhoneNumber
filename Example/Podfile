@@ -1,4 +1,4 @@
-platform :ios, '8.3'
+platform :ios, '9.0'
 use_frameworks!
 
 target 'CTKFlagPhoneNumber_Example' do

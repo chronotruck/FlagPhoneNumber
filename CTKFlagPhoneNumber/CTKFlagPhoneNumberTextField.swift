@@ -14,11 +14,10 @@
 
 
 import Foundation
-import FlagKit
 import libPhoneNumber_iOS
 
 extension Bundle {
-	static public var FlagIcons = FlagKit.assetBundle
+	static public var FlagIcons = CTKFlagPhoneNumber()
 	
 	static public func CTKFlagPhoneNumber() -> Bundle {
 		let bundle = Bundle(for: CTKFlagPhoneNumberTextField.self)
