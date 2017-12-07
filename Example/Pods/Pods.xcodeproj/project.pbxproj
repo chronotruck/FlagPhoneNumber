@@ -12,7 +12,7 @@
 		0A6044F7EABEA4572156FF8E13108D82 /* libPhoneNumber_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3315CBF60FEE8263EE8E5334F4C54953 /* libPhoneNumber_iOS.framework */; };
 		178E392E1FD97F7100DC4227 /* CTKSearchCountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178E392D1FD97F7100DC4227 /* CTKSearchCountryViewController.swift */; };
 		178E39301FD9927000DC4227 /* CTKFlagPhoneNumberDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178E392F1FD9927000DC4227 /* CTKFlagPhoneNumberDelegate.swift */; };
-		178E39341FD9934600DC4227 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178E39331FD9934600DC4227 /* Bundle+Extension.swift */; };
+		178E39381FD9A5CE00DC4227 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178E39371FD9A5CE00DC4227 /* Bundle+Extension.swift */; };
 		1DD24F8F57268588AF174978A51A846B /* NBPhoneNumberUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F12C37C9371CA91B2BDA294C1490495 /* NBPhoneNumberUtil.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		28EAC536BF16ECEE822B1EDDFBAABB84 /* NBPhoneNumberUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B455A69148FCC4A76B256D79B5E41AD /* NBPhoneNumberUtil.m */; };
 		2FF17E68C13F238BE4E6D3C50E444F26 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E47EF02BC68C5224A163FF9EA53EE9 /* CountryView.swift */; };
@@ -89,7 +89,7 @@
 		117F2EC8A181BE0C2B1D4D1EDEC75AA5 /* CountryPicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryPicker.swift; sourceTree = "<group>"; };
 		178E392D1FD97F7100DC4227 /* CTKSearchCountryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CTKSearchCountryViewController.swift; path = CTKFlagPhoneNumber/CTKSearchCountryViewController.swift; sourceTree = "<group>"; };
 		178E392F1FD9927000DC4227 /* CTKFlagPhoneNumberDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CTKFlagPhoneNumberDelegate.swift; path = CTKFlagPhoneNumber/CTKFlagPhoneNumberDelegate.swift; sourceTree = "<group>"; };
-		178E39331FD9934600DC4227 /* Bundle+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
+		178E39371FD9A5CE00DC4227 /* Bundle+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Bundle+Extension.swift"; path = "CTKFlagPhoneNumber/Bundle+Extension.swift"; sourceTree = "<group>"; };
 		18291994E854BB4C35DFB6C2D6DAF631 /* NBMetadataHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBMetadataHelper.h; path = libPhoneNumber/NBMetadataHelper.h; sourceTree = "<group>"; };
 		1B0969CD36FCA731EA348AEF90F39936 /* NBPhoneNumber.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBPhoneNumber.h; path = libPhoneNumber/NBPhoneNumber.h; sourceTree = "<group>"; };
 		201AB6CA6145DAF75C5BB4B51478B6D5 /* Pods_CTKFlagPhoneNumber_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CTKFlagPhoneNumber_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -345,7 +345,7 @@
 			isa = PBXGroup;
 			children = (
 				45A2F7EB0BA4E1A88C637AEEAACE2FA7 /* CountryPicker */,
-				178E39331FD9934600DC4227 /* Bundle+Extension.swift */,
+				178E39371FD9A5CE00DC4227 /* Bundle+Extension.swift */,
 				178E392F1FD9927000DC4227 /* CTKFlagPhoneNumberDelegate.swift */,
 				7F057FDF2B1F2F7D7CA629303BF9ABDD /* CTKFlagPhoneNumberTextField.swift */,
 				178E392D1FD97F7100DC4227 /* CTKSearchCountryViewController.swift */,
@@ -540,9 +540,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A3E0B4E57886C254B55B7282DCE4EFF /* Country.swift in Sources */,
-				178E39341FD9934600DC4227 /* Bundle+Extension.swift in Sources */,
 				4DCE79337EE54308D0C7D58AE8B87338 /* CountryPicker.swift in Sources */,
 				178E39301FD9927000DC4227 /* CTKFlagPhoneNumberDelegate.swift in Sources */,
+				178E39381FD9A5CE00DC4227 /* Bundle+Extension.swift in Sources */,
 				178E392E1FD97F7100DC4227 /* CTKSearchCountryViewController.swift in Sources */,
 				2FF17E68C13F238BE4E6D3C50E444F26 /* CountryView.swift in Sources */,
 				FC001F35219437074EBA3DC29C239807 /* CTKFlagPhoneNumber-dummy.m in Sources */,
