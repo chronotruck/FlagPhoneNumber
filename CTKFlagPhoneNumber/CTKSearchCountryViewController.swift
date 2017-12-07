@@ -15,7 +15,7 @@
 
 import Foundation
 
-class CTKSearchCountryViewController: UITableViewController {
+class CTKSearchCountryViewController: UITableViewController, UISearchResultsUpdating, UISearchControllerDelegate {
 	
 	var searchController: UISearchController?
 	var list: [Country]?
@@ -79,9 +79,6 @@ class CTKSearchCountryViewController: UITableViewController {
 		if #available(iOS 11.0, *) {
 			navigationItem.searchController = searchController
 		} else {
-			searchController?.searchBar.layer.borderWidth = 1
-			//			searchController?.searchBar.layer.borderColor = UIColor.from(color: Color.DarkGreen).cgColor
-			
 			searchController?.dimsBackgroundDuringPresentation = false
 			searchController?.hidesNavigationBarDuringPresentation = true
 			searchController?.definesPresentationContext = true
@@ -138,9 +135,8 @@ class CTKSearchCountryViewController: UITableViewController {
 		
 		dismissController()
 	}
-}
 
-extension CTKSearchCountryViewController: UISearchResultsUpdating {
+	// UISearchResultsUpdating
 	
 	func updateSearchResults(for searchController: UISearchController) {
 		if list == nil {
@@ -166,9 +162,8 @@ extension CTKSearchCountryViewController: UISearchResultsUpdating {
 		}
 		tableView.reloadData()
 	}
-}
 
-extension CTKSearchCountryViewController: UISearchControllerDelegate {
+	// UISearchControllerDelegate
 	
 	func didPresentSearchController(_ searchController: UISearchController) {
 		DispatchQueue.main.async { [unowned self] in
