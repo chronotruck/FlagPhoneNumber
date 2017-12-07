@@ -22,8 +22,11 @@ class ViewController: UIViewController {
 		//		Bundle.FlagIcons = Bundle(for: ViewController.self)
 
 		phoneNumberTextField = CTKFlagPhoneNumberTextField(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 16, height: 50))
+		phoneNumberTextField.parentViewController = self
 		phoneNumberTextField.center = view.center
-		
+		phoneNumberTextField.setFlag(with: "FR")
+		phoneNumberTextField.set(phoneNumber: "0600000001")
+
 		view.addSubview(phoneNumberTextField)
 
 		let button = UIButton(type: .system)
@@ -38,9 +41,6 @@ class ViewController: UIViewController {
 	
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
-		
-		phoneNumberTextField.setFlag(with: "FR")
-		phoneNumberTextField.set(phoneNumber: "0600000001")
 	}
 	
 	@objc func validate() {

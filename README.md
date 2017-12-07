@@ -31,21 +31,22 @@ pod "CTKFlagPhoneNumber"
 
 You can instance it in storyboards or .xibs.
 
-You can programmatically change the choosen flag:
+Programmatically:
 ```swift
+phoneNumberTextField = CTKFlagPhoneNumberTextField(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 16, height: 50))
+
+// Set the parent view controller to enable the search
+phoneNumberTextField.parentViewController = self
+
+// You can programmatically change the choosen flag
 phoneNumberTextField.setFlag(with: "FR")
-```
 
-and the phone number:
-```swift
+// You can programmatically change the phone number, that will update automatically the flag image
 phoneNumberTextField.set(phoneNumber: "0600000001")
-```
-This function updates the flag according to the phone number
 
-You can also get the phone number to E164 format:
-```swift
-print(phoneNumberTextField.getPhoneNumber())
-// Output: +33600000001
+// You can also get the phone number to E164 format
+print(phoneNumberTextField.getPhoneNumber()) // Output: +33600000001
+
 ```
 
 ## Customization
