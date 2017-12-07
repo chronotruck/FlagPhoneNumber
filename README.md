@@ -40,10 +40,10 @@ phoneNumberTextField = CTKFlagPhoneNumberTextField(frame: CGRect(x: 0, y: 0, wid
 // Set the parent view controller to enable the search
 phoneNumberTextField.parentViewController = self
 
-// You can programmatically change the choosen flag
+// You can change the choosen flag
 phoneNumberTextField.setFlag(with: "FR")
 
-// You can programmatically change the phone number, that will update automatically the flag image
+// You can change the phone number, that will update automatically the flag image
 phoneNumberTextField.set(phoneNumber: "0600000001")
 
 // You can also get the phone number to E164 format
