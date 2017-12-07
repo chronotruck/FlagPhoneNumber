@@ -9,7 +9,9 @@ CTKFlagPhoneNumber is a phone number textfield with a fancy country code picker.
 [![Language](https://img.shields.io/badge/language-swift-brightgreen.svg?style=flat)](https://developer.apple.com/swift)
 
 ## Screenshot
-![sample](Screenshot/screenshot.gif)
+![sample](Screenshot/screenshot_1.PNG)
+![sample](Screenshot/screenshot_2.PNG)
+![sample](Screenshot/screenshot_3.PNG)
 
 
 ## Example
