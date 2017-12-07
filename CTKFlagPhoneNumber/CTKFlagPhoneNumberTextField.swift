@@ -16,7 +16,22 @@
 import Foundation
 import libPhoneNumber_iOS
 
-public class CTKFlagPhoneNumberTextField: UITextField {
+extension Bundle {
+	static public var FlagIcons = CTKFlagPhoneNumber()
+	
+	static public func CTKFlagPhoneNumber() -> Bundle {
+		let bundle = Bundle(for: CTKFlagPhoneNumberTextField.self)
+
+		if let path = bundle.path(forResource: "CTKFlagPhoneNumber", ofType: "bundle") {
+			return Bundle(path: path)!
+		}
+		else {
+			return bundle
+		}
+	}
+}
+
+public class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, CountryPickerDelegate {
 		
 	private static let FlagSize = CGSize(width: 32, height: 32)
 	
@@ -25,8 +40,6 @@ public class CTKFlagPhoneNumberTextField: UITextField {
 			layoutSubviews()
 		}
 	}
-
-	public var parentViewController: UIViewController?
 	private var flagButton: UIButton!
 	private lazy var countryPicker: CountryPicker = CountryPicker()
 	private lazy var phoneUtil: NBPhoneNumberUtil = NBPhoneNumberUtil()
@@ -43,20 +56,6 @@ public class CTKFlagPhoneNumberTextField: UITextField {
 		}
 	}
 	
-	private var leftViewSize: CGSize {
-		return CGSize(
-			width: CTKFlagPhoneNumberTextField.FlagSize.width + flagButtonEdgeInsets.left + flagButtonEdgeInsets.right,
-			height: CTKFlagPhoneNumberTextField.FlagSize.height + flagButtonEdgeInsets.top + flagButtonEdgeInsets.bottom)
-	}
-	
-	public override var intrinsicContentSize: CGSize {
-		var intrinsicContentSize = super.intrinsicContentSize
-		let leftViewHeight = leftViewSize.height
-		
-		intrinsicContentSize.height = max(intrinsicContentSize.height, leftViewHeight)
-		return intrinsicContentSize
-	}
-
 	
 	init() {
 		super.init(frame: .zero)
@@ -83,13 +82,13 @@ public class CTKFlagPhoneNumberTextField: UITextField {
 	private func setup() {
 		borderStyle = .roundedRect
 		leftViewMode = UITextFieldViewMode.always
-		autocorrectionType = .no
+		keyboardType = .numberPad
+		inputAccessoryView = getToolBar(target: self, selector: #selector(resetKeyBoard))
 		addTarget(self, action: #selector(update), for: .editingChanged)
 		delegate = self
 		
 		countryPicker.countryPickerDelegate = self
 		countryPicker.showPhoneNumbers = true
-		countryPicker.backgroundColor = .white
 		
 		addTarget(self, action: #selector(displayNumberKeyBoard), for: .touchDown)
 		
@@ -112,6 +111,20 @@ public class CTKFlagPhoneNumberTextField: UITextField {
 		
 		leftView?.frame = leftViewRect(forBounds: frame)
 		flagButton.frame = CGRect(x: flagButtonEdgeInsets.left, y: flagButtonEdgeInsets.top, width: CTKFlagPhoneNumberTextField.FlagSize.width, height: CTKFlagPhoneNumberTextField.FlagSize.height)
+	}
+	
+	public override var intrinsicContentSize: CGSize {
+		var intrinsicContentSize = super.intrinsicContentSize
+		let leftViewHeight = leftViewSize.height
+		
+		intrinsicContentSize.height = max(intrinsicContentSize.height, leftViewHeight)
+		return intrinsicContentSize
+	}
+	
+	private var leftViewSize: CGSize {
+		return CGSize(
+			width: CTKFlagPhoneNumberTextField.FlagSize.width + flagButtonEdgeInsets.left + flagButtonEdgeInsets.right,
+			height: CTKFlagPhoneNumberTextField.FlagSize.height + flagButtonEdgeInsets.top + flagButtonEdgeInsets.bottom)
 	}
 	
 	public override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
@@ -142,33 +155,26 @@ public class CTKFlagPhoneNumberTextField: UITextField {
 	}
 	
 	@objc private func displayNumberKeyBoard() {
-		keyboardType = .numberPad
-		inputView = nil
-		inputAccessoryView = nil
-		tintColor = .gray
-		reloadInputViews()
+		if inputView != nil {
+			inputView = nil
+			tintColor = .gray
+			reloadInputViews()
+		}
 	}
 	
 	@objc private func displayCountryKeyboard() {
-		inputView = countryPicker
-		inputAccessoryView = getToolBar(with: getCountryListBarButtonItems())
-		tintColor = .clear
-		reloadInputViews()
+		if inputView == nil {
+			inputView = countryPicker
+			tintColor = .clear
+			reloadInputViews()
+		}
 		becomeFirstResponder()
 	}
 	
-	@objc private func displayAlphabeticKeyBoard() {
-		showSearchController()
-	}
-	
 	@objc private func resetKeyBoard() {
-		keyboardType = .default
 		inputView = nil
-		inputAccessoryView = nil
 		resignFirstResponder()
 	}
-	
-	// -----------------------------------
 	
 	public func getPhoneNumber() -> String? {
 		return phoneNumber
@@ -209,46 +215,8 @@ public class CTKFlagPhoneNumberTextField: UITextField {
 		}
 	}
 	
-	// -----------------------------------
+	// UITextFieldDelegate
 	
-	private func showSearchController() {
-		if let countries = countryPicker.countries {
-			let searchCountryViewController = CTKSearchCountryViewController(countries: countries)
-			let navigationViewController = UINavigationController(rootViewController: searchCountryViewController)
-			
-			searchCountryViewController.delegate = self
-			
-			parentViewController?.present(navigationViewController, animated: false, completion: nil)
-		}
-	}
-	
-	private func getToolBar(with items: [UIBarButtonItem]) -> UIToolbar {
-		let doneToolbar: UIToolbar = UIToolbar()
-		
-		doneToolbar.barStyle = UIBarStyle.default
-		doneToolbar.items = items
-		doneToolbar.sizeToFit()
-		
-		return doneToolbar
-	}
-
-	private func getCountryListBarButtonItems() -> [UIBarButtonItem] {
-		let space = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-		let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(resetKeyBoard))
-		
-		doneButton.accessibilityLabel = "doneButton"
-		
-		if parentViewController != nil {
-			let searchButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(displayAlphabeticKeyBoard))
-			
-			return [searchButton, space, doneButton]
-		}
-		return [space, doneButton]
-	}
-}
-
-extension CTKFlagPhoneNumberTextField: UITextFieldDelegate {
-
 	public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 		if string == "" && text == phoneCode {
 			return false
@@ -259,9 +227,10 @@ extension CTKFlagPhoneNumberTextField: UITextFieldDelegate {
 	public func textFieldDidEndEditing(_ textField: UITextField) {
 		set(phoneNumber: textField.text!)
 	}
-}
 	
-extension CTKFlagPhoneNumberTextField: CountryPickerDelegate {
+	
+	// CountryPickerDelegate
+	
 	public func countryPhoneCodePicker(_ picker: CountryPicker, didSelectCountryWithName name: String, countryCode: String, phoneCode: String, flag: UIImage) {
 		self.phoneCode = phoneCode
 		self.countryCode = countryCode
@@ -269,13 +238,5 @@ extension CTKFlagPhoneNumberTextField: CountryPickerDelegate {
 		flagButton.setImage(flag, for: .normal)
 		text = phoneCode
 		sendActions(for: .editingChanged)
-	}
-}
-
-extension CTKFlagPhoneNumberTextField: CTKFlagPhoneNumberDelegate {
-	func didSelect(country: Country) {
-		if let code = country.code {
-			countryPicker.setCountry(code)
-		}
 	}
 }
