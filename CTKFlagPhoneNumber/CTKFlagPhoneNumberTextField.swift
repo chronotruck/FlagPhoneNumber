@@ -16,7 +16,7 @@
 import Foundation
 import libPhoneNumber_iOS
 
-public class CTKFlagPhoneNumberTextField: UITextField {
+public class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, CountryPickerDelegate, CTKFlagPhoneNumberDelegate {
 		
 	public var flagSize = CGSize(width: 32, height: 32) {
 		didSet {
@@ -248,10 +248,9 @@ public class CTKFlagPhoneNumberTextField: UITextField {
 		}
 		return [space, doneButton]
 	}
-}
 
-extension CTKFlagPhoneNumberTextField: UITextFieldDelegate {
-
+	// UITextFieldDelegate
+	
 	public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 		if string == "" && text == phoneCode {
 			return false
@@ -262,9 +261,9 @@ extension CTKFlagPhoneNumberTextField: UITextFieldDelegate {
 	public func textFieldDidEndEditing(_ textField: UITextField) {
 		set(phoneNumber: textField.text!)
 	}
-}
 	
-extension CTKFlagPhoneNumberTextField: CountryPickerDelegate {
+	// CountryPickerDelegate
+
 	public func countryPhoneCodePicker(_ picker: CountryPicker, didSelectCountryWithName name: String, countryCode: String, phoneCode: String, flag: UIImage) {
 		self.phoneCode = phoneCode
 		self.countryCode = countryCode
@@ -273,9 +272,9 @@ extension CTKFlagPhoneNumberTextField: CountryPickerDelegate {
 		text = phoneCode
 		sendActions(for: .editingChanged)
 	}
-}
 
-extension CTKFlagPhoneNumberTextField: CTKFlagPhoneNumberDelegate {
+	// CTKFlagPhoneNumberDelegate
+	
 	func didSelect(country: Country) {
 		if let code = country.code {
 			countryPicker.setCountry(code)
