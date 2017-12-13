@@ -2,11 +2,11 @@
 //                                                                 |                                               | |\
 //                                                                 |                                               | ||
 //  ____ _                           _                   _         |                                               |,""---:___
-// / ___| |__  _ __ ___  _ __   ___ | |_ _ _  _   _  ___| | __     |                                               ||==  | .-.|
+// / ___| |__  _ __ ___  _ __   ___ | |_ _ __ _   _  ___| | __     |                                               ||==  | .-.|
 // | |  | '_ \| '_// _ \| '_ \ / _ \| __| '_/| | | |/ __| |/ /     |                                               ||==  | '-'-----.
 // | |__| | | | | | (_) | | | | (_) | |_| |  | |_| | (__|   <      |_______________________________________________||    |~  |   -(|
-// \____|_| |_|_|  \___/|_| |_|\___/ \__|_|   \__,_|\___|_|\_\     |_____________________________/<  _...==...____|    |   | ___ |
-//                                                                  \\ .-.  .-. //            \|  \//.-.  .-.\\ --------"-"/.-.\_]
+// \____|_| |_|_|  \___/|_| |_|\___/ \__|_|   \__,_|\___|_|\_\     |_____________________________/<  _...==...____|    |   | ___   |
+//                                                                  \\ .-.  .-. //            \|  \//.-.  .-.\\ --------"-"/.-.\---]
 //                                                                  ` ( o )( o )'              '    ( o )( o )`"""""""""==`( o )
 //                                                                     '-'  '-'                      '-'  '-'               '-'
 
@@ -16,7 +16,7 @@
 import Foundation
 import libPhoneNumber_iOS
 
-public class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, CountryPickerDelegate, CTKFlagPhoneNumberDelegate {
+open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, CountryPickerDelegate, CTKFlagPhoneNumberDelegate {
 		
 	public var flagSize = CGSize(width: 32, height: 32) {
 		didSet {
@@ -52,7 +52,7 @@ public class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Coun
 			height: flagSize.height + flagButtonEdgeInsets.top + flagButtonEdgeInsets.bottom)
 	}
 	
-	public override var intrinsicContentSize: CGSize {
+	open override var intrinsicContentSize: CGSize {
 		var intrinsicContentSize = super.intrinsicContentSize
 		let leftViewHeight = leftViewSize.height
 		
@@ -79,7 +79,7 @@ public class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Coun
 		setup()
 	}
 	
-	override public func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+	override open func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
 		return false
 	}
 	
@@ -110,14 +110,14 @@ public class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Coun
 		countryPicker.setCountry(Locale.current.regionCode!)
 	}
 	
-	public override func layoutSubviews() {
+	open override func layoutSubviews() {
 		super.layoutSubviews()
 		
 		leftView?.frame = leftViewRect(forBounds: frame)
 		flagButton.frame = CGRect(x: flagButtonEdgeInsets.left, y: flagButtonEdgeInsets.top, width: flagSize.width, height: flagSize.height)
 	}
 	
-	public override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
+	open override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
 		let width = min(bounds.size.width, leftViewSize.width)
 		let height = min(bounds.size.height, leftViewSize.height)
 		let rect = CGRect(x: 0, y: bounds.size.height / 2 - height / 2, width: width, height: height)
@@ -125,7 +125,7 @@ public class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Coun
 		return rect
 	}
 	
-	public override func textRect(forBounds bounds: CGRect) -> CGRect {
+	open override func textRect(forBounds bounds: CGRect) -> CGRect {
 		var textRect = super.textRect(forBounds: bounds)
 		let spaceBetweenLeftViewAndText = textRect.minX - leftViewRect(forBounds: bounds).maxX
 		
@@ -136,11 +136,11 @@ public class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Coun
 		return textRect
 	}
 	
-	public override func editingRect(forBounds bounds: CGRect) -> CGRect {
+	open override func editingRect(forBounds bounds: CGRect) -> CGRect {
 		return textRect(forBounds: bounds)
 	}
 	
-	public override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+	open override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
 		return textRect(forBounds:bounds)
 	}
 	
