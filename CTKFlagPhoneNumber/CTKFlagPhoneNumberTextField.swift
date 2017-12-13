@@ -87,7 +87,7 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 		borderStyle = .roundedRect
 		leftViewMode = UITextFieldViewMode.always
 		autocorrectionType = .no
-		addTarget(self, action: #selector(update), for: .editingChanged)
+		addTarget(self, action: #selector(didEditText), for: .editingChanged)
 		delegate = self
 		
 		countryPicker.countryPickerDelegate = self
@@ -181,7 +181,12 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 		countryPicker.setCountry(countryCode)
 	}
 	
-	@objc private func update() {
+	@objc private func didEditText() {
+		formatText()
+		set(phoneNumber: text!)
+	}
+	
+	private func formatText() {
 		text = text?.trimmingCharacters(in: CharacterSet(charactersIn: "+0123456789").inverted)
 		text = text?.replacingOccurrences(of: " ", with: "")
 		text = text?.replacingOccurrences(of: "-", with: "")
@@ -196,11 +201,11 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 				do {
 					let e164PhoneNumber: String = try phoneUtil.format(parsedPhoneNumber, numberFormat: .E164)
 					
-					self.phoneNumber = e164PhoneNumber
 					setFlag(with: phoneUtil.getRegionCode(for: parsedPhoneNumber))
-
+					
+					self.phoneNumber = e164PhoneNumber
 					text = self.phoneNumber
-					sendActions(for: .editingChanged)
+					formatText()
 				} catch _ {
 					self.phoneNumber = nil
 				}
@@ -270,7 +275,8 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 		
 		flagButton.setImage(flag, for: .normal)
 		text = phoneCode
-		sendActions(for: .editingChanged)
+		
+		didEditText()
 	}
 
 	// CTKFlagPhoneNumberDelegate
