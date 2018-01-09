@@ -278,7 +278,7 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 		flagButton.setImage(flag, for: .normal)
 		text = phoneCode
 		
-		didEditText()
+		sendActions(for: .editingChanged)
 	}
 
 	// CTKFlagPhoneNumberDelegate
