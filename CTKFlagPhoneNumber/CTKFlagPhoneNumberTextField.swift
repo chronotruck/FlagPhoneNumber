@@ -171,7 +171,7 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 		resignFirstResponder()
 	}
 	
-	// -----------------------------------
+	// - Utils
 	
 	public func getPhoneNumber() -> String? {
 		return phoneNumber
@@ -217,8 +217,6 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 		}
 	}
 	
-	// -----------------------------------
-	
 	private func showSearchController() {
 		if let countries = countryPicker.countries {
 			let searchCountryViewController = CTKSearchCountryViewController(countries: countries)
@@ -256,7 +254,7 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 		return [space, doneButton]
 	}
 
-	// UITextFieldDelegate
+	// - UITextFieldDelegate
 	
 	public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 		if string == "" && text == phoneCode {
@@ -265,11 +263,7 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 		return true
 	}
 	
-	public func textFieldDidEndEditing(_ textField: UITextField) {
-		set(phoneNumber: textField.text!)
-	}
-	
-	// CountryPickerDelegate
+	// - CountryPickerDelegate
 
 	public func countryPhoneCodePicker(_ picker: CountryPicker, didSelectCountryWithName name: String, countryCode: String, phoneCode: String, flag: UIImage) {
 		self.phoneCode = phoneCode
@@ -281,11 +275,15 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 		sendActions(for: .editingChanged)
 	}
 
-	// CTKFlagPhoneNumberDelegate
+	// - CTKFlagPhoneNumberDelegate
 	
 	func didSelect(country: Country) {
-		if let code = country.code {
-			countryPicker.setCountry(code)
-		}
+		self.phoneCode = country.phoneCode
+		self.countryCode = country.code
+		
+		flagButton.setImage(country.flag, for: .normal)
+		text = phoneCode
+		
+		sendActions(for: .editingChanged)
 	}
 }
