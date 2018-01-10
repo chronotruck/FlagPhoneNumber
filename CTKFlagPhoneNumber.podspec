@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
 s.name             = 'CTKFlagPhoneNumber'
-s.version          = '0.4.0'
+s.version          = '0.4.1'
 s.summary          = 'A formatted phone number UITextField with country flag picker.'
 
 # This description is used to generate tags and improve search results.
