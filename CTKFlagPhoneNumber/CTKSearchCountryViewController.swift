@@ -37,7 +37,6 @@ class CTKSearchCountryViewController: UITableViewController, UISearchResultsUpda
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		addBackButton()
 		initSearchBarController()
 	}
 	
@@ -55,10 +54,6 @@ class CTKSearchCountryViewController: UITableViewController, UISearchResultsUpda
 		super.viewDidAppear(animated)
 		
 		searchController?.isActive = true
-	}
-	
-	private func addBackButton() {
-		navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissController))
 	}
 	
 	@objc private func dismissController() {
@@ -173,5 +168,9 @@ class CTKSearchCountryViewController: UITableViewController, UISearchResultsUpda
 	
 	func willDismissSearchController(_ searchController: UISearchController) {
 		results?.removeAll()
+	}
+	
+	func didDismissSearchController(_ searchController: UISearchController) {
+		dismissController()
 	}
 }

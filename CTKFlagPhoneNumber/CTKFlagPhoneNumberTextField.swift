@@ -231,13 +231,13 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 	}
 	
 	private func getToolBar(with items: [UIBarButtonItem]) -> UIToolbar {
-		let doneToolbar: UIToolbar = UIToolbar()
+		let toolbar: UIToolbar = UIToolbar()
+				
+		toolbar.barStyle = UIBarStyle.default
+		toolbar.items = items
+		toolbar.sizeToFit()
 		
-		doneToolbar.barStyle = UIBarStyle.default
-		doneToolbar.items = items
-		doneToolbar.sizeToFit()
-		
-		return doneToolbar
+		return toolbar
 	}
 
 	private func getCountryListBarButtonItems() -> [UIBarButtonItem] {
@@ -248,6 +248,8 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 		
 		if parentViewController != nil {
 			let searchButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.search, target: self, action: #selector(displayAlphabeticKeyBoard))
+			
+			searchButton.accessibilityLabel = "searchButton"
 			
 			return [searchButton, space, doneButton]
 		}
