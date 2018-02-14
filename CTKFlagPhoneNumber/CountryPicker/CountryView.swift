@@ -53,5 +53,4 @@ class CountryView: NibLoadingView {
 		countryCodeLabel.text = country.phoneCode
 		countryNameLabel.text = country.name
 	}
-	
 }
