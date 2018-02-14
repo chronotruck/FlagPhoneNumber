@@ -13,12 +13,13 @@ CTKFlagPhoneNumber is a phone number textfield with a fancy country code picker.
 ![sample](Screenshot/screenshot_2.PNG)
 ![sample](Screenshot/screenshot_3.PNG)
 
+## Localization 🌍
+
+Country names are displayed according to the phone language
 
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-## Requirements
 
 ## Installation
 

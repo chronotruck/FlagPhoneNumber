@@ -24,7 +24,7 @@ open class CountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSo
 	}
 	
 	func setup() {
-		if let code = Locale.current.languageCode {
+		if let code = Locale.preferredLanguages.first {
 			self.selectedLocale = Locale(identifier: code)
 		}
 		
