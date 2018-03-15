@@ -40,12 +40,8 @@ class ViewController: UIViewController {
 		view.addSubview(button)
 	}
 	
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
-	}
-	
 	@objc func validate() {
-		let phoneNumber: String? = phoneNumberTextField.getPhoneNumber()
+		let phoneNumber: String? = phoneNumberTextField.getFormattedPhoneNumber()
 		
 		print(phoneNumber ?? "No phone number")
 	}
