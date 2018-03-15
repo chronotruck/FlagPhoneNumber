@@ -173,10 +173,26 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 	
 	// - Utils
 	
-	public func getPhoneNumber() -> String? {
+	/// Get the current formatted phone number
+	public func getFormattedPhoneNumber() -> String? {
 		return phoneNumber
 	}
 	
+	/// Get the current country code
+	public func getCountryCode() -> String? {
+		return phoneCode
+	}
+
+	/// Get the current raw phone number
+	public func getRawPhoneNumber() -> String? {
+		var nationalNumber: NSString?
+		
+		phoneUtil.extractCountryCode(phoneNumber, nationalNumber: &nationalNumber)
+		
+		return nationalNumber as String?
+	}
+
+	/// Set the country image according to country code
 	public func setFlag(with countryCode: String) {
 		countryPicker.setCountry(countryCode)
 	}
