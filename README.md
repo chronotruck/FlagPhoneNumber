@@ -47,8 +47,11 @@ phoneNumberTextField.setFlag(with: "FR")
 // You can change the phone number, that will update automatically the flag image
 phoneNumberTextField.set(phoneNumber: "0600000001")
 
-// You can also get the phone number to E164 format
-print(phoneNumberTextField.getPhoneNumber()) // Output: +33600000001
+// You can also get the phone number to E164 format, the country phone code and the raw phone number
+print(phoneNumberTextField.getFormattedPhoneNumber()) // Output: +33600000001
+print(phoneNumberTextField.getCountryPhoneCode()) // Output: +33
+print(phoneNumberTextField.getRawPhoneNumber()) // Output: 600000001
+
 
 ```
 
