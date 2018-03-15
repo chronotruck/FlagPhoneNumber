@@ -41,9 +41,9 @@ class ViewController: UIViewController {
 	}
 	
 	@objc func validate() {
-		let phoneNumber: String? = phoneNumberTextField.getFormattedPhoneNumber()
-		
-		print(phoneNumber ?? "No phone number")
+		print(phoneNumberTextField.getFormattedPhoneNumber() ?? "No formatted phone number")
+		print(phoneNumberTextField.getCountryPhoneCode() ?? "No country phone code")
+		print(phoneNumberTextField.getRawPhoneNumber() ?? "No raw phone number")
 	}
 }
 

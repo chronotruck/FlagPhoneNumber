@@ -178,8 +178,8 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 		return phoneNumber
 	}
 	
-	/// Get the current country code
-	public func getCountryCode() -> String? {
+	/// Get the current country phone code
+	public func getCountryPhoneCode() -> String? {
 		return phoneCode
 	}
 
