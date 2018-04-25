@@ -68,9 +68,13 @@ open class CountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSo
 	
 	func setCountryByRow(row: Int) {
 		self.selectRow(row, inComponent: 0, animated: true)
-		let country = countries[row]
-		if let countryPickerDelegate = countryPickerDelegate {
-			countryPickerDelegate.countryPhoneCodePicker(self, didSelectCountryWithName: country.name!, countryCode: country.code!, phoneCode: country.phoneCode!, flag: country.flag!)
+		
+		if countries.count > 0 {
+			let country = countries[row]
+			
+			if let name = country.name, let countryCode = country.code, let phoneCode = country.phoneCode, let flag = country.flag {
+				countryPickerDelegate?.countryPhoneCodePicker(self, didSelectCountryWithName: name, countryCode: countryCode, phoneCode: phoneCode, flag: flag)
+			}
 		}
 	}
 	
