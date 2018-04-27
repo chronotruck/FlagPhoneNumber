@@ -15,19 +15,28 @@ class ViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.
 		
 		title = "CTKFlagPhoneNumber"
 
-		//		Bundle.FlagIcons = Bundle(for: ViewController.self)
+		// To use your own flag icons, uncommment the line :
+		// Bundle.FlagIcons = Bundle(for: ViewController.self)
 
+		let items = [
+			UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: nil),
+			UIBarButtonItem(title: "Item 1", style: .plain, target: self, action: nil),
+			UIBarButtonItem(title: "Item 2", style: .plain, target: self, action: nil)
+		]
+		
 		phoneNumberTextField = CTKFlagPhoneNumberTextField(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 16, height: 50))
+		phoneNumberTextField.flagSize = CGSize(width: 44, height: 44)
+		phoneNumberTextField.flagButtonEdgeInsets = UIEdgeInsetsMake(5, 10, 5, 10)
 		phoneNumberTextField.parentViewController = self
+		phoneNumberTextField.textFieldInputAccessoryView = getCustomTextFieldInputAccessoryView(with: items)
+
 		phoneNumberTextField.center = view.center
 		phoneNumberTextField.setFlag(with: "FR")
 		phoneNumberTextField.set(phoneNumber: "0600000001")
-		phoneNumberTextField.flagSize = CGSize(width: 44, height: 44)
-
+		
 		view.addSubview(phoneNumberTextField)
 
 		let button = UIButton(type: .system)
@@ -39,6 +48,17 @@ class ViewController: UIViewController {
 
 		view.addSubview(button)
 	}
+	
+	private func getCustomTextFieldInputAccessoryView(with items: [UIBarButtonItem]) -> UIToolbar {
+		let toolbar: UIToolbar = UIToolbar()
+		
+		toolbar.barStyle = UIBarStyle.default
+		toolbar.items = items
+		toolbar.sizeToFit()
+		
+		return toolbar
+	}
+
 	
 	@objc func validate() {
 		print(phoneNumberTextField.getFormattedPhoneNumber() ?? "No formatted phone number")
