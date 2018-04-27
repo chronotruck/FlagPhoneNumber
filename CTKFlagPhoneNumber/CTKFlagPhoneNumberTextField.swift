@@ -17,19 +17,27 @@ import Foundation
 import libPhoneNumber_iOS
 
 open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, CountryPickerDelegate, CTKFlagPhoneNumberDelegate {
-		
+	
+	// The size of the flag
 	public var flagSize = CGSize(width: 32, height: 32) {
 		didSet {
 			layoutSubviews()
 		}
 	}
+	
+	// The edges insets of the flag button
 	public var flagButtonEdgeInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8) {
 		didSet {
 			layoutSubviews()
 		}
 	}
 
+	// If set, a search button appears in the picker inputAccessoryView to present a country search view controller
 	public var parentViewController: UIViewController?
+	
+	// Input Accessory View for the texfield
+	public var textFieldInputAccessoryView: UIView?
+	
 	private var flagButton: UIButton!
 	private lazy var countryPicker: CountryPicker = CountryPicker()
 	private lazy var phoneUtil: NBPhoneNumberUtil = NBPhoneNumberUtil()
@@ -147,7 +155,7 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 	@objc private func displayNumberKeyBoard() {
 		keyboardType = .numberPad
 		inputView = nil
-		inputAccessoryView = nil
+		inputAccessoryView = textFieldInputAccessoryView
 		tintColor = .gray
 		reloadInputViews()
 	}

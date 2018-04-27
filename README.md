@@ -38,9 +38,6 @@ Programmatically:
 ```swift
 phoneNumberTextField = CTKFlagPhoneNumberTextField(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 16, height: 50))
 
-// Set the parent view controller to enable the search
-phoneNumberTextField.parentViewController = self
-
 // You can change the choosen flag
 phoneNumberTextField.setFlag(with: "FR")
 
@@ -51,21 +48,40 @@ phoneNumberTextField.set(phoneNumber: "0600000001")
 print(phoneNumberTextField.getFormattedPhoneNumber()) // Output: +33600000001
 print(phoneNumberTextField.getCountryPhoneCode()) // Output: +33
 print(phoneNumberTextField.getRawPhoneNumber()) // Output: 600000001
-
-
 ```
 
 ## Customization
 
 FlagKit is used by default but you can customize the list with your own flag icons assets:
 ```swift
+// Be sure to set it before initializing a CTKFlagPhoneNumber instance.
 Bundle.FlagIcons = YOUR_FLAG_ICONS_BUNDLE
 ```
-Be sure to set it before initializing a CTKFlagPhoneNumber instance.
+
+You can change the size of the flag:
+```swift
+phoneNumberTextField.flagSize = CGSize(width: 44, height: 44)
+```
+
+You can change the edge insets of the flag:
+```swift
+phoneNumberTextField.flagButtonEdgeInsets = UIEdgeInsetsMake(5, 10, 5, 10)
+```
+
+If you set the parentViewController,  a search button appears in the picker inputAccessoryView to present a country search view controller:
+```swift
+phoneNumberTextField.parentViewController = self
+```
+
+You can customize the inputAccessoryView of the textfield:
+```swift
+phoneNumberTextField.textFieldInputAccessoryView = getCustomTextFieldInputAccessoryView(with: items)
+```
 
 ## Conception
 This library is high inspired of MRCountryPicker library and use libPhoneNumber-iOS library.
-https://github.com/xtrinch/MRCountryPicker / https://github.com/iziz/libPhoneNumber-iOS 
+https://github.com/xtrinch/MRCountryPicker / https://github.com/iziz/libPhoneNumber-iOS
+
 
 ## Author
 
