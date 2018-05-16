@@ -154,8 +154,8 @@ open class CountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSo
 	open func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 		let country = countries[row]
 		
-		if let countryPickerDelegate = countryPickerDelegate {
-			countryPickerDelegate.countryPhoneCodePicker(self, didSelectCountryWithName: country.name!, countryCode: country.code!, phoneCode: country.phoneCode!, flag: country.flag!)
+		if let name = country.name, let countryCode = country.code, let phoneCode = country.phoneCode, let flag = country.flag {
+			countryPickerDelegate?.countryPhoneCodePicker(self, didSelectCountryWithName: name, countryCode: countryCode, phoneCode: phoneCode, flag: flag)
 		}
 	}
 }
