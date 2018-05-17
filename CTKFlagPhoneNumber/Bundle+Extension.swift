@@ -13,10 +13,9 @@ extension Bundle {
 	static public func CTKFlagPhoneNumber() -> Bundle {
 		let bundle = Bundle(for: CTKFlagPhoneNumberTextField.self)
 		
-		if let path = bundle.path(forResource: "CTKFlagPhoneNumber", ofType: "bundle") {
-			return Bundle(path: path)!
-		}
-		else {
+		if let url = bundle.resourceURL?.appendingPathComponent("CTKFlagPhoneNumber.bundle") {
+			return Bundle(url: url)!
+		} else {
 			return bundle
 		}
 	}
