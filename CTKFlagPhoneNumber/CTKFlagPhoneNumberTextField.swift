@@ -38,7 +38,7 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 	// Input Accessory View for the texfield
 	public var textFieldInputAccessoryView: UIView?
 	
-	private var flagButton: UIButton!
+	public var flagButton: UIButton!
 	private lazy var countryPicker: CountryPicker = CountryPicker()
 	private lazy var phoneUtil: NBPhoneNumberUtil = NBPhoneNumberUtil()
 	private var formatter: NBAsYouTypeFormatter?
