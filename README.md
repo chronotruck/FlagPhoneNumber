@@ -9,9 +9,8 @@ CTKFlagPhoneNumber is a phone number textfield with a fancy country code picker.
 [![Language](https://img.shields.io/badge/language-swift-brightgreen.svg?style=flat)](https://developer.apple.com/swift)
 
 ## Screenshot
-![sample](Screenshot/screenshot_1.PNG)
-![sample](Screenshot/screenshot_2.PNG)
-![sample](Screenshot/screenshot_3.PNG)
+<img src="./Screenshot/screenshot_1.PNG" width="288px"> <img src="./Screenshot/screenshot_2.PNG" width="288px"> <img src="./Screenshot/screenshot_3.PNG" width="288px">
+
 
 ## Localization 🌍
 
@@ -77,6 +76,12 @@ You can customize the inputAccessoryView of the textfield:
 ```swift
 phoneNumberTextField.textFieldInputAccessoryView = getCustomTextFieldInputAccessoryView(with: items)
 ```
+
+## Next Improvments
+- [x] Localization
+- [x] Country search
+- [ ] Placeholder
+- [ ] Any idea ?
 
 ## Conception
 This library is high inspired of MRCountryPicker library and use libPhoneNumber-iOS library.
