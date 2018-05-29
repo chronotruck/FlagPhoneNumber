@@ -81,6 +81,7 @@ phoneNumberTextField.textFieldInputAccessoryView = getCustomTextFieldInputAccess
 - [x] Localization
 - [x] Country search
 - [ ] Placeholder
+- [ ] Exclude Countries
 - [ ] Any idea ?
 
 ## Conception
