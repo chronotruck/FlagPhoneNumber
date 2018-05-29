@@ -89,6 +89,7 @@ phoneNumberTextField.flagButton.isUserInteractionEnabled = false
 - [x] Localization
 - [x] Country search
 - [ ] Placeholder
+- [ ] Exclude Countries
 - [ ] Any idea ?
 
 ## Conception
