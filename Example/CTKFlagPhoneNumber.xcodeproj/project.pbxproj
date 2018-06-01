@@ -123,7 +123,6 @@
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
 				D40414452EDCB5B06F74AF2F /* [CP] Embed Pods Frameworks */,
-				FC6B59364280C4599ED4E98F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -219,21 +218,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CTKFlagPhoneNumber_Example/Pods-CTKFlagPhoneNumber_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FC6B59364280C4599ED4E98F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CTKFlagPhoneNumber_Example/Pods-CTKFlagPhoneNumber_Example-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

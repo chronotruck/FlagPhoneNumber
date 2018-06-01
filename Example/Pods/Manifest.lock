@@ -1,19 +1,23 @@
 PODS:
-  - CTKFlagPhoneNumber (0.2.0):
+  - CTKFlagPhoneNumber (0.4.7):
     - libPhoneNumber-iOS
   - libPhoneNumber-iOS (0.9.12)
 
 DEPENDENCIES:
   - CTKFlagPhoneNumber (from `../`)
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - libPhoneNumber-iOS
+
 EXTERNAL SOURCES:
   CTKFlagPhoneNumber:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
-  CTKFlagPhoneNumber: 4f444ca1e698c5cd1b664f310f33b4fbfc87a9bb
+  CTKFlagPhoneNumber: 0c0b7673f89b956cca75919bdfbffc354f4b3a6f
   libPhoneNumber-iOS: b8a1038a101c78616c4df87815ac1556349faf98
 
 PODFILE CHECKSUM: 76dfbd20ddd9e7b17fd49e7ee2054d7a2a239cf8
 
-COCOAPODS: 1.4.0.beta.2
+COCOAPODS: 1.5.2

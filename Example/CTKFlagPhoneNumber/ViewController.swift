@@ -28,13 +28,13 @@ class ViewController: UIViewController {
 		]
 		
 		phoneNumberTextField = CTKFlagPhoneNumberTextField(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 16, height: 50))
-		phoneNumberTextField.flagSize = CGSize(width: 44, height: 44)
-		phoneNumberTextField.flagButtonEdgeInsets = UIEdgeInsetsMake(5, 10, 5, 10)
-		phoneNumberTextField.parentViewController = self
-		phoneNumberTextField.textFieldInputAccessoryView = getCustomTextFieldInputAccessoryView(with: items)
+//		phoneNumberTextField.flagSize = CGSize(width: 64, height: 64)
+//		phoneNumberTextField.flagButtonEdgeInsets = UIEdgeInsetsMake(5, 10, 5, 10)
+//		phoneNumberTextField.parentViewController = self
+//		phoneNumberTextField.textFieldInputAccessoryView = getCustomTextFieldInputAccessoryView(with: items)
 
 		phoneNumberTextField.center = view.center
-		phoneNumberTextField.setFlag(with: "FR")
+//		phoneNumberTextField.setFlag(with: "FR")
 		phoneNumberTextField.set(phoneNumber: "0600000001")
 		
 		view.addSubview(phoneNumberTextField)
