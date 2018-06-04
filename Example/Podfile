@@ -4,3 +4,7 @@ use_frameworks!
 target 'CTKFlagPhoneNumber_Example' do
   pod 'CTKFlagPhoneNumber', :path => '../'
 end
+
+target 'CTKFlagPhoneNumber_ExampleTests' do
+	pod 'CTKFlagPhoneNumber', :path => '../'
+end
