@@ -50,6 +50,8 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 	private var phoneCode: String? {
 		didSet {
 			phoneCodeLabel.text = phoneCode
+			phoneCodeLabel.sizeToFit()
+			layoutSubviews()
 		}
 	}
 	private var countryCode: String? {
@@ -97,18 +99,13 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 		super.layoutSubviews()
 		
 		leftView?.frame = leftViewRect(forBounds: frame)
-		let frame1 = CGRect(x: flagButtonEdgeInsets.left, y: flagButtonEdgeInsets.top, width: flagSize.width, height: flagSize.height)
-		
-		flagButton.frame = frame1
-		
-		leftView?.updateConstraints()
-		leftView?.updateConstraintsIfNeeded()
+		flagButton.frame = CGRect(x: flagButtonEdgeInsets.left, y: flagButtonEdgeInsets.top, width: flagSize.width, height: flagSize.height)
 	}
 	
 	open override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
-		let width = min(bounds.size.width, leftViewSize.width)
-		let height = min(bounds.size.height, leftViewSize.height)
-		let rect = CGRect(x: 0, y: bounds.size.height / 2 - height / 2, width: width, height: height)
+		let width: CGFloat = min(bounds.size.width, leftViewSize.width)
+		let height: CGFloat = min(bounds.size.height, leftViewSize.height)
+		let rect: CGRect = CGRect(x: 0, y: bounds.size.height / 2 - height / 2, width: width, height: height)
 		
 		return rect
 	}
@@ -124,6 +121,20 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 		addTarget(self, action: #selector(didEditText), for: .editingChanged)
 		addTarget(self, action: #selector(displayNumberKeyBoard), for: .touchDown)
 		delegate = self
+		
+		for each in countryPicker.countries {
+			do {
+				let example = try phoneUtil.getExampleNumber(each.code)
+				print("textfield.setFlag(with: \"\(each.code!)\")")
+//				print("XCTAssertEqual(textfield.getCountryPhoneCode(), \"+\(example.countryCode.intValue)\")")
+				print("XCTAssertEqual(textfield.getCountryCode(), \"\(each.code!)\")")
+				//				print("textfield.set(phoneNumber: \"+\(example.countryCode.intValue)\(example.nationalNumber!)\")")
+				//				print("XCTAssertEqual(textfield.getCountryPhoneCode(), \"+\(example.countryCode.intValue)\")")
+				//				print("XCTAssertEqual(textfield.getCountryCode(), \"\(each.code!)\")")
+			} catch {
+				//				print("Error = \(each.code)")
+			}
+		}
 	}
 	
 	private func setupFlagButton() {
@@ -163,24 +174,22 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 		countryPicker.backgroundColor = .white
 		countryPicker.setCountry(Locale.current.regionCode!)
 	}
-
-	
 	
 //	open override func textRect(forBounds bounds: CGRect) -> CGRect {
 //		var textRect = super.textRect(forBounds: bounds)
 //		let spaceBetweenLeftViewAndText = textRect.minX - leftViewRect(forBounds: bounds).maxX
-//		
+//
 //		if spaceBetweenLeftViewAndText > 0 {
 //			textRect.origin.x -= spaceBetweenLeftViewAndText
 //			textRect.size.width += spaceBetweenLeftViewAndText
 //		}
 //		return textRect
 //	}
-//	
+//
 //	open override func editingRect(forBounds bounds: CGRect) -> CGRect {
 //		return textRect(forBounds: bounds)
 //	}
-//	
+//
 //	open override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
 //		return textRect(forBounds:bounds)
 //	}
@@ -222,6 +231,10 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 	/// Get the current country phone code
 	public func getCountryPhoneCode() -> String? {
 		return phoneCodeLabel.text
+	}
+	
+	public func getCountryCode() -> String? {
+		return countryCode
 	}
 
 	/// Get the current raw phone number
@@ -336,10 +349,7 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 		
 		flagButton.setImage(flag, for: .normal)
 		
-		//		sendActions(for: .editingChanged)
-		
-		phoneCodeLabel.sizeToFit()
-		layoutSubviews()
+		format(phoneNumber: text!)
 	}
 
 	// - CTKFlagPhoneNumberDelegate
@@ -350,9 +360,6 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 
 		flagButton.setImage(country.flag, for: .normal)
 		
-		sendActions(for: .editingChanged)
-		
-		phoneCodeLabel.sizeToFit()
-		layoutSubviews()
+		format(phoneNumber: text!)
 	}
 }
