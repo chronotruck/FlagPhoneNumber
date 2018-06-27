@@ -18,7 +18,7 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 	}
 	
 	// The edges insets of the flag button
-	public var flagButtonEdgeInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0) {
+	public var flagButtonEdgeInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5) {
 		didSet {
 			layoutSubviews()
 		}
@@ -26,7 +26,8 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 	
 	private var leftViewSize: CGSize {
 		let width = flagSize.width + flagButtonEdgeInsets.left + flagButtonEdgeInsets.right + phoneCodeLabel.frame.width
-		let height = flagSize.height + flagButtonEdgeInsets.top + flagButtonEdgeInsets.bottom
+//		let height = flagSize.height + flagButtonEdgeInsets.top + flagButtonEdgeInsets.bottom
+		let height = bounds.height
 
 		return CGSize(width: width, height: height)
 	}
@@ -38,7 +39,7 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 //		intrinsicContentSize.height = max(intrinsicContentSize.height, leftViewHeight)
 //		return intrinsicContentSize
 //	}
-//
+
 	public var flagButton: UIButton = UIButton()
 	public var phoneCodeLabel: UILabel = UILabel()
 	private lazy var countryPicker: CountryPicker = CountryPicker()
@@ -99,7 +100,8 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 		super.layoutSubviews()
 		
 		leftView?.frame = leftViewRect(forBounds: frame)
-		flagButton.frame = CGRect(x: flagButtonEdgeInsets.left, y: flagButtonEdgeInsets.top, width: flagSize.width, height: flagSize.height)
+//		flagButton.frame = CGRect(x: flagButtonEdgeInsets.left, y: flagButtonEdgeInsets.top, width: flagSize.width, height: flagSize.height)
+		flagButton.imageEdgeInsets = flagButtonEdgeInsets
 	}
 	
 	open override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
@@ -108,6 +110,26 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 		let rect: CGRect = CGRect(x: 0, y: bounds.size.height / 2 - height / 2, width: width, height: height)
 		
 		return rect
+	}
+	
+	open override func textRect(forBounds bounds: CGRect) -> CGRect {
+		var textRect = super.textRect(forBounds: bounds)
+		let spaceBetweenLeftViewAndText = textRect.minX - leftViewRect(forBounds: bounds).maxX
+		
+		if spaceBetweenLeftViewAndText > 0 {
+			textRect.origin.x -= spaceBetweenLeftViewAndText
+			textRect.size.width += spaceBetweenLeftViewAndText
+		}
+		return textRect
+	}
+	
+	//	Redraw CGRect when editing
+	open override func editingRect(forBounds bounds: CGRect) -> CGRect {
+		return textRect(forBounds: bounds)
+	}
+	
+	open override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+		return textRect(forBounds:bounds)
 	}
 	
 	
@@ -122,19 +144,19 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 		addTarget(self, action: #selector(displayNumberKeyBoard), for: .touchDown)
 		delegate = self
 		
-		for each in countryPicker.countries {
-			do {
-				let example = try phoneUtil.getExampleNumber(each.code)
-				print("textfield.setFlag(with: \"\(each.code!)\")")
-//				print("XCTAssertEqual(textfield.getCountryPhoneCode(), \"+\(example.countryCode.intValue)\")")
-				print("XCTAssertEqual(textfield.getCountryCode(), \"\(each.code!)\")")
-				//				print("textfield.set(phoneNumber: \"+\(example.countryCode.intValue)\(example.nationalNumber!)\")")
-				//				print("XCTAssertEqual(textfield.getCountryPhoneCode(), \"+\(example.countryCode.intValue)\")")
-				//				print("XCTAssertEqual(textfield.getCountryCode(), \"\(each.code!)\")")
-			} catch {
-				//				print("Error = \(each.code)")
-			}
-		}
+		//		for each in countryPicker.countries {
+		//			do {
+		//				let example = try phoneUtil.getExampleNumber(each.code)
+		//				print("textfield.setFlag(with: \"\(each.code!)\")")
+		//				print("XCTAssertEqual(textfield.getCountryPhoneCode(), \"+\(example.countryCode.intValue)\")")
+		//				print("XCTAssertEqual(textfield.getCountryCode(), \"\(each.code!)\")")
+		//				print("textfield.set(phoneNumber: \"+\(example.countryCode.intValue)\(example.nationalNumber!)\")")
+		//				print("XCTAssertEqual(textfield.getCountryPhoneCode(), \"+\(example.countryCode.intValue)\")")
+		//				print("XCTAssertEqual(textfield.getCountryCode(), \"\(each.code!)\")")
+		//			} catch {
+		//				print("Error = \(each.code)")
+		//			}
+		//		}
 	}
 	
 	private func setupFlagButton() {
@@ -174,25 +196,6 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 		countryPicker.backgroundColor = .white
 		countryPicker.setCountry(Locale.current.regionCode!)
 	}
-	
-//	open override func textRect(forBounds bounds: CGRect) -> CGRect {
-//		var textRect = super.textRect(forBounds: bounds)
-//		let spaceBetweenLeftViewAndText = textRect.minX - leftViewRect(forBounds: bounds).maxX
-//
-//		if spaceBetweenLeftViewAndText > 0 {
-//			textRect.origin.x -= spaceBetweenLeftViewAndText
-//			textRect.size.width += spaceBetweenLeftViewAndText
-//		}
-//		return textRect
-//	}
-//
-//	open override func editingRect(forBounds bounds: CGRect) -> CGRect {
-//		return textRect(forBounds: bounds)
-//	}
-//
-//	open override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
-//		return textRect(forBounds:bounds)
-//	}
 	
 	@objc private func displayNumberKeyBoard() {
 		keyboardType = .numberPad
@@ -265,7 +268,10 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 			formattedPhoneNumber = formattedPhoneNumber?.trimmingCharacters(in: CharacterSet(charactersIn: "+0123456789").inverted)
 			formattedPhoneNumber = formattedPhoneNumber?.replacingOccurrences(of: " ", with: "")
 			formattedPhoneNumber = formattedPhoneNumber?.replacingOccurrences(of: "-", with: "")
-			formattedPhoneNumber = formatter!.inputString(formattedPhoneNumber)
+
+			if formattedPhoneNumber != phoneCode {
+				formattedPhoneNumber = formatter!.inputString(formattedPhoneNumber)
+			}
 			
 			text = formattedPhoneNumber?.replacingOccurrences(of: phoneCode, with: "")
 		}
@@ -346,10 +352,9 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 	public func countryPhoneCodePicker(_ picker: CountryPicker, didSelectCountryWithName name: String, countryCode: String, phoneCode: String, flag: UIImage) {
 		self.phoneCode = phoneCode
 		self.countryCode = countryCode
-		
+
 		flagButton.setImage(flag, for: .normal)
-		
-		format(phoneNumber: text!)
+		_ = format(phoneNumber: text!)
 	}
 
 	// - CTKFlagPhoneNumberDelegate
@@ -359,7 +364,6 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 		countryCode = country.code
 
 		flagButton.setImage(country.flag, for: .normal)
-		
-		format(phoneNumber: text!)
+		_ = format(phoneNumber: text!)
 	}
 }
