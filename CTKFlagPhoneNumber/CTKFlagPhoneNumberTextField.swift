@@ -24,21 +24,13 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 		}
 	}
 	
+	// The size of the leftView
 	private var leftViewSize: CGSize {
 		let width = flagSize.width + flagButtonEdgeInsets.left + flagButtonEdgeInsets.right + phoneCodeLabel.frame.width
-//		let height = flagSize.height + flagButtonEdgeInsets.top + flagButtonEdgeInsets.bottom
 		let height = bounds.height
 
 		return CGSize(width: width, height: height)
 	}
-	
-//	open override var intrinsicContentSize: CGSize {
-//		var intrinsicContentSize = super.intrinsicContentSize
-//		let leftViewHeight = leftViewSize.height
-//
-//		intrinsicContentSize.height = max(intrinsicContentSize.height, leftViewHeight)
-//		return intrinsicContentSize
-//	}
 	
 	public var flagButton: UIButton = UIButton()
 	public var phoneCodeLabel: UILabel = UILabel()
@@ -104,38 +96,16 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 		super.layoutSubviews()
 		
 		leftView?.frame = leftViewRect(forBounds: frame)
-//		flagButton.frame = CGRect(x: flagButtonEdgeInsets.left, y: flagButtonEdgeInsets.top, width: flagSize.width, height: flagSize.height)
 		flagButton.imageEdgeInsets = flagButtonEdgeInsets
 	}
 	
 	open override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
 		let width: CGFloat = min(bounds.size.width, leftViewSize.width)
 		let height: CGFloat = min(bounds.size.height, leftViewSize.height)
-		let rect: CGRect = CGRect(x: 0, y: bounds.size.height / 2 - height / 2, width: width, height: height)
-		
+		let rect: CGRect = CGRect(x: 0, y: 0, width: width, height: height - 2)
+
 		return rect
 	}
-	
-	open override func textRect(forBounds bounds: CGRect) -> CGRect {
-		var textRect = super.textRect(forBounds: bounds)
-		let spaceBetweenLeftViewAndText = textRect.minX - leftViewRect(forBounds: bounds).maxX
-		
-		if spaceBetweenLeftViewAndText > 0 {
-			textRect.origin.x -= spaceBetweenLeftViewAndText
-			textRect.size.width += spaceBetweenLeftViewAndText
-		}
-		return textRect
-	}
-	
-	//	Redraw CGRect when editing
-	open override func editingRect(forBounds bounds: CGRect) -> CGRect {
-		return textRect(forBounds: bounds)
-	}
-	
-	open override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
-		return textRect(forBounds:bounds)
-	}
-	
 	
 	private func setup() {
 		setupFlagButton()
