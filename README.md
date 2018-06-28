@@ -31,19 +31,23 @@ pod "CTKFlagPhoneNumber"
 
 ## Usage
 
-You can instance it in storyboards or .xibs.
+You can instantiate it in storyboards or .xibs.
 
 Programmatically:
 ```swift
 phoneNumberTextField = CTKFlagPhoneNumberTextField(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 16, height: 50))
 
-// You can change the choosen flag
-phoneNumberTextField.setFlag(with: "FR")
+// You can change the chosen flag
+phoneNumberTextField.setFlag(for: "FR")
 
-// You can change the phone number, that will update automatically the flag image
+// You can change the phone number, which will update automatically the flag image
 phoneNumberTextField.set(phoneNumber: "0600000001")
 
-// You can also get the phone number to E164 format, the country phone code and the raw phone number
+// By default, an example of a phone number according to the selected country is displayed in the placeholder. You can use your own placeholder:
+phoneNumberTextField.hasPhoneNumberExample = false
+phoneNumberTextField.placeholder = "Phone Number"
+
+// You can also get the phone number in E.164 format, the country code and the raw phone number
 print(phoneNumberTextField.getFormattedPhoneNumber()) // Output: +33600000001
 print(phoneNumberTextField.getCountryPhoneCode()) // Output: +33
 print(phoneNumberTextField.getRawPhoneNumber()) // Output: 600000001
@@ -77,6 +81,14 @@ You can customize the inputAccessoryView of the textfield:
 phoneNumberTextField.textFieldInputAccessoryView = getCustomTextFieldInputAccessoryView(with: items)
 ```
 
+You can also customize the flag button's properties:
+```swift
+// This will freeze the flag.
+// Only one particular country's phone numbers will be formatted and validated.
+// You can set the country by setting the flag as shown earlier.
+phoneNumberTextField.flagButton.isUserInteractionEnabled = false
+```
+
 ## Next Improvments
 - [x] Localization
 - [x] Country search
@@ -87,7 +99,6 @@ phoneNumberTextField.textFieldInputAccessoryView = getCustomTextFieldInputAccess
 ## Conception
 This library is high inspired of MRCountryPicker library and use libPhoneNumber-iOS library.
 https://github.com/xtrinch/MRCountryPicker / https://github.com/iziz/libPhoneNumber-iOS
-
 
 ## Author
 

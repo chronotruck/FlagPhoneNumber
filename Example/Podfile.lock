@@ -1,7 +1,7 @@
 PODS:
-  - CTKFlagPhoneNumber (0.4.7):
+  - CTKFlagPhoneNumber (0.5.0):
     - libPhoneNumber-iOS
-  - libPhoneNumber-iOS (0.9.12)
+  - libPhoneNumber-iOS (0.9.13)
 
 DEPENDENCIES:
   - CTKFlagPhoneNumber (from `../`)
@@ -15,8 +15,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  CTKFlagPhoneNumber: 0c0b7673f89b956cca75919bdfbffc354f4b3a6f
-  libPhoneNumber-iOS: b8a1038a101c78616c4df87815ac1556349faf98
+  CTKFlagPhoneNumber: 102dbd5fca784344ce6204c6989defae6523c98a
+  libPhoneNumber-iOS: e444379ac18bbfbdefad571da735b2cd7e096caa
 
 PODFILE CHECKSUM: df7fdd973a2f9eecacb6426da7ab73c736cf3edb
 
