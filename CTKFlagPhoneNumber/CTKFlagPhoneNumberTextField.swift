@@ -10,21 +10,21 @@ import libPhoneNumber_iOS
 
 open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, CountryPickerDelegate, CTKFlagPhoneNumberDelegate {
 		
-	// The size of the flag
+	/// The size of the flag
 	public var flagSize: CGSize = CGSize(width: 32, height: 32) {
 		didSet {
 			layoutSubviews()
 		}
 	}
 	
-	// The edges insets of the flag button
+	/// The edges insets of the flag button
 	public var flagButtonEdgeInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5) {
 		didSet {
 			layoutSubviews()
 		}
 	}
 	
-	// The size of the leftView
+	/// The size of the leftView
 	private var leftViewSize: CGSize {
 		let width = flagSize.width + flagButtonEdgeInsets.left + flagButtonEdgeInsets.right + phoneCodeLabel.frame.width
 		let height = bounds.height
@@ -38,11 +38,18 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 	private lazy var phoneUtil: NBPhoneNumberUtil = NBPhoneNumberUtil()
 	private var formatter: NBAsYouTypeFormatter?
 
-	private var placeHolder: String? {
+	
+	/// Present in the placeholder an example of a phone number according to the selected country code.
+	/// If false, you can set your own placeholder. Set to true by default.
+	public var hasPhoneNumberExample: Bool = true {
 		didSet {
-			placeholder = placeHolder
+			if hasPhoneNumberExample == false {
+				placeholder = nil
+			}
+			updatePlaceholder()
 		}
 	}
+	
 	private var phoneNumber: String?
 	private var phoneCode: String? {
 		didSet {
@@ -59,10 +66,10 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 		}
 	}
 	
-	// If set, a search button appears in the picker inputAccessoryView to present a country search view controller
+	/// If set, a search button appears in the picker inputAccessoryView to present a country search view controller
 	public var parentViewController: UIViewController?
 	
-	// Input Accessory View for the texfield
+	/// Input Accessory View for the texfield
 	public var textFieldInputAccessoryView: UIView?
 
 	
@@ -102,7 +109,7 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 	open override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
 		let width: CGFloat = min(bounds.size.width, leftViewSize.width)
 		let height: CGFloat = min(bounds.size.height, leftViewSize.height)
-		let rect: CGRect = CGRect(x: 0, y: 0, width: width, height: height - 2)
+		let rect: CGRect = CGRect(x: 0, y: 0, width: width, height: height - 2) // -2 to aligned with text
 
 		return rect
 	}
@@ -140,12 +147,12 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 		flagButton.accessibilityLabel = "flagButton"
 		flagButton.addTarget(self, action: #selector(displayCountryKeyboard), for: .touchUpInside)
 		flagButton.translatesAutoresizingMaskIntoConstraints = false
-		flagButton.setContentHuggingPriority(.defaultLow, for: .horizontal)
+		flagButton.setContentHuggingPriority(UILayoutPriority.defaultLow, for: .horizontal)
 	}
 	
 	private func setupPhoneCodeLabel() {
 		phoneCodeLabel.translatesAutoresizingMaskIntoConstraints = false
-		phoneCodeLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+		phoneCodeLabel.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: .horizontal)
 	}
 	
 	private func setupLeftView() {
@@ -291,11 +298,6 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 		countryPicker.setCountry(regionCode)
 	}
 	
-	/// Set the placeholder
-	public func set(placeholder: String) {
-		placeHolder = placeholder
-	}
-	
 	public func set(phoneNumber: String) {
 		var formattedPhoneNumber = format(string: phoneNumber)
 		
@@ -357,43 +359,45 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 		return [space, doneButton]
 	}
 	
-	// - CountryPickerDelegate
-
-	public func countryPhoneCodePicker(_ picker: CountryPicker, didSelectCountryWithName name: String, countryCode: String, phoneCode: String, flag: UIImage) {
-		flagButton.setImage(flag, for: .normal)
-		self.countryCode = countryCode
-		
+	private func reload(with phoneCode: String) {
 		if let parsedPhoneNumber = parse(phoneNumber: phoneCode) {
 			self.phoneCode = "+\(parsedPhoneNumber.countryCode.stringValue)"
 		} else {
 			self.phoneCode = phoneCode
 		}
 		
-		if placeHolder == nil {
-			if var exampleNumber = try? phoneUtil.format(phoneUtil.getExampleNumber(countryCode), numberFormat: .INTERNATIONAL) {
+		updatePlaceholder()
+		
+		didEditText()
+	}
+	
+	private func updatePlaceholder() {		
+		if hasPhoneNumberExample == true {
+			if let countryCode = countryCode, var exampleNumber = try? phoneUtil.format(phoneUtil.getExampleNumber(countryCode), numberFormat: .INTERNATIONAL) {
 				removeCountryCode(in: &exampleNumber)
 				placeholder = exampleNumber
 			}
 		}
-		
-		didEditText()
+	}
+	
+	// - CountryPickerDelegate
+
+	public func countryPhoneCodePicker(_ picker: CountryPicker, didSelectCountryWithName name: String, countryCode: String, phoneCode: String, flag: UIImage) {
+		flagButton.setImage(flag, for: .normal)
+		self.countryCode = countryCode
+	
+		reload(with: phoneCode)
 	}
 
 	// - CTKFlagPhoneNumberDelegate
 	
-	func didSelect(country: Country) {
+	internal func didSelect(country: Country) {
 		guard let phoneCode = country.phoneCode else { return }
 		guard let countryCode = country.code else { return }
 
 		flagButton.setImage(country.flag, for: .normal)
 		self.countryCode = countryCode
 		
-		if let parsedPhoneNumber = parse(phoneNumber: phoneCode) {
-			self.phoneCode = "+\(parsedPhoneNumber.countryCode.stringValue)"
-		} else {
-			self.phoneCode = phoneCode
-		}
-		
-		didEditText()
+		reload(with: phoneCode)
 	}
 }

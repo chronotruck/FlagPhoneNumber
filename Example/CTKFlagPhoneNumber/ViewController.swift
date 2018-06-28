@@ -40,13 +40,15 @@ class ViewController: UIViewController {
 		phoneNumberTextField.textFieldInputAccessoryView = getCustomTextFieldInputAccessoryView(with: items)
 
 		//		The placeholder is an example phone number of the selected country by default. You can add your own placeholder :
-		//		phoneNumberTextField.set(placeholder: "Phone Number")
+		phoneNumberTextField.hasPhoneNumberExample = false
+		phoneNumberTextField.placeholder = "Phone Number"
+
 		
 		//		Set the flag image with a region code
-		phoneNumberTextField.setFlag(for: "ES")
+		phoneNumberTextField.setFlag(for: "FR")
 		
 		//		Set the phone number directly
-		phoneNumberTextField.set(phoneNumber: "+3110123        4567")
+		//		phoneNumberTextField.set(phoneNumber: "+3110123        4567")
 
 		view.addSubview(phoneNumberTextField)
 

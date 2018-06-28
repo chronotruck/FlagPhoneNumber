@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "NBPhoneNumberDefines.h"
 
-
 @class NBPhoneMetaData;
 
 @interface NBMetadataHelper : NSObject
@@ -25,8 +24,5 @@
 
 + (NSArray *)regionCodeFromCountryCode:(NSNumber *)countryCodeNumber;
 + (NSString *)countryCodeFromRegionCode:(NSString *)regionCode;
-
-+ (NSString *)stringByTrimming:(NSString *)aString;
-+ (NSString *)normalizeNonBreakingSpace:(NSString *)aString;
 
 @end

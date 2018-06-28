@@ -38,10 +38,14 @@ Programmatically:
 phoneNumberTextField = CTKFlagPhoneNumberTextField(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 16, height: 50))
 
 // You can change the chosen flag
-phoneNumberTextField.setFlag(with: "FR")
+phoneNumberTextField.setFlag(for: "FR")
 
 // You can change the phone number, which will update automatically the flag image
 phoneNumberTextField.set(phoneNumber: "0600000001")
+
+// By default, an example of a phone number according to the selected country is displayed in the placeholder. You can use your own placeholder:
+phoneNumberTextField.hasPhoneNumberExample = false
+phoneNumberTextField.placeholder = "Phone Number"
 
 // You can also get the phone number in E.164 format, the country code and the raw phone number
 print(phoneNumberTextField.getFormattedPhoneNumber()) // Output: +33600000001
