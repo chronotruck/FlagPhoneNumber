@@ -18,27 +18,40 @@ class ViewController: UIViewController {
 		
 		title = "CTKFlagPhoneNumber"
 
-		// To use your own flag icons, uncommment the line :
-		// Bundle.FlagIcons = Bundle(for: ViewController.self)
+		//		To use your own flag icons, uncommment the line :
+		//		Bundle.FlagIcons = Bundle(for: ViewController.self)
+		
+		phoneNumberTextField = CTKFlagPhoneNumberTextField(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 16, height: 50))
+		phoneNumberTextField.borderStyle = .roundedRect
 
+		//		Custom the size/edgeInsets of the flag button
+		//		phoneNumberTextField.flagSize = CGSize(width: 35, height: 35)
+		//		phoneNumberTextField.flagButtonEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10)
+		
+		//		Comment this line to not have access to the country list
+		phoneNumberTextField.parentViewController = self
+		
+		//		Example of customizing the textField input accessory view
 		let items = [
 			UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: nil),
 			UIBarButtonItem(title: "Item 1", style: .plain, target: self, action: nil),
 			UIBarButtonItem(title: "Item 2", style: .plain, target: self, action: nil)
 		]
-		
-		phoneNumberTextField = CTKFlagPhoneNumberTextField(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 16, height: 50))
-//		phoneNumberTextField.flagSize = CGSize(width: 64, height: 64)
-//		phoneNumberTextField.flagButtonEdgeInsets = UIEdgeInsetsMake(5, 10, 5, 10)
-//		phoneNumberTextField.parentViewController = self
-//		phoneNumberTextField.textFieldInputAccessoryView = getCustomTextFieldInputAccessoryView(with: items)
+		phoneNumberTextField.textFieldInputAccessoryView = getCustomTextFieldInputAccessoryView(with: items)
 
-		phoneNumberTextField.center = view.center
-//		phoneNumberTextField.setFlag(with: "FR")
-		phoneNumberTextField.set(phoneNumber: "0600000001")
+		//		The placeholder is an example phone number of the selected country by default. You can add your own placeholder :
+		//		phoneNumberTextField.set(placeholder: "Phone Number")
 		
+		//		Set the flag image with a region code
+		phoneNumberTextField.setFlag(for: "ES")
+		
+		//		Set the phone number directly
+		phoneNumberTextField.set(phoneNumber: "+3110123        4567")
+
 		view.addSubview(phoneNumberTextField)
 
+		phoneNumberTextField.center = view.center
+		
 		let button = UIButton(type: .system)
 		
 		button.frame = CGRect(x: 0, y: 0, width: 50, height: 44)
