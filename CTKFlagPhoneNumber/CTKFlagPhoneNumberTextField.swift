@@ -26,18 +26,29 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 	
 	/// The size of the leftView
 	private var leftViewSize: CGSize {
-		let width = flagSize.width + flagButtonEdgeInsets.left + flagButtonEdgeInsets.right + phoneCodeLabel.frame.width
+		let width = flagSize.width + flagButtonEdgeInsets.left + flagButtonEdgeInsets.right + phoneCodeTextField.frame.width
 		let height = bounds.height
 
 		return CGSize(width: width, height: height)
 	}
-	
-	public var flagButton: UIButton = UIButton()
-	public var phoneCodeLabel: UILabel = UILabel()
+
+	private var phoneCodeTextField: UITextField = UITextField()
 	private lazy var countryPicker: CountryPicker = CountryPicker()
 	private lazy var phoneUtil: NBPhoneNumberUtil = NBPhoneNumberUtil()
 	private var formatter: NBAsYouTypeFormatter?
-
+	
+	public var flagButton: UIButton = UIButton()
+	open override var font: UIFont? {
+		didSet {
+			phoneCodeTextField.font = font
+		}
+	}
+	
+	open override var textColor: UIColor? {
+		didSet {
+			phoneCodeTextField.textColor = textColor
+		}
+	}
 	
 	/// Present in the placeholder an example of a phone number according to the selected country code.
 	/// If false, you can set your own placeholder. Set to true by default.
@@ -53,8 +64,8 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 	private var phoneNumber: String?
 	private var phoneCode: String? {
 		didSet {
-			phoneCodeLabel.text = phoneCode
-			phoneCodeLabel.sizeToFit()
+			phoneCodeTextField.text = phoneCode
+			phoneCodeTextField.sizeToFit()
 			layoutSubviews()
 		}
 	}
@@ -95,10 +106,6 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 		parentViewController = nil
 	}
 	
-	override open func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
-		return false
-	}
-	
 	open override func layoutSubviews() {
 		super.layoutSubviews()
 		
@@ -109,14 +116,14 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 	open override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
 		let width: CGFloat = min(bounds.size.width, leftViewSize.width)
 		let height: CGFloat = min(bounds.size.height, leftViewSize.height)
-		let rect: CGRect = CGRect(x: 0, y: 0, width: width, height: height - 2) // -2 to aligned with text
+		let rect: CGRect = CGRect(x: 0, y: 0, width: width, height: height)
 
 		return rect
 	}
 	
 	private func setup() {
 		setupFlagButton()
-		setupPhoneCodeLabel()
+		setupPhoneCodeTextField()
 		setupLeftView()
 		setupCountryPicker()
 
@@ -124,20 +131,6 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 		addTarget(self, action: #selector(didEditText), for: .editingChanged)
 		addTarget(self, action: #selector(displayNumberKeyBoard), for: .touchDown)
 		delegate = self
-		
-		//		for each in countryPicker.countries {
-		//			do {
-		//				let example = try phoneUtil.getExampleNumber(each.code)
-		//				print("textfield.setFlag(with: \"\(each.code!)\")")
-		//				print("XCTAssertEqual(textfield.getCountryPhoneCode(), \"+\(example.countryCode.intValue)\")")
-		//				print("XCTAssertEqual(textfield.getCountryCode(), \"\(each.code!)\")")
-		//				print("textfield.set(phoneNumber: \"+\(example.countryCode.intValue)\(example.nationalNumber!)\")")
-		//				print("XCTAssertEqual(textfield.getCountryPhoneCode(), \"+\(example.countryCode.intValue)\")")
-		//				print("XCTAssertEqual(textfield.getCountryCode(), \"\(each.code!)\")")
-		//			} catch {
-		//				print("Error = \(each.code)")
-		//			}
-		//		}
 	}
 	
 	private func setupFlagButton() {
@@ -150,19 +143,20 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 		flagButton.setContentHuggingPriority(UILayoutPriority.defaultLow, for: .horizontal)
 	}
 	
-	private func setupPhoneCodeLabel() {
-		phoneCodeLabel.translatesAutoresizingMaskIntoConstraints = false
-		phoneCodeLabel.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: .horizontal)
+	private func setupPhoneCodeTextField() {
+		phoneCodeTextField.isUserInteractionEnabled = false
+		phoneCodeTextField.translatesAutoresizingMaskIntoConstraints = false
+		phoneCodeTextField.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: .horizontal)
 	}
 	
 	private func setupLeftView() {
 		leftViewMode = UITextFieldViewMode.always
 		leftView = UIView()
 		leftView?.addSubview(flagButton)
-		leftView?.addSubview(phoneCodeLabel)
+		leftView?.addSubview(phoneCodeTextField)
 
-		let views = ["flag": flagButton, "label": phoneCodeLabel]
-		let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|[flag]-(0)-[label]|", options: [], metrics: nil, views: views)
+		let views = ["flag": flagButton, "textField": phoneCodeTextField]
+		let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|[flag]-(0)-[textField]|", options: [], metrics: nil, views: views)
 
 		leftView?.addConstraints(horizontalConstraints)
 		
@@ -214,7 +208,7 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 	
 	/// Get the current country phone code
 	public func getCountryPhoneCode() -> String? {
-		return phoneCodeLabel.text
+		return phoneCodeTextField.text
 	}
 	
 	public func getCountryCode() -> String? {
