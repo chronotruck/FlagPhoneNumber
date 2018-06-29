@@ -47,7 +47,7 @@ class ViewController: UIViewController {
 		phoneNumberTextField.setFlag(for: "FR")
 		
 		//		Set the phone number directly
-		//		phoneNumberTextField.set(phoneNumber: "+3110123        4567")
+		//		phoneNumberTextField.set(phoneNumber: "+60323856789")
 
 		view.addSubview(phoneNumberTextField)
 

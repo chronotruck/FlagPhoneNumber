@@ -405,7 +405,7 @@ class CTKFlagPhoneNumber_ExampleTests: XCTestCase {
 		textfield.set(phoneNumber: "+2651234567")
 		XCTAssertEqual(textfield.getCountryPhoneCode(), "+265")
 		XCTAssertEqual(textfield.getCountryCode(), "MW")
-		textfield.set(phoneNumber: "+60323456789")
+		textfield.set(phoneNumber: "+60323856789")
 		XCTAssertEqual(textfield.getCountryPhoneCode(), "+60")
 		XCTAssertEqual(textfield.getCountryCode(), "MY")
 		textfield.set(phoneNumber: "+9606701234")

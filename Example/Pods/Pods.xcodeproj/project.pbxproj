@@ -102,7 +102,7 @@
 		005B7BDD863081EA95A6C7428A885D82 /* Pods-CTKFlagPhoneNumber_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CTKFlagPhoneNumber_Example-resources.sh"; sourceTree = "<group>"; };
 		01401AAB5CE8410A0B491E741506CCB0 /* libPhoneNumber-iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "libPhoneNumber-iOS.xcconfig"; sourceTree = "<group>"; };
 		0DDF417C2CA742D24C347BA662E47FC5 /* Pods-CTKFlagPhoneNumber_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CTKFlagPhoneNumber_Example-dummy.m"; sourceTree = "<group>"; };
-		0DFA16CC0052D24013F2F73EFBCE0EAA /* CTKFlagPhoneNumber.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CTKFlagPhoneNumber.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		0DFA16CC0052D24013F2F73EFBCE0EAA /* CTKFlagPhoneNumber.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = CTKFlagPhoneNumber.bundle; path = "CTKFlagPhoneNumber-CTKFlagPhoneNumber.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F40D26BBADCDD172AA6278F77F44A55 /* CountryView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = CountryView.xib; path = CTKFlagPhoneNumber/Resources/CountryView.xib; sourceTree = "<group>"; };
 		15374342493C0613B67E6BE27A9C8EB5 /* Pods-CTKFlagPhoneNumber_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CTKFlagPhoneNumber_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		18291994E854BB4C35DFB6C2D6DAF631 /* NBMetadataHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBMetadataHelper.h; path = libPhoneNumber/NBMetadataHelper.h; sourceTree = "<group>"; };
@@ -113,7 +113,7 @@
 		24580A4FF738D2F4F0A5AD65D8EC0230 /* Pods-CTKFlagPhoneNumber_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-CTKFlagPhoneNumber_Example.modulemap"; sourceTree = "<group>"; };
 		26412F0FEF74ADC9176DF84E3D34FAF1 /* NBPhoneNumberDefines.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NBPhoneNumberDefines.m; path = libPhoneNumber/NBPhoneNumberDefines.m; sourceTree = "<group>"; };
 		2824C693DD00E3BF638122602FF9F1CE /* Pods-CTKFlagPhoneNumber_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CTKFlagPhoneNumber_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		298CF944F08944144F8FC3E2B5395FD5 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		298CF944F08944144F8FC3E2B5395FD5 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
 		2B2449FB7D14BF3F3B1219C7C5D9DC73 /* CTKFlagPhoneNumberTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CTKFlagPhoneNumberTextField.swift; path = CTKFlagPhoneNumber/CTKFlagPhoneNumberTextField.swift; sourceTree = "<group>"; };
 		2B455A69148FCC4A76B256D79B5E41AD /* NBPhoneNumberUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NBPhoneNumberUtil.m; path = libPhoneNumber/NBPhoneNumberUtil.m; sourceTree = "<group>"; };
 		30AF89FAC00519D267C6954056AD0BAA /* NSArray+NBAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+NBAdditions.m"; path = "libPhoneNumber/NSArray+NBAdditions.m"; sourceTree = "<group>"; };
@@ -122,41 +122,41 @@
 		3D93F2AC650F69BF7EB1F6F4DC9F8294 /* Pods-CTKFlagPhoneNumber_ExampleTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CTKFlagPhoneNumber_ExampleTests-frameworks.sh"; sourceTree = "<group>"; };
 		43A4EBE1DE5B22759A2C4C58160C0A4A /* NBPhoneNumber.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NBPhoneNumber.m; path = libPhoneNumber/NBPhoneNumber.m; sourceTree = "<group>"; };
 		5035E9DF4831218BCAB74E31E59049E1 /* CTKFlagPhoneNumber.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CTKFlagPhoneNumber.xcconfig; sourceTree = "<group>"; };
-		50A0780DCDC2286C2F6D043AA4D661A8 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		50A0780DCDC2286C2F6D043AA4D661A8 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		55BD4BB4E8475A43DDA211116CDB7EB3 /* Bundle+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		5623E3F18B778D86C1ECD5BEAEDB6DB6 /* Pods-CTKFlagPhoneNumber_ExampleTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CTKFlagPhoneNumber_ExampleTests-umbrella.h"; sourceTree = "<group>"; };
 		587DFD0D3D2A48B9A32B0C2199C6BF27 /* ResourceBundle-CTKFlagPhoneNumber-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-CTKFlagPhoneNumber-Info.plist"; sourceTree = "<group>"; };
 		59C1DEC780F96C5183226613A7B130B9 /* Pods-CTKFlagPhoneNumber_ExampleTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CTKFlagPhoneNumber_ExampleTests-resources.sh"; sourceTree = "<group>"; };
 		59F2B2D3CBCCDB1E18A210433DCA8B47 /* NSArray+NBAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+NBAdditions.h"; path = "libPhoneNumber/NSArray+NBAdditions.h"; sourceTree = "<group>"; };
 		5FBEA859804D9C01026F58286754B2C7 /* Country.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
-		65195F8B7DE88BB8232D1A28C4E527C2 /* Pods_CTKFlagPhoneNumber_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CTKFlagPhoneNumber_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		65195F8B7DE88BB8232D1A28C4E527C2 /* Pods_CTKFlagPhoneNumber_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CTKFlagPhoneNumber_Example.framework; path = "Pods-CTKFlagPhoneNumber_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		67B6CCC7ABC99E7EF3DA79C6D6ECC4E8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6853AAA4D5C552FA21A7DD481FA9089F /* CTKFlagPhoneNumber-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CTKFlagPhoneNumber-prefix.pch"; sourceTree = "<group>"; };
 		6AFDC171583A082492B146E88D2B1A01 /* CTKFlagPhoneNumber-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CTKFlagPhoneNumber-umbrella.h"; sourceTree = "<group>"; };
 		6C7302692C77F823C824E5D19F750EA8 /* CountryPicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryPicker.swift; sourceTree = "<group>"; };
 		6E2C35DD1072551A3A1A6BE1AF797EB4 /* CTKFlagPhoneNumber.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = CTKFlagPhoneNumber.modulemap; sourceTree = "<group>"; };
-		713809331E079B80F8CC67DF9305CD2F /* CTKFlagPhoneNumber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CTKFlagPhoneNumber.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		713809331E079B80F8CC67DF9305CD2F /* CTKFlagPhoneNumber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CTKFlagPhoneNumber.framework; path = CTKFlagPhoneNumber.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		751F3DB62D78F62583A26EEA952C4E2B /* Pods-CTKFlagPhoneNumber_ExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CTKFlagPhoneNumber_ExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		75C6766635C9B4CCC432958F0AFB84E9 /* NBPhoneNumberDesc.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBPhoneNumberDesc.h; path = libPhoneNumber/NBPhoneNumberDesc.h; sourceTree = "<group>"; };
 		75CAE36CB009C98D04FA78F1D3453857 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77D79FD019007389AC86D8D0136523B7 /* Pods-CTKFlagPhoneNumber_ExampleTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CTKFlagPhoneNumber_ExampleTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		78B9EE9359FA3FBA4849CFC9484F71E4 /* libPhoneNumber_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = libPhoneNumber_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		78B9EE9359FA3FBA4849CFC9484F71E4 /* libPhoneNumber_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = libPhoneNumber_iOS.framework; path = "libPhoneNumber-iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8009A8EF33BCB57BD211DC5F7D16BDBD /* libPhoneNumber-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "libPhoneNumber-iOS-dummy.m"; sourceTree = "<group>"; };
 		809DA4769FCDFDF048EF84E1D12963B6 /* NBPhoneMetaData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBPhoneMetaData.h; path = libPhoneNumber/NBPhoneMetaData.h; sourceTree = "<group>"; };
 		811AC1F48778A2C7863E631C62104720 /* NBGeneratedPhoneNumberMetaData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBGeneratedPhoneNumberMetaData.h; path = libPhoneNumber/NBGeneratedPhoneNumberMetaData.h; sourceTree = "<group>"; };
 		83D2AAE6781E07BD389935CEED7C4F18 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		869CE04957CB4C9F027BB29860C2991D /* NBNumberFormat.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NBNumberFormat.m; path = libPhoneNumber/NBNumberFormat.m; sourceTree = "<group>"; };
 		8F12C37C9371CA91B2BDA294C1490495 /* NBPhoneNumberUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBPhoneNumberUtil.h; path = libPhoneNumber/NBPhoneNumberUtil.h; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9939D0B7A26A3DD1AEC4CAB25581302F /* CTKSearchCountryViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CTKSearchCountryViewController.swift; path = CTKFlagPhoneNumber/CTKSearchCountryViewController.swift; sourceTree = "<group>"; };
 		9D6ADC746EE4A8C4E0B70374FA404758 /* NBNumberFormat.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBNumberFormat.h; path = libPhoneNumber/NBNumberFormat.h; sourceTree = "<group>"; };
-		A225DE6F177857A29B15E4D56D3F62B8 /* Pods_CTKFlagPhoneNumber_ExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CTKFlagPhoneNumber_ExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A225DE6F177857A29B15E4D56D3F62B8 /* Pods_CTKFlagPhoneNumber_ExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CTKFlagPhoneNumber_ExampleTests.framework; path = "Pods-CTKFlagPhoneNumber_ExampleTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2A3D75EAC3722832655BFD809049215 /* Pods-CTKFlagPhoneNumber_ExampleTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-CTKFlagPhoneNumber_ExampleTests.modulemap"; sourceTree = "<group>"; };
-		ABB3F10C46C9BC911E3E63C2D45545AC /* CTKFlagPhoneNumber.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = CTKFlagPhoneNumber.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		ABB3F10C46C9BC911E3E63C2D45545AC /* CTKFlagPhoneNumber.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = CTKFlagPhoneNumber.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		ABEBD117A3B14CD7480F30BB15946BE6 /* Pods-CTKFlagPhoneNumber_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CTKFlagPhoneNumber_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		AC53EDB80047C7AF3B6CCFD7F0E1BD93 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/CoreTelephony.framework; sourceTree = DEVELOPER_DIR; };
 		ACC93EBAA97B43CB7B7D108C7ECBDAF3 /* libPhoneNumber-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "libPhoneNumber-iOS-umbrella.h"; sourceTree = "<group>"; };
-		AD9C5F57204D51DD104E6B10BAA88FC4 /* countryCodes.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = countryCodes.json; path = CTKFlagPhoneNumber/Resources/countryCodes.json; sourceTree = "<group>"; };
+		AD9C5F57204D51DD104E6B10BAA88FC4 /* countryCodes.json */ = {isa = PBXFileReference; includeInIndex = 1; name = countryCodes.json; path = CTKFlagPhoneNumber/Resources/countryCodes.json; sourceTree = "<group>"; };
 		AEA9AE923D67DC9D15E7D592DFAEC4AD /* NBAsYouTypeFormatter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NBAsYouTypeFormatter.m; path = libPhoneNumber/NBAsYouTypeFormatter.m; sourceTree = "<group>"; };
 		B2F65F04FFF40FB3C46865529D3F58B9 /* CountryView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryView.swift; sourceTree = "<group>"; };
 		B2FD15D5F4BEE2AFF6D3D0D115753CC3 /* NBPhoneNumberDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBPhoneNumberDefines.h; path = libPhoneNumber/NBPhoneNumberDefines.h; sourceTree = "<group>"; };
@@ -407,6 +407,7 @@
 				30AF89FAC00519D267C6954056AD0BAA /* NSArray+NBAdditions.m */,
 				F684B220C9320E71FE7032FBB55233A6 /* Support Files */,
 			);
+			name = "libPhoneNumber-iOS";
 			path = "libPhoneNumber-iOS";
 			sourceTree = "<group>";
 		};
@@ -582,7 +583,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 0930;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1141,7 +1142,6 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
