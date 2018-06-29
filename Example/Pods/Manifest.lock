@@ -15,9 +15,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  CTKFlagPhoneNumber: 102dbd5fca784344ce6204c6989defae6523c98a
+  CTKFlagPhoneNumber: 2c502acfeaf6ec9cbb2fd8179e741bd1487be932
   libPhoneNumber-iOS: e444379ac18bbfbdefad571da735b2cd7e096caa
 
 PODFILE CHECKSUM: df7fdd973a2f9eecacb6426da7ab73c736cf3edb
 
-COCOAPODS: 1.5.2
+COCOAPODS: 1.5.3
