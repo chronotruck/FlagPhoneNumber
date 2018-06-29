@@ -42,7 +42,6 @@ class ViewController: UIViewController {
 		//		The placeholder is an example phone number of the selected country by default. You can add your own placeholder :
 		phoneNumberTextField.hasPhoneNumberExample = false
 		phoneNumberTextField.placeholder = "Phone Number"
-
 		
 		//		Set the flag image with a region code
 		phoneNumberTextField.setFlag(for: "FR")

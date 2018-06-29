@@ -32,16 +32,6 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "17A67C592012318200BD1C1B"
-               BuildableName = "CTKFlagPhoneNumber_ExampleUITests.xctest"
-               BlueprintName = "CTKFlagPhoneNumber_ExampleUITests"
-               ReferencedContainer = "container:CTKFlagPhoneNumber.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "17D3FDBD20C1A4EF00401F45"
                BuildableName = "CTKFlagPhoneNumber_ExampleTests.xctest"
                BlueprintName = "CTKFlagPhoneNumber_ExampleTests"
@@ -71,7 +61,8 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
@@ -79,7 +70,7 @@
             BlueprintName = "CTKFlagPhoneNumber_Example"
             ReferencedContainer = "container:CTKFlagPhoneNumber.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
