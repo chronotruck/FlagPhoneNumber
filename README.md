@@ -92,7 +92,7 @@ phoneNumberTextField.flagButton.isUserInteractionEnabled = false
 ## Next Improvments
 - [x] Localization
 - [x] Country search
-- [ ] Placeholder
+- [x] Placeholder
 - [ ] Exclude Countries
 - [ ] Any idea ?
 
