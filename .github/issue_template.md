@@ -5,4 +5,4 @@
 ### Steps to reproduce the problem.
   Put here the steps to repoduce the issue
 ### Specifications
-  Put here the version of the project you're using
+  Put here the version of the pod you're using
