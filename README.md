@@ -37,11 +37,12 @@ Programmatically:
 ```swift
 phoneNumberTextField = CTKFlagPhoneNumberTextField(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 16, height: 50))
 
-// You can change the chosen flag
+// You can change the chosen flag then set the phone number
 phoneNumberTextField.setFlag(for: "FR")
-
-// You can change the phone number, which will update automatically the flag image
 phoneNumberTextField.set(phoneNumber: "0600000001")
+
+// Or directly set the phone number with country code, which will update automatically the flag image
+phoneNumberTextField.set(phoneNumber: "+33600000001")
 
 // By default, an example of a phone number according to the selected country is displayed in the placeholder. You can use your own placeholder:
 phoneNumberTextField.hasPhoneNumberExample = false
