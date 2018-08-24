@@ -66,13 +66,30 @@ class ViewController: UIViewController {
 	}
 }
 
-extension ViewController: CTKFlagPhoneNumberDelegate {
+extension ViewController: CTKFlagPhoneNumberTextFieldDelegate {
+
+	func didSuccessPhoneNumberValidation(textField: CTKFlagPhoneNumberTextField) {
+		print(
+			textField.getFormattedPhoneNumber(format: .E164),
+			textField.getFormattedPhoneNumber(format: .INTERNATIONAL),
+			textField.getFormattedPhoneNumber(format: .NATIONAL),
+			textField.getFormattedPhoneNumber(format: .RFC3966),
+			textField.getRawPhoneNumber()
+		)
+	}
+
+	func didFailPhoneNumberValidation(textField: CTKFlagPhoneNumberTextField) {
+		print(
+			textField.getFormattedPhoneNumber(format: .E164),
+			textField.getFormattedPhoneNumber(format: .INTERNATIONAL),
+			textField.getFormattedPhoneNumber(format: .NATIONAL),
+			textField.getFormattedPhoneNumber(format: .RFC3966),
+			textField.getRawPhoneNumber()
+		)
+	}
+
 
 	func didSelectCountry(name: String, dialCode: String, code: String) {
 		print(name, dialCode, code)
-	}
-
-	func didValidatePhoneNumber(textField: CTKFlagPhoneNumberTextField, validatedPhoneNumber: String) {
-		print(validatedPhoneNumber)
 	}
 }

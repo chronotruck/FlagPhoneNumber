@@ -15,11 +15,13 @@
 
 import Foundation
 
-internal protocol FlagPhoneNumberDelegate {
+internal protocol CTKFlagPhoneNumberDelegate {
 	func didSelect(country: Country)
 }
 
-public protocol CTKFlagPhoneNumberDelegate {
+public protocol CTKFlagPhoneNumberTextFieldDelegate {
 	func didSelectCountry(name: String, dialCode: String, code: String)
-	func didValidatePhoneNumber(textField: CTKFlagPhoneNumberTextField, validatedPhoneNumber: String)
+
+	func didSuccessPhoneNumberValidation(textField: CTKFlagPhoneNumberTextField)
+	func didFailPhoneNumberValidation(textField: CTKFlagPhoneNumberTextField)
 }
