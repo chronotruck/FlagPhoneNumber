@@ -21,7 +21,7 @@ class CTKSearchCountryViewController: UITableViewController, UISearchResultsUpda
 	var list: [Country]?
 	var results: [Country]?
 	
-	var delegate: FlagPhoneNumberDelegate?
+	var delegate: CTKFlagPhoneNumberDelegate?
 	
 	
 	init(countries: [Country]) {
