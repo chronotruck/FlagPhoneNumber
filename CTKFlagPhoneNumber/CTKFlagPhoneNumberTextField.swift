@@ -8,7 +8,9 @@
 import Foundation
 import libPhoneNumber_iOS
 
-open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, CountryPickerDelegate, CTKFlagPhoneNumberDelegate {
+open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, CountryPickerDelegate, FlagPhoneNumberDelegate {
+
+	public var flagPhoneNumberDelegate: CTKFlagPhoneNumberDelegate?
 		
 	/// The size of the flag
 	public var flagSize: CGSize = CGSize(width: 32, height: 32) {
@@ -60,23 +62,18 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 			updatePlaceholder()
 		}
 	}
-	
-	private var phoneNumber: String?
-	private var phoneCode: String? {
+
+	var selectedCountry: Country? {
 		didSet {
-			phoneCodeTextField.text = phoneCode
-			phoneCodeTextField.sizeToFit()
-			layoutSubviews()
+			updateUI()
 		}
 	}
-	private var countryCode: String? {
+	var validNumber: NBPhoneNumber? {
 		didSet {
-			if let countryCode = countryCode {
-				formatter = NBAsYouTypeFormatter(regionCode: countryCode)
-			}
+			updateUI()
 		}
 	}
-	
+
 	/// If set, a search button appears in the picker inputAccessoryView to present a country search view controller
 	public var parentViewController: UIViewController?
 	
@@ -200,30 +197,55 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 	}
 	
 	// - Utils
+
+
+	private func updateUI() {
+		if let countryCode = selectedCountry?.code {
+			formatter = NBAsYouTypeFormatter(regionCode: countryCode)
+		}
+
+		flagButton.setImage(selectedCountry?.flag, for: .normal)
+
+		if let phoneCode = selectedCountry?.phoneCode {
+			if let parsedPhoneNumber = parse(phoneNumber: phoneCode) {
+				phoneCodeTextField.text = "+\(parsedPhoneNumber.countryCode.stringValue)"
+			} else {
+				phoneCodeTextField.text = phoneCode
+			}
+			phoneCodeTextField.sizeToFit()
+			layoutSubviews()
+		}
+
+		if hasPhoneNumberExample == true {
+			updatePlaceholder()
+		}
+
+		didEditText()
+	}
 	
 	/// Get the current formatted phone number
-	public func getFormattedPhoneNumber() -> String? {
-		return phoneNumber
-	}
-	
-	/// Get the current country phone code
-	public func getCountryPhoneCode() -> String? {
-		return phoneCodeTextField.text
-	}
-	
-	public func getCountryCode() -> String? {
-		return countryCode
-	}
+	//	public func getFormattedPhoneNumber() -> String? {
+	//		return phoneNumber
+	//	}
+	//	
+	//	/// Get the current country phone code
+	//	public func getCountryPhoneCode() -> String? {
+	//		return phoneCodeTextField.text
+	//	}
+	//	
+	//	public func getCountryCode() -> String? {
+	//		return countryCode
+	//	}
 
 	/// Get the current raw phone number
-	public func getRawPhoneNumber() -> String? {
-		var nationalNumber: NSString?
-		
-		phoneUtil.extractCountryCode(phoneNumber, nationalNumber: &nationalNumber)
-		
-		return nationalNumber as String?
-	}
-	
+	//	public func getRawPhoneNumber() -> String? {
+	//		var nationalNumber: NSString?
+	//
+	//		phoneUtil.extractCountryCode(phoneNumber, nationalNumber: &nationalNumber)
+	//
+	//		return nationalNumber as String?
+	//	}
+
 	private func format(string: String) -> String {
 		var formattedPhoneNumber: String = string.trimmingCharacters(in: CharacterSet(charactersIn: "+0123456789").inverted)
 		
@@ -234,6 +256,8 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 	}
 
 	private func parse(phoneNumber: String) -> NBPhoneNumber? {
+		guard let countryCode = selectedCountry?.code else { return nil }
+
 		do {
 			return try phoneUtil.parse(phoneNumber, defaultRegion: countryCode)
 		} catch _ {
@@ -242,6 +266,8 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 	}
 	
 	private func isValidNumber(phoneNumber: String) -> NBPhoneNumber? {
+		guard let countryCode = selectedCountry?.code else { return nil }
+
 		do {
 			let parsedPhoneNumber: NBPhoneNumber = try phoneUtil.parse(phoneNumber, defaultRegion: countryCode)
 			
@@ -256,21 +282,16 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 	}
 	
 	@objc private func didEditText() {
-		if let phoneCode = phoneCode, let text = text {
-			let phoneNumber = phoneCode + text
-			var formattedPhoneNumber = format(string: phoneNumber)
-			
+		if let phoneCode = selectedCountry?.phoneCode, let text = text {
+			var formattedPhoneNumber = format(string: phoneCode + text)
+
 			if let validNumber = isValidNumber(phoneNumber: formattedPhoneNumber) {
 				if let e164PhoneNumber: String = try? phoneUtil.format(validNumber, numberFormat: .E164) {
-					self.phoneNumber = e164PhoneNumber
 					formattedPhoneNumber = e164PhoneNumber
-				} else {
-					self.phoneNumber = nil
+					flagPhoneNumberDelegate?.didValidatePhoneNumber(textField: self, validatedPhoneNumber: e164PhoneNumber)
 				}
-			} else {
-				self.phoneNumber = nil
 			}
-			
+
 			if var inputString = formatter?.inputString(formattedPhoneNumber) {
 				removeCountryCode(in: &inputString)
 				self.text = inputString
@@ -279,7 +300,7 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 	}
 	
 	private func removeCountryCode(in phoneNumber: inout String) {
-		if let regionCode = countryCode {
+		if let regionCode = selectedCountry?.code {
 			let countryCode = phoneUtil.getCountryCode(forRegion: regionCode).stringValue
 
 			phoneNumber = phoneNumber.replacingOccurrences(of: "+\(countryCode) ", with: "")
@@ -297,25 +318,21 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 		
 		if let validNumber = isValidNumber(phoneNumber: formattedPhoneNumber) {
 			setFlag(for: phoneUtil.getRegionCode(for: validNumber))
-			
+
 			if let e164PhoneNumber: String = try? phoneUtil.format(validNumber, numberFormat: .E164) {
-				self.phoneNumber = e164PhoneNumber
 				formattedPhoneNumber = e164PhoneNumber
+				flagPhoneNumberDelegate?.didValidatePhoneNumber(textField: self, validatedPhoneNumber: e164PhoneNumber)
 			} else {
-				self.phoneNumber = nil
 			}
 		} else {
-			self.phoneNumber = nil
 		}
 		
 		if var inputString = formatter?.inputString(formattedPhoneNumber) {
-			if let parsedPhoneNumber = parse(phoneNumber: formattedPhoneNumber) {
-				inputString = inputString.replacingOccurrences(of: "+\(parsedPhoneNumber.countryCode.stringValue) ", with: "")
-				text = inputString.replacingOccurrences(of: "+\(parsedPhoneNumber.countryCode.stringValue)", with: "")
-			}
+			removeCountryCode(in: &inputString)
+			text = inputString
 		}
 	}
-	
+
 	private func showSearchController() {
 		if let countries = countryPicker.countries {
 			let searchCountryViewController = CTKSearchCountryViewController(countries: countries)
@@ -323,7 +340,7 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 			
 			searchCountryViewController.delegate = self
 			
-			parentViewController?.present(navigationViewController, animated: false, completion: nil)
+			parentViewController?.present(navigationViewController, animated: true, completion: nil)
 		}
 	}
 	
@@ -352,46 +369,27 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 		}
 		return [space, doneButton]
 	}
-	
-	private func reload(with phoneCode: String) {
-		if let parsedPhoneNumber = parse(phoneNumber: phoneCode) {
-			self.phoneCode = "+\(parsedPhoneNumber.countryCode.stringValue)"
-		} else {
-			self.phoneCode = phoneCode
-		}
-		
-		updatePlaceholder()
-		
-		didEditText()
-	}
-	
-	private func updatePlaceholder() {		
-		if hasPhoneNumberExample == true {
-			if let countryCode = countryCode, var exampleNumber = try? phoneUtil.format(phoneUtil.getExampleNumber(countryCode), numberFormat: .INTERNATIONAL) {
-				removeCountryCode(in: &exampleNumber)
-				placeholder = exampleNumber
-			}
+
+	private func updatePlaceholder() {
+		if let countryCode = selectedCountry?.code, var exampleNumber = try? phoneUtil.format(phoneUtil.getExampleNumber(countryCode), numberFormat: .INTERNATIONAL) {
+			removeCountryCode(in: &exampleNumber)
+			placeholder = exampleNumber
 		}
 	}
 	
 	// - CountryPickerDelegate
 
-	public func countryPhoneCodePicker(_ picker: CountryPicker, didSelectCountryWithName name: String, countryCode: String, phoneCode: String, flag: UIImage) {
-		flagButton.setImage(flag, for: .normal)
-		self.countryCode = countryCode
-	
-		reload(with: phoneCode)
+	func countryPhoneCodePicker(_ picker: CountryPicker, didSelectCountry country: Country) {
+		didSelect(country: country)
 	}
 
 	// - CTKFlagPhoneNumberDelegate
 	
 	internal func didSelect(country: Country) {
-		guard let phoneCode = country.phoneCode else { return }
-		guard let countryCode = country.code else { return }
+		selectedCountry = country
 
-		flagButton.setImage(country.flag, for: .normal)
-		self.countryCode = countryCode
-		
-		reload(with: phoneCode)
+		if let name = country.name, let dialCode = country.phoneCode, let code = country.code {
+			flagPhoneNumberDelegate?.didSelectCountry(name: name, dialCode: dialCode, code: code)
+		}
 	}
 }

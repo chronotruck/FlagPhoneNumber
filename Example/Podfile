@@ -7,4 +7,5 @@ end
 
 target 'CTKFlagPhoneNumber_ExampleTests' do
 	pod 'CTKFlagPhoneNumber', :path => '../'
+	pod 'SwiftLint'
 end

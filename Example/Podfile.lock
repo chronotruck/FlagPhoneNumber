@@ -2,13 +2,16 @@ PODS:
   - CTKFlagPhoneNumber (0.5.0):
     - libPhoneNumber-iOS
   - libPhoneNumber-iOS (0.9.13)
+  - SwiftLint (0.27.0)
 
 DEPENDENCIES:
   - CTKFlagPhoneNumber (from `../`)
+  - SwiftLint
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - libPhoneNumber-iOS
+    - SwiftLint
 
 EXTERNAL SOURCES:
   CTKFlagPhoneNumber:
@@ -17,7 +20,8 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   CTKFlagPhoneNumber: 2c502acfeaf6ec9cbb2fd8179e741bd1487be932
   libPhoneNumber-iOS: e444379ac18bbfbdefad571da735b2cd7e096caa
+  SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
 
-PODFILE CHECKSUM: df7fdd973a2f9eecacb6426da7ab73c736cf3edb
+PODFILE CHECKSUM: ff43f37c1f1e8027ec3eab6b9519d338daa3b2f5
 
 COCOAPODS: 1.5.3

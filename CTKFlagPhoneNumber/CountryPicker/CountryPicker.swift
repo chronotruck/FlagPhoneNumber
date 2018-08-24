@@ -1,14 +1,14 @@
 import UIKit
 
-@objc public protocol CountryPickerDelegate {
-	func countryPhoneCodePicker(_ picker: CountryPicker, didSelectCountryWithName name: String, countryCode: String, phoneCode: String, flag: UIImage)
+protocol CountryPickerDelegate: class {
+	func countryPhoneCodePicker(_ picker: CountryPicker, didSelectCountry country: Country)
 }
 
 open class CountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource {
 	
 	var countries: [Country]!
 	open var selectedLocale: Locale?
-	open weak var countryPickerDelegate: CountryPickerDelegate?
+	weak var countryPickerDelegate: CountryPickerDelegate?
 	open var showPhoneNumbers: Bool = true
 		
 	override init(frame: CGRect) {
@@ -71,10 +71,8 @@ open class CountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSo
 		
 		if countries.count > 0 {
 			let country = countries[row]
-			
-			if let name = country.name, let countryCode = country.code, let phoneCode = country.phoneCode, let flag = country.flag {
-				countryPickerDelegate?.countryPhoneCodePicker(self, didSelectCountryWithName: name, countryCode: countryCode, phoneCode: phoneCode, flag: flag)
-			}
+
+			countryPickerDelegate?.countryPhoneCodePicker(self, didSelectCountry: country)
 		}
 	}
 	
@@ -152,10 +150,10 @@ open class CountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSo
 	}
 	
 	open func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-		let country = countries[row]
-		
-		if let name = country.name, let countryCode = country.code, let phoneCode = country.phoneCode, let flag = country.flag {
-			countryPickerDelegate?.countryPhoneCodePicker(self, didSelectCountryWithName: name, countryCode: countryCode, phoneCode: phoneCode, flag: flag)
+		if countries.count > 0 {
+			let country = countries[row]
+
+			countryPickerDelegate?.countryPhoneCodePicker(self, didSelectCountry: country)
 		}
 	}
 }
