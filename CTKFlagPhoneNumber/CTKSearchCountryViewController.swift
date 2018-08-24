@@ -21,7 +21,7 @@ class CTKSearchCountryViewController: UITableViewController, UISearchResultsUpda
 	var list: [Country]?
 	var results: [Country]?
 	
-	var delegate: CTKFlagPhoneNumberDelegate?
+	var delegate: FlagPhoneNumberDelegate?
 	
 	
 	init(countries: [Country]) {
@@ -57,7 +57,7 @@ class CTKSearchCountryViewController: UITableViewController, UISearchResultsUpda
 	}
 	
 	@objc private func dismissController() {
-		dismiss(animated: false, completion: nil)
+		dismiss(animated: true, completion: nil)
 	}
 	
 	private func initSearchBarController() {
@@ -121,14 +121,12 @@ class CTKSearchCountryViewController: UITableViewController, UISearchResultsUpda
 	}
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		tableView.reloadRows(at: [indexPath], with: .automatic)
-		
+		tableView.deselectRow(at: indexPath, animated: true)
+
 		delegate?.didSelect(country: getItem(at: indexPath))
-		
+
 		searchController?.isActive = false
 		searchController?.searchBar.resignFirstResponder()
-		
-		dismissController()
 	}
 
 	// UISearchResultsUpdating
