@@ -68,7 +68,10 @@ class ViewController: UIViewController {
 
 extension ViewController: CTKFlagPhoneNumberTextFieldDelegate {
 
-	func didSuccessPhoneNumberValidation(textField: CTKFlagPhoneNumberTextField) {
+	func didValidatePhoneNumber(textField: CTKFlagPhoneNumberTextField, isValid: Bool) {
+		textField.rightViewMode = .always
+		textField.rightView = UIImageView(image: isValid ? #imageLiteral(resourceName: "success") : #imageLiteral(resourceName: "error"))
+
 		print(
 			textField.getFormattedPhoneNumber(format: .E164),
 			textField.getFormattedPhoneNumber(format: .INTERNATIONAL),
@@ -77,17 +80,6 @@ extension ViewController: CTKFlagPhoneNumberTextFieldDelegate {
 			textField.getRawPhoneNumber()
 		)
 	}
-
-	func didFailPhoneNumberValidation(textField: CTKFlagPhoneNumberTextField) {
-		print(
-			textField.getFormattedPhoneNumber(format: .E164),
-			textField.getFormattedPhoneNumber(format: .INTERNATIONAL),
-			textField.getFormattedPhoneNumber(format: .NATIONAL),
-			textField.getFormattedPhoneNumber(format: .RFC3966),
-			textField.getRawPhoneNumber()
-		)
-	}
-
 
 	func didSelectCountry(name: String, dialCode: String, code: String) {
 		print(name, dialCode, code)

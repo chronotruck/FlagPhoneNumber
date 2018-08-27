@@ -22,6 +22,5 @@ internal protocol CTKFlagPhoneNumberDelegate {
 public protocol CTKFlagPhoneNumberTextFieldDelegate {
 	func didSelectCountry(name: String, dialCode: String, code: String)
 
-	func didSuccessPhoneNumberValidation(textField: CTKFlagPhoneNumberTextField)
-	func didFailPhoneNumberValidation(textField: CTKFlagPhoneNumberTextField)
+	func didValidatePhoneNumber(textField: CTKFlagPhoneNumberTextField, isValid: Bool)
 }

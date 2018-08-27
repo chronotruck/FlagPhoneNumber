@@ -289,17 +289,13 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 
 		do {
 			let parsedPhoneNumber: NBPhoneNumber = try phoneUtil.parse(phoneNumber, defaultRegion: countryCode)
-			
-			if phoneUtil.isValidNumber(parsedPhoneNumber) {
-				nbPhoneNumber = parsedPhoneNumber
-				flagPhoneNumberDelegate?.didSuccessPhoneNumberValidation(textField: self)
-			} else {
-				nbPhoneNumber = nil
-				flagPhoneNumberDelegate?.didFailPhoneNumberValidation(textField: self)
-			}
+			let isValid = phoneUtil.isValidNumber(parsedPhoneNumber)
+
+			nbPhoneNumber = isValid ? parsedPhoneNumber : nil
+			flagPhoneNumberDelegate?.didValidatePhoneNumber(textField: self, isValid: isValid)
 		} catch _ {
 			nbPhoneNumber = nil
-			flagPhoneNumberDelegate?.didFailPhoneNumberValidation(textField: self)
+			flagPhoneNumberDelegate?.didValidatePhoneNumber(textField: self, isValid: false)
 		}
 		return nbPhoneNumber != nil
 	}
