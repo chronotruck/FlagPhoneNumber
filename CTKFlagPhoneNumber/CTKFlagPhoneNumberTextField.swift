@@ -261,8 +261,6 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 		if hasPhoneNumberExample == true {
 			updatePlaceholder()
 		}
-
-		didEditText()
 	}
 
 	private func format(string: String) -> String {
@@ -305,6 +303,8 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 			let cleanedPhoneNumber = format(string: phoneCode + text)
 
 			if isValidNumber(phoneNumber: cleanedPhoneNumber) {
+                let code = phoneUtil.getRegionCode(for: nbPhoneNumber!)
+                countryPicker.setCountry(code!)
 				if let formattedPhoneNumber: String = try? phoneUtil.format(nbPhoneNumber!, numberFormat: numberFormat) {
 					if var inputString = formatter?.inputString(formattedPhoneNumber) {
 						removeCountryCode(in: &inputString)
