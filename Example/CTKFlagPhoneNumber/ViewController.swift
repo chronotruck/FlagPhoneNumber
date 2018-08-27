@@ -74,8 +74,8 @@ extension ViewController: CTKFlagPhoneNumberTextFieldDelegate {
 
 		print(
 			textField.getFormattedPhoneNumber(format: .E164),
-			textField.getFormattedPhoneNumber(format: .INTERNATIONAL),
-			textField.getFormattedPhoneNumber(format: .NATIONAL),
+			textField.getFormattedPhoneNumber(format: .International),
+			textField.getFormattedPhoneNumber(format: .National),
 			textField.getFormattedPhoneNumber(format: .RFC3966),
 			textField.getRawPhoneNumber()
 		)
