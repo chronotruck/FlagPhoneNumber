@@ -8,17 +8,19 @@
 import Foundation
 import libPhoneNumber_iOS
 
-public enum PhoneNumberFormat: Int {
-    case E164 = 0
-    case International = 1
-    case National = 2
-    case RFC3966 = 3
+public enum FPNFormat {
+	case E164, International, National, RFC3966
+}
+
+public enum PhoneNumberFormat {
+	case E164, International, National
 }
 
 open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, CountryPickerDelegate, CTKFlagPhoneNumberDelegate {
 
+
 	public var flagPhoneNumberDelegate: CTKFlagPhoneNumberTextFieldDelegate?
-		
+
 	/// The size of the flag
 	public var flagSize: CGSize = CGSize(width: 32, height: 32) {
 		didSet {
@@ -61,8 +63,8 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 		}
 	}
 
-	public var numberFormat: PhoneNumberFormat = .E164
-	
+	public var phoneNumberFormat: PhoneNumberFormat = .International
+
 	/// Present in the placeholder an example of a phone number according to the selected country code.
 	/// If false, you can set your own placeholder. Set to true by default.
 	public var hasPhoneNumberExample: Bool = true {
@@ -210,48 +212,9 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 		countryPicker.setCountry(regionCode)
 	}
 
-	/// Set directly the phone number. e.g "+33612345678"
-	public func set(phoneNumber: String) {
-		let cleanedPhoneNumber = format(string: phoneNumber)
-
-		if isValidNumber(phoneNumber: cleanedPhoneNumber) {
-			setFlag(for: phoneUtil.getRegionCode(for: nbPhoneNumber!))
-
-			if let formattedPhoneNumber: String = getFormattedPhoneNumber(format: numberFormat) {
-				if var inputString = formatter?.inputString(formattedPhoneNumber) {
-					removeCountryCode(in: &inputString)
-					text = inputString
-				}
-			}
-		} else {
-			if var inputString = formatter?.inputString(cleanedPhoneNumber) {
-				removeCountryCode(in: &inputString)
-				text = inputString
-			}
-		}
-	}
-    
-    private func convertPhoneFormat(format: PhoneNumberFormat) -> NBEPhoneNumberFormat {
-        let converted: NBEPhoneNumberFormat?
-        switch format {
-        case .E164:
-            converted = NBEPhoneNumberFormat.E164
-        case .International:
-            converted = NBEPhoneNumberFormat.INTERNATIONAL
-        case .National:
-            converted = NBEPhoneNumberFormat.NATIONAL
-        case .RFC3966:
-            converted = NBEPhoneNumberFormat.RFC3966
-        default:
-            converted = nil
-        }
-        assert(converted != nil)
-        return converted!
-    }
-
 	/// Get the current formatted phone number
-	public func getFormattedPhoneNumber(format: PhoneNumberFormat) -> String? {
-		return try? phoneUtil.format(nbPhoneNumber, numberFormat: convertPhoneFormat(format: format))
+	public func getFormattedPhoneNumber(format: FPNFormat) -> String? {
+		return try? phoneUtil.format(nbPhoneNumber, numberFormat: convert(format: format))
 	}
 
 	/// Get the current raw phone number
@@ -264,7 +227,87 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 		return nationalNumber as String?
 	}
 
+	/// Set directly the phone number. e.g "+33612345678"
+	public func set(phoneNumber: String) {
+		let cleanedPhoneNumber = format(string: phoneNumber)
+
+		if isValidNumber(phoneNumber: cleanedPhoneNumber) {
+			let format = convert(toFPNFormat: phoneNumberFormat)
+
+			setFlag(for: phoneUtil.getRegionCode(for: nbPhoneNumber!))
+
+			if let formattedPhoneNumber: String = getFormattedPhoneNumber(format: format) {
+				if var inputString = formatter?.inputString(formattedPhoneNumber) {
+					removeCountryCode(in: &inputString)
+					text = inputString
+				}
+			}
+		} else {
+			if var inputString = formatter?.inputString(cleanedPhoneNumber) {
+				removeCountryCode(in: &inputString)
+				text = inputString
+			}
+		}
+	}
+
 	// Private
+
+	@objc private func didEditText() {
+		if let phoneCode = selectedCountry?.phoneCode, let text = text {
+			let cleanedPhoneNumber = format(string: phoneCode + text)
+
+			if isValidNumber(phoneNumber: cleanedPhoneNumber) {
+				let format = convert(toFPNFormat: phoneNumberFormat)
+
+				if let formattedPhoneNumber: String = getFormattedPhoneNumber(format: format) {
+					if var inputString = formatter?.inputString(formattedPhoneNumber) {
+						removeCountryCode(in: &inputString)
+						self.text = inputString
+					}
+				}
+			} else {
+				if var inputString = formatter?.inputString(cleanedPhoneNumber) {
+					removeCountryCode(in: &inputString)
+					self.text = inputString
+				}
+			}
+		}
+	}
+
+	private func convert(format: FPNFormat) -> NBEPhoneNumberFormat {
+		switch format {
+		case .E164:
+			return NBEPhoneNumberFormat.E164
+		case .International:
+			return NBEPhoneNumberFormat.INTERNATIONAL
+		case .National:
+			return NBEPhoneNumberFormat.NATIONAL
+		case .RFC3966:
+			return NBEPhoneNumberFormat.RFC3966
+		}
+	}
+
+	private func convert(toFPNFormat format: PhoneNumberFormat) -> FPNFormat {
+		switch format {
+		case .E164:
+			return FPNFormat.E164
+		case .International:
+			return FPNFormat.International
+		case .National:
+			return FPNFormat.National
+		}
+	}
+
+	private func convert(toNBEPhoneNumberFormat format: PhoneNumberFormat) -> NBEPhoneNumberFormat {
+		switch format {
+		case .E164:
+			return NBEPhoneNumberFormat.E164
+		case .International:
+			return NBEPhoneNumberFormat.INTERNATIONAL
+		case .National:
+			return NBEPhoneNumberFormat.NATIONAL
+		}
+	}
 
 	private func updateUI() {
 		if let countryCode = selectedCountry?.code {
@@ -286,6 +329,7 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 		if hasPhoneNumberExample == true {
 			updatePlaceholder()
 		}
+		didEditText()
 	}
 
 	private func format(string: String) -> String {
@@ -323,28 +367,6 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 		return nbPhoneNumber != nil
 	}
 	
-	@objc private func didEditText() {
-		if let phoneCode = selectedCountry?.phoneCode, let text = text {
-			let cleanedPhoneNumber = format(string: phoneCode + text)
-
-			if isValidNumber(phoneNumber: cleanedPhoneNumber) {
-                let code = phoneUtil.getRegionCode(for: nbPhoneNumber!)
-                countryPicker.setCountry(code!)
-				if let formattedPhoneNumber: String = try? phoneUtil.format(nbPhoneNumber!, numberFormat: convertPhoneFormat(format: numberFormat)) {
-					if var inputString = formatter?.inputString(formattedPhoneNumber) {
-						removeCountryCode(in: &inputString)
-						self.text = inputString
-					}
-				}
-			} else {
-				if var inputString = formatter?.inputString(cleanedPhoneNumber) {
-					removeCountryCode(in: &inputString)
-					self.text = inputString
-				}
-			}
-		}
-	}
-	
 	private func removeCountryCode(in phoneNumber: inout String) {
 		if let regionCode = selectedCountry?.code {
 			let countryCode = phoneUtil.getCountryCode(forRegion: regionCode).stringValue
@@ -367,7 +389,7 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 	
 	private func getToolBar(with items: [UIBarButtonItem]) -> UIToolbar {
 		let toolbar: UIToolbar = UIToolbar()
-				
+
 		toolbar.barStyle = UIBarStyle.default
 		toolbar.items = items
 		toolbar.sizeToFit()
@@ -392,9 +414,17 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 	}
 
 	private func updatePlaceholder() {
-		if let countryCode = selectedCountry?.code, var exampleNumber = try? phoneUtil.format(phoneUtil.getExampleNumber(countryCode), numberFormat: convertPhoneFormat(format: numberFormat)) {
-			removeCountryCode(in: &exampleNumber)
-			placeholder = exampleNumber
+		if let countryCode = selectedCountry?.code {
+			do {
+				let example = try phoneUtil.getExampleNumber(countryCode)
+				let format = convert(toNBEPhoneNumberFormat: phoneNumberFormat)
+				var exampleString = try phoneUtil.format(example, numberFormat: format)
+
+				removeCountryCode(in: &exampleString)
+				placeholder = exampleString
+			} catch _ {
+				placeholder = nil
+			}
 		} else {
 			placeholder = nil
 		}
@@ -403,25 +433,16 @@ open class CTKFlagPhoneNumberTextField: UITextField, UITextFieldDelegate, Countr
 	// - CountryPickerDelegate
 
 	func countryPhoneCodePicker(_ picker: CountryPicker, didSelectCountry country: Country) {
-		didSelect(country: country)
-	}
-
-	// - CTKFlagPhoneNumberTextFieldDelegate
-	
-	internal func didSelect(country: Country) {
 		selectedCountry = country
 
 		if let name = country.name, let dialCode = country.phoneCode, let code = country.code {
 			flagPhoneNumberDelegate?.didSelectCountry(name: name, dialCode: dialCode, code: code)
 		}
 	}
+
+	// - CTKFlagPhoneNumberTextFieldDelegate
+	
+	internal func didSelect(country: Country) {
+		setFlag(for: country.code!)
+	}
 }
-
-
-//	public func didValidate(textField: CTKFlagPhoneNumberTextField, rawPhoneNumber: String) {
-//		var nationalNumber: NSString?
-//
-//		phoneUtil.extractCountryCode(rawPhoneNumber, nationalNumber: &nationalNumber)
-//
-//		flagPhoneNumberDelegate?.didValidate(textField: textField, rawPhoneNumber: nationalNumber! as String)
-//	}

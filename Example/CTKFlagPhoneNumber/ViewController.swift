@@ -22,6 +22,7 @@ class ViewController: UIViewController {
 		//		Bundle.FlagIcons = Bundle(for: ViewController.self)
 
 		phoneNumberTextField = CTKFlagPhoneNumberTextField(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 16, height: 50))
+		phoneNumberTextField.phoneNumberFormat = .National
 		phoneNumberTextField.borderStyle = .roundedRect
 
 		// Custom the size/edgeInsets of the flag button
