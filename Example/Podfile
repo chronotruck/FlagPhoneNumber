@@ -1,11 +1,11 @@
 platform :ios, '9.0'
 use_frameworks!
 
-target 'CTKFlagPhoneNumber_Example' do
-  pod 'CTKFlagPhoneNumber', :path => '../'
+target 'FlagPhoneNumber_Example' do
+  pod 'FlagPhoneNumber', :path => '../'
 end
 
-target 'CTKFlagPhoneNumber_ExampleTests' do
-	pod 'CTKFlagPhoneNumber', :path => '../'
+target 'FlagPhoneNumber_ExampleTests' do
+	pod 'FlagPhoneNumber', :path => '../'
 	pod 'SwiftLint'
 end

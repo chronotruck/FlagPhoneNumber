@@ -1,0 +1,6 @@
+framework module FlagPhoneNumber {
+  umbrella header "FlagPhoneNumber-umbrella.h"
+
+  export *
+  module * { export * }
+}
