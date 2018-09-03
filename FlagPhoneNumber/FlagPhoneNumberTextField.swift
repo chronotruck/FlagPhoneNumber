@@ -9,7 +9,7 @@
 import Foundation
 import libPhoneNumber_iOS
 
-open class FPNTextField: UITextField, UITextFieldDelegate, CountryPickerDelegate, FPNDelegate {
+open class FPNTextField: UITextField, UITextFieldDelegate, FPNCountryPickerDelegate, FPNDelegate {
 
 	public var flagPhoneNumberDelegate: FPNTextFieldDelegate?
 
@@ -36,7 +36,7 @@ open class FPNTextField: UITextField, UITextFieldDelegate, CountryPickerDelegate
 	}
 
 	private var phoneCodeTextField: UITextField = UITextField()
-	private lazy var countryPicker: CountryPicker = CountryPicker()
+	private lazy var countryPicker: FPNCountryPicker = FPNCountryPicker()
 	private lazy var phoneUtil: NBPhoneNumberUtil = NBPhoneNumberUtil()
 	private var nbPhoneNumber: NBPhoneNumber?
 	private var formatter: NBAsYouTypeFormatter?
@@ -66,7 +66,7 @@ open class FPNTextField: UITextField, UITextFieldDelegate, CountryPickerDelegate
 		}
 	}
 
-	var selectedCountry: Country? {
+	var selectedCountry: FPNCountry? {
 		didSet {
 			updateUI()
 		}
@@ -372,18 +372,18 @@ open class FPNTextField: UITextField, UITextFieldDelegate, CountryPickerDelegate
 		}
 	}
 	
-	// - CountryPickerDelegate
+	// - FPNCountryPickerDelegate
 
-	func countryPhoneCodePicker(_ picker: CountryPicker, didSelectCountry country: Country) {
+	func countryPhoneCodePicker(_ picker: FPNCountryPicker, didSelectCountry country: FPNCountry) {
 		if let name = country.name, let dialCode = country.phoneCode, let code = country.code {
 			flagPhoneNumberDelegate?.didSelectCountry(name: name, dialCode: dialCode, code: code)
 		}
 		selectedCountry = country
 	}
 
-	// - FlagPhoneNumberTextFieldDelegate
+	// - FPNTextFieldDelegate
 	
-	internal func didSelect(country: Country) {
+	internal func didSelect(country: FPNCountry) {
 		setFlag(for: country.code!)
 	}
 }

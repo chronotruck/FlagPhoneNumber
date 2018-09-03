@@ -1,14 +1,10 @@
 import UIKit
 
-protocol CountryPickerDelegate: class {
-	func countryPhoneCodePicker(_ picker: CountryPicker, didSelectCountry country: Country)
-}
-
-open class CountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource {
+open class FPNCountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource {
 	
-	var countries: [Country]!
+	var countries: [FPNCountry]!
 	open var selectedLocale: Locale?
-	weak var countryPickerDelegate: CountryPickerDelegate?
+	weak var countryPickerDelegate: FPNCountryPickerDelegate?
 	open var showPhoneNumbers: Bool = true
 		
 	override init(frame: CGRect) {
@@ -40,7 +36,7 @@ open class CountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSo
 		self.selectedLocale = Locale(identifier: locale)
 	}
 	
-	// MARK: - Country Methods
+	// MARK: - FPNCountry Methods
 	
 	open func setCountry(_ code: String) {
 		for index in 0..<countries.count {
@@ -78,7 +74,7 @@ open class CountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSo
 	
 	// Populates the metadata from the included json file resource
 	
-	private func countryNamesByCode() -> [Country] {
+	private func countryNamesByCode() -> [FPNCountry] {
 		let bundle: Bundle = Bundle.FlagPhoneNumber()
 		let resource: String = "countryCodes"
 		let jsonPath = bundle.path(forResource: resource, ofType: "json")
@@ -89,7 +85,7 @@ open class CountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSo
 		
 		assert(jsonPath != nil, "Resource file is not found")
 		
-		var countries = [Country]()
+		var countries = [FPNCountry]()
 		
 		do {
 			if let jsonObjects = try JSONSerialization.jsonObject(with: jsonData!, options: JSONSerialization.ReadingOptions.allowFragments) as? NSArray {
@@ -105,11 +101,11 @@ open class CountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSo
 					}
 					
 					if let locale = self.selectedLocale {
-						let country = Country(code: code, name: locale.localizedString(forRegionCode: code), phoneCode: phoneCode)
+						let country = FPNCountry(code: code, name: locale.localizedString(forRegionCode: code), phoneCode: phoneCode)
 
 						countries.append(country)
 					} else {
-						let country = Country(code: code, name: name, phoneCode: phoneCode)
+						let country = FPNCountry(code: code, name: name, phoneCode: phoneCode)
 						
 						countries.append(country)
 					}
@@ -133,12 +129,12 @@ open class CountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSo
 	}
 	
 	open func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-		var resultView: CountryView
+		var resultView: FPNCountryView
 		
 		if view == nil {
-			resultView = CountryView()
+			resultView = FPNCountryView()
 		} else {
-			resultView = view as! CountryView
+			resultView = view as! FPNCountryView
 		}
 		
 		resultView.setup(countries[row])

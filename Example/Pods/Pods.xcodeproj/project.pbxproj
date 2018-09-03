@@ -11,6 +11,8 @@
 		02BB969E5128AFEBFE56FB3F67E09417 /* FlagPhoneNumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A7DE7C39C13EEFE5496FA4FE03A113 /* FlagPhoneNumberTextField.swift */; };
 		06001B07B81026A1798C9290FBD49F51 /* Pods-FlagPhoneNumber_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 99864E939A8912589A56E642E5BAF3BA /* Pods-FlagPhoneNumber_Example-dummy.m */; };
 		072BA59E7090465B35A661955FAC7C8A /* libPhoneNumber_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3315CBF60FEE8263EE8E5334F4C54953 /* libPhoneNumber_iOS.framework */; };
+		0D8A9204213D705400E394CE /* FPNCountryPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8A9203213D705400E394CE /* FPNCountryPickerDelegate.swift */; };
+		0D8A9206213D711400E394CE /* FPNNibLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8A9205213D711400E394CE /* FPNNibLoadingView.swift */; };
 		12D3B2781A26D061CF99DEF27BF093F1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC82FB5AB191DEB0ACFE64DF6273202 /* Foundation.framework */; };
 		176AF62D7B900757F34A65A97AF2108E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC82FB5AB191DEB0ACFE64DF6273202 /* Foundation.framework */; };
 		18178E74C27C625E8D07034D892DA263 /* NSArray+NBAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = A332942325EC3FE4FACF5002516EBEA0 /* NSArray+NBAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -23,7 +25,7 @@
 		3F80D4A3D6A4E76E6358A478D8714FF2 /* NBGeneratedPhoneNumberMetaData.h in Headers */ = {isa = PBXBuildFile; fileRef = 292F2F922746EDBCCDE63808E88E9E32 /* NBGeneratedPhoneNumberMetaData.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		4C4BE079F00FE20A09BFE4143A39ACA3 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC53EDB80047C7AF3B6CCFD7F0E1BD93 /* CoreTelephony.framework */; };
 		523F2DEF0818472DA1CC76050C6C8450 /* NBPhoneNumberDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = 406FBDE9C1EFDC5DC3194A833685F0D6 /* NBPhoneNumberDefines.m */; };
-		52B6183F3345164EC9C28E1AC0C832A2 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A35B469B56C85F2AC9FE1DF7A4686A /* CountryView.swift */; };
+		52B6183F3345164EC9C28E1AC0C832A2 /* FPNCountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A35B469B56C85F2AC9FE1DF7A4686A /* FPNCountryView.swift */; };
 		57DE2A77A39B3ED28756858A4B89DCE7 /* FlagPhoneNumber.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6BDDC91FE994E66E99CF13183973F2AA /* FlagPhoneNumber.bundle */; };
 		5E68553FD192574EF423772F3262A196 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835EA947AAFFD5FA006FD5D20F12DF0E /* Bundle+Extension.swift */; };
 		64F7019EEE27B2F1C164FE2D78A0D82E /* libPhoneNumber-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D33D00770EADE2822C94347DAF0ECAE2 /* libPhoneNumber-iOS-dummy.m */; };
@@ -36,11 +38,11 @@
 		871C1D0CEFACDD463B67F8A4A93D122B /* Pods-FlagPhoneNumber_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FCFE6DD446C02263379CCEF77065195 /* Pods-FlagPhoneNumber_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87CA48BE136CCA10C640BDCBA550EF2C /* NBMetadataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 68AB427E79B0BD6FE19C35EC53E7C236 /* NBMetadataHelper.m */; };
 		8CF99846E915CEB983499DD30119FABA /* NBNumberFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = 2727FBA8308F6D679B282430C54902B3 /* NBNumberFormat.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9833B35BA65FC52C73DCE55D9F0982D9 /* CountryPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AF2382A0A3900C99892560620DE869 /* CountryPicker.swift */; };
+		9833B35BA65FC52C73DCE55D9F0982D9 /* FPNCountryPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AF2382A0A3900C99892560620DE869 /* FPNCountryPicker.swift */; };
 		9C11337C8D9684B25B1137D3CF30EEBA /* NSArray+NBAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4E2E70F81A3F0FFDC8363546980018 /* NSArray+NBAdditions.m */; };
 		9FFDAE715879B7E7DA6F6D2A72C5C7BA /* Pods-FlagPhoneNumber_ExampleTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BA36847A042DC542618F81B9392B149 /* Pods-FlagPhoneNumber_ExampleTests-dummy.m */; };
 		AF8CC6BBADC2A57DEB2E95D93C9382B4 /* FlagPhoneNumberTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D2B98B4A10FB2EDAD31E678582A2C1 /* FlagPhoneNumberTextFieldDelegate.swift */; };
-		B7EE5613647D43C371E47B3EA0509326 /* CountryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EA8555FEDCB7852D4C2A1B54257FCEB /* CountryView.xib */; };
+		B7EE5613647D43C371E47B3EA0509326 /* FPNCountryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EA8555FEDCB7852D4C2A1B54257FCEB /* FPNCountryView.xib */; };
 		B83685B3D63AFED7B36F4CE14559EA49 /* NBAsYouTypeFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 355BC2E07AC0D9CE66BF31FF1D92F82F /* NBAsYouTypeFormatter.m */; };
 		D3ED12E732142599FD1FA6FE86850FEE /* FPNSearchCountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9CA7E3328FA8199EA0D136FF6BA268 /* FPNSearchCountryViewController.swift */; };
 		DB277DCE2F2811C3DD5278B2AE532B0B /* NBPhoneNumberDesc.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CBEF704658C7597849294D0D5A69A35 /* NBPhoneNumberDesc.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -48,7 +50,7 @@
 		DE124D62A2934CCFBD307F041648EDF3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC82FB5AB191DEB0ACFE64DF6273202 /* Foundation.framework */; };
 		DE7CC0269779D7FDF08E24C2A414B3CA /* FlagPhoneNumber-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 69011DAC43E43D75F1FAAFE8E679E019 /* FlagPhoneNumber-dummy.m */; };
 		E63EA26D4877010BA1AD8E304056DDA5 /* Pods-FlagPhoneNumber_ExampleTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CE05774B965A39F12AEB00E7C32AFA35 /* Pods-FlagPhoneNumber_ExampleTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E882764686D54BACC24F3126E2955F2B /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9363F4AB33FA9A28ECBD3EB9C8C122D /* Country.swift */; };
+		E882764686D54BACC24F3126E2955F2B /* FPNCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9363F4AB33FA9A28ECBD3EB9C8C122D /* FPNCountry.swift */; };
 		EA6054DDC226A5301E87C2C24142BB5D /* FlagPhoneNumber-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FFC3F2E1A1B7A924086B7D51B2E4519D /* FlagPhoneNumber-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ED42DE1DAE4342B1E717E90266665875 /* NBMetadataHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A926BF9CF3BE1B301243030DF6ABF2F /* NBMetadataHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F453AFDD0044A597D3319465E2F27AE5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAC82FB5AB191DEB0ACFE64DF6273202 /* Foundation.framework */; };
@@ -104,6 +106,8 @@
 		01A7DE7C39C13EEFE5496FA4FE03A113 /* FlagPhoneNumberTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FlagPhoneNumberTextField.swift; path = FlagPhoneNumber/FlagPhoneNumberTextField.swift; sourceTree = "<group>"; };
 		0550835CDE91029AFB1A183D694AE0B9 /* FlagKit.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = FlagKit.xcassets; path = FlagPhoneNumber/Resources/FlagKit.xcassets; sourceTree = "<group>"; };
 		05659824EC2CAEED33563C67E3F3C33A /* NBPhoneNumberUtil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NBPhoneNumberUtil.m; path = libPhoneNumber/NBPhoneNumberUtil.m; sourceTree = "<group>"; };
+		0D8A9203213D705400E394CE /* FPNCountryPickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPNCountryPickerDelegate.swift; sourceTree = "<group>"; };
+		0D8A9205213D711400E394CE /* FPNNibLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPNNibLoadingView.swift; sourceTree = "<group>"; };
 		1008092113235F8E95F4DF1203A84097 /* Pods-FlagPhoneNumber_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-FlagPhoneNumber_Example.modulemap"; sourceTree = "<group>"; };
 		1F29BDED61D9C5C3B57150FC681661A3 /* NBAsYouTypeFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBAsYouTypeFormatter.h; path = libPhoneNumber/NBAsYouTypeFormatter.h; sourceTree = "<group>"; };
 		20A5D587AAFABA799BEBE09F97317103 /* Pods-FlagPhoneNumber_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FlagPhoneNumber_Example-resources.sh"; sourceTree = "<group>"; };
@@ -117,48 +121,48 @@
 		2BEE403662393F12902A88A9F04DB153 /* NBPhoneNumberUtil.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBPhoneNumberUtil.h; path = libPhoneNumber/NBPhoneNumberUtil.h; sourceTree = "<group>"; };
 		2CBEF704658C7597849294D0D5A69A35 /* NBPhoneNumberDesc.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBPhoneNumberDesc.h; path = libPhoneNumber/NBPhoneNumberDesc.h; sourceTree = "<group>"; };
 		2E0C1C414C26044C783ED9B670FC17C7 /* libPhoneNumber-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "libPhoneNumber-iOS.modulemap"; sourceTree = "<group>"; };
-		2EA8555FEDCB7852D4C2A1B54257FCEB /* CountryView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = CountryView.xib; path = FlagPhoneNumber/Resources/CountryView.xib; sourceTree = "<group>"; };
+		2EA8555FEDCB7852D4C2A1B54257FCEB /* FPNCountryView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = FPNCountryView.xib; path = FlagPhoneNumber/Resources/FPNCountryView.xib; sourceTree = "<group>"; };
 		3315CBF60FEE8263EE8E5334F4C54953 /* libPhoneNumber_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = libPhoneNumber_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		355BC2E07AC0D9CE66BF31FF1D92F82F /* NBAsYouTypeFormatter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NBAsYouTypeFormatter.m; path = libPhoneNumber/NBAsYouTypeFormatter.m; sourceTree = "<group>"; };
 		3A536C173DB9E275EB07DFD5D2C0D051 /* NBPhoneMetaData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBPhoneMetaData.h; path = libPhoneNumber/NBPhoneMetaData.h; sourceTree = "<group>"; };
 		3A926BF9CF3BE1B301243030DF6ABF2F /* NBMetadataHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBMetadataHelper.h; path = libPhoneNumber/NBMetadataHelper.h; sourceTree = "<group>"; };
 		3B78103C0DD78E823165EE2E2E60677F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		406FBDE9C1EFDC5DC3194A833685F0D6 /* NBPhoneNumberDefines.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NBPhoneNumberDefines.m; path = libPhoneNumber/NBPhoneNumberDefines.m; sourceTree = "<group>"; };
-		44A5E3C07645A01224CD67950F59DF27 /* Pods_FlagPhoneNumber_ExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FlagPhoneNumber_ExampleTests.framework; path = "Pods-FlagPhoneNumber_ExampleTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		44A5E3C07645A01224CD67950F59DF27 /* Pods_FlagPhoneNumber_ExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlagPhoneNumber_ExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48E9E18B3791067AB9BFBB9D199CA9D0 /* Pods-FlagPhoneNumber_ExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FlagPhoneNumber_ExampleTests.release.xcconfig"; sourceTree = "<group>"; };
-		51240FDA224F39616EB338E510815EF0 /* FlagPhoneNumber.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = FlagPhoneNumber.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		594E59F2CD3CF66A29910024CEC6E716 /* FlagPhoneNumber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FlagPhoneNumber.framework; path = FlagPhoneNumber.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		51240FDA224F39616EB338E510815EF0 /* FlagPhoneNumber.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = FlagPhoneNumber.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		594E59F2CD3CF66A29910024CEC6E716 /* FlagPhoneNumber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FlagPhoneNumber.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FCFE6DD446C02263379CCEF77065195 /* Pods-FlagPhoneNumber_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FlagPhoneNumber_Example-umbrella.h"; sourceTree = "<group>"; };
 		60476A8F313BA256FE48EBEF30B719A3 /* Pods-FlagPhoneNumber_ExampleTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FlagPhoneNumber_ExampleTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		67EEC49798B35860E2CC57F74DA6E7E7 /* Pods-FlagPhoneNumber_ExampleTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FlagPhoneNumber_ExampleTests-resources.sh"; sourceTree = "<group>"; };
 		68AB427E79B0BD6FE19C35EC53E7C236 /* NBMetadataHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NBMetadataHelper.m; path = libPhoneNumber/NBMetadataHelper.m; sourceTree = "<group>"; };
 		69011DAC43E43D75F1FAAFE8E679E019 /* FlagPhoneNumber-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FlagPhoneNumber-dummy.m"; sourceTree = "<group>"; };
 		6A5D314B6DF4FAE79659B6C773674AD2 /* NBPhoneNumber.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NBPhoneNumber.m; path = libPhoneNumber/NBPhoneNumber.m; sourceTree = "<group>"; };
-		6BDDC91FE994E66E99CF13183973F2AA /* FlagPhoneNumber.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = FlagPhoneNumber.bundle; path = "FlagPhoneNumber-FlagPhoneNumber.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BDDC91FE994E66E99CF13183973F2AA /* FlagPhoneNumber.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlagPhoneNumber.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		722F29609D982C5E41C292B3A212F683 /* NBPhoneNumber.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBPhoneNumber.h; path = libPhoneNumber/NBPhoneNumber.h; sourceTree = "<group>"; };
-		72AF2382A0A3900C99892560620DE869 /* CountryPicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryPicker.swift; sourceTree = "<group>"; };
+		72AF2382A0A3900C99892560620DE869 /* FPNCountryPicker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FPNCountryPicker.swift; sourceTree = "<group>"; };
 		7A28A792548C4311D7F4A798E91FE550 /* Pods-FlagPhoneNumber_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FlagPhoneNumber_Example.release.xcconfig"; sourceTree = "<group>"; };
 		7D705250C48408510B6DF0BD55EFEC67 /* Pods-FlagPhoneNumber_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FlagPhoneNumber_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		835EA947AAFFD5FA006FD5D20F12DF0E /* Bundle+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		90D2B98B4A10FB2EDAD31E678582A2C1 /* FlagPhoneNumberTextFieldDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FlagPhoneNumberTextFieldDelegate.swift; path = FlagPhoneNumber/FlagPhoneNumberTextFieldDelegate.swift; sourceTree = "<group>"; };
 		91F70525EA324E3B350122FECC927586 /* libPhoneNumber-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "libPhoneNumber-iOS-prefix.pch"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		99864E939A8912589A56E642E5BAF3BA /* Pods-FlagPhoneNumber_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FlagPhoneNumber_Example-dummy.m"; sourceTree = "<group>"; };
 		9BA36847A042DC542618F81B9392B149 /* Pods-FlagPhoneNumber_ExampleTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FlagPhoneNumber_ExampleTests-dummy.m"; sourceTree = "<group>"; };
-		9F9DFB63B18615A839385E9043D05E3D /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		9F9DFB63B18615A839385E9043D05E3D /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		A332942325EC3FE4FACF5002516EBEA0 /* NSArray+NBAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+NBAdditions.h"; path = "libPhoneNumber/NSArray+NBAdditions.h"; sourceTree = "<group>"; };
 		A4B8FE1CAD5951A99D295515E87E1B59 /* FlagPhoneNumber-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FlagPhoneNumber-prefix.pch"; sourceTree = "<group>"; };
-		A5C3AC4731A45526D821684A443982F0 /* countryCodes.json */ = {isa = PBXFileReference; includeInIndex = 1; name = countryCodes.json; path = FlagPhoneNumber/Resources/countryCodes.json; sourceTree = "<group>"; };
+		A5C3AC4731A45526D821684A443982F0 /* countryCodes.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = countryCodes.json; path = FlagPhoneNumber/Resources/countryCodes.json; sourceTree = "<group>"; };
 		A92E6D1BBE6F84F00427471ECDAB54E6 /* Pods-FlagPhoneNumber_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FlagPhoneNumber_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		A9FD5CD69BDFF9951B678AA17C46F000 /* Pods-FlagPhoneNumber_ExampleTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FlagPhoneNumber_ExampleTests-frameworks.sh"; sourceTree = "<group>"; };
 		AB2A6ABFBC29EC2D45FEE8E516A0F42C /* ResourceBundle-FlagPhoneNumber-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-FlagPhoneNumber-Info.plist"; sourceTree = "<group>"; };
 		AC53EDB80047C7AF3B6CCFD7F0E1BD93 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/CoreTelephony.framework; sourceTree = DEVELOPER_DIR; };
-		AE8987195DF2542311DDF7D08F0CCB87 /* Pods_FlagPhoneNumber_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FlagPhoneNumber_Example.framework; path = "Pods-FlagPhoneNumber_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE8987195DF2542311DDF7D08F0CCB87 /* Pods_FlagPhoneNumber_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlagPhoneNumber_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1DD5150A55B5B9D9E0360F36EA52719 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B3A35B469B56C85F2AC9FE1DF7A4686A /* CountryView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CountryView.swift; sourceTree = "<group>"; };
+		B3A35B469B56C85F2AC9FE1DF7A4686A /* FPNCountryView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FPNCountryView.swift; sourceTree = "<group>"; };
 		B7AEA2569234A2A682FA23EC613B9A4D /* NBPhoneNumberDesc.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NBPhoneNumberDesc.m; path = libPhoneNumber/NBPhoneNumberDesc.m; sourceTree = "<group>"; };
 		BDF290253687679A23B1FD5F90D4FB58 /* NBPhoneNumberDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBPhoneNumberDefines.h; path = libPhoneNumber/NBPhoneNumberDefines.h; sourceTree = "<group>"; };
-		BE5A881CB66BBC2F766087FAEDBC9D1C /* libPhoneNumber_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = libPhoneNumber_iOS.framework; path = "libPhoneNumber-iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE5A881CB66BBC2F766087FAEDBC9D1C /* libPhoneNumber_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = libPhoneNumber_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4902BBC0F8F770568DDF056633FF0AD /* Pods-FlagPhoneNumber_ExampleTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FlagPhoneNumber_ExampleTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		CA7EE5933BE8199F624FE14B346DFC27 /* libPhoneNumber-iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "libPhoneNumber-iOS.xcconfig"; sourceTree = "<group>"; };
 		CB4E2E70F81A3F0FFDC8363546980018 /* NSArray+NBAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+NBAdditions.m"; path = "libPhoneNumber/NSArray+NBAdditions.m"; sourceTree = "<group>"; };
@@ -167,10 +171,10 @@
 		D2CB91CD7EC59B66DB0A602F3828FDEC /* libPhoneNumber-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "libPhoneNumber-iOS-umbrella.h"; sourceTree = "<group>"; };
 		D33D00770EADE2822C94347DAF0ECAE2 /* libPhoneNumber-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "libPhoneNumber-iOS-dummy.m"; sourceTree = "<group>"; };
 		D3495941759A7A85FACF67DB26662B07 /* FlagPhoneNumberDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FlagPhoneNumberDelegate.swift; path = FlagPhoneNumber/FlagPhoneNumberDelegate.swift; sourceTree = "<group>"; };
-		D9363F4AB33FA9A28ECBD3EB9C8C122D /* Country.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		D9363F4AB33FA9A28ECBD3EB9C8C122D /* FPNCountry.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FPNCountry.swift; sourceTree = "<group>"; };
 		DAC82FB5AB191DEB0ACFE64DF6273202 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		DF2BE168E546ADB93B42617FD967C8B7 /* NBNumberFormat.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NBNumberFormat.m; path = libPhoneNumber/NBNumberFormat.m; sourceTree = "<group>"; };
-		E2B3EA9288A06A32A65B41CD2F9C17F5 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		E2B3EA9288A06A32A65B41CD2F9C17F5 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E53ADF9CE8043A046E41EC3D00BD4155 /* FlagPhoneNumber.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FlagPhoneNumber.modulemap; sourceTree = "<group>"; };
 		E7C42A658C129CF537CC309539C15FFF /* Pods-FlagPhoneNumber_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FlagPhoneNumber_Example-frameworks.sh"; sourceTree = "<group>"; };
 		F2DC30F1855BB98DD1C06E5281905D5D /* NBPhoneMetaData.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NBPhoneMetaData.m; path = libPhoneNumber/NBPhoneMetaData.m; sourceTree = "<group>"; };
@@ -228,7 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				A5C3AC4731A45526D821684A443982F0 /* countryCodes.json */,
-				2EA8555FEDCB7852D4C2A1B54257FCEB /* CountryView.xib */,
+				2EA8555FEDCB7852D4C2A1B54257FCEB /* FPNCountryView.xib */,
 				0550835CDE91029AFB1A183D694AE0B9 /* FlagKit.xcassets */,
 			);
 			name = Resources;
@@ -270,12 +274,12 @@
 		25D7629C2439EF94ED5DFB62F074B8F6 /* FlagPhoneNumber */ = {
 			isa = PBXGroup;
 			children = (
+				DCD49D4F55B1022474D4E05D66940A0B /* FPNCountryPicker */,
 				D3495941759A7A85FACF67DB26662B07 /* FlagPhoneNumberDelegate.swift */,
 				01A7DE7C39C13EEFE5496FA4FE03A113 /* FlagPhoneNumberTextField.swift */,
 				90D2B98B4A10FB2EDAD31E678582A2C1 /* FlagPhoneNumberTextFieldDelegate.swift */,
 				2289B1B769881C9C5FB933A1E3010E81 /* FPNFormat.swift */,
 				FB9CA7E3328FA8199EA0D136FF6BA268 /* FPNSearchCountryViewController.swift */,
-				DCD49D4F55B1022474D4E05D66940A0B /* CountryPicker */,
 				BE34307DD3093CF669FDACB738D4E748 /* Pod */,
 				111132F44A4C20D1F0347A3A8F387BAF /* Resources */,
 				22187CC2CE3C43A07FB698D1D51A80FB /* Support Files */,
@@ -307,7 +311,6 @@
 			isa = PBXGroup;
 			children = (
 			);
-			name = SwiftLint;
 			path = SwiftLint;
 			sourceTree = "<group>";
 		};
@@ -394,7 +397,6 @@
 				CB4E2E70F81A3F0FFDC8363546980018 /* NSArray+NBAdditions.m */,
 				B8E2359EDE1F5ED54B5AEADFCA689D0D /* Support Files */,
 			);
-			name = "libPhoneNumber-iOS";
 			path = "libPhoneNumber-iOS";
 			sourceTree = "<group>";
 		};
@@ -440,15 +442,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		DCD49D4F55B1022474D4E05D66940A0B /* CountryPicker */ = {
+		DCD49D4F55B1022474D4E05D66940A0B /* FPNCountryPicker */ = {
 			isa = PBXGroup;
 			children = (
-				D9363F4AB33FA9A28ECBD3EB9C8C122D /* Country.swift */,
-				72AF2382A0A3900C99892560620DE869 /* CountryPicker.swift */,
-				B3A35B469B56C85F2AC9FE1DF7A4686A /* CountryView.swift */,
+				D9363F4AB33FA9A28ECBD3EB9C8C122D /* FPNCountry.swift */,
+				72AF2382A0A3900C99892560620DE869 /* FPNCountryPicker.swift */,
+				0D8A9203213D705400E394CE /* FPNCountryPickerDelegate.swift */,
+				B3A35B469B56C85F2AC9FE1DF7A4686A /* FPNCountryView.swift */,
+				0D8A9205213D711400E394CE /* FPNNibLoadingView.swift */,
 			);
-			name = CountryPicker;
-			path = FlagPhoneNumber/CountryPicker;
+			name = FPNCountryPicker;
+			path = FlagPhoneNumber/FPNCountryPicker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -652,7 +656,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B25554E407A6D341050B5F98E942E01 /* countryCodes.json in Resources */,
-				B7EE5613647D43C371E47B3EA0509326 /* CountryView.xib in Resources */,
+				B7EE5613647D43C371E47B3EA0509326 /* FPNCountryView.xib in Resources */,
 				7D9ECCBB9C487B0AB8EE2AA39B266CD1 /* FlagKit.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -672,12 +676,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E68553FD192574EF423772F3262A196 /* Bundle+Extension.swift in Sources */,
-				E882764686D54BACC24F3126E2955F2B /* Country.swift in Sources */,
-				9833B35BA65FC52C73DCE55D9F0982D9 /* CountryPicker.swift in Sources */,
-				52B6183F3345164EC9C28E1AC0C832A2 /* CountryView.swift in Sources */,
+				E882764686D54BACC24F3126E2955F2B /* FPNCountry.swift in Sources */,
+				9833B35BA65FC52C73DCE55D9F0982D9 /* FPNCountryPicker.swift in Sources */,
+				52B6183F3345164EC9C28E1AC0C832A2 /* FPNCountryView.swift in Sources */,
 				DE7CC0269779D7FDF08E24C2A414B3CA /* FlagPhoneNumber-dummy.m in Sources */,
 				F7AD0E7F9604161B0D20BEB522E2291B /* FlagPhoneNumberDelegate.swift in Sources */,
 				02BB969E5128AFEBFE56FB3F67E09417 /* FlagPhoneNumberTextField.swift in Sources */,
+				0D8A9204213D705400E394CE /* FPNCountryPickerDelegate.swift in Sources */,
+				0D8A9206213D711400E394CE /* FPNNibLoadingView.swift in Sources */,
 				AF8CC6BBADC2A57DEB2E95D93C9382B4 /* FlagPhoneNumberTextFieldDelegate.swift in Sources */,
 				28484835544FA6C7C577BCB1AE200D0F /* FPNFormat.swift in Sources */,
 				D3ED12E732142599FD1FA6FE86850FEE /* FPNSearchCountryViewController.swift in Sources */,
@@ -825,8 +831,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -878,8 +883,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -978,8 +982,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
