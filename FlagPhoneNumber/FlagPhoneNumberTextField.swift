@@ -235,10 +235,12 @@ open class FPNTextField: UITextField, UITextFieldDelegate, CountryPickerDelegate
 
 	@objc private func didEditText() {
 		if let phoneCode = selectedCountry?.phoneCode, let number = text {
-			let cleanedPhoneNumber = clean(string: "\(phoneCode) \(number)")
+			var cleanedPhoneNumber = clean(string: "\(phoneCode) \(number)")
 
 			if let validPhoneNumber = getValidNumber(phoneNumber: cleanedPhoneNumber) {
 				nbPhoneNumber = validPhoneNumber
+
+				cleanedPhoneNumber = "+\(validPhoneNumber.countryCode.stringValue)\(validPhoneNumber.nationalNumber.stringValue)"
 
 				if let inputString = formatter?.inputString(cleanedPhoneNumber) {
 					text = remove(dialCode: phoneCode, in: inputString)
