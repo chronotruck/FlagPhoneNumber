@@ -31,11 +31,10 @@ pod "FlagPhoneNumber"
 
 ## Usage
 
-You can instantiate it in storyboards or .xibs.
+You can instantiate it in storyboards/xibs or programmatically:
 
-Programmatically:
 ```swift
-phoneNumberTextField = FlagPhoneNumberTextField(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 16, height: 50))
+let phoneNumberTextField = FlagPhoneNumberTextField(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 16, height: 50))
 
 // You can change the chosen flag then set the phone number
 phoneNumberTextField.setFlag(for: "FR")
@@ -45,13 +44,36 @@ phoneNumberTextField.set(phoneNumber: "0600000001")
 phoneNumberTextField.set(phoneNumber: "+33600000001")
 
 // By default, an example of a phone number according to the selected country is displayed in the placeholder. You can use your own placeholder:
-phoneNumberTextField.hasPhoneNumberExample = false
+phoneNumberTextField.hasPhoneNumberExample = false // Default true
 phoneNumberTextField.placeholder = "Phone Number"
+```
 
-// You can also get the phone number in E.164 format, the country code and the raw phone number
-print(phoneNumberTextField.getFormattedPhoneNumber()) // Output: +33600000001
-print(phoneNumberTextField.getCountryPhoneCode()) // Output: +33
-print(phoneNumberTextField.getRawPhoneNumber()) // Output: 600000001
+## Delegate
+FlagPhoneNumberTextField provides you a FPNTextFieldDelegate.
+
+It lets you know you when a country is selected
+```swift
+func didSelectCountry(name: String, dialCode: String, code: String) {
+  print(name, dialCode, code) // Output "France", "+33", "FR"
+}
+```
+or when the phone number is valid or not:
+```swift
+func didValidatePhoneNumber(textField: FPNTextField, isValid: Bool) {
+  if isValid {
+    // Do something...
+	} else {
+	  // Do something...
+	}
+```
+
+Once a phone number is valid, you can get it in severals formats (E164, International, National):
+```swift
+textField.getFormattedPhoneNumber(format: .E164),           // Output "+33600000001"
+textField.getFormattedPhoneNumber(format: .International),  // Output "+33 6 00 00 00 01"
+textField.getFormattedPhoneNumber(format: .National),       // Output "06 00 00 00 01"
+textField.getFormattedPhoneNumber(format: .RFC3966),        // Output "tel:+33-6-00-00-00-01"
+textField.getRawPhoneNumber()                               // Output "600000001"
 ```
 
 ## Customization
