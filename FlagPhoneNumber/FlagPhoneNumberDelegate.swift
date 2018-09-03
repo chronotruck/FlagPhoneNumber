@@ -9,5 +9,5 @@
 import Foundation
 
 internal protocol FPNDelegate {
-	func didSelect(country: Country)
+	func didSelect(country: FPNCountry)
 }

@@ -11,13 +11,13 @@ import Foundation
 class FPNSearchCountryViewController: UITableViewController, UISearchResultsUpdating, UISearchControllerDelegate {
 	
 	var searchController: UISearchController?
-	var list: [Country]?
-	var results: [Country]?
+	var list: [FPNCountry]?
+	var results: [FPNCountry]?
 	
 	var delegate: FPNDelegate?
 	
 	
-	init(countries: [Country]) {
+	init(countries: [FPNCountry]) {
 		super.init(nibName: nil, bundle: nil)
 		
 		self.list = countries
@@ -77,8 +77,8 @@ class FPNSearchCountryViewController: UITableViewController, UISearchResultsUpda
 		definesPresentationContext = true
 	}
 	
-	private func getItem(at indexPath: IndexPath) -> Country {
-		var array: [Country]!
+	private func getItem(at indexPath: IndexPath) -> FPNCountry {
+		var array: [FPNCountry]!
 		
 		if let searchController = searchController, searchController.isActive && results != nil && results!.count > 0 {
 			array = results
@@ -135,7 +135,7 @@ class FPNSearchCountryViewController: UITableViewController, UISearchResultsUpda
 		}
 		
 		if let searchText = searchController.searchBar.text, searchText.count > 0 {
-			results = list!.filter({(item: Country) -> Bool in
+			results = list!.filter({(item: FPNCountry) -> Bool in
 				if item.name?.lowercased().range(of: searchText.lowercased()) != nil {
 					return true
 				} else if item.code?.lowercased().range(of: searchText.lowercased()) != nil {
