@@ -1,11 +1,11 @@
-# CTKFlagPhoneNumber
+# FlagPhoneNumber
 
-CTKFlagPhoneNumber is a phone number textfield with a fancy country code picker.   
+FlagPhoneNumber is a phone number textfield with a fancy country code picker.   
 
-[![CI Status](http://img.shields.io/travis/grifas/CTKFlagPhoneNumber.svg?style=flat)](https://travis-ci.org/chronotruck/CTKFlagPhoneNumber)
-[![Version](https://img.shields.io/cocoapods/v/CTKFlagPhoneNumber.svg?style=flat)](http://cocoapods.org/pods/CTKFlagPhoneNumber)
-[![License](https://img.shields.io/cocoapods/l/CTKFlagPhoneNumber.svg?style=flat)](http://cocoapods.org/pods/CTKFlagPhoneNumber)
-[![Platform](https://img.shields.io/cocoapods/p/CTKFlagPhoneNumber.svg?style=flat)](http://cocoapods.org/pods/CTKFlagPhoneNumber)
+[![CI Status](http://img.shields.io/travis/grifas/FlagPhoneNumber.svg?style=flat)](https://travis-ci.org/chronotruck/FlagPhoneNumber)
+[![Version](https://img.shields.io/cocoapods/v/FlagPhoneNumber.svg?style=flat)](http://cocoapods.org/pods/FlagPhoneNumber)
+[![License](https://img.shields.io/cocoapods/l/FlagPhoneNumber.svg?style=flat)](http://cocoapods.org/pods/FlagPhoneNumber)
+[![Platform](https://img.shields.io/cocoapods/p/FlagPhoneNumber.svg?style=flat)](http://cocoapods.org/pods/FlagPhoneNumber)
 [![Language](https://img.shields.io/badge/language-swift-brightgreen.svg?style=flat)](https://developer.apple.com/swift)
 
 ## Screenshot
@@ -22,11 +22,11 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
-CTKFlagPhoneNumber is available through [CocoaPods](http://cocoapods.org). To install
+FlagPhoneNumber is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod "CTKFlagPhoneNumber"
+pod "FlagPhoneNumber"
 ```
 
 ## Usage
@@ -35,7 +35,7 @@ You can instantiate it in storyboards or .xibs.
 
 Programmatically:
 ```swift
-phoneNumberTextField = CTKFlagPhoneNumberTextField(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 16, height: 50))
+phoneNumberTextField = FlagPhoneNumberTextField(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 16, height: 50))
 
 // You can change the chosen flag then set the phone number
 phoneNumberTextField.setFlag(for: "FR")
@@ -58,7 +58,7 @@ print(phoneNumberTextField.getRawPhoneNumber()) // Output: 600000001
 
 FlagKit is used by default but you can customize the list with your own flag icons assets:
 ```swift
-// Be sure to set it before initializing a CTKFlagPhoneNumber instance.
+// Be sure to set it before initializing a FlagPhoneNumber instance.
 Bundle.FlagIcons = YOUR_FLAG_ICONS_BUNDLE
 ```
 
@@ -109,4 +109,4 @@ Don't hesitate to contact me or make a pull request to upgrade this library.
 
 ## License
 
-CTKFlagPhoneNumber is available under the Apache license. See the LICENSE file for more info.
+FlagPhoneNumber is available under the Apache license. See the LICENSE file for more info.
