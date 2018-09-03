@@ -11,7 +11,7 @@ import XCTest
 
 class FlagPhoneNumber_ExampleTests: XCTestCase {
 
-	let textfield = FlagPhoneNumberTextField()
+	let textfield = FPNTextField()
 
 	override func setUp() {
 		super.setUp()
@@ -419,7 +419,7 @@ class FlagPhoneNumber_ExampleTests: XCTestCase {
 		textfield.set(phoneNumber: "+39054988")
 		XCTAssertEqual(textfield.selectedCountry?.phoneCode, "+39")
 		XCTAssertEqual(textfield.selectedCountry?.code, "IT")
-		XCTAssertEqual(textfield.text, "0549 88")
+		XCTAssertEqual(textfield.text, "54988")
 		textfield.set(phoneNumber: "+61891641234")
 		XCTAssertEqual(textfield.selectedCountry?.phoneCode, "+61")
 		XCTAssertEqual(textfield.selectedCountry?.code, "CX")
@@ -779,7 +779,7 @@ class FlagPhoneNumber_ExampleTests: XCTestCase {
 		textfield.set(phoneNumber: "+3780549876811")
 		XCTAssertEqual(textfield.selectedCountry?.phoneCode, "+378")
 		XCTAssertEqual(textfield.selectedCountry?.code, "SM")
-		XCTAssertEqual(textfield.text, "(0549) 876811")
+		XCTAssertEqual(textfield.text, "549876811")
 		//		textfield.set(phoneNumber: "+590590271234")
 		//		XCTAssertEqual(textfield.selectedCountry?.phoneCode, "+590")
 		//		XCTAssertEqual(textfield.selectedCountry?.code, "MF")
