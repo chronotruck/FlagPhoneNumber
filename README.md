@@ -8,19 +8,19 @@ FlagPhoneNumber is a phone number textfield with a fancy country code picker.
 [![Platform](https://img.shields.io/cocoapods/p/FlagPhoneNumber.svg?style=flat)](http://cocoapods.org/pods/FlagPhoneNumber)
 [![Language](https://img.shields.io/badge/language-swift-brightgreen.svg?style=flat)](https://developer.apple.com/swift)
 
-## Screenshot
+## 🌅 Screenshot
 <img src="./Screenshot/screenshot_1.PNG" width="288px"> <img src="./Screenshot/screenshot_2.PNG" width="288px"> <img src="./Screenshot/screenshot_3.PNG" width="288px">
 
 
-## Localization 🌍
+## 🌍 Localization
 
 Country names are displayed according to the phone language
 
-## Example
+## 📲 Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-## Installation
+## ⬇️ Installation
 
 FlagPhoneNumber is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
@@ -29,7 +29,7 @@ it, simply add the following line to your Podfile:
 pod "FlagPhoneNumber"
 ```
 
-## Usage
+## 🗺 Usage
 
 You can instantiate it in storyboards/xibs or programmatically:
 
@@ -48,7 +48,7 @@ phoneNumberTextField.hasPhoneNumberExample = false // Default true
 phoneNumberTextField.placeholder = "Phone Number"
 ```
 
-## Delegate
+## 🚨 Delegate
 FlagPhoneNumberTextField provides you a FPNTextFieldDelegate.
 
 It lets you know you when a country is selected
@@ -76,7 +76,7 @@ textField.getFormattedPhoneNumber(format: .RFC3966),        // Output "tel:+33-6
 textField.getRawPhoneNumber()                               // Output "600000001"
 ```
 
-## Customization
+## 🎨 Customization
 
 FlagKit is used by default but you can customize the list with your own flag icons assets:
 ```swift
@@ -112,23 +112,23 @@ You can also customize the flag button's properties:
 phoneNumberTextField.flagButton.isUserInteractionEnabled = false
 ```
 
-## Next Improvments
+## ✨ Next Improvments
 - [x] Localization
 - [x] Country search
 - [x] Placeholder
 - [ ] Exclude Countries
 - [ ] Any idea ?
 
-## Conception
+## ☕️ Conception
 This library is high inspired of MRCountryPicker library and use libPhoneNumber-iOS library.
 https://github.com/xtrinch/MRCountryPicker / https://github.com/iziz/libPhoneNumber-iOS
 
-## Author
+## 💁🏻‍♂️ Author
 
 grifas, aurelien.grifasi@chronotruck.com
 
 Don't hesitate to contact me or make a pull request to upgrade this library.
 
-## License
+## 📝 License
 
 FlagPhoneNumber is available under the Apache license. See the LICENSE file for more info.
