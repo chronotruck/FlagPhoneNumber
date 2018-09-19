@@ -5,12 +5,12 @@ struct FPNCountry {
 	var name: String?
 	var phoneCode: String?
 	var flag: UIImage?
-	
+
 	init(code: String?, name: String?, phoneCode: String?) {
 		self.code = code
 		self.name = name
 		self.phoneCode = phoneCode
-		
+
 		if let code = code, let flag = UIImage(named: code, in: Bundle.FlagIcons, compatibleWith: nil) {
 			self.flag = flag
 		} else {
