@@ -228,6 +228,12 @@ open class FPNTextField: UITextField, UITextFieldDelegate, FPNCountryPickerDeleg
 			setFlag(for: phoneUtil.getRegionCode(for: validPhoneNumber))
 		}
 	}
+    
+    // Get Region Code e.g "KR"
+    public func getRegionCode() -> String?{
+        return phoneUtil.getRegionCode(for: nbPhoneNumber)
+    }
+    
 
 	// Private
 
