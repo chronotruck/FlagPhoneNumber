@@ -228,7 +228,25 @@ open class FPNTextField: UITextField, UITextFieldDelegate, FPNCountryPickerDeleg
 			setFlag(for: phoneUtil.getRegionCode(for: validPhoneNumber))
 		}
 	}
+    
+    // Get Region Code e.g "KR"
+    public func getRegionCode() -> String?{
+        return phoneUtil.getRegionCode(for: nbPhoneNumber)
+    }
+    
+    // Get DialCode
+    public func getCountryCode(withPlus:Bool = true) -> String? {
+        guard let countryCode = phoneUtil.getCountryCode(forRegion: getRegionCode()) else { return nil }
+        if withPlus {
+            return String("+\(countryCode)")
+        }else{
+            return String("\(countryCode)")
+        }
+    }
+    
+    public func getCountry(){
 
+    }
 	// Private
 
 	@objc private func didEditText() {
