@@ -1,3 +1,5 @@
+<!-- Issues that don't use this template will be closed. -->
+
 ### Expected behavior
   Put here the expected behavior
 ### Actual behavior
