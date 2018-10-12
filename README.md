@@ -50,16 +50,17 @@ FlagPhoneNumberTextField provides you a FPNTextFieldDelegate.
 It lets you know you when a country is selected
 ```swift
 func fpnDidSelectCountry(name: String, dialCode: String, code: String) {
-print(name, dialCode, code) // Output "France", "+33", "FR"
+  print(name, dialCode, code) // Output "France", "+33", "FR"
 }
 ```
 or when the phone number is valid or not:
 ```swift
 func fpnDidValidatePhoneNumber(textField: FPNTextField, isValid: Bool) {
-if isValid {
-// Do something...
-} else {
-// Do something...
+  if isValid {
+    // Do something...
+   } else {
+    // Do something...
+  }
 }
 ```
 
