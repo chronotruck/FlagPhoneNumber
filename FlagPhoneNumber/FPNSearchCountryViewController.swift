@@ -115,7 +115,7 @@ class FPNSearchCountryViewController: UITableViewController, UISearchResultsUpda
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.deselectRow(at: indexPath, animated: true)
 
-		delegate?.didSelect(country: getItem(at: indexPath))
+		delegate?.fpnDidSelect(country: getItem(at: indexPath))
 
 		searchController?.isActive = false
 		searchController?.searchBar.resignFirstResponder()
@@ -135,11 +135,11 @@ class FPNSearchCountryViewController: UITableViewController, UISearchResultsUpda
 
 		if let searchText = searchController.searchBar.text, searchText.count > 0 {
 			results = list!.filter({(item: FPNCountry) -> Bool in
-				if item.name?.lowercased().range(of: searchText.lowercased()) != nil {
+				if item.name.lowercased().range(of: searchText.lowercased()) != nil {
 					return true
-				} else if item.code?.lowercased().range(of: searchText.lowercased()) != nil {
+				} else if item.code.rawValue.lowercased().range(of: searchText.lowercased()) != nil {
 					return true
-				} else if item.phoneCode?.lowercased().range(of: searchText.lowercased()) != nil {
+				} else if item.phoneCode.lowercased().range(of: searchText.lowercased()) != nil {
 					return true
 				}
 				return false

@@ -37,15 +37,11 @@ You can instantiate it in storyboards/xibs or programmatically:
 let phoneNumberTextField = FlagPhoneNumberTextField(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 16, height: 50))
 
 // You can change the chosen flag then set the phone number
-phoneNumberTextField.setFlag(for: "FR")
+phoneNumberTextField.setFlag(for: .FR)
 phoneNumberTextField.set(phoneNumber: "0600000001")
 
 // Or directly set the phone number with country code, which will update automatically the flag image
 phoneNumberTextField.set(phoneNumber: "+33600000001")
-
-// By default, an example of a phone number according to the selected country is displayed in the placeholder. You can use your own placeholder:
-phoneNumberTextField.hasPhoneNumberExample = false // Default true
-phoneNumberTextField.placeholder = "Phone Number"
 ```
 
 ## 🚨 Delegate
@@ -53,18 +49,18 @@ FlagPhoneNumberTextField provides you a FPNTextFieldDelegate.
 
 It lets you know you when a country is selected
 ```swift
-func didSelectCountry(name: String, dialCode: String, code: String) {
-  print(name, dialCode, code) // Output "France", "+33", "FR"
+func fpnDidSelectCountry(name: String, dialCode: String, code: String) {
+print(name, dialCode, code) // Output "France", "+33", "FR"
 }
 ```
 or when the phone number is valid or not:
 ```swift
-func didValidatePhoneNumber(textField: FPNTextField, isValid: Bool) {
-  if isValid {
-    // Do something...
-	} else {
-	  // Do something...
-	}
+func fpnDidValidatePhoneNumber(textField: FPNTextField, isValid: Bool) {
+if isValid {
+// Do something...
+} else {
+// Do something...
+}
 ```
 
 Once a phone number is valid, you can get it in severals formats (E164, International, National):
@@ -112,11 +108,28 @@ You can also customize the flag button's properties:
 phoneNumberTextField.flagButton.isUserInteractionEnabled = false
 ```
 
+You can have in the placeholder an example of a phone number according to the selected country or have your own placeholder:
+```swift
+phoneNumberTextField.hasPhoneNumberExample = false // true by default
+phoneNumberTextField.placeholder = "Phone Number"
+```
+
+You can choose which country can appears in the list:
+```swift
+phoneNumberTextField.setCountries(including: [.FR, .ES, .IT, .BE, .LU, .DE])
+```
+
+Or exclude countries from the list:
+```swift
+phoneNumberTextField.setCountries(excluding: [.AM, .BW, .BA])
+```
+
+
 ## ✨ Next Improvments
 - [x] Localization
 - [x] Country search
 - [x] Placeholder
-- [ ] Exclude Countries
+- [x] Exclude/Include countries
 - [ ] Any idea ?
 
 ## ☕️ Conception

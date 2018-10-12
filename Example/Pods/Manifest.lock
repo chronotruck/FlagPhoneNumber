@@ -1,5 +1,5 @@
 PODS:
-  - FlagPhoneNumber (0.5.0):
+  - FlagPhoneNumber (0.6.1):
     - libPhoneNumber-iOS
   - libPhoneNumber-iOS (0.9.13)
   - SwiftLint (0.27.0)
@@ -18,7 +18,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  FlagPhoneNumber: eb454a6ab76c70133fb44b6ad68a47ab6fc30f51
+  FlagPhoneNumber: 64ca3d8126a9832ee529be9fa50548d5e6f9014c
   libPhoneNumber-iOS: e444379ac18bbfbdefad571da735b2cd7e096caa
   SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
 

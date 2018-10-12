@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		0D7D6AAC213D1B9900DC52B9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D7D6AAB213D1B9900DC52B9 /* Default-568h@2x.png */; };
 		17D3FDC120C1A4EF00401F45 /* FlagPhoneNumber_ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D3FDC020C1A4EF00401F45 /* FlagPhoneNumber_ExampleTests.swift */; };
-		2086512ABC2AACB3CF39D0C4 /* Pods_FlagPhoneNumber_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F1E261B4525ABAD10907C32 /* Pods_FlagPhoneNumber_Example.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		D9F8E817D47686FC7BA165CA /* Pods_FlagPhoneNumber_ExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A01F81577F6D2D741885DA /* Pods_FlagPhoneNumber_ExampleTests.framework */; };
+		78BB3D7DD1EBEBFF6EBCD221 /* Pods_FlagPhoneNumber_ExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75C02DE0F7113F592CEAF66F /* Pods_FlagPhoneNumber_ExampleTests.framework */; };
+		8B0556D8A964626D23D2FB95 /* Pods_FlagPhoneNumber_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94A700149D1360425E3262C4 /* Pods_FlagPhoneNumber_Example.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,11 +30,10 @@
 
 /* Begin PBXFileReference section */
 		0D7D6AAB213D1B9900DC52B9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		17C36D1E2DAC4D698E9425BA /* Pods-FlagPhoneNumber_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlagPhoneNumber_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlagPhoneNumber_Example/Pods-FlagPhoneNumber_Example.release.xcconfig"; sourceTree = "<group>"; };
 		17D3FDBE20C1A4EF00401F45 /* FlagPhoneNumber_ExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlagPhoneNumber_ExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		17D3FDC020C1A4EF00401F45 /* FlagPhoneNumber_ExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagPhoneNumber_ExampleTests.swift; sourceTree = "<group>"; };
 		17D3FDC220C1A4EF00401F45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3F1E261B4525ABAD10907C32 /* Pods_FlagPhoneNumber_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlagPhoneNumber_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5579AAAA4FF90E7161F5EE67 /* Pods-FlagPhoneNumber_ExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlagPhoneNumber_ExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlagPhoneNumber_ExampleTests/Pods-FlagPhoneNumber_ExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* FlagPhoneNumber_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlagPhoneNumber_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -42,12 +41,13 @@
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		86A01F81577F6D2D741885DA /* Pods_FlagPhoneNumber_ExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlagPhoneNumber_ExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8C5B82A83DAC1E7D47ED30BB /* Pods-FlagPhoneNumber_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlagPhoneNumber_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlagPhoneNumber_Example/Pods-FlagPhoneNumber_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		A11011F4071DE4169390CF77 /* Pods-FlagPhoneNumber_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlagPhoneNumber_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlagPhoneNumber_Example/Pods-FlagPhoneNumber_Example.release.xcconfig"; sourceTree = "<group>"; };
+		75C02DE0F7113F592CEAF66F /* Pods_FlagPhoneNumber_ExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlagPhoneNumber_ExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		94A700149D1360425E3262C4 /* Pods_FlagPhoneNumber_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlagPhoneNumber_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA003EB46666AE29D4A070AE /* Pods-FlagPhoneNumber_ExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlagPhoneNumber_ExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlagPhoneNumber_ExampleTests/Pods-FlagPhoneNumber_ExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		CEF9C8A9CECCBFB4545EC1B0 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		D71C3A6261A21FB1D656F8A0 /* Pods-FlagPhoneNumber_ExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlagPhoneNumber_ExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlagPhoneNumber_ExampleTests/Pods-FlagPhoneNumber_ExampleTests.release.xcconfig"; sourceTree = "<group>"; };
+		DB606D05F49F3FE1E79F673F /* Pods-FlagPhoneNumber_ExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlagPhoneNumber_ExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlagPhoneNumber_ExampleTests/Pods-FlagPhoneNumber_ExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DDD4AE2C457B6F4EA4B9D78A /* FlagPhoneNumber.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = FlagPhoneNumber.podspec; path = ../FlagPhoneNumber.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		DF8F16836AF47D1B0308C871 /* Pods-FlagPhoneNumber_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlagPhoneNumber_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlagPhoneNumber_Example/Pods-FlagPhoneNumber_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		EDC927EFF87F6FBDDFCD548B /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -56,7 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9F8E817D47686FC7BA165CA /* Pods_FlagPhoneNumber_ExampleTests.framework in Frameworks */,
+				78BB3D7DD1EBEBFF6EBCD221 /* Pods_FlagPhoneNumber_ExampleTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,7 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2086512ABC2AACB3CF39D0C4 /* Pods_FlagPhoneNumber_Example.framework in Frameworks */,
+				8B0556D8A964626D23D2FB95 /* Pods_FlagPhoneNumber_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +80,26 @@
 			path = FlagPhoneNumber_ExampleTests;
 			sourceTree = "<group>";
 		};
+		2961C3E2E092096FE68F8E8D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				94A700149D1360425E3262C4 /* Pods_FlagPhoneNumber_Example.framework */,
+				75C02DE0F7113F592CEAF66F /* Pods_FlagPhoneNumber_ExampleTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		39D3619BDF900E8E20610DD7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DF8F16836AF47D1B0308C871 /* Pods-FlagPhoneNumber_Example.debug.xcconfig */,
+				17C36D1E2DAC4D698E9425BA /* Pods-FlagPhoneNumber_Example.release.xcconfig */,
+				DB606D05F49F3FE1E79F673F /* Pods-FlagPhoneNumber_ExampleTests.debug.xcconfig */,
+				AA003EB46666AE29D4A070AE /* Pods-FlagPhoneNumber_ExampleTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
@@ -88,8 +108,8 @@
 				607FACD21AFB9204008FA782 /* Example for FlagPhoneNumber */,
 				17D3FDBF20C1A4EF00401F45 /* FlagPhoneNumber_ExampleTests */,
 				607FACD11AFB9204008FA782 /* Products */,
-				DCA2FC0F889A07C6D9D70A6D /* Pods */,
-				693CB7377B7371E000307530 /* Frameworks */,
+				39D3619BDF900E8E20610DD7 /* Pods */,
+				2961C3E2E092096FE68F8E8D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -134,26 +154,6 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
-		693CB7377B7371E000307530 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				3F1E261B4525ABAD10907C32 /* Pods_FlagPhoneNumber_Example.framework */,
-				86A01F81577F6D2D741885DA /* Pods_FlagPhoneNumber_ExampleTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		DCA2FC0F889A07C6D9D70A6D /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				8C5B82A83DAC1E7D47ED30BB /* Pods-FlagPhoneNumber_Example.debug.xcconfig */,
-				A11011F4071DE4169390CF77 /* Pods-FlagPhoneNumber_Example.release.xcconfig */,
-				5579AAAA4FF90E7161F5EE67 /* Pods-FlagPhoneNumber_ExampleTests.debug.xcconfig */,
-				D71C3A6261A21FB1D656F8A0 /* Pods-FlagPhoneNumber_ExampleTests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -161,11 +161,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 17D3FDC720C1A4F000401F45 /* Build configuration list for PBXNativeTarget "FlagPhoneNumber_ExampleTests" */;
 			buildPhases = (
-				B1F212E2497F26FE05EEF335 /* [CP] Check Pods Manifest.lock */,
+				319CFB6F58AC219AEA55617C /* [CP] Check Pods Manifest.lock */,
 				17D3FDBA20C1A4EF00401F45 /* Sources */,
 				17D3FDBB20C1A4EF00401F45 /* Frameworks */,
 				17D3FDBC20C1A4EF00401F45 /* Resources */,
-				2ED1B5DA5FD93DFBE3976BCE /* [CP] Embed Pods Frameworks */,
+				2E50BBB976EC86B3E0751F56 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -181,12 +181,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "FlagPhoneNumber_Example" */;
 			buildPhases = (
-				2C466469156F10FC2E6DAA52 /* [CP] Check Pods Manifest.lock */,
+				891DD08ABF88931993F54E1F /* [CP] Check Pods Manifest.lock */,
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				D40414452EDCB5B06F74AF2F /* [CP] Embed Pods Frameworks */,
 				0D9C1C0C2130324700FF8CA1 /* SwiftLint */,
+				133B814287FEDE0819655920 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -276,28 +276,36 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"";
 		};
-		2C466469156F10FC2E6DAA52 /* [CP] Check Pods Manifest.lock */ = {
+		133B814287FEDE0819655920 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
+			inputFileListPaths = (
 			);
-			name = "[CP] Check Pods Manifest.lock";
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-FlagPhoneNumber_Example/Pods-FlagPhoneNumber_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FlagPhoneNumber/FlagPhoneNumber.framework",
+				"${BUILT_PRODUCTS_DIR}/libPhoneNumber-iOS/libPhoneNumber_iOS.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-FlagPhoneNumber_Example-checkManifestLockResult.txt",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FlagPhoneNumber.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libPhoneNumber_iOS.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FlagPhoneNumber_Example/Pods-FlagPhoneNumber_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		2ED1B5DA5FD93DFBE3976BCE /* [CP] Embed Pods Frameworks */ = {
+		2E50BBB976EC86B3E0751F56 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-FlagPhoneNumber_ExampleTests/Pods-FlagPhoneNumber_ExampleTests-frameworks.sh",
@@ -305,6 +313,8 @@
 				"${BUILT_PRODUCTS_DIR}/libPhoneNumber-iOS/libPhoneNumber_iOS.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FlagPhoneNumber.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libPhoneNumber_iOS.framework",
@@ -314,16 +324,20 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FlagPhoneNumber_ExampleTests/Pods-FlagPhoneNumber_ExampleTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B1F212E2497F26FE05EEF335 /* [CP] Check Pods Manifest.lock */ = {
+		319CFB6F58AC219AEA55617C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-FlagPhoneNumber_ExampleTests-checkManifestLockResult.txt",
 			);
@@ -332,24 +346,26 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D40414452EDCB5B06F74AF2F /* [CP] Embed Pods Frameworks */ = {
+		891DD08ABF88931993F54E1F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-FlagPhoneNumber_Example/Pods-FlagPhoneNumber_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/FlagPhoneNumber/FlagPhoneNumber.framework",
-				"${BUILT_PRODUCTS_DIR}/libPhoneNumber-iOS/libPhoneNumber_iOS.framework",
+			inputFileListPaths = (
 			);
-			name = "[CP] Embed Pods Frameworks";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FlagPhoneNumber.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libPhoneNumber_iOS.framework",
+				"$(DERIVED_FILE_DIR)/Pods-FlagPhoneNumber_Example-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FlagPhoneNumber_Example/Pods-FlagPhoneNumber_Example-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -404,7 +420,7 @@
 /* Begin XCBuildConfiguration section */
 		17D3FDC520C1A4F000401F45 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5579AAAA4FF90E7161F5EE67 /* Pods-FlagPhoneNumber_ExampleTests.debug.xcconfig */;
+			baseConfigurationReference = DB606D05F49F3FE1E79F673F /* Pods-FlagPhoneNumber_ExampleTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -432,7 +448,7 @@
 		};
 		17D3FDC620C1A4F000401F45 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D71C3A6261A21FB1D656F8A0 /* Pods-FlagPhoneNumber_ExampleTests.release.xcconfig */;
+			baseConfigurationReference = AA003EB46666AE29D4A070AE /* Pods-FlagPhoneNumber_ExampleTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -565,7 +581,7 @@
 		};
 		607FACF01AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8C5B82A83DAC1E7D47ED30BB /* Pods-FlagPhoneNumber_Example.debug.xcconfig */;
+			baseConfigurationReference = DF8F16836AF47D1B0308C871 /* Pods-FlagPhoneNumber_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -584,7 +600,7 @@
 		};
 		607FACF11AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A11011F4071DE4169390CF77 /* Pods-FlagPhoneNumber_Example.release.xcconfig */;
+			baseConfigurationReference = 17C36D1E2DAC4D698E9425BA /* Pods-FlagPhoneNumber_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

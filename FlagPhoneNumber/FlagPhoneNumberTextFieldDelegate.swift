@@ -9,6 +9,6 @@
 import Foundation
 
 public protocol FPNTextFieldDelegate {
-	func didSelectCountry(name: String, dialCode: String, code: String)
-	func didValidatePhoneNumber(textField: FPNTextField, isValid: Bool)
+	func fpnDidSelectCountry(name: String, dialCode: String, code: String)
+	func fpnDidValidatePhoneNumber(textField: FPNTextField, isValid: Bool)
 }

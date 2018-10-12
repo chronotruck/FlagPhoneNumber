@@ -2,7 +2,12 @@ import UIKit
 
 open class FPNCountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource {
 
-	var countries: [FPNCountry]!
+	var countries: [FPNCountry]! {
+		didSet {
+			reloadAllComponents()
+		}
+	}
+
 	open var selectedLocale: Locale?
 	weak var countryPickerDelegate: FPNCountryPickerDelegate?
 	open var showPhoneNumbers: Bool = true
@@ -24,10 +29,26 @@ open class FPNCountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDat
 			self.selectedLocale = Locale(identifier: code)
 		}
 
-		countries = countryNamesByCode()
+		countries = getAllCountries()
 
 		super.dataSource = self
 		super.delegate = self
+	}
+
+	public func setup(with countryCodes: [FPNCountryCode]) {
+		countries = getAllCountries(equalTo: countryCodes)
+
+		if let code = countries.first?.code {
+			setCountry(code)
+		}
+	}
+
+	public func setup(without countryCodes: [FPNCountryCode]) {
+		countries = getAllCountries(excluding: countryCodes)
+
+		if let code = countries.first?.code {
+			setCountry(code)
+		}
 	}
 
 	// MARK: - Locale Methods
@@ -38,7 +59,7 @@ open class FPNCountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDat
 
 	// MARK: - FPNCountry Methods
 
-	open func setCountry(_ code: String) {
+	open func setCountry(_ code: FPNCountryCode) {
 		for index in 0..<countries.count {
 			if countries[index].code == code {
 				return self.setCountryByRow(row: index)
@@ -74,7 +95,7 @@ open class FPNCountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDat
 
 	// Populates the metadata from the included json file resource
 
-	private func countryNamesByCode() -> [FPNCountry] {
+	private func getAllCountries() -> [FPNCountry] {
 		let bundle: Bundle = Bundle.FlagPhoneNumber()
 		let resource: String = "countryCodes"
 		let jsonPath = bundle.path(forResource: resource, ofType: "json")
@@ -91,17 +112,11 @@ open class FPNCountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDat
 			if let jsonObjects = try JSONSerialization.jsonObject(with: jsonData!, options: JSONSerialization.ReadingOptions.allowFragments) as? NSArray {
 
 				for jsonObject in jsonObjects {
-
-					guard let countryObj = jsonObject as? NSDictionary else {
-						return countries
-					}
-
-					guard let code = countryObj["code"] as? String, let phoneCode = countryObj["dial_code"] as? String, let name = countryObj["name"] as? String else {
-						return countries
-					}
+					guard let countryObj = jsonObject as? NSDictionary else { return countries }
+					guard let code = countryObj["code"] as? String, let phoneCode = countryObj["dial_code"] as? String, let name = countryObj["name"] as? String else { return countries }
 
 					if let locale = self.selectedLocale {
-						let country = FPNCountry(code: code, name: locale.localizedString(forRegionCode: code), phoneCode: phoneCode)
+						let country = FPNCountry(code: code, name: locale.localizedString(forRegionCode: code) ?? name, phoneCode: phoneCode)
 
 						countries.append(country)
 					} else {
@@ -115,7 +130,32 @@ open class FPNCountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDat
 		} catch let error {
 			assertionFailure(error.localizedDescription)
 		}
-		return countries.sorted(by: { $0.name! < $1.name! })
+		return countries.sorted(by: { $0.name < $1.name })
+	}
+
+	private func getAllCountries(excluding countryCodes: [FPNCountryCode]) -> [FPNCountry] {
+		var allCountries = getAllCountries()
+
+		for countryCode in countryCodes {
+			allCountries.removeAll(where: { (country: FPNCountry) -> Bool in
+				return country.code == countryCode
+			})
+		}
+		return allCountries
+	}
+
+	private func getAllCountries(equalTo countryCodes: [FPNCountryCode]) -> [FPNCountry] {
+		let allCountries = getAllCountries()
+		var countries = [FPNCountry]()
+
+		for countryCode in countryCodes {
+			for country in allCountries {
+				if country.code == countryCode {
+					countries.append(country)
+				}
+			}
+		}
+		return countries
 	}
 
 	// MARK: - Picker Methods

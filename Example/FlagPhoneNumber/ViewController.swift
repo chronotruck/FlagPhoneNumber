@@ -41,14 +41,20 @@ class ViewController: UIViewController {
 		//		phoneNumberTextField.textFieldInputAccessoryView = getCustomTextFieldInputAccessoryView(with: items)
 
 		// The placeholder is an example phone number of the selected country by default. You can add your own placeholder :
-		//		phoneNumberTextField.hasPhoneNumberExample = false
+		phoneNumberTextField.hasPhoneNumberExample = true
 		//		phoneNumberTextField.placeholder = "Phone Number"
+
+		// Set the country list
+		//		phoneNumberTextField.setCountries(including: [.FR, .ES, .IT, .BE, .LU, .DE])
+
+		// Exclude countries from the list
+		//		phoneNumberTextField.setCountries(excluding: [.AM, .BW, .BA])
 
 		// Set the flag image with a region code
 		//		phoneNumberTextField.setFlag(for: "FR")
 
 		// Set the phone number directly
-		phoneNumberTextField.set(phoneNumber: "+33612345678")
+		//		phoneNumberTextField.set(phoneNumber: "+33612345678")
 
 		view.addSubview(phoneNumberTextField)
 
@@ -68,7 +74,7 @@ class ViewController: UIViewController {
 
 extension ViewController: FPNTextFieldDelegate {
 
-	func didValidatePhoneNumber(textField: FPNTextField, isValid: Bool) {
+	func fpnDidValidatePhoneNumber(textField: FPNTextField, isValid: Bool) {
 		textField.rightViewMode = .always
 		textField.rightView = UIImageView(image: isValid ? #imageLiteral(resourceName: "success") : #imageLiteral(resourceName: "error"))
 
@@ -82,7 +88,7 @@ extension ViewController: FPNTextFieldDelegate {
 		)
 	}
 
-	func didSelectCountry(name: String, dialCode: String, code: String) {
+	func fpnDidSelectCountry(name: String, dialCode: String, code: String) {
 		print(name, dialCode, code)
 	}
 }

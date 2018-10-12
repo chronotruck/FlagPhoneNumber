@@ -1,6 +1,6 @@
 {
   "name": "FlagPhoneNumber",
-  "version": "0.5.0",
+  "version": "0.6.1",
   "summary": "A formatted phone number UITextField with country flag picker.",
   "description": "FlagPhoneNumber is a phone number textfield that allows you to choose the country code thanks to a picker. It uses libPhoneNumber to format the number in the textfield according to country code.",
   "homepage": "https://github.com/chronotruck/FlagPhoneNumber",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/chronotruck/FlagPhoneNumber.git",
-    "tag": "0.5.0"
+    "tag": "0.6.1"
   },
   "platforms": {
     "ios": "8.0"
