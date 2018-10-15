@@ -164,7 +164,11 @@ open class FPNTextField: UITextField, UITextFieldDelegate, FPNCountryPickerDeleg
 		countryPicker.showPhoneNumbers = true
 		countryPicker.backgroundColor = .white
 
-		countryPicker.setCountry(FPNCountryCode(rawValue: Locale.current.regionCode!)!)
+		if let regionCode = Locale.current.regionCode, let countryCode = FPNCountryCode(rawValue: regionCode) {
+			countryPicker.setCountry(countryCode)
+		} else if let firstCountry = countryPicker.countries.first {
+			countryPicker.setCountry(firstCountry.code)
+		}
 	}
 
 	@objc private func displayNumberKeyBoard() {
