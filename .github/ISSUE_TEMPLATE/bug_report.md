@@ -4,7 +4,7 @@ about: Create a report to help us improve
 
 ---
 
-⚠️⚠️⚠️ **Issue with no filled out template will be closed** ⚠️⚠️⚠️
+<!--⚠️⚠️⚠️ **Issue with no filled out template will be closed** ⚠️⚠️⚠️-->
 
 **Describe the bug**
 A clear and concise description of what the bug is.
