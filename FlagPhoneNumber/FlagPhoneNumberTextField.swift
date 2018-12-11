@@ -73,7 +73,7 @@ open class FPNTextField: UITextField, UITextFieldDelegate, FPNCountryPickerDeleg
 	}
 
 	/// If set, a search button appears in the picker inputAccessoryView to present a country search view controller
-	public var parentViewController: UIViewController?
+	@IBOutlet public var parentViewController: UIViewController?
 
 	/// Input Accessory View for the texfield
 	public var textFieldInputAccessoryView: UIView?
@@ -122,6 +122,7 @@ open class FPNTextField: UITextField, UITextFieldDelegate, FPNCountryPickerDeleg
 		setupCountryPicker()
 
 		autocorrectionType = .no
+		keyboardType = .phonePad
 		addTarget(self, action: #selector(didEditText), for: .editingChanged)
 		addTarget(self, action: #selector(displayNumberKeyBoard), for: .touchDown)
 		delegate = self
@@ -172,7 +173,6 @@ open class FPNTextField: UITextField, UITextFieldDelegate, FPNCountryPickerDeleg
 	}
 
 	@objc private func displayNumberKeyBoard() {
-		keyboardType = .numberPad
 		inputView = nil
 		inputAccessoryView = textFieldInputAccessoryView
 		tintColor = .gray
@@ -192,7 +192,6 @@ open class FPNTextField: UITextField, UITextFieldDelegate, FPNCountryPickerDeleg
 	}
 
 	@objc private func resetKeyBoard() {
-		keyboardType = .default
 		inputView = nil
 		inputAccessoryView = nil
 		resignFirstResponder()
