@@ -25,7 +25,7 @@ s.homepage         = 'https://github.com/chronotruck/FlagPhoneNumber'
 #s.screenshots     = 'https://github.com/chronotruck/FlagPhoneNumber/blob/master/Screenshot/screenshot.gif'
 s.license          = { :type => 'Apache License 2.0', :file => 'LICENSE' }
 s.author           = { 'Aurélien Grifasi' => 'aurelien.grifasi@chronotruck.com' }
-s.source           = { :git => 'https://github.com/chronotruck/FlagPhoneNumber.git', :tag => s.version.to_s }
+s.source           = { :git => 'https://github.com/GaDaXaRa/FlagPhoneNumber.git', :tag => s.version.to_s }
 # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
 s.ios.deployment_target = '8.0'
