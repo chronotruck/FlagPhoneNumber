@@ -9,9 +9,7 @@
 import Foundation
 import libPhoneNumber_iOS
 
-open class FPNTextField: UITextField, UITextFieldDelegate, FPNCountryPickerDelegate, FPNDelegate {
-
-	public var flagPhoneNumberDelegate: FPNTextFieldDelegate?
+open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 
 	/// The size of the flag
 	public var flagSize: CGSize = CGSize(width: 32, height: 32) {
@@ -125,7 +123,6 @@ open class FPNTextField: UITextField, UITextFieldDelegate, FPNCountryPickerDeleg
 		autocorrectionType = .no
 		addTarget(self, action: #selector(didEditText), for: .editingChanged)
 		addTarget(self, action: #selector(displayNumberKeyBoard), for: .touchDown)
-		delegate = self
 	}
 
 	private func setupFlagButton() {
@@ -257,7 +254,7 @@ open class FPNTextField: UITextField, UITextFieldDelegate, FPNCountryPickerDeleg
 				if let inputString = formatter?.inputString(cleanedPhoneNumber) {
 					text = remove(dialCode: phoneCode, in: inputString)
 				}
-				flagPhoneNumberDelegate?.fpnDidValidatePhoneNumber(textField: self, isValid: true)
+				(delegate as? FPNTextFieldDelegate)?.fpnDidValidatePhoneNumber(textField: self, isValid: true)
 			} else {
 				nbPhoneNumber = nil
 
@@ -266,7 +263,7 @@ open class FPNTextField: UITextField, UITextFieldDelegate, FPNCountryPickerDeleg
 						text = remove(dialCode: dialCode, in: inputString)
 					}
 				}
-				flagPhoneNumberDelegate?.fpnDidValidatePhoneNumber(textField: self, isValid: false)
+				(delegate as? FPNTextFieldDelegate)?.fpnDidValidatePhoneNumber(textField: self, isValid: false)
 			}
 		}
 	}
@@ -387,11 +384,11 @@ open class FPNTextField: UITextField, UITextFieldDelegate, FPNCountryPickerDeleg
 	// - FPNCountryPickerDelegate
 
 	func countryPhoneCodePicker(_ picker: FPNCountryPicker, didSelectCountry country: FPNCountry) {
-		flagPhoneNumberDelegate?.fpnDidSelectCountry(name: country.name, dialCode: country.phoneCode, code: country.code.rawValue)
+		(delegate as? FPNTextFieldDelegate)?.fpnDidSelectCountry(name: country.name, dialCode: country.phoneCode, code: country.code.rawValue)
 		selectedCountry = country
 	}
 
-	// - FPNTextFieldDelegate
+	// - FPNDelegate
 
 	internal func fpnDidSelect(country: FPNCountry) {
 		setFlag(for: country.code)
