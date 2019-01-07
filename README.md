@@ -55,33 +55,36 @@ phoneNumberTextField.set(phoneNumber: "0600000001")
 phoneNumberTextField.set(phoneNumber: "+33600000001")
 ```
 
-## 🚨 Delegate
-FlagPhoneNumberTextField provides you a FPNTextFieldDelegate.
+## 🚨 FPNTextFieldDelegate
 
-It lets you know you when a country is selected
+FPNTextFieldDelegate inherites from UITextFieldDelegate so nothing change:
+
 ```swift
-func fpnDidSelectCountry(name: String, dialCode: String, code: String) {
-  print(name, dialCode, code) // Output "France", "+33", "FR"
-}
-```
-or when the phone number is valid or not:
-```swift
-func fpnDidValidatePhoneNumber(textField: FPNTextField, isValid: Bool) {
-  if isValid {
-    // Do something...
-   } else {
-    // Do something...
-  }
-}
+phoneNumberTextField.delegate = self
 ```
 
-Once a phone number is valid, you can get it in severals formats (E164, International, National):
+It provides two methods that lets you know when a country is selected and when the phone number is valid or not. Once a phone number is valid, you can get it in severals formats (E164, International, National, RFC3966):
+
 ```swift
-textField.getFormattedPhoneNumber(format: .E164),           // Output "+33600000001"
-textField.getFormattedPhoneNumber(format: .International),  // Output "+33 6 00 00 00 01"
-textField.getFormattedPhoneNumber(format: .National),       // Output "06 00 00 00 01"
-textField.getFormattedPhoneNumber(format: .RFC3966),        // Output "tel:+33-6-00-00-00-01"
-textField.getRawPhoneNumber()                               // Output "600000001"
+extension YourViewController: FPNTextFieldDelegate {
+
+   func fpnDidSelectCountry(name: String, dialCode: String, code: String) {
+      print(name, dialCode, code) // Output "France", "+33", "FR"
+   }
+
+   func fpnDidValidatePhoneNumber(textField: FPNTextField, isValid: Bool) {
+      if isValid {
+         // Do something...         
+         textField.getFormattedPhoneNumber(format: .E164),           // Output "+33600000001"
+         textField.getFormattedPhoneNumber(format: .International),  // Output "+33 6 00 00 00 01"
+         textField.getFormattedPhoneNumber(format: .National),       // Output "06 00 00 00 01"
+         textField.getFormattedPhoneNumber(format: .RFC3966),        // Output "tel:+33-6-00-00-00-01"
+         textField.getRawPhoneNumber()                               // Output "600000001"
+      } else {
+         // Do something...
+      }
+   }
+}
 ```
 
 ## 🎨 Customization
@@ -102,9 +105,9 @@ You can change the edge insets of the flag:
 phoneNumberTextField.flagButtonEdgeInsets = UIEdgeInsetsMake(5, 10, 5, 10)
 ```
 
-If you set the parentViewController,  a search button appears in the picker inputAccessoryView to present a country search view controller:
+If you set the parentViewController programmatically or from `@IBOutlet`,  a search button appears in the picker inputAccessoryView to present a country search view controller:
 ```swift
-phoneNumberTextField.parentViewController = self
+phoneNumberTextField.parentViewController = self // or from @IBOutlet
 ```
 
 You can customize the inputAccessoryView of the textfield:
@@ -148,12 +151,12 @@ phoneNumberTextField.setCountries(excluding: [.AM, .BW, .BA])
 This library is high inspired of MRCountryPicker library and use libPhoneNumber-iOS library.
 https://github.com/xtrinch/MRCountryPicker / https://github.com/iziz/libPhoneNumber-iOS
 
-## 💁🏻‍♂️ Author
+Open source time proudly sponsored by Chronotruck.
 
+## 💁🏻‍♂️ Author
 grifas, aurelien.grifasi@chronotruck.com
 
 Don't hesitate to contact me or make a pull request to upgrade this library.
 
 ## 📝 License
-
 FlagPhoneNumber is available under the Apache license. See the LICENSE file for more info.
