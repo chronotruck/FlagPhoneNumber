@@ -1,0 +1,10 @@
+platform :ios, '9.0'
+use_frameworks!
+
+target 'Example' do
+	pod 'FlagPhoneNumber', :path => '../'
+end
+
+target 'ExampleTests' do
+	pod 'FlagPhoneNumber', :path => '../'
+end

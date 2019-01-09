@@ -30,8 +30,8 @@ s.source           = { :git => 'https://github.com/chronotruck/FlagPhoneNumber.g
 
 s.ios.deployment_target = '8.0'
 
-s.source_files = 'FlagPhoneNumber/**/*.swift'
-s.resource_bundles = {'FlagPhoneNumber' => ['FlagPhoneNumber/Resources/**/*']}
+s.source_files = 'Sources/**/*.swift'
+s.resource_bundles = {'FlagPhoneNumber' => ['Sources/Resources/**/*']}
 
 #s.resource_bundles = {
 #'FlagPhoneNumber' => ['FlagPhoneNumber/Assets/*']
@@ -39,8 +39,12 @@ s.resource_bundles = {'FlagPhoneNumber' => ['FlagPhoneNumber/Resources/**/*']}
 
 # s.public_header_files = 'Pod/Classes/**/*.h'
 # s.frameworks = 'UIKit', 'MapKit'
+s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
 
-s.dependency 'libPhoneNumber-iOS'
+s.subspec 'libPhoneNumberiOS' do |ss|
+	ss.source_files = 'Sources/libPhoneNumber/**/*'
+end
+
 #s.xcconfig = { 'SWIFT_VERSION' => '4.0' }
 
 end

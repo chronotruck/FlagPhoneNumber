@@ -1,6 +1,0 @@
-framework module Pods_FlagPhoneNumber_ExampleTests {
-  umbrella header "Pods-FlagPhoneNumber_ExampleTests-umbrella.h"
-
-  export *
-  module * { export * }
-}
