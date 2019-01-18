@@ -10,10 +10,6 @@ import Foundation
 import libPhoneNumber_iOS
 
 open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
-
-    // Added for Obj-C project compatibility
-    @objc public var flagPhoneNumberDelegate: FPNTextFieldDelegate?
-
     
 	/// The size of the flag
 	public var flagSize: CGSize = CGSize(width: 32, height: 32) {
