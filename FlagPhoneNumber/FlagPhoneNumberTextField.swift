@@ -55,8 +55,7 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 
 	/// Present in the placeholder an example of a phone number according to the selected country code.
 	/// If false, you can set your own placeholder. Set to true by default.
-	//public var hasPhoneNumberExample: Bool = true {
-    @objc var hasPhoneNumberExample: Bool = true { // Modified for Obj-C project compatibility
+    @objc public var hasPhoneNumberExample: Bool = true { // Modified for Obj-C project compatibility
 		didSet {
 			if hasPhoneNumberExample == false {
 				placeholder = nil
@@ -252,8 +251,9 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
         
         for cntryString in countrStr
         {
-            let cntryCode = FPNCountryCode(rawValue: cntryString)!
-            countries.append(cntryCode)
+            if let cntryCode = FPNCountryCode(rawValue: cntryString) {
+            	countries.append(cntryCode)
+	    }
         }
         
         countryPicker.setup(with: countries)
