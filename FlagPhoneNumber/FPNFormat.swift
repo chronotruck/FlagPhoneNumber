@@ -8,7 +8,8 @@
 
 import Foundation
 
-public enum FPNFormat {
+//public enum FPNFormat {
+@objc public enum FPNFormat: Int { // Modified for Obj-C project compatibility
 	case E164, International, National, RFC3966
 }
 

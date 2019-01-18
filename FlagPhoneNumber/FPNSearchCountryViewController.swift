@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit // Added for Obj-C project compatibility
 
 class FPNSearchCountryViewController: UITableViewController, UISearchResultsUpdating, UISearchControllerDelegate {
 

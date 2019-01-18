@@ -11,6 +11,10 @@ import libPhoneNumber_iOS
 
 open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 
+    // Added for Obj-C project compatibility
+    @objc public var flagPhoneNumberDelegate: FPNTextFieldDelegate?
+
+    
 	/// The size of the flag
 	public var flagSize: CGSize = CGSize(width: 32, height: 32) {
 		didSet {
@@ -55,7 +59,8 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 
 	/// Present in the placeholder an example of a phone number according to the selected country code.
 	/// If false, you can set your own placeholder. Set to true by default.
-	public var hasPhoneNumberExample: Bool = true {
+	//public var hasPhoneNumberExample: Bool = true {
+    @objc var hasPhoneNumberExample: Bool = true { // Modified for Obj-C project compatibility
 		didSet {
 			if hasPhoneNumberExample == false {
 				placeholder = nil
@@ -202,7 +207,9 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 	}
 
 	/// Get the current formatted phone number
-	public func getFormattedPhoneNumber(format: FPNFormat) -> String? {
+	//public func getFormattedPhoneNumber(format: FPNFormat) -> String? {
+    @objc public func getFormattedPhoneNumber(format: FPNFormat) -> String? { // Modified for Obj-C project compatibility
+
 		return try? phoneUtil.format(nbPhoneNumber, numberFormat: convert(format: format))
 	}
 
@@ -217,7 +224,8 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 	}
 
 	/// Set directly the phone number. e.g "+33612345678"
-	public func set(phoneNumber: String) {
+	//public func set(phoneNumber: String) {
+    @objc public func set(phoneNumber: String) { // Modified for Obj-C project compatibility
 		let cleanedPhoneNumber: String = clean(string: phoneNumber)
 
 		if let validPhoneNumber = getValidNumber(phoneNumber: cleanedPhoneNumber) {
@@ -239,6 +247,21 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 	public func setCountries(including countries: [FPNCountryCode]) {
 		countryPicker.setup(with: countries)
 	}
+    
+    /// Set the country list including the provided countries
+    /// Added for Objective-C compatibility, because String enums cannot be exported to Obj-C. Now as array of String.
+    @objc public func setCountriesToInclude(countrStr: [String]) {
+        
+        var countries: [FPNCountryCode] = []
+        
+        for cntryString in countrStr
+        {
+            let cntryCode = FPNCountryCode(rawValue: cntryString)!
+            countries.append(cntryCode)
+        }
+        
+        countryPicker.setup(with: countries)
+    }
 
 	// Private
 
