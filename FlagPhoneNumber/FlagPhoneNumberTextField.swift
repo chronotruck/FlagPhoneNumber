@@ -202,7 +202,6 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 	}
 
 	/// Get the current formatted phone number
-	//public func getFormattedPhoneNumber(format: FPNFormat) -> String? {
     @objc public func getFormattedPhoneNumber(format: FPNFormat) -> String? { // Modified for Obj-C project compatibility
 
 		return try? phoneUtil.format(nbPhoneNumber, numberFormat: convert(format: format))
@@ -219,7 +218,6 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 	}
 
 	/// Set directly the phone number. e.g "+33612345678"
-	//public func set(phoneNumber: String) {
     @objc public func set(phoneNumber: String) { // Modified for Obj-C project compatibility
 		let cleanedPhoneNumber: String = clean(string: phoneNumber)
 
