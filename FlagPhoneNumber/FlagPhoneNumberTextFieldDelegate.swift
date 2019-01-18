@@ -8,9 +8,7 @@
 
 import Foundation
 
-//public protocol FPNTextFieldDelegate: UITextFieldDelegate {
 @objc public protocol FPNTextFieldDelegate: UITextFieldDelegate { // Modified for Obj-C project compatibility
-
 	func fpnDidSelectCountry(name: String, dialCode: String, code: String)
 	func fpnDidValidatePhoneNumber(textField: FPNTextField, isValid: Bool)
 }
