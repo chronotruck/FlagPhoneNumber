@@ -9,9 +9,8 @@
 #ifndef FlagPhoneNumber_Bridging_Header_h
 #define FlagPhoneNumber_Bridging_Header_h
 
-#import "libPhoneNumber/NBPhoneNumberUtil.h"
-#import "libPhoneNumber/NBPhoneNumber.h"
-#import "libPhoneNumber/NBAsYouTypeFormatter.h"
-//#import "NBPhoneNumberFormat.h"
+#import "NBPhoneNumberUtil.h"
+#import "NBPhoneNumber.h"
+#import "NBAsYouTypeFormatter.h"
 
 #endif /* FlagPhoneNumber_Bridging_Header_h */

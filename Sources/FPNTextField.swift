@@ -11,14 +11,14 @@ import UIKit
 open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 
 	/// The size of the flag
-	public var flagSize: CGSize = CGSize(width: 32, height: 32) {
+	@objc public var flagSize: CGSize = CGSize(width: 32, height: 32) {
 		didSet {
 			layoutSubviews()
 		}
 	}
 
 	/// The edges insets of the flag button
-	public var flagButtonEdgeInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5) {
+	@objc public var flagButtonEdgeInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5) {
 		didSet {
 			layoutSubviews()
 		}
@@ -54,7 +54,7 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 
 	/// Present in the placeholder an example of a phone number according to the selected country code.
 	/// If false, you can set your own placeholder. Set to true by default.
-	public var hasPhoneNumberExample: Bool = true {
+	@objc public var hasPhoneNumberExample: Bool = true {
 		didSet {
 			if hasPhoneNumberExample == false {
 				placeholder = nil
@@ -73,7 +73,7 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 	@IBOutlet public var parentViewController: UIViewController?
 
 	/// Input Accessory View for the texfield
-	public var textFieldInputAccessoryView: UIView?
+	@objc public var textFieldInputAccessoryView: UIView?
 
 	init() {
 		super.init(frame: .zero)
@@ -216,7 +216,7 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 	}
 
 	/// Set directly the phone number. e.g "+33612345678"
-	public func set(phoneNumber: String) {
+	@objc public func set(phoneNumber: String) {
 		let cleanedPhoneNumber: String = clean(string: phoneNumber)
 
 		if let validPhoneNumber = getValidNumber(phoneNumber: cleanedPhoneNumber) {
@@ -237,6 +237,37 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 	/// Set the country list including the provided countries
 	public func setCountries(including countries: [FPNCountryCode]) {
 		countryPicker.setup(with: countries)
+	}
+
+	/// Set the country image according to country code. Example "FR"
+	@objc public func setFlag(for key: FPNOBJCCountryKey) {
+		if let code = FPNOBJCCountryCode[key], let countryCode = FPNCountryCode(rawValue: code) {
+			countryPicker.setCountry(countryCode)
+		}
+	}
+
+	/// Set the country list excluding the provided countries
+	@objc public func setCountries(excluding countries: [Int]) {
+		let countryCodes: [FPNCountryCode] = countries.compactMap({ index in
+			if let key = FPNOBJCCountryKey(rawValue: index), let code = FPNOBJCCountryCode[key], let countryCode = FPNCountryCode(rawValue: code) {
+				return countryCode
+			}
+			return nil
+		})
+
+		countryPicker.setup(without: countryCodes)
+	}
+
+	/// Set the country list including the provided countries
+	@objc public func setCountries(including countries: [Int]) {
+		let countryCodes: [FPNCountryCode] = countries.compactMap({ index in
+			if let key = FPNOBJCCountryKey(rawValue: index), let code = FPNOBJCCountryCode[key], let countryCode = FPNCountryCode(rawValue: code) {
+				return countryCode
+			}
+			return nil
+		})
+
+		countryPicker.setup(with: countryCodes)
 	}
 
 	// Private

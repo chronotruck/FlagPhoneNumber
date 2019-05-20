@@ -7,6 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NBPhoneNumberUtil.h"
+#import "NBAsYouTypeFormatter.h"
+#import "NBPhoneNumber.h"
+#import "NBGeneratedPhoneNumberMetaData.h"
+#import "NBMetadataHelper.h"
+#import "NBNumberFormat.h"
+#import "NBPhoneMetaData.h"
+#import "NBPhoneNumberDesc.h"
+#import "NBPhoneNumberUtil+ShortNumber.h"
+#import "NBRegExMatcher.h"
+#import "NBRegularExpressionCache.h"
+#import "NSArray+NBAdditions.h"
 
 //! Project version number for FlagPhoneNumber.
 FOUNDATION_EXPORT double FlagPhoneNumberVersionNumber;
