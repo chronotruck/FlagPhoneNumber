@@ -32,7 +32,7 @@ s.ios.deployment_target = '8.0'
 
 s.source_files = 'Sources/**/*.swift'
 s.resource_bundles = {'FlagPhoneNumber' => ['Sources/Resources/**/*']}
-
+s.swift_version = '5.0'
 #s.resource_bundles = {
 #'FlagPhoneNumber' => ['FlagPhoneNumber/Assets/*']
 #}
@@ -44,7 +44,5 @@ s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
 s.subspec 'libPhoneNumberiOS' do |ss|
 	ss.source_files = 'Sources/libPhoneNumber/**/*'
 end
-
-#s.xcconfig = { 'SWIFT_VERSION' => '4.0' }
 
 end
