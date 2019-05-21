@@ -1,32 +1,35 @@
 //
-//  ViewController.swift
-//  Example
+//  SimpleViewController.swift
+//  FlagPhoneNumber_Example
 //
-//  Created by Aurélien Grifasi on 06/08/2017.
-//  Copyright (c) 2017 Aurélien Grifasi. All rights reserved.
+//  Created by Aurelien on 24/12/2018.
+//  Copyright © 2018 CocoaPods. All rights reserved.
 //
 
 import UIKit
 import FlagPhoneNumber
 
-class ViewController: UIViewController {
+class SimpleViewController: UIViewController {
 
-	var phoneNumberTextField: FPNTextField!
+	@IBOutlet weak var phoneNumberTextField: FPNTextField!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		title = "FlagPhoneNumber"
+		title = "In Simple View"
+
+		view.backgroundColor = UIColor.groupTableViewBackground
 
 		// To use your own flag icons, uncommment the line :
 		//		Bundle.FlagIcons = Bundle(for: ViewController.self)
 
-		phoneNumberTextField = FPNTextField(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 16, height: 50))
 		phoneNumberTextField.borderStyle = .roundedRect
 
 		// Comment this line to not have access to the country list
 		phoneNumberTextField.parentViewController = self
 		phoneNumberTextField.delegate = self
+
+		phoneNumberTextField.font = UIFont.systemFont(ofSize: 14)
 
 		// Custom the size/edgeInsets of the flag button
 		phoneNumberTextField.flagSize = CGSize(width: 35, height: 35)
@@ -54,7 +57,7 @@ class ViewController: UIViewController {
 		//		phoneNumberTextField.setFlag(for: "FR")
 
 		// Set the phone number directly
-		//		phoneNumberTextField.set(phoneNumber: "+33612345678")
+		phoneNumberTextField.set(phoneNumber: "+33612345678")
 
 		view.addSubview(phoneNumberTextField)
 
@@ -72,7 +75,7 @@ class ViewController: UIViewController {
 	}
 }
 
-extension ViewController: FPNTextFieldDelegate {
+extension SimpleViewController: FPNTextFieldDelegate {
 
 	func fpnDidValidatePhoneNumber(textField: FPNTextField, isValid: Bool) {
 		textField.rightViewMode = .always
