@@ -40,6 +40,13 @@ Simply add in your `Podfile` the following line:
 pod "FlagPhoneNumber"
 ```
 
+### Manually
+
+Simply import the Sources repository in your project.
+
+#### 👴🏻 Objective-C is supported 
+
+
 ## 🗺 Usage
 
 You can instantiate it in storyboards/xibs or programmatically:
@@ -145,6 +152,8 @@ phoneNumberTextField.setCountries(excluding: [.AM, .BW, .BA])
 - [x] Country search
 - [x] Placeholder
 - [x] Exclude/Include countries
+- [x] Objective-C Support
+- [x] Right-to-left
 - [ ] Any idea ?
 
 ## ☕️ Conception
