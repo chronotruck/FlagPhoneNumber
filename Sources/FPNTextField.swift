@@ -100,16 +100,8 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 	open override func layoutSubviews() {
 		super.layoutSubviews()
 
-		leftView?.frame = leftViewRect(forBounds: frame)
 		flagButton.imageEdgeInsets = flagButtonEdgeInsets
-	}
-
-	open override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
-		let width: CGFloat = min(bounds.size.width, leftViewSize.width)
-		let height: CGFloat = min(bounds.size.height, leftViewSize.height)
-		let rect: CGRect = CGRect(x: 0, y: 0, width: width, height: height)
-
-		return rect
+		updateLeftView()
 	}
 
 	private func setup() {
@@ -131,29 +123,42 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 		flagButton.accessibilityLabel = "flagButton"
 		flagButton.addTarget(self, action: #selector(displayCountryKeyboard), for: .touchUpInside)
 		flagButton.translatesAutoresizingMaskIntoConstraints = false
-		flagButton.setContentHuggingPriority(UILayoutPriority.defaultLow, for: .horizontal)
+		flagButton.setContentCompressionResistancePriority(UILayoutPriority.defaultLow, for: .horizontal)
 	}
 
 	private func setupPhoneCodeTextField() {
 		phoneCodeTextField.isUserInteractionEnabled = false
 		phoneCodeTextField.translatesAutoresizingMaskIntoConstraints = false
 		phoneCodeTextField.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: .horizontal)
+		phoneCodeTextField.setContentCompressionResistancePriority(UILayoutPriority.defaultHigh, for: .horizontal)
 	}
 
 	private func setupLeftView() {
-		leftViewMode = .always
-		leftView = UIView()
-		leftView?.addSubview(flagButton)
-		leftView?.addSubview(phoneCodeTextField)
+		let wrapperView = UIView(frame: CGRect(x: 0, y: 0, width: leftViewSize.width, height: leftViewSize.height))
+
+		wrapperView.addSubview(flagButton)
+		wrapperView.addSubview(phoneCodeTextField)
 
 		let views = ["flag": flagButton, "textField": phoneCodeTextField]
-		let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|[flag]-(0)-[textField]|", options: [], metrics: nil, views: views)
+		let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|[flag][textField]|", options: [], metrics: nil, views: views)
 
-		leftView?.addConstraints(horizontalConstraints)
+		wrapperView.addConstraints(horizontalConstraints)
 
 		for key in views.keys {
-			leftView?.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[\(key)]|", options: [], metrics: nil, views: views))
+			wrapperView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[\(key)]|", options: [], metrics: nil, views: views))
 		}
+
+		leftView = wrapperView
+		leftViewMode = .always
+	}
+
+	private func updateLeftView() {
+		let leftViewFrame: CGRect = leftView?.frame ?? .zero
+		let width: CGFloat = min(bounds.size.width, leftViewSize.width)
+		let height: CGFloat = min(bounds.size.height, leftViewSize.height)
+		let newRect: CGRect = CGRect(x: leftViewFrame.minX, y: leftViewFrame.minY, width: width, height: height)
+
+		leftView?.frame = newRect
 	}
 
 	private func setupCountryPicker() {
