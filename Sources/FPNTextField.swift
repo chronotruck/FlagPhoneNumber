@@ -205,8 +205,16 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 		return try? phoneUtil.format(nbPhoneNumber, numberFormat: convert(format: format))
 	}
 
-	/// Get the current raw phone number
-	public func getRawPhoneNumber() -> String? {
+	/// For Objective-C, Get the current formatted phone number
+	@objc public func getFormattedPhoneNumber(format: Int) -> String? {
+		if let formatCase = FPNFormat(rawValue: format) {
+			return try? phoneUtil.format(nbPhoneNumber, numberFormat: convert(format: formatCase))
+		}
+		return nil
+	}
+
+		/// Get the current raw phone number
+	@objc public func getRawPhoneNumber() -> String? {
 		let phoneNumber = getFormattedPhoneNumber(format: .E164)
 		var nationalNumber: NSString?
 

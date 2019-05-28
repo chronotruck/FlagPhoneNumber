@@ -47,14 +47,15 @@ pushPod.sh
 # you should judge for yourself, the pros and cons are mentioned at:
 # https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
 #
-CocoapodsExample/Pods
-CocoapodsExample/Podfile.lock
+ExampleCocoapods/Pods
+ExampleCocoapods/Podfile.lock
+ExampleOBJC/Pods
 
 # Carthage
 #
 # Add this line if you want to avoid checking in source code from Carthage dependencies.
-CarthageExample/Carthage/Checkouts
-CarthageExample/Carthage/Build
+ExampleCarthage/Carthage/Checkouts
+ExampleCarthage/Carthage/Build
 
 
 # fastlane

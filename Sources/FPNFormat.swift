@@ -8,6 +8,9 @@
 
 import Foundation
 
-public enum FPNFormat {
-	case E164, International, National, RFC3966
+@objc public enum FPNFormat: Int {
+	case E164
+	case International
+	case National
+	case RFC3966
 }

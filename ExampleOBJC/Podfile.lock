@@ -1,0 +1,18 @@
+PODS:
+  - FlagPhoneNumber (0.7.4):
+    - FlagPhoneNumber/libPhoneNumberiOS (= 0.7.4)
+  - FlagPhoneNumber/libPhoneNumberiOS (0.7.4)
+
+DEPENDENCIES:
+  - FlagPhoneNumber (from `../`)
+
+EXTERNAL SOURCES:
+  FlagPhoneNumber:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  FlagPhoneNumber: 910ba6d1ac5b982e3a448f81243cf22ec8a55641
+
+PODFILE CHECKSUM: 6a8f939c0b864187aff6550754dabc35eea00021
+
+COCOAPODS: 1.6.0
