@@ -1,9 +1,9 @@
 import UIKit
 
 public struct FPNCountry {
-	var code: FPNCountryCode
-	var name: String
-	var phoneCode: String
+	public var code: FPNCountryCode
+	public var name: String
+	public var phoneCode: String
 	var flag: UIImage?
 
 	init(code: String, name: String, phoneCode: String) {
