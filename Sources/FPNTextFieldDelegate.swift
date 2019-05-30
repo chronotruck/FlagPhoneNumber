@@ -13,7 +13,7 @@ public protocol FPNTextFieldDelegate: UITextFieldDelegate {
 	func fpnDidSelectCountry(name: String, dialCode: String, code: String)
 	func fpnDidValidatePhoneNumber(textField: FPNTextField, isValid: Bool)
 	
-	func detectWhenFlagIsTapped() // option to do something when the flag is tapped
+	func detectWhenFlagIsTapped() // option to do something when the Flag is tapped
 	
 	func detectWhenDoneButtonTapped() // option to do something when the Done button is tapped
 	
