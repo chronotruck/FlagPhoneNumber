@@ -14,7 +14,7 @@ class FPNSearchCountryViewController: UITableViewController, UISearchResultsUpda
 	var list: [FPNCountry]?
 	var results: [FPNCountry]?
 
-	var delegate: FPNDelegate?
+	weak var delegate: FPNDelegate?
 
 	init(countries: [FPNCountry]) {
 		super.init(nibName: nil, bundle: nil)
