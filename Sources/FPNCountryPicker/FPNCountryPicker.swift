@@ -34,7 +34,7 @@ open class FPNCountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDat
 		super.dataSource = self
 		super.delegate = self
 	}
-	
+
 	public func setup(with countryCodes: [FPNCountryCode]) {
 		countries = getAllCountries(equalTo: countryCodes)
 
