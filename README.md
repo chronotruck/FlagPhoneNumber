@@ -52,7 +52,7 @@ Simply import the Sources repository in your project.
 You can instantiate it in storyboards/xibs or programmatically:
 
 ```swift
-let phoneNumberTextField = FlagPhoneNumberTextField(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 16, height: 50))
+let phoneNumberTextField = FPNTextField(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 16, height: 50))
 
 // You can change the chosen flag then set the phone number
 phoneNumberTextField.setFlag(for: .FR)
