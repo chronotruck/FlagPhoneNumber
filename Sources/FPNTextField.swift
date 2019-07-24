@@ -109,11 +109,16 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 		setupPhoneCodeTextField()
 		setupLeftView()
 		setupCountryPicker()
-
+		
+		
+		self.delegate = self // sets itself as the delegate for the UITextFieldDelegate in line 416
+		
 		keyboardType = .phonePad
 		autocorrectionType = .no
 		addTarget(self, action: #selector(didEditText), for: .editingChanged)
 		addTarget(self, action: #selector(displayNumberKeyBoard), for: .touchDown)
+		
+		addTarget(self, action: #selector(textFieldTapped), for: .editingChanged) // **let us know when this textField is tapped
 	}
 
 	private func setupFlagButton() {
@@ -181,6 +186,9 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 	}
 
 	@objc private func displayCountryKeyboard() {
+		
+		(delegate as? FPNTextFieldDelegate)?.detectWhenFlagTapped() // **let's us know when the flag is tapped
+		
 		inputView = countryPicker
 		inputAccessoryView = getToolBar(with: getCountryListBarButtonItems())
 		tintColor = .clear
@@ -196,6 +204,8 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 		inputView = nil
 		inputAccessoryView = nil
 		resignFirstResponder()
+		
+		(delegate as? FPNTextFieldDelegate)?.detectWhenDoneButtonTapped() // **let's us know when the Done button is tapped
 	}
 
 	// - Public
@@ -436,4 +446,12 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 	internal func fpnDidSelect(country: FPNCountry) {
 		setFlag(for: country.code)
 	}
+}
+
+extension FPNTextField: UITextFieldDelegate {
+    
+    @objc private func textFieldTapped() {
+        
+        (delegate as? FPNTextFieldDelegate)?.detectWhenTextFieldTapped()
+    }
 }
