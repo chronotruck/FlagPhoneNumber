@@ -13,14 +13,14 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 	/// The size of the flag
 	@objc public var flagSize: CGSize = CGSize(width: 32, height: 32) {
 		didSet {
-			layoutSubviews()
+			setNeedsLayout()
 		}
 	}
 
 	/// The edges insets of the flag button
 	@objc public var flagButtonEdgeInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5) {
 		didSet {
-			layoutSubviews()
+			setNeedsLayout()
 		}
 	}
 
