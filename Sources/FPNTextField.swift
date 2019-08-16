@@ -139,14 +139,16 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 		wrapperView.addSubview(flagButton)
 		wrapperView.addSubview(phoneCodeTextField)
 
-		let views = ["flag": flagButton, "textField": phoneCodeTextField]
-		let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|[flag][textField]|", options: [], metrics: nil, views: views)
+        NSLayoutConstraint.activate([
+            flagButton.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor),
+            flagButton.topAnchor.constraint(equalTo: wrapperView.topAnchor),
+            flagButton.trailingAnchor.constraint(equalTo: phoneCodeTextField.leadingAnchor),
+            flagButton.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor),
 
-		wrapperView.addConstraints(horizontalConstraints)
-
-		for key in views.keys {
-			wrapperView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[\(key)]|", options: [], metrics: nil, views: views))
-		}
+            phoneCodeTextField.topAnchor.constraint(equalTo: wrapperView.topAnchor),
+            phoneCodeTextField.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor),
+            phoneCodeTextField.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor)
+        ])
 
 		leftView = wrapperView
 		leftViewMode = .always
