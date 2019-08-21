@@ -64,9 +64,6 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 	/// If set, a search button appears in the picker inputAccessoryView to present a country search view controller
 	@IBOutlet public var parentViewController: UIViewController?
 
-	/// Input Accessory View for the texfield
-	@objc public var textFieldInputAccessoryView: UIView?
-
 	init() {
 		super.init(frame: .zero)
 
@@ -114,7 +111,6 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
         flagButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: -4)
 		flagButton.accessibilityLabel = "flagButton"
 		flagButton.addTarget(self, action: #selector(displayCountryKeyboard), for: .touchUpInside)
-		flagButton.translatesAutoresizingMaskIntoConstraints = false
 		flagButton.setContentCompressionResistancePriority(UILayoutPriority.defaultLow, for: .horizontal)
 	}
 
@@ -138,7 +134,7 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 
 	@objc private func displayNumberKeyBoard() {
 		inputView = nil
-		inputAccessoryView = textFieldInputAccessoryView
+		inputAccessoryView = getToolBar(with: getInputBarButtonItems())
 		tintColor = .gray
 		reloadInputViews()
 	}
@@ -367,6 +363,15 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 		}
 		return [space, doneButton]
 	}
+
+    private func getInputBarButtonItems() -> [UIBarButtonItem] {
+        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(resetKeyBoard))
+
+        doneButton.accessibilityLabel = "doneButton"
+
+        return [space, doneButton]
+    }
 
 	private func updatePlaceholder() {
 		if let countryCode = selectedCountry?.code {
