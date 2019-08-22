@@ -29,6 +29,7 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 	private lazy var phoneUtil: NBPhoneNumberUtil = NBPhoneNumberUtil()
 	private var nbPhoneNumber: NBPhoneNumber?
 	private var formatter: NBAsYouTypeFormatter?
+    private var exampleNumberType: NBEPhoneNumberType = .MOBILE
 
 	public var flagButton: UIButton = UIButton()
 
@@ -242,6 +243,13 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 		countryPicker.setup(with: countryCodes)
 	}
 
+    /// Set the example phone number type
+    public func set(exampleNumberType: NBEPhoneNumberType) {
+        self.exampleNumberType = exampleNumberType
+        
+        updatePlaceholder()
+    }
+    
 	// Private
 
 	@objc private func didEditText() {
@@ -376,7 +384,7 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 	private func updatePlaceholder() {
 		if let countryCode = selectedCountry?.code {
 			do {
-				let example = try phoneUtil.getExampleNumber(countryCode.rawValue)
+				let example = try phoneUtil.getExampleNumber(forType: countryCode.rawValue, type: exampleNumberType)
 				let phoneNumber = "+\(example.countryCode.stringValue)\(example.nationalNumber.stringValue)"
 
 				if let inputString = formatter?.inputString(phoneNumber) {
