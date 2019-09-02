@@ -23,12 +23,11 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
             case .PICKER_SEARCH:
                 flagButton.addTarget(self, action: #selector(displayCountryKeyboard), for: .touchUpInside)
             case .SEARCH:
+                self.parentViewController = UIViewController()
                 flagButton.addTarget(self, action: #selector(displayAlphabeticKeyBoard), for: .touchUpInside)
             case .PICKER:
-                self.parentViewController = nil
                 flagButton.addTarget(self, action: #selector(displayCountryKeyboard), for: .touchUpInside)
             }
-            
         }
     }
     
