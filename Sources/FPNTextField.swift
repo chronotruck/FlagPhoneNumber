@@ -87,10 +87,6 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 		parentViewController = nil
 	}
 
-	open override func layoutSubviews() {
-		super.layoutSubviews()
-	}
-
 	private func setup() {
 		setupFlagButton()
 		setupCountryPicker()
@@ -116,9 +112,10 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 	}
 
     open override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
-        var rect = super.leftViewRect(forBounds: bounds)
-        rect.size.width = flagButton.intrinsicContentSize.width
-        return rect
+        return CGRect(
+            x: 0, y: 0,
+            width: flagButton.intrinsicContentSize.width,
+            height: bounds.height - 0.5)
     }
 
 	private func setupCountryPicker() {
