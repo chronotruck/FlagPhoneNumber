@@ -13,42 +13,35 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 	/// The size of the flag
 	@objc public var flagSize: CGSize = CGSize(width: 32, height: 32) {
 		didSet {
-			layoutSubviews()
+			setNeedsLayout()
 		}
 	}
 
 	/// The edges insets of the flag button
-	@objc public var flagButtonEdgeInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5) {
+	@objc public var flagButtonEdgeInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8) {
 		didSet {
-			layoutSubviews()
+            flagButton.contentEdgeInsets = flagButtonEdgeInsets
+			setNeedsLayout()
 		}
 	}
 
-	/// The size of the leftView
-	private var leftViewSize: CGSize {
-		let width = flagSize.width + flagButtonEdgeInsets.left + flagButtonEdgeInsets.right + phoneCodeTextField.frame.width
-		let height = bounds.height
-
-		return CGSize(width: width, height: height)
-	}
-
-	private var phoneCodeTextField: UITextField = UITextField()
 	private lazy var countryPicker: FPNCountryPicker = FPNCountryPicker()
 	private lazy var phoneUtil: NBPhoneNumberUtil = NBPhoneNumberUtil()
 	private var nbPhoneNumber: NBPhoneNumber?
 	private var formatter: NBAsYouTypeFormatter?
+    private var exampleNumberType: NBEPhoneNumberType = .MOBILE
 
 	public var flagButton: UIButton = UIButton()
 
 	open override var font: UIFont? {
 		didSet {
-			phoneCodeTextField.font = font
+            flagButton.titleLabel?.font = font
 		}
 	}
 
 	open override var textColor: UIColor? {
 		didSet {
-			phoneCodeTextField.textColor = textColor
+            flagButton.setTitleColor(textColor, for: .normal)
 		}
 	}
 
@@ -72,9 +65,6 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 	/// If set, a search button appears in the picker inputAccessoryView to present a country search view controller
 	@IBOutlet public var parentViewController: UIViewController?
 
-	/// Input Accessory View for the texfield
-	@objc public var textFieldInputAccessoryView: UIView?
-
 	init() {
 		super.init(frame: .zero)
 
@@ -97,18 +87,12 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 		parentViewController = nil
 	}
 
-	open override func layoutSubviews() {
-		super.layoutSubviews()
-
-		flagButton.imageEdgeInsets = flagButtonEdgeInsets
-		updateLeftView()
-	}
-
 	private func setup() {
 		setupFlagButton()
-		setupPhoneCodeTextField()
-		setupLeftView()
 		setupCountryPicker()
+
+        leftView = flagButton
+        leftViewMode = .always
 
 		keyboardType = .phonePad
 		autocorrectionType = .no
@@ -117,49 +101,22 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 	}
 
 	private func setupFlagButton() {
-		flagButton.contentHorizontalAlignment = .fill
+        flagButton.setTitleColor(.black, for: .normal)
 		flagButton.contentVerticalAlignment = .fill
 		flagButton.imageView?.contentMode = .scaleAspectFit
+        flagButton.contentEdgeInsets = flagButtonEdgeInsets
+        flagButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: -4)
 		flagButton.accessibilityLabel = "flagButton"
 		flagButton.addTarget(self, action: #selector(displayCountryKeyboard), for: .touchUpInside)
-		flagButton.translatesAutoresizingMaskIntoConstraints = false
 		flagButton.setContentCompressionResistancePriority(UILayoutPriority.defaultLow, for: .horizontal)
 	}
 
-	private func setupPhoneCodeTextField() {
-		phoneCodeTextField.isUserInteractionEnabled = false
-		phoneCodeTextField.translatesAutoresizingMaskIntoConstraints = false
-		phoneCodeTextField.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: .horizontal)
-		phoneCodeTextField.setContentCompressionResistancePriority(UILayoutPriority.defaultHigh, for: .horizontal)
-	}
-
-	private func setupLeftView() {
-		let wrapperView = UIView(frame: CGRect(x: 0, y: 0, width: leftViewSize.width, height: leftViewSize.height))
-
-		wrapperView.addSubview(flagButton)
-		wrapperView.addSubview(phoneCodeTextField)
-
-		let views = ["flag": flagButton, "textField": phoneCodeTextField]
-		let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|[flag][textField]|", options: [], metrics: nil, views: views)
-
-		wrapperView.addConstraints(horizontalConstraints)
-
-		for key in views.keys {
-			wrapperView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[\(key)]|", options: [], metrics: nil, views: views))
-		}
-
-		leftView = wrapperView
-		leftViewMode = .always
-	}
-
-	private func updateLeftView() {
-		let leftViewFrame: CGRect = leftView?.frame ?? .zero
-		let width: CGFloat = min(bounds.size.width, leftViewSize.width)
-		let height: CGFloat = min(bounds.size.height, leftViewSize.height)
-		let newRect: CGRect = CGRect(x: leftViewFrame.minX, y: leftViewFrame.minY, width: width, height: height)
-
-		leftView?.frame = newRect
-	}
+    open override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
+        return CGRect(
+            x: 0, y: 0,
+            width: flagButton.intrinsicContentSize.width,
+            height: bounds.height - 0.5)
+    }
 
 	private func setupCountryPicker() {
 		countryPicker.countryPickerDelegate = self
@@ -175,7 +132,7 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 
 	@objc private func displayNumberKeyBoard() {
 		inputView = nil
-		inputAccessoryView = textFieldInputAccessoryView
+		inputAccessoryView = getToolBar(with: getInputBarButtonItems())
 		tintColor = .gray
 		reloadInputViews()
 	}
@@ -283,6 +240,13 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 		countryPicker.setup(with: countryCodes)
 	}
 
+    /// Set the example phone number type
+    public func set(exampleNumberType: NBEPhoneNumberType) {
+        self.exampleNumberType = exampleNumberType
+        
+        updatePlaceholder()
+    }
+    
 	// Private
 
 	@objc private func didEditText() {
@@ -332,9 +296,10 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 		flagButton.setImage(selectedCountry?.flag, for: .normal)
 
 		if let phoneCode = selectedCountry?.phoneCode {
-			phoneCodeTextField.text = phoneCode
-			phoneCodeTextField.sizeToFit()
-			layoutSubviews()
+            flagButton.setTitle(phoneCode, for: .normal)
+            flagButton.sizeToFit()
+            flagButton.accessibilityValue = phoneCode
+			setNeedsLayout()
 		}
 
 		if hasPhoneNumberExample == true {
@@ -405,10 +370,19 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 		return [space, doneButton]
 	}
 
+    private func getInputBarButtonItems() -> [UIBarButtonItem] {
+        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(resetKeyBoard))
+
+        doneButton.accessibilityLabel = "doneButton"
+
+        return [space, doneButton]
+    }
+
 	private func updatePlaceholder() {
 		if let countryCode = selectedCountry?.code {
 			do {
-				let example = try phoneUtil.getExampleNumber(countryCode.rawValue)
+				let example = try phoneUtil.getExampleNumber(forType: countryCode.rawValue, type: exampleNumberType)
 				let phoneNumber = "+\(example.countryCode.stringValue)\(example.nationalNumber.stringValue)"
 
 				if let inputString = formatter?.inputString(phoneNumber) {

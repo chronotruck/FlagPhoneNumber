@@ -1,6 +1,7 @@
 import UIKit
 
-open class FPNCountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource {
+open class FPNCountryPicker: UIPickerView, UIPickerViewAccessibilityDelegate,
+    UIPickerViewDataSource {
 
 	var countries: [FPNCountry]! {
 		didSet {
@@ -192,4 +193,8 @@ open class FPNCountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDat
 			countryPickerDelegate?.countryPhoneCodePicker(self, didSelectCountry: country)
 		}
 	}
+
+    public func pickerView(_ pickerView: UIPickerView, accessibilityLabelForComponent component: Int) -> String? {
+        return "Country selector"
+    }
 }

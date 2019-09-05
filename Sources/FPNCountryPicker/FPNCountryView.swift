@@ -18,5 +18,9 @@ class FPNCountryView: NibLoadingView {
 		flagImageView.image = country.flag
 		countryCodeLabel.text = country.phoneCode
 		countryNameLabel.text = country.name
+
+        isAccessibilityElement = true
+        accessibilityLabel = country.name
+        accessibilityValue = country.phoneCode
 	}
 }
