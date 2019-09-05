@@ -301,6 +301,7 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 		if let phoneCode = selectedCountry?.phoneCode {
             flagButton.setTitle(phoneCode, for: .normal)
             flagButton.sizeToFit()
+            flagButton.accessibilityValue = phoneCode
 			setNeedsLayout()
 		}
 
