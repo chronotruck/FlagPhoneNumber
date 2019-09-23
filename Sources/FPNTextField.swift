@@ -134,23 +134,30 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 	}
 
 	private func setupLeftView() {
-		let wrapperView = UIView(frame: CGRect(x: 0, y: 0, width: leftViewSize.width, height: leftViewSize.height))
+        
+        leftView = UIView(frame: CGRect(x: 0, y: 0, width: leftViewSize.width, height: leftViewSize.height))
+        if let unwrapedView = leftView{
+            
+            flagButton.addConstraint(NSLayoutConstraint(item: flagButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant: flagSize.width))
+            flagButton.addConstraint(NSLayoutConstraint(item: flagButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant: flagSize.height))
 
-		wrapperView.addSubview(flagButton)
-		wrapperView.addSubview(phoneCodeTextField)
+            unwrapedView.addSubview(flagButton)
+            unwrapedView.addSubview(phoneCodeTextField)
+            
+            let views = ["flag": flagButton, "textField": phoneCodeTextField]
+            let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|[flag][textField]-<=10-|", options: [], metrics: nil, views: views)
 
-		let views = ["flag": flagButton, "textField": phoneCodeTextField]
-		let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|[flag][textField]|", options: [], metrics: nil, views: views)
-
-		wrapperView.addConstraints(horizontalConstraints)
-
-		for key in views.keys {
-			wrapperView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[\(key)]|", options: [], metrics: nil, views: views))
-		}
-
-		leftView = wrapperView
-		leftViewMode = .always
-	}
+            unwrapedView.addConstraints(horizontalConstraints)
+            
+            let centerFlag = NSLayoutConstraint(item: flagButton, attribute: .centerY, relatedBy: .equal, toItem: unwrapedView, attribute: .centerY, multiplier: 1, constant: 0)
+            let centerInput = NSLayoutConstraint(item: phoneCodeTextField, attribute: .centerY, relatedBy: .equal, toItem: unwrapedView, attribute: .centerY, multiplier: 1, constant: 0)
+                 NSLayoutConstraint.activate([centerFlag, centerInput])
+            
+        }
+        
+        leftViewMode = .always
+        
+    }
 
 	private func updateLeftView() {
 		let leftViewFrame: CGRect = leftView?.frame ?? .zero

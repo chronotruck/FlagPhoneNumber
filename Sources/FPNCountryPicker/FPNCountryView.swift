@@ -2,21 +2,26 @@ import UIKit
 
 class FPNCountryView: NibLoadingView {
 
-	@IBOutlet weak var flagImageView: UIImageView!
-	@IBOutlet weak var countryNameLabel: UILabel!
-	@IBOutlet weak var countryCodeLabel: UILabel!
+    @IBOutlet weak var flagImageView: UIImageView!
+    @IBOutlet weak var countryNameLabel: UILabel!
+    @IBOutlet weak var countryCodeLabel: UILabel!
 
-	override init(frame: CGRect) {
-		super.init(frame: frame)
-	}
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
 
-	required init?(coder aDecoder: NSCoder) {
-		super.init(coder: aDecoder)
-	}
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
 
-	func setup(_ country: FPNCountry) {
-		flagImageView.image = country.flag
-		countryCodeLabel.text = country.phoneCode
-		countryNameLabel.text = country.name
-	}
+    func setup(_ country: FPNCountry) {
+        flagImageView.image = country.flag
+        countryCodeLabel.text = country.phoneCode
+        countryNameLabel.text = country.name
+        
+        if #available(iOS 13.0, *) {
+            countryNameLabel.textColor = .label
+            countryCodeLabel.textColor = .secondaryLabel
+        }
+    }
 }
