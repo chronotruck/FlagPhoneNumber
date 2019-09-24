@@ -104,7 +104,7 @@ Bundle.FlagIcons = YOUR_FLAG_ICONS_BUNDLE
 
 You can change the size of the flag:
 ```swift
-phoneNumberTextField.flagSize = CGSize(width: 44, height: 44)
+phoneNumberTextField.flagButtonSize = CGSize(width: 44, height: 44)
 ```
 
 You can change the edge insets of the flag:

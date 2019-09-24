@@ -10,23 +10,21 @@ import UIKit
 
 open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 
-	/// The size of the flag
-	@objc public var flagSize: CGSize = CGSize(width: 32, height: 32) {
+	/// The size of the flag button
+	@objc public var flagButtonSize: CGSize = CGSize(width: 32, height: 32) {
 		didSet {
-			layoutSubviews()
+			flagWidthConstraint?.constant = flagButtonSize.width
+			flagHeightConstraint?.constant = flagButtonSize.height
+			layoutIfNeeded()
 		}
 	}
 
-	/// The edges insets of the flag button
-	@objc public var flagButtonEdgeInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5) {
-		didSet {
-			layoutSubviews()
-		}
-	}
+	private var flagWidthConstraint: NSLayoutConstraint?
+	private var flagHeightConstraint: NSLayoutConstraint?
 
 	/// The size of the leftView
 	private var leftViewSize: CGSize {
-		let width = flagSize.width + flagButtonEdgeInsets.left + flagButtonEdgeInsets.right + phoneCodeTextField.frame.width
+		let width = flagButtonSize.width + getWidth(text: phoneCodeTextField.text!)
 		let height = bounds.height
 
 		return CGSize(width: width, height: height)
@@ -97,68 +95,63 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 		parentViewController = nil
 	}
 
-	open override func layoutSubviews() {
-		super.layoutSubviews()
-
-		flagButton.imageEdgeInsets = flagButtonEdgeInsets
-		updateLeftView()
-	}
-
 	private func setup() {
+		leftViewMode = .always
+
 		setupFlagButton()
 		setupPhoneCodeTextField()
 		setupLeftView()
 		setupCountryPicker()
 
-		keyboardType = .phonePad
+		keyboardType = .numberPad
 		autocorrectionType = .no
 		addTarget(self, action: #selector(didEditText), for: .editingChanged)
 		addTarget(self, action: #selector(displayNumberKeyBoard), for: .touchDown)
 	}
 
 	private func setupFlagButton() {
-		flagButton.contentHorizontalAlignment = .fill
-		flagButton.contentVerticalAlignment = .fill
 		flagButton.imageView?.contentMode = .scaleAspectFit
 		flagButton.accessibilityLabel = "flagButton"
 		flagButton.addTarget(self, action: #selector(displayCountryKeyboard), for: .touchUpInside)
 		flagButton.translatesAutoresizingMaskIntoConstraints = false
-		flagButton.setContentCompressionResistancePriority(UILayoutPriority.defaultLow, for: .horizontal)
+		flagButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
 	}
 
 	private func setupPhoneCodeTextField() {
+		phoneCodeTextField.font = font
 		phoneCodeTextField.isUserInteractionEnabled = false
 		phoneCodeTextField.translatesAutoresizingMaskIntoConstraints = false
-		phoneCodeTextField.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: .horizontal)
-		phoneCodeTextField.setContentCompressionResistancePriority(UILayoutPriority.defaultHigh, for: .horizontal)
 	}
 
 	private func setupLeftView() {
-		let wrapperView = UIView(frame: CGRect(x: 0, y: 0, width: leftViewSize.width, height: leftViewSize.height))
+		let wrapperView = UIView()
 
 		wrapperView.addSubview(flagButton)
 		wrapperView.addSubview(phoneCodeTextField)
 
 		let views = ["flag": flagButton, "textField": phoneCodeTextField]
-		let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|[flag][textField]|", options: [], metrics: nil, views: views)
 
-		wrapperView.addConstraints(horizontalConstraints)
+		flagWidthConstraint = NSLayoutConstraint(item: flagButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant: flagButtonSize.width)
+		flagHeightConstraint = NSLayoutConstraint(item: flagButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant: flagButtonSize.height)
 
-		for key in views.keys {
-			wrapperView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[\(key)]|", options: [], metrics: nil, views: views))
-		}
+		flagButton.addConstraint(flagWidthConstraint!)
+		flagButton.addConstraint(flagHeightConstraint!)
+
+		wrapperView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[flag][textField]|", options: [], metrics: nil, views: views))
+		wrapperView.addConstraint(NSLayoutConstraint(item: flagButton, attribute: .centerY, relatedBy: .equal, toItem: wrapperView, attribute: .centerY, multiplier: 1, constant: 0))
+		wrapperView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[textField]|", options: [], metrics: nil, views: views))
 
 		leftView = wrapperView
-		leftViewMode = .always
 	}
 
-	private func updateLeftView() {
+	open override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
 		let leftViewFrame: CGRect = leftView?.frame ?? .zero
-		let width: CGFloat = min(bounds.size.width, leftViewSize.width)
-		let height: CGFloat = min(bounds.size.height, leftViewSize.height)
+		let size = leftViewSize
+		let width: CGFloat = min(bounds.size.width, size.width)
+		let height: CGFloat = min(bounds.size.height, size.height)
 		let newRect: CGRect = CGRect(x: leftViewFrame.minX, y: leftViewFrame.minY, width: width, height: height)
 
-		leftView?.frame = newRect
+		return newRect
 	}
 
 	private func setupCountryPicker() {
@@ -333,8 +326,6 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 
 		if let phoneCode = selectedCountry?.phoneCode {
 			phoneCodeTextField.text = phoneCode
-			phoneCodeTextField.sizeToFit()
-			layoutSubviews()
 		}
 
 		if hasPhoneNumberExample == true {
@@ -349,6 +340,19 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 		allowedCharactersSet.insert("+")
 
 		return string.components(separatedBy: allowedCharactersSet.inverted).joined(separator: "")
+	}
+
+	private func getWidth(text: String) -> CGFloat {
+		if let font = phoneCodeTextField.font {
+			let fontAttributes = [NSAttributedString.Key.font: font]
+			let size = (text as NSString).size(withAttributes: fontAttributes)
+
+			return size.width.rounded(.up)
+		} else {
+			phoneCodeTextField.sizeToFit()
+
+			return phoneCodeTextField.frame.size.width.rounded(.up)
+		}
 	}
 
 	private func getValidNumber(phoneNumber: String) -> NBPhoneNumber? {

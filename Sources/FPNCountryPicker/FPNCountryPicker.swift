@@ -67,22 +67,6 @@ open class FPNCountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDat
 		}
 	}
 
-	open func setCountryByPhoneCode(_ phoneCode: String) {
-		for index in 0..<countries.count {
-			if countries[index].phoneCode == phoneCode {
-				return self.setCountryByRow(row: index)
-			}
-		}
-	}
-
-	open func setCountryByName(_ name: String) {
-		for index in 0..<countries.count {
-			if countries[index].name == name {
-				return self.setCountryByRow(row: index)
-			}
-		}
-	}
-
 	func setCountryByRow(row: Int) {
 		self.selectRow(row, inComponent: 0, animated: true)
 
