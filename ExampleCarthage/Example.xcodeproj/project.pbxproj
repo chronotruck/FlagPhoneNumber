@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D28F630233B52E300C1C41D /* FlagPhoneNumber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8C713C229298BA0026E0C7 /* FlagPhoneNumber.framework */; };
+		0D28F631233B52E300C1C41D /* FlagPhoneNumber.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8C713C229298BA0026E0C7 /* FlagPhoneNumber.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0D37216C2293FBE900B5D8A3 /* StackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3721682293FBE900B5D8A3 /* StackViewController.swift */; };
 		0D37216D2293FBE900B5D8A3 /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3721692293FBE900B5D8A3 /* ScrollViewController.swift */; };
 		0D37216E2293FBE900B5D8A3 /* SimpleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D37216A2293FBE900B5D8A3 /* SimpleViewController.swift */; };
@@ -15,17 +17,16 @@
 		0D52F8E82291D554003A362C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D52F8E62291D554003A362C /* Main.storyboard */; };
 		0D52F8EA2291D555003A362C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D52F8E92291D555003A362C /* Assets.xcassets */; };
 		0D52F8ED2291D555003A362C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D52F8EB2291D555003A362C /* LaunchScreen.storyboard */; };
-		0D8C713F229298D30026E0C7 /* FlagPhoneNumber.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8C713C229298BA0026E0C7 /* FlagPhoneNumber.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		0D8C7140229298D40026E0C7 /* Embed Frameworks */ = {
+		0D28F632233B52E300C1C41D /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				0D8C713F229298D30026E0C7 /* FlagPhoneNumber.framework in Embed Frameworks */,
+				0D28F631233B52E300C1C41D /* FlagPhoneNumber.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -51,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D28F630233B52E300C1C41D /* FlagPhoneNumber.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,7 +102,7 @@
 				0D52F8DC2291D554003A362C /* Sources */,
 				0D52F8DD2291D554003A362C /* Frameworks */,
 				0D52F8DE2291D554003A362C /* Resources */,
-				0D8C7140229298D40026E0C7 /* Embed Frameworks */,
+				0D28F632233B52E300C1C41D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

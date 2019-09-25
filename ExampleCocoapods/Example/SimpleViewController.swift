@@ -32,8 +32,8 @@ class SimpleViewController: UIViewController {
 		phoneNumberTextField.font = UIFont.systemFont(ofSize: 14)
 
 		// Custom the size/edgeInsets of the flag button
-		phoneNumberTextField.flagSize = CGSize(width: 35, height: 35)
-		phoneNumberTextField.flagButtonEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+		phoneNumberTextField.flagButtonSize = CGSize(width: 35, height: 35)
+		phoneNumberTextField.flagButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
 
 		// Example of customizing the textField input accessory view
 		//		let items = [
