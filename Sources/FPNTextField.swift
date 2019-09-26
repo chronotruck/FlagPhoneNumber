@@ -1,5 +1,5 @@
 //
-//  FlagPhoneNumberTextField.swift
+//  FPNTextField.swift
 //  FlagPhoneNumber
 //
 //  Created by Aurélien Grifasi on 06/08/2017.
@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import PhoneNumberKit
 
-open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
+open class FPNTextField: PhoneNumberTextField, FPNCountryPickerDelegate, FPNDelegate {
 
 	/// The size of the flag button
 	@objc public var flagButtonSize: CGSize = CGSize(width: 32, height: 32) {
@@ -33,8 +34,6 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 	private var phoneCodeTextField: UITextField = UITextField()
 	private lazy var countryPicker: FPNCountryPicker = FPNCountryPicker()
 	private lazy var phoneUtil: NBPhoneNumberUtil = NBPhoneNumberUtil()
-	private var nbPhoneNumber: NBPhoneNumber?
-	private var formatter: NBAsYouTypeFormatter?
 
 	public var flagButton: UIButton = UIButton()
 
@@ -54,16 +53,11 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 	/// If false, you can set your own placeholder. Set to true by default.
 	@objc public var hasPhoneNumberExample: Bool = true {
 		didSet {
-			if hasPhoneNumberExample == false {
+			if hasPhoneNumberExample {
+				updatePlaceholder()
+			} else {
 				placeholder = nil
 			}
-			updatePlaceholder()
-		}
-	}
-
-	open var selectedCountry: FPNCountry? {
-		didSet {
-			updateUI()
 		}
 	}
 
@@ -85,7 +79,7 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 		setup()
 	}
 
-	required public init?(coder aDecoder: NSCoder) {
+	required public init(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 
 		setup()
@@ -96,6 +90,7 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 	}
 
 	private func setup() {
+		withPrefix = false
 		leftViewMode = .always
 
 		setupFlagButton()
@@ -166,6 +161,8 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 		}
 	}
 
+	// MARK: Selectors
+
 	@objc private func displayNumberKeyBoard() {
 		inputView = nil
 		inputAccessoryView = textFieldInputAccessoryView
@@ -181,58 +178,117 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 		becomeFirstResponder()
 	}
 
-	@objc private func displayAlphabeticKeyBoard() {
-		showSearchController()
-	}
-
 	@objc private func resetKeyBoard() {
 		inputView = nil
 		inputAccessoryView = nil
 		resignFirstResponder()
 	}
 
-	// - Public
+	@objc private func showSearchController() {
+		let searchCountryViewController = FPNSearchCountryViewController(countries: countryPicker.countries)
+		let navigationViewController = UINavigationController(rootViewController: searchCountryViewController)
 
-	/// Set the country image according to country code. Example "FR"
-	public func setFlag(for countryCode: FPNCountryCode) {
-		countryPicker.setCountry(countryCode)
+		searchCountryViewController.delegate = self
+
+		parentViewController?.present(navigationViewController, animated: true, completion: nil)
 	}
 
-	/// Get the current formatted phone number
-	public func getFormattedPhoneNumber(format: FPNFormat) -> String? {
-		return try? phoneUtil.format(nbPhoneNumber, numberFormat: convert(format: format))
+	@objc private func didEditText() {
+		(delegate as? FPNTextFieldDelegate)?.fpnDidValidatePhoneNumber(textField: self, isValid: isValidNumber)
 	}
 
-	/// For Objective-C, Get the current formatted phone number
-	@objc public func getFormattedPhoneNumber(format: Int) -> String? {
-		if let formatCase = FPNFormat(rawValue: format) {
-			return try? phoneUtil.format(nbPhoneNumber, numberFormat: convert(format: formatCase))
+	// MARK: Public
+
+	/// Get the phone number in the specified format
+	public func getPhoneNumber(in format: FPNFormat) -> String? {
+		let rawNumber = self.text ?? String()
+
+		do {
+			let phoneNumber = try phoneNumberKit.parse(rawNumber, withRegion: currentRegion)
+
+			switch format {
+			case .E164:
+				return phoneNumberKit.format(phoneNumber, toType: .e164)
+			case .International:
+				return phoneNumberKit.format(phoneNumber, toType: .international)
+			case .National:
+				return phoneNumberKit.format(phoneNumber, toType: .national)
+			case .Raw:
+				return "\(phoneNumber.nationalNumber)"
+			}
+		} catch {
+			return nil
+		}
+	}
+
+	/// For Objective-C, Get the phone number in the specified format
+	@objc public func getPhoneNumber(in format: Int) -> String? {
+		if let format = FPNFormat(rawValue: format) {
+			return getPhoneNumber(in: format)
 		}
 		return nil
 	}
 
-		/// Get the current raw phone number
-	@objc public func getRawPhoneNumber() -> String? {
-		let phoneNumber = getFormattedPhoneNumber(format: .E164)
-		var nationalNumber: NSString?
+	/// Set directly the phone number.
+	/// - phoneNumber: The phone number to set. E.g +33612345678
+	/// - region: The region of the phone number. Optional.
+	///
+	/// You can provide the region if the phoneNumber doesn't start by the country code.
+	///
+	/// Example
+	///
+	/// phoneNumber: "0612345678", region: "FR"
+	public func set(phoneNumber: String, for region: FPNCountryCode? = nil) {
+		do {
+			var parsedPhoneNumber: PhoneNumber
 
-		phoneUtil.extractCountryCode(phoneNumber, nationalNumber: &nationalNumber)
+			if let region = region {
+				parsedPhoneNumber = try phoneNumberKit.parse(phoneNumber, withRegion: region.rawValue, ignoreType: false)
+				setFlag(for: region)
+			} else {
+				parsedPhoneNumber = try phoneNumberKit.parse(phoneNumber)
 
-		return nationalNumber as String?
+				if let region = parsedPhoneNumber.regionID, let countryCode = FPNCountryCode(rawValue: region) {
+					setFlag(for: countryCode)
+				}
+			}
+
+			text = "\(parsedPhoneNumber.nationalNumber)"
+		}
+		catch {
+			text = phoneNumber
+		}
 	}
 
-	/// Set directly the phone number. e.g "+33612345678"
-	@objc public func set(phoneNumber: String) {
-		let cleanedPhoneNumber: String = clean(string: phoneNumber)
+	/// Set directly the phone number.
+	/// - phoneNumber: The phone number to set. E.g +33612345678
+	/// - region: The region of the phone number. Optional.
+	///
+	/// You can provide the region if the phoneNumber doesn't start by the country code.
+	///
+	/// Example
+	///
+	/// phoneNumber: "0612345678", region: 59
+	@objc public func setOBJC(phoneNumber: String) {
+		set(phoneNumber: phoneNumber)
+	}
 
-		if let validPhoneNumber = getValidNumber(phoneNumber: cleanedPhoneNumber) {
-			if validPhoneNumber.italianLeadingZero {
-				text = "0\(validPhoneNumber.nationalNumber.stringValue)"
-			} else {
-				text = validPhoneNumber.nationalNumber.stringValue
-			}
-			setFlag(for: FPNCountryCode(rawValue: phoneUtil.getRegionCode(for: validPhoneNumber))!)
+	/// Set directly the phone number.
+	/// - phoneNumber: The phone number to set. E.g +33612345678
+	/// - region: The region of the phone number. Optional.
+	///
+	/// You can provide the region if the phoneNumber doesn't start by the country code.
+	///
+	/// Example
+	///
+	/// phoneNumber: "0612345678", region: 59
+	@objc public func setOBJC(phoneNumber: String, for region: Int) {
+		var phoneNumberRegion: FPNCountryCode?
+
+		if let key = FPNOBJCCountryKey(rawValue: region), let code = FPNOBJCCountryCode[key], let countryCode = FPNCountryCode(rawValue: code) {
+			phoneNumberRegion = countryCode
 		}
+		set(phoneNumber: phoneNumber, for: phoneNumberRegion)
 	}
 
 	/// Set the country list excluding the provided countries
@@ -243,13 +299,6 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 	/// Set the country list including the provided countries
 	public func setCountries(including countries: [FPNCountryCode]) {
 		countryPicker.setup(with: countries)
-	}
-
-	/// Set the country image according to country code. Example "FR"
-	@objc public func setFlag(for key: FPNOBJCCountryKey) {
-		if let code = FPNOBJCCountryCode[key], let countryCode = FPNCountryCode(rawValue: code) {
-			countryPicker.setCountry(countryCode)
-		}
 	}
 
 	/// Set the country list excluding the provided countries
@@ -276,71 +325,19 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 		countryPicker.setup(with: countryCodes)
 	}
 
-	// Private
+	/// Set the country image according to country code. Example "FR"
+	public func setFlag(for countryCode: FPNCountryCode) {
+		countryPicker.setCountry(countryCode)
+	}
 
-	@objc private func didEditText() {
-		if let phoneCode = selectedCountry?.phoneCode, let number = text {
-			var cleanedPhoneNumber = clean(string: "\(phoneCode) \(number)")
-
-			if let validPhoneNumber = getValidNumber(phoneNumber: cleanedPhoneNumber) {
-				nbPhoneNumber = validPhoneNumber
-
-				cleanedPhoneNumber = "+\(validPhoneNumber.countryCode.stringValue)\(validPhoneNumber.nationalNumber.stringValue)"
-
-				if let inputString = formatter?.inputString(cleanedPhoneNumber) {
-					text = remove(dialCode: phoneCode, in: inputString)
-				}
-				(delegate as? FPNTextFieldDelegate)?.fpnDidValidatePhoneNumber(textField: self, isValid: true)
-			} else {
-				nbPhoneNumber = nil
-
-				if let dialCode = selectedCountry?.phoneCode {
-					if let inputString = formatter?.inputString(cleanedPhoneNumber) {
-						text = remove(dialCode: dialCode, in: inputString)
-					}
-				}
-				(delegate as? FPNTextFieldDelegate)?.fpnDidValidatePhoneNumber(textField: self, isValid: false)
-			}
+	/// Set the country image according to country code. Example "FR"
+	@objc public func setFlag(for key: FPNOBJCCountryKey) {
+		if let code = FPNOBJCCountryCode[key], let countryCode = FPNCountryCode(rawValue: code) {
+			countryPicker.setCountry(countryCode)
 		}
 	}
 
-	private func convert(format: FPNFormat) -> NBEPhoneNumberFormat {
-		switch format {
-		case .E164:
-			return NBEPhoneNumberFormat.E164
-		case .International:
-			return NBEPhoneNumberFormat.INTERNATIONAL
-		case .National:
-			return NBEPhoneNumberFormat.NATIONAL
-		case .RFC3966:
-			return NBEPhoneNumberFormat.RFC3966
-		}
-	}
-
-	private func updateUI() {
-		if let countryCode = selectedCountry?.code {
-			formatter = NBAsYouTypeFormatter(regionCode: countryCode.rawValue)
-		}
-
-		flagButton.setImage(selectedCountry?.flag, for: .normal)
-
-		if let phoneCode = selectedCountry?.phoneCode {
-			phoneCodeTextField.text = phoneCode
-		}
-
-		if hasPhoneNumberExample == true {
-			updatePlaceholder()
-		}
-		didEditText()
-	}
-
-	private func clean(string: String) -> String {
-		var allowedCharactersSet = CharacterSet.decimalDigits
-
-		allowedCharactersSet.insert("+")
-
-		return string.components(separatedBy: allowedCharactersSet.inverted).joined(separator: "")
-	}
+	// MARK: Private
 
 	private func getWidth(text: String) -> CGFloat {
 		if let font = phoneCodeTextField.font {
@@ -352,34 +349,6 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 			phoneCodeTextField.sizeToFit()
 
 			return phoneCodeTextField.frame.size.width.rounded(.up)
-		}
-	}
-
-	private func getValidNumber(phoneNumber: String) -> NBPhoneNumber? {
-		guard let countryCode = selectedCountry?.code else { return nil }
-
-		do {
-			let parsedPhoneNumber: NBPhoneNumber = try phoneUtil.parse(phoneNumber, defaultRegion: countryCode.rawValue)
-			let isValid = phoneUtil.isValidNumber(parsedPhoneNumber)
-
-			return isValid ? parsedPhoneNumber : nil
-		} catch _ {
-			return nil
-		}
-	}
-
-	private func remove(dialCode: String, in phoneNumber: String) -> String {
-		return phoneNumber.replacingOccurrences(of: "\(dialCode) ", with: "").replacingOccurrences(of: "\(dialCode)", with: "")
-	}
-
-	private func showSearchController() {
-		if let countries = countryPicker.countries {
-			let searchCountryViewController = FPNSearchCountryViewController(countries: countries)
-			let navigationViewController = UINavigationController(rootViewController: searchCountryViewController)
-
-			searchCountryViewController.delegate = self
-
-			parentViewController?.present(navigationViewController, animated: true, completion: nil)
 		}
 	}
 
@@ -400,7 +369,7 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 		doneButton.accessibilityLabel = "doneButton"
 
 		if parentViewController != nil {
-			let searchButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.search, target: self, action: #selector(displayAlphabeticKeyBoard))
+			let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(showSearchController))
 
 			searchButton.accessibilityLabel = "searchButton"
 
@@ -410,32 +379,34 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 	}
 
 	private func updatePlaceholder() {
-		if let countryCode = selectedCountry?.code {
-			do {
-				let example = try phoneUtil.getExampleNumber(countryCode.rawValue)
-				let phoneNumber = "+\(example.countryCode.stringValue)\(example.nationalNumber.stringValue)"
+		do {
+			let examplePhoneNumber = try phoneUtil.getExampleNumber(defaultRegion)
+			let exampleCountryCode = examplePhoneNumber.countryCode.stringValue
+			let exampleNationalNumber = examplePhoneNumber.nationalNumber.stringValue
+			let formattedExamplePhoneNumber = PartialFormatter().formatPartial("+\(exampleCountryCode)\(exampleNationalNumber)")
 
-				if let inputString = formatter?.inputString(phoneNumber) {
-					placeholder = remove(dialCode: "+\(example.countryCode.stringValue)", in: inputString)
-				} else {
-					placeholder = nil
-				}
-			} catch _ {
-				placeholder = nil
-			}
-		} else {
+			placeholder = formattedExamplePhoneNumber.replacingOccurrences(of: "+\(exampleCountryCode) ", with: "")
+		} catch _ {
 			placeholder = nil
 		}
 	}
 
-	// - FPNCountryPickerDelegate
+	// MARK: FPNCountryPickerDelegate
 
 	func countryPhoneCodePicker(_ picker: FPNCountryPicker, didSelectCountry country: FPNCountry) {
 		(delegate as? FPNTextFieldDelegate)?.fpnDidSelectCountry(name: country.name, dialCode: country.phoneCode, code: country.code.rawValue)
-		selectedCountry = country
+		defaultRegion = country.code.rawValue
+
+		flagButton.setImage(country.flag, for: .normal)
+		phoneCodeTextField.text = country.phoneCode
+
+		if hasPhoneNumberExample == true {
+			updatePlaceholder()
+		}
+		text = nil
 	}
 
-	// - FPNDelegate
+	// MARK: FPNDelegate
 
 	internal func fpnDidSelect(country: FPNCountry) {
 		setFlag(for: country.code)

@@ -82,11 +82,10 @@ extension YourViewController: FPNTextFieldDelegate {
    func fpnDidValidatePhoneNumber(textField: FPNTextField, isValid: Bool) {
       if isValid {
          // Do something...         
-         textField.getFormattedPhoneNumber(format: .E164),           // Output "+33600000001"
-         textField.getFormattedPhoneNumber(format: .International),  // Output "+33 6 00 00 00 01"
-         textField.getFormattedPhoneNumber(format: .National),       // Output "06 00 00 00 01"
-         textField.getFormattedPhoneNumber(format: .RFC3966),        // Output "tel:+33-6-00-00-00-01"
-         textField.getRawPhoneNumber()                               // Output "600000001"
+         print(textField.getPhoneNumber(in: .E164))          // Output "+33600000001"
+         print(textField.getPhoneNumber(in: .International)) // Output "+33 6 00 00 00 01"
+         print(textField.getPhoneNumber(in: .National))      // Output "06 00 00 00 01"
+         print(textField.getRawPhoneNumber())                // Output "600000001"
       } else {
          // Do something...
       }

@@ -12,5 +12,5 @@ import Foundation
 	case E164
 	case International
 	case National
-	case RFC3966
+	case Raw
 }

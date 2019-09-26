@@ -31,14 +31,12 @@ extension StackViewController: FPNTextFieldDelegate {
 		textField.rightViewMode = .always
 		textField.rightView = UIImageView(image: isValid ? #imageLiteral(resourceName: "success") : #imageLiteral(resourceName: "error"))
 
-		print(
-			isValid,
-			textField.getFormattedPhoneNumber(format: .E164) ?? "E164: nil",
-			textField.getFormattedPhoneNumber(format: .International) ?? "International: nil",
-			textField.getFormattedPhoneNumber(format: .National) ?? "National: nil",
-			textField.getFormattedPhoneNumber(format: .RFC3966) ?? "RFC3966: nil",
-			textField.getRawPhoneNumber() ?? "Raw: nil"
-		)
+		print("isValid       : ", isValid)
+		print("E164          : ", textField.getPhoneNumber(in: .E164) ?? "nil")
+		print("International : ", textField.getPhoneNumber(in: .International) ?? "nil")
+		print("National      : ", textField.getPhoneNumber(in: .National) ?? "nil")
+		print("Raw           : ", textField.getPhoneNumber(in: .Raw) ?? "nil")
+		print("\n")
 	}
 
 	func fpnDidSelectCountry(name: String, dialCode: String, code: String) {
