@@ -85,7 +85,7 @@ extension YourViewController: FPNTextFieldDelegate {
          print(textField.getPhoneNumber(in: .E164))          // Output "+33600000001"
          print(textField.getPhoneNumber(in: .International)) // Output "+33 6 00 00 00 01"
          print(textField.getPhoneNumber(in: .National))      // Output "06 00 00 00 01"
-         print(textField.getRawPhoneNumber())                // Output "600000001"
+         print(textField.getPhoneNumber(in: .Raw)            // Output "600000001"
       } else {
          // Do something...
       }
