@@ -13,8 +13,6 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 	/// The size of the flag button
 	@objc public var flagButtonSize: CGSize = CGSize(width: 32, height: 32) {
 		didSet {
-			flagWidthConstraint?.constant = flagButtonSize.width
-			flagHeightConstraint?.constant = flagButtonSize.height
 			layoutIfNeeded()
 		}
 	}
@@ -124,36 +122,49 @@ open class FPNTextField: UITextField, FPNCountryPickerDelegate, FPNDelegate {
 	}
 
 	private func setupLeftView() {
-		let wrapperView = UIView()
+		leftView = UIView()
+		leftViewMode = .always
+		if #available(iOS 9.0, *) {
+			phoneCodeTextField.semanticContentAttribute = .forceLeftToRight
+		} else {
+			// Fallback on earlier versions
+		}
 
-		wrapperView.addSubview(flagButton)
-		wrapperView.addSubview(phoneCodeTextField)
+		leftView?.addSubview(flagButton)
+		leftView?.addSubview(phoneCodeTextField)
 
-		let views = ["flag": flagButton, "textField": phoneCodeTextField]
 
 		flagWidthConstraint = NSLayoutConstraint(item: flagButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant: flagButtonSize.width)
 		flagHeightConstraint = NSLayoutConstraint(item: flagButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant: flagButtonSize.height)
 
-		flagButton.addConstraint(flagWidthConstraint!)
-		flagButton.addConstraint(flagHeightConstraint!)
+		flagWidthConstraint?.isActive = true
+		flagHeightConstraint?.isActive = true
 
-		wrapperView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[flag][textField]|", options: [], metrics: nil, views: views))
-		wrapperView.addConstraint(NSLayoutConstraint(item: flagButton, attribute: .centerY, relatedBy: .equal, toItem: wrapperView, attribute: .centerY, multiplier: 1, constant: 0))
-		wrapperView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[textField]|", options: [], metrics: nil, views: views))
+		NSLayoutConstraint(item: flagButton, attribute: .centerY, relatedBy: .equal, toItem: leftView, attribute: .centerY, multiplier: 1, constant: 0).isActive = true
 
-		leftView = wrapperView
+		NSLayoutConstraint(item: flagButton, attribute: .leading, relatedBy: .equal, toItem: leftView, attribute: .leading, multiplier: 1, constant: 0).isActive = true
+		NSLayoutConstraint(item: phoneCodeTextField, attribute: .leading, relatedBy: .equal, toItem: flagButton, attribute: .trailing, multiplier: 1, constant: 0).isActive = true
+		NSLayoutConstraint(item: phoneCodeTextField, attribute: .trailing, relatedBy: .equal, toItem: leftView, attribute: .trailing, multiplier: 1, constant: 0).isActive = true
+		NSLayoutConstraint(item: phoneCodeTextField, attribute: .top, relatedBy: .equal, toItem: leftView, attribute: .top, multiplier: 1, constant: 0).isActive = true
+		NSLayoutConstraint(item: phoneCodeTextField, attribute: .bottom, relatedBy: .equal, toItem: leftView, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
+	}
+
+	open override func updateConstraints() {
+		super.updateConstraints()
+
+		flagWidthConstraint?.constant = flagButtonSize.width
+		flagHeightConstraint?.constant = flagButtonSize.height
 	}
 
 	open override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
-		let leftViewFrame: CGRect = leftView?.frame ?? .zero
 		let size = leftViewSize
 		let width: CGFloat = min(bounds.size.width, size.width)
 		let height: CGFloat = min(bounds.size.height, size.height)
-		let newRect: CGRect = CGRect(x: leftViewFrame.minX, y: leftViewFrame.minY, width: width, height: height)
+		let newRect: CGRect = CGRect(x: bounds.minX, y: bounds.minY, width: width, height: height)
 
 		return newRect
 	}
-
+	
 	private func setupCountryPicker() {
 		countryPicker.countryPickerDelegate = self
 		countryPicker.showPhoneNumbers = true
