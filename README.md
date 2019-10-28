@@ -102,14 +102,9 @@ FlagKit is used by default but you can customize the list with your own flag ico
 Bundle.FlagIcons = YOUR_FLAG_ICONS_BUNDLE
 ```
 
-You can change the size of the flag:
+You can change the size of the flag button:
 ```swift
-phoneNumberTextField.flagSize = CGSize(width: 44, height: 44)
-```
-
-You can change the edge insets of the flag:
-```swift
-phoneNumberTextField.flagButtonEdgeInsets = UIEdgeInsetsMake(5, 10, 5, 10)
+phoneNumberTextField.flagButtonSize = CGSize(width: 44, height: 44)
 ```
 
 If you set the parentViewController programmatically or from `@IBOutlet`,  a search button appears in the picker inputAccessoryView to present a country search view controller:
