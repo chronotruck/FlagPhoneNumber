@@ -107,11 +107,6 @@ You can change the size of the flag button:
 phoneNumberTextField.flagButtonSize = CGSize(width: 44, height: 44)
 ```
 
-If you set the parentViewController programmatically or from `@IBOutlet`,  a search button appears in the picker inputAccessoryView to present a country search view controller:
-```swift
-phoneNumberTextField.parentViewController = self // or from @IBOutlet
-```
-
 You can customize the inputAccessoryView of the textfield:
 ```swift
 phoneNumberTextField.textFieldInputAccessoryView = getCustomTextFieldInputAccessoryView(with: items)
@@ -141,19 +136,21 @@ Or exclude countries from the list:
 phoneNumberTextField.setCountries(excluding: [.AM, .BW, .BA])
 ```
 
+You can choose to display the country list by picker or by a presented view controller:
+```swift
+phoneNumberTextField.countryListDisplayMode = .picker // by default
+phoneNumberTextField.countryListDisplayMode = .presented(on: self)
+```
 
-## ✨ Next Improvments
-- [x] Localization
-- [x] Country search
-- [x] Placeholder
-- [x] Exclude/Include countries
-- [x] Objective-C Support
-- [x] Right-to-left
-- [ ] Any idea ?
+You can choose to display the country phone code in the picker or in the presented view controller:
+```swift
+phoneNumberTextField.showCountryPhoneCode = false // true by default
+```
+
+You can reuses `FPN` classes as you see fit !
 
 ## ☕️ Conception
-This library is high inspired of MRCountryPicker library and use libPhoneNumber-iOS library.
-https://github.com/xtrinch/MRCountryPicker / https://github.com/iziz/libPhoneNumber-iOS
+This library uses libPhoneNumber-iOS library (https://github.com/iziz/libPhoneNumber-iOS)
 
 Open source time proudly sponsored by Chronotruck.
 

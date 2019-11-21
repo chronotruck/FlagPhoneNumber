@@ -13,7 +13,6 @@ class TableViewController: UITableViewController {
 
 	@IBOutlet weak var firstPhoneNumberTextField: FPNTextField!
 	@IBOutlet weak var secondPhoneNumberTextField: FPNTextField!
-	@IBOutlet weak var thirdPhoneNumberTextField: FPNTextField!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -21,14 +20,11 @@ class TableViewController: UITableViewController {
 		title = "In Table View"
 		tableView.delaysContentTouches = false
 
-		firstPhoneNumberTextField.parentViewController = self
+		firstPhoneNumberTextField.countryListDisplayMode = .picker
 		firstPhoneNumberTextField.delegate = self
 
-		secondPhoneNumberTextField.parentViewController = self
+		secondPhoneNumberTextField.countryListDisplayMode = .presented(on: self)
 		secondPhoneNumberTextField.delegate = self
-
-		thirdPhoneNumberTextField.parentViewController = self
-		thirdPhoneNumberTextField.delegate = self
 	}
 }
 

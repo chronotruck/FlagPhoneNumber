@@ -1,5 +1,5 @@
 //
-//  FPNSearchCountryViewController.swift
+//  FPNCountryListViewController.swift
 //  FlagPhoneNumber
 //
 //  Created by Aurélien Grifasi on 06/08/2017.
@@ -8,44 +8,34 @@
 
 import UIKit
 
-class FPNSearchCountryViewController: UITableViewController, UISearchResultsUpdating, UISearchControllerDelegate {
+open class FPNCountryListViewController: UITableViewController, UISearchResultsUpdating, UISearchControllerDelegate {
+
+	var countries: [FPNCountry]
+	var showCountryPhoneCode: Bool
 
 	var searchController: UISearchController?
-	var list: [FPNCountry]?
 	var results: [FPNCountry]?
 
-	weak var delegate: FPNDelegate?
+	public var didSelect: ((FPNCountry) -> Void)?
 
-	init(countries: [FPNCountry]) {
+	public init(countries: [FPNCountry], showCountryPhoneCode: Bool = true) {
+		self.countries = countries
+		self.showCountryPhoneCode = showCountryPhoneCode
+
 		super.init(nibName: nil, bundle: nil)
-
-		self.list = countries
 	}
 
-	required init?(coder aDecoder: NSCoder) {
+	required public init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-	override func viewDidLoad() {
+	override open func viewDidLoad() {
 		super.viewDidLoad()
 
+		tableView.tableFooterView = UIView()
+		navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(dismissController))
+
 		initSearchBarController()
-	}
-
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-
-		if #available(iOS 11.0, *) {
-			navigationItem.hidesSearchBarWhenScrolling = false
-		} else {
-			// Fallback on earlier versions
-		}
-	}
-
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
-
-		searchController?.isActive = true
 	}
 
 	@objc private func dismissController() {
@@ -65,6 +55,7 @@ class FPNSearchCountryViewController: UITableViewController, UISearchResultsUpda
 
 		if #available(iOS 11.0, *) {
 			navigationItem.searchController = searchController
+			navigationItem.hidesSearchBarWhenScrolling = false
 		} else {
 			searchController?.dimsBackgroundDuringPresentation = false
 			searchController?.hidesNavigationBarDuringPresentation = true
@@ -82,49 +73,55 @@ class FPNSearchCountryViewController: UITableViewController, UISearchResultsUpda
 		if let searchController = searchController, searchController.isActive && results != nil && results!.count > 0 {
 			array = results
 		} else {
-			array = list
+			array = countries
 		}
 
 		return array[indexPath.row]
 	}
 
-	override func numberOfSections(in tableView: UITableView) -> Int {
+	override open func numberOfSections(in tableView: UITableView) -> Int {
 		return 1
 	}
 
-	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+	override open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		if let searchController = searchController, searchController.isActive {
 			if let count = searchController.searchBar.text?.count, count > 0 {
 				return results?.count ?? 0
 			}
 		}
-		return list?.count ?? 0
+		return countries.count
 	}
 
-	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+	override open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
 		let country = getItem(at: indexPath)
 
-		cell.textLabel?.text = country.name
-		cell.detailTextLabel?.text = country.phoneCode
 		cell.imageView?.image = country.flag
+		cell.textLabel?.text = country.name
+
+		if showCountryPhoneCode {
+			cell.detailTextLabel?.text = country.phoneCode
+		}
 
 		return cell
 	}
 
-	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+	override open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		let country = getItem(at: indexPath)
+
 		tableView.deselectRow(at: indexPath, animated: true)
 
-		delegate?.fpnDidSelect(country: getItem(at: indexPath))
+		didSelect?(country)
 
 		searchController?.isActive = false
 		searchController?.searchBar.resignFirstResponder()
+		dismissController()
 	}
 
 	// UISearchResultsUpdating
 
-	func updateSearchResults(for searchController: UISearchController) {
-		if list == nil {
+	public func updateSearchResults(for searchController: UISearchController) {
+		if countries.isEmpty {
 			results?.removeAll()
 			return
 		} else if searchController.searchBar.text == "" {
@@ -134,7 +131,7 @@ class FPNSearchCountryViewController: UITableViewController, UISearchResultsUpda
 		}
 
 		if let searchText = searchController.searchBar.text, searchText.count > 0 {
-			results = list!.filter({(item: FPNCountry) -> Bool in
+			results = countries.filter({(item: FPNCountry) -> Bool in
 				if item.name.lowercased().range(of: searchText.lowercased()) != nil {
 					return true
 				} else if item.code.rawValue.lowercased().range(of: searchText.lowercased()) != nil {
@@ -150,17 +147,7 @@ class FPNSearchCountryViewController: UITableViewController, UISearchResultsUpda
 
 	// UISearchControllerDelegate
 
-	func didPresentSearchController(_ searchController: UISearchController) {
-		DispatchQueue.main.async { [unowned self] in
-			self.searchController?.searchBar.becomeFirstResponder()
-		}
-	}
-
-	func willDismissSearchController(_ searchController: UISearchController) {
+	public func willDismissSearchController(_ searchController: UISearchController) {
 		results?.removeAll()
-	}
-
-	func didDismissSearchController(_ searchController: UISearchController) {
-		dismissController()
 	}
 }
