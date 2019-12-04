@@ -19,7 +19,7 @@ class StackViewController: UIViewController {
 		title = "In Stack View"
 		view.backgroundColor = UIColor.groupTableViewBackground
 
-		phoneNumberTextField.parentViewController = self
+		phoneNumberTextField.countryListDisplayMode = .presented(on: self)
 		phoneNumberTextField.delegate = self
 	}
 
