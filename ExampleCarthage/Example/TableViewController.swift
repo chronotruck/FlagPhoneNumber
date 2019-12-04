@@ -21,13 +21,13 @@ class TableViewController: UITableViewController {
 		title = "In Table View"
 		tableView.delaysContentTouches = false
 
-		firstPhoneNumberTextField.parentViewController = self
+		firstPhoneNumberTextField.countryListDisplayMode = .picker
 		firstPhoneNumberTextField.delegate = self
 
-		secondPhoneNumberTextField.parentViewController = self
+		secondPhoneNumberTextField.countryListDisplayMode = .presented(on: self)
 		secondPhoneNumberTextField.delegate = self
 
-		thirdPhoneNumberTextField.parentViewController = self
+		thirdPhoneNumberTextField.countryListDisplayMode = .presented(on: self)
 		thirdPhoneNumberTextField.delegate = self
 	}
 }

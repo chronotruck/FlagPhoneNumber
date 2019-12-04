@@ -26,7 +26,7 @@ class SimpleViewController: UIViewController {
 		phoneNumberTextField.borderStyle = .roundedRect
 
 		// Comment this line to not have access to the country list
-		phoneNumberTextField.parentViewController = self
+		phoneNumberTextField.countryListDisplayMode = .picker
 		phoneNumberTextField.delegate = self
 
 		phoneNumberTextField.font = UIFont.systemFont(ofSize: 14)

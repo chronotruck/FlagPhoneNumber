@@ -26,7 +26,7 @@ class SimpleViewController: UIViewController {
 		phoneNumberTextField.borderStyle = .roundedRect
 
 		// Comment this line to not have access to the country list
-		phoneNumberTextField.parentViewController = self
+		phoneNumberTextField.countryListDisplayMode = .presented(on: self)
 		phoneNumberTextField.delegate = self
 
 		phoneNumberTextField.font = UIFont.systemFont(ofSize: 14)
@@ -48,13 +48,13 @@ class SimpleViewController: UIViewController {
 		//		phoneNumberTextField.placeholder = "Phone Number"
 
 		// Set the country list
-		//		phoneNumberTextField.setCountries(including: [.FR, .ES, .IT, .BE, .LU, .DE])
+		phoneNumberTextField.setCountries(including: [.ES, .IT, .BE, .LU, .DE])
 
 		// Exclude countries from the list
 		//		phoneNumberTextField.setCountries(excluding: [.AM, .BW, .BA])
 
 		// Set the flag image with a region code
-		//		phoneNumberTextField.setFlag(for: "FR")
+		phoneNumberTextField.setFlag(countryCode: .FR)
 
 		// Set the phone number directly
 		phoneNumberTextField.set(phoneNumber: "+33612345678")

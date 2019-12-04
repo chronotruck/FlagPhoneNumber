@@ -1,6 +1,7 @@
 import UIKit
 
-public struct FPNCountry {
+public struct FPNCountry: Equatable {
+
 	public var code: FPNCountryCode
 	public var name: String
 	public var phoneCode: String
@@ -16,5 +17,9 @@ public struct FPNCountry {
 		} else {
 			self.flag = UIImage(named: "unknown", in: Bundle.FlagIcons, compatibleWith: nil)
 		}
+	}
+
+	static public func ==(lhs: FPNCountry, rhs: FPNCountry) -> Bool {
+		return lhs.code == rhs.code
 	}
 }
