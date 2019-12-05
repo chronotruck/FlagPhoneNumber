@@ -23,7 +23,7 @@
 		//		NSBundle.FlagIcons = [NSBundle bundleForClass: [self class]];
 	_phoneNumberTextField = [[FPNTextField alloc] initWithFrame: CGRectMake(0, 0, self.view.bounds.size.width - 16, 50)];
 	_phoneNumberTextField.borderStyle = UITextBorderStyleRoundedRect;
-	_phoneNumberTextField.parentViewController = self;
+	_phoneNumberTextField.displayMode = 0;
 	_phoneNumberTextField.delegate = self;
 		//	_phoneNumberTextField.flagSize = CGSizeMake(35, 35);
 		//	_phoneNumberTextField.flagButtonEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
@@ -57,5 +57,8 @@
 	NSLog(@"Raw: %@", [_phoneNumberTextField getRawPhoneNumber]);
 }
 
+- (void)fpnDisplayCountryList {
+
+}
 
 @end

@@ -72,12 +72,12 @@ open class FPNTextField: UITextField {
 
 	open lazy var pickerView: FPNCountryPicker = FPNCountryPicker()
 
-	public enum FPNDisplayMode {
+	@objc public enum FPNDisplayMode: Int {
 		case picker
 		case list
 	}
 
-	open var displayMode: FPNDisplayMode = .picker
+	@objc open var displayMode: FPNDisplayMode = .picker
 
 	init() {
 		super.init(frame: .zero)

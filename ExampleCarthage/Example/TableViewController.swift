@@ -21,18 +21,20 @@ class TableViewController: UITableViewController {
 		title = "In Table View"
 		tableView.delaysContentTouches = false
 
-		firstPhoneNumberTextField.countryListDisplayMode = .picker
+		firstPhoneNumberTextField.displayMode = .picker
 		firstPhoneNumberTextField.delegate = self
 
-		secondPhoneNumberTextField.countryListDisplayMode = .presented(on: self)
+		secondPhoneNumberTextField.displayMode = .picker
 		secondPhoneNumberTextField.delegate = self
 
-		thirdPhoneNumberTextField.countryListDisplayMode = .presented(on: self)
+		thirdPhoneNumberTextField.displayMode = .picker
 		thirdPhoneNumberTextField.delegate = self
 	}
 }
 
 extension TableViewController: FPNTextFieldDelegate {
+
+	func fpnDisplayCountryList() {}
 
 	func fpnDidValidatePhoneNumber(textField: FPNTextField, isValid: Bool) {
 		textField.rightViewMode = .always
