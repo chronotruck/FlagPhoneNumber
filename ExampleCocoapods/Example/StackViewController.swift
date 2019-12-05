@@ -19,13 +19,15 @@ class StackViewController: UIViewController {
 		title = "In Stack View"
 		view.backgroundColor = UIColor.groupTableViewBackground
 
-		phoneNumberTextField.countryListDisplayMode = .picker
+		phoneNumberTextField.displayMode = .picker
 		phoneNumberTextField.delegate = self
 	}
 
 }
 
 extension StackViewController: FPNTextFieldDelegate {
+
+	func fpnDisplayCountryList() {}
 
 	func fpnDidValidatePhoneNumber(textField: FPNTextField, isValid: Bool) {
 		textField.rightViewMode = .always

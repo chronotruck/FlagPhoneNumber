@@ -13,6 +13,8 @@ class SimpleViewController: UIViewController {
 
 	@IBOutlet weak var phoneNumberTextField: FPNTextField!
 
+	var listController: FPNCountryListViewController = FPNCountryListViewController(style: .grouped)
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
@@ -21,14 +23,19 @@ class SimpleViewController: UIViewController {
 		view.backgroundColor = UIColor.groupTableViewBackground
 
 		// To use your own flag icons, uncommment the line :
-		//		Bundle.FlagIcons = Bundle(for: ViewController.self)
+		//		Bundle.FlagIcons = Bundle(for: SimpleViewController.self)
 
 		phoneNumberTextField.borderStyle = .roundedRect
+//		phoneNumberTextField.pickerView.showPhoneNumbers = false
+		phoneNumberTextField.displayMode = .list // .picker by default
 
-		// Comment this line to not have access to the country list
-		phoneNumberTextField.countryListDisplayMode = .presented(on: self)
+		listController.setup(repository: phoneNumberTextField.countryRepository)
+
+		listController.didSelect = { [weak self] country in
+			self?.phoneNumberTextField.setFlag(countryCode: country.code)
+		}
+
 		phoneNumberTextField.delegate = self
-
 		phoneNumberTextField.font = UIFont.systemFont(ofSize: 14)
 
 		// Custom the size/edgeInsets of the flag button
@@ -36,19 +43,19 @@ class SimpleViewController: UIViewController {
 		phoneNumberTextField.flagButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
 
 		// Example of customizing the textField input accessory view
-		//		let items = [
-		//			UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.save, target: self, action: nil),
-		//			UIBarButtonItem(title: "Item 1", style: .plain, target: self, action: nil),
-		//			UIBarButtonItem(title: "Item 2", style: .plain, target: self, action: nil)
-		//		]
-		//		phoneNumberTextField.textFieldInputAccessoryView = getCustomTextFieldInputAccessoryView(with: items)
+		let items = [
+			UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.save, target: self, action: nil),
+			UIBarButtonItem(title: "Item 1", style: .plain, target: self, action: nil),
+			UIBarButtonItem(title: "Item 2", style: .plain, target: self, action: nil)
+		]
+		phoneNumberTextField.textFieldInputAccessoryView = getCustomTextFieldInputAccessoryView(with: items)
 
 		// The placeholder is an example phone number of the selected country by default. You can add your own placeholder :
 		phoneNumberTextField.hasPhoneNumberExample = true
-		//		phoneNumberTextField.placeholder = "Phone Number"
+		phoneNumberTextField.placeholder = "Phone Number"
 
 		// Set the country list
-		phoneNumberTextField.setCountries(including: [.ES, .IT, .BE, .LU, .DE])
+		//		phoneNumberTextField.setCountries(including: [.ES, .IT, .BE, .LU, .DE])
 
 		// Exclude countries from the list
 		//		phoneNumberTextField.setCountries(excluding: [.AM, .BW, .BA])
@@ -73,6 +80,10 @@ class SimpleViewController: UIViewController {
 
 		return toolbar
 	}
+
+	@objc func dismissCountries() {
+		listController.dismiss(animated: true, completion: nil)
+	}
 }
 
 extension SimpleViewController: FPNTextFieldDelegate {
@@ -93,5 +104,15 @@ extension SimpleViewController: FPNTextFieldDelegate {
 
 	func fpnDidSelectCountry(name: String, dialCode: String, code: String) {
 		print(name, dialCode, code)
+	}
+
+
+	func fpnDisplayCountryList() {
+		let navigationViewController = UINavigationController(rootViewController: listController)
+
+		listController.title = "Countries"
+		listController.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(dismissCountries))
+
+		self.present(navigationViewController, animated: true, completion: nil)
 	}
 }
