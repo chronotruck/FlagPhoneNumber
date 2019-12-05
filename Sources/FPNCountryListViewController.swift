@@ -10,45 +10,31 @@ import UIKit
 
 open class FPNCountryListViewController: UITableViewController, UISearchResultsUpdating, UISearchControllerDelegate {
 
-	var countries: [FPNCountry]
-	var showCountryPhoneCode: Bool
+	open var repository: FPNCountryRepository?
+	open var showCountryPhoneCode: Bool = true
+	open var searchController: UISearchController = UISearchController(searchResultsController: nil)
+	open var didSelect: ((FPNCountry) -> Void)?
 
-	var searchController: UISearchController?
 	var results: [FPNCountry]?
-
-	public var didSelect: ((FPNCountry) -> Void)?
-
-	public init(countries: [FPNCountry], showCountryPhoneCode: Bool = true) {
-		self.countries = countries
-		self.showCountryPhoneCode = showCountryPhoneCode
-
-		super.init(nibName: nil, bundle: nil)
-	}
-
-	required public init?(coder aDecoder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
 
 	override open func viewDidLoad() {
 		super.viewDidLoad()
 
 		tableView.tableFooterView = UIView()
-		navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(dismissController))
 
 		initSearchBarController()
 	}
 
-	@objc private func dismissController() {
-		dismiss(animated: true, completion: nil)
+	open func setup(repository: FPNCountryRepository) {
+		self.repository = repository
 	}
 
 	private func initSearchBarController() {
-		searchController = UISearchController(searchResultsController: nil)
-		searchController?.searchResultsUpdater = self
-		searchController?.delegate = self
+		searchController.searchResultsUpdater = self
+		searchController.delegate = self
 
 		if #available(iOS 9.1, *) {
-			searchController?.obscuresBackgroundDuringPresentation = false
+			searchController.obscuresBackgroundDuringPresentation = false
 		} else {
 			// Fallback on earlier versions
 		}
@@ -57,26 +43,22 @@ open class FPNCountryListViewController: UITableViewController, UISearchResultsU
 			navigationItem.searchController = searchController
 			navigationItem.hidesSearchBarWhenScrolling = false
 		} else {
-			searchController?.dimsBackgroundDuringPresentation = false
-			searchController?.hidesNavigationBarDuringPresentation = true
-			searchController?.definesPresentationContext = true
+			searchController.dimsBackgroundDuringPresentation = false
+			searchController.hidesNavigationBarDuringPresentation = true
+			searchController.definesPresentationContext = true
 
-			//				searchController?.searchBar.sizeToFit()
-			tableView.tableHeaderView = searchController?.searchBar
+			//				searchController.searchBar.sizeToFit()
+			tableView.tableHeaderView = searchController.searchBar
 		}
 		definesPresentationContext = true
 	}
 
 	private func getItem(at indexPath: IndexPath) -> FPNCountry {
-		var array: [FPNCountry]!
-
-		if let searchController = searchController, searchController.isActive && results != nil && results!.count > 0 {
-			array = results
+		if searchController.isActive && results != nil && results!.count > 0 {
+			return results![indexPath.row]
 		} else {
-			array = countries
+			return repository!.countries[indexPath.row]
 		}
-
-		return array[indexPath.row]
 	}
 
 	override open func numberOfSections(in tableView: UITableView) -> Int {
@@ -84,12 +66,12 @@ open class FPNCountryListViewController: UITableViewController, UISearchResultsU
 	}
 
 	override open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		if let searchController = searchController, searchController.isActive {
+		if searchController.isActive {
 			if let count = searchController.searchBar.text?.count, count > 0 {
 				return results?.count ?? 0
 			}
 		}
-		return countries.count
+		return repository?.countries.count ?? 0
 	}
 
 	override open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -113,14 +95,16 @@ open class FPNCountryListViewController: UITableViewController, UISearchResultsU
 
 		didSelect?(country)
 
-		searchController?.isActive = false
-		searchController?.searchBar.resignFirstResponder()
-		dismissController()
+		searchController.isActive = false
+		searchController.searchBar.resignFirstResponder()
+		dismiss(animated: true, completion: nil)
 	}
 
 	// UISearchResultsUpdating
 
-	public func updateSearchResults(for searchController: UISearchController) {
+	open func updateSearchResults(for searchController: UISearchController) {
+		guard let countries = repository?.countries else { return }
+
 		if countries.isEmpty {
 			results?.removeAll()
 			return
@@ -147,7 +131,7 @@ open class FPNCountryListViewController: UITableViewController, UISearchResultsU
 
 	// UISearchControllerDelegate
 
-	public func willDismissSearchController(_ searchController: UISearchController) {
+	open func willDismissSearchController(_ searchController: UISearchController) {
 		results?.removeAll()
 	}
 }

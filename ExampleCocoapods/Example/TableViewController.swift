@@ -14,21 +14,42 @@ class TableViewController: UITableViewController {
 	@IBOutlet weak var firstPhoneNumberTextField: FPNTextField!
 	@IBOutlet weak var secondPhoneNumberTextField: FPNTextField!
 
+	var listController: FPNCountryListViewController = FPNCountryListViewController(style: .grouped)
+	var repository: FPNCountryRepository = FPNCountryRepository()
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
 		title = "In Table View"
 		tableView.delaysContentTouches = false
 
-		firstPhoneNumberTextField.countryListDisplayMode = .picker
+		firstPhoneNumberTextField.displayMode = .picker
 		firstPhoneNumberTextField.delegate = self
 
-		secondPhoneNumberTextField.countryListDisplayMode = .presented(on: self)
+		secondPhoneNumberTextField.displayMode = .list
 		secondPhoneNumberTextField.delegate = self
+
+		listController.setup(repository: secondPhoneNumberTextField.countryRepository)
+
+		listController.didSelect = { [weak self] country in
+			self?.secondPhoneNumberTextField.setFlag(countryCode: country.code)
+		}
+	}
+
+	@objc func dismissCountries() {
+		listController.dismiss(animated: true, completion: nil)
 	}
 }
 
 extension TableViewController: FPNTextFieldDelegate {
+
+	func fpnDisplayCountryList() {
+		let navigationViewController = UINavigationController(rootViewController: listController)
+
+		listController.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(dismissCountries))
+
+		self.present(navigationViewController, animated: true, completion: nil)
+	}
 
 	func fpnDidValidatePhoneNumber(textField: FPNTextField, isValid: Bool) {
 		textField.rightViewMode = .always
