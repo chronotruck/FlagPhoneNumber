@@ -115,18 +115,17 @@ phoneNumberTextField.displayMode = .list // .picker by default
 listController.setup(repository: textField.countryRepository)
 listController.didSelect = { [weak self] country in
 self?.textField.setFlag(countryCode: country.code)
-}
 ```
 
 Don't forget to implement the `fpnDisplayCountryList`:
 
 ```swift
 func fpnDisplayCountryList() {
-let navigationViewController = UINavigationController(rootViewController: listController)
+   let navigationViewController = UINavigationController(rootViewController: listController)
 
-listController.title = "Countries"
+   listController.title = "Countries"
 
-self.present(navigationViewController, animated: true, completion: nil)
+   self.present(navigationViewController, animated: true, completion: nil)
 }
 ```
 
