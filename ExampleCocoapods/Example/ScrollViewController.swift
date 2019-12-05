@@ -22,12 +22,14 @@ class ScrollViewController: UIViewController {
 		contentView.backgroundColor = UIColor.groupTableViewBackground
 		scrollView.delaysContentTouches = false
 
-		phoneNumberTextField.countryListDisplayMode = .picker
+		phoneNumberTextField.displayMode = .picker
 		phoneNumberTextField.delegate = self
 	}
 }
 
 extension ScrollViewController: FPNTextFieldDelegate {
+
+	func fpnDisplayCountryList() {}
 
 	func fpnDidValidatePhoneNumber(textField: FPNTextField, isValid: Bool) {
 		textField.rightViewMode = .always

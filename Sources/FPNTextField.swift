@@ -11,7 +11,7 @@ import UIKit
 open class FPNTextField: UITextField {
 
 	/// The size of the flag button
-	@objc public var flagButtonSize: CGSize = CGSize(width: 32, height: 32) {
+	@objc open var flagButtonSize: CGSize = CGSize(width: 32, height: 32) {
 		didSet {
 			layoutIfNeeded()
 		}
@@ -34,7 +34,7 @@ open class FPNTextField: UITextField {
 	private var nbPhoneNumber: NBPhoneNumber?
 	private var formatter: NBAsYouTypeFormatter?
 
-	public var flagButton: UIButton = UIButton()
+	open var flagButton: UIButton = UIButton()
 
 	open override var font: UIFont? {
 		didSet {
@@ -50,7 +50,7 @@ open class FPNTextField: UITextField {
 
 	/// Present in the placeholder an example of a phone number according to the selected country code.
 	/// If false, you can set your own placeholder. Set to true by default.
-	@objc public var hasPhoneNumberExample: Bool = true {
+	@objc open var hasPhoneNumberExample: Bool = true {
 		didSet {
 			if hasPhoneNumberExample == false {
 				placeholder = nil
@@ -59,9 +59,7 @@ open class FPNTextField: UITextField {
 		}
 	}
 
-	public var showCountryPhoneCode: Bool = true
-
-	var countryRepository = FPNCountryRepository()
+	open var countryRepository = FPNCountryRepository()
 
 	open var selectedCountry: FPNCountry? {
 		didSet {
@@ -70,14 +68,16 @@ open class FPNTextField: UITextField {
 	}
 
 	/// Input Accessory View for the texfield
-	@objc public var textFieldInputAccessoryView: UIView?
+	@objc open var textFieldInputAccessoryView: UIView?
 
-	public enum CountryListDisplayMode {
+	open lazy var pickerView: FPNCountryPicker = FPNCountryPicker()
+
+	@objc public enum FPNDisplayMode: Int {
 		case picker
-		case presented(on: UIViewController)
+		case list
 	}
 
-	open var countryListDisplayMode: CountryListDisplayMode = .picker
+	@objc open var displayMode: FPNDisplayMode = .picker
 
 	init() {
 		super.init(frame: .zero)
@@ -119,7 +119,7 @@ open class FPNTextField: UITextField {
 	private func setupFlagButton() {
 		flagButton.imageView?.contentMode = .scaleAspectFit
 		flagButton.accessibilityLabel = "flagButton"
-		flagButton.addTarget(self, action: #selector(displayCountryKeyboard), for: .touchUpInside)
+		flagButton.addTarget(self, action: #selector(displayCountries), for: .touchUpInside)
 		flagButton.translatesAutoresizingMaskIntoConstraints = false
 		flagButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
 	}
@@ -173,81 +173,74 @@ open class FPNTextField: UITextField {
 		return newRect
 	}
 
-	private func getCountryPicker() -> FPNCountryPicker {
-		let countries = countryRepository.countries
-		let countryPicker: FPNCountryPicker = FPNCountryPicker(countries: countries, showPhoneNumbers: showCountryPhoneCode)
-
-		countryPicker.didSelect = { [weak self] country in
-			self?.fpnDidSelect(country: country)
-		}
-
-		if let selectedCountry = selectedCountry {
-			countryPicker.setCountry(selectedCountry.code)
-		} else if let regionCode = Locale.current.regionCode, let countryCode = FPNCountryCode(rawValue: regionCode) {
-			countryPicker.setCountry(countryCode)
-		} else if let firstCountry = countryPicker.countries.first {
-			countryPicker.setCountry(firstCountry.code)
-		}
-
-		return countryPicker
-	}
-
 	@objc private func displayNumberKeyBoard() {
-		switch countryListDisplayMode {
+		switch displayMode {
 		case .picker:
 			tintColor = .gray
 			inputView = nil
 			inputAccessoryView = textFieldInputAccessoryView
 			reloadInputViews()
-		case .presented:
+		default:
 			break
 		}
 	}
 
-	@objc private func displayCountryKeyboard() {
-		switch countryListDisplayMode {
+	@objc private func displayCountries() {
+		switch displayMode {
 		case .picker:
+			pickerView.setup(repository: countryRepository)
+
 			tintColor = .clear
-			inputView = getCountryPicker()
+			inputView = pickerView
 			inputAccessoryView = getToolBar(with: getCountryListBarButtonItems())
 			reloadInputViews()
 			becomeFirstResponder()
-		case .presented(let controller):
-			let countries = countryRepository.countries
-			let searchCountryViewController = FPNCountryListViewController(countries: countries, showCountryPhoneCode: showCountryPhoneCode)
-			let navigationViewController = UINavigationController(rootViewController: searchCountryViewController)
 
-			searchCountryViewController.didSelect = { [weak self] country in
+			pickerView.didSelect = { [weak self] country in
 				self?.fpnDidSelect(country: country)
 			}
 
-			controller.present(navigationViewController, animated: true, completion: nil)
+			if let selectedCountry = selectedCountry {
+				pickerView.setCountry(selectedCountry.code)
+			} else if let regionCode = Locale.current.regionCode, let countryCode = FPNCountryCode(rawValue: regionCode) {
+				pickerView.setCountry(countryCode)
+			} else if let firstCountry = countryRepository.countries.first {
+				pickerView.setCountry(firstCountry.code)
+			}
+		case .list:
+			(delegate as? FPNTextFieldDelegate)?.fpnDisplayCountryList()
 		}
 	}
 
-	@objc private func resetKeyBoard() {
+	@objc private func dismissCountries() {
+		resignFirstResponder()
 		inputView = nil
 		inputAccessoryView = nil
-		resignFirstResponder()
+		reloadInputViews()
+	}
+
+	private func fpnDidSelect(country: FPNCountry) {
+		(delegate as? FPNTextFieldDelegate)?.fpnDidSelectCountry(name: country.name, dialCode: country.phoneCode, code: country.code.rawValue)
+		selectedCountry = country
 	}
 
 	// - Public
 
 	/// Get the current formatted phone number
-	public func getFormattedPhoneNumber(format: FPNFormat) -> String? {
+	open func getFormattedPhoneNumber(format: FPNFormat) -> String? {
 		return try? phoneUtil.format(nbPhoneNumber, numberFormat: convert(format: format))
 	}
 
 	/// For Objective-C, Get the current formatted phone number
-	@objc public func getFormattedPhoneNumber(format: Int) -> String? {
+	@objc open func getFormattedPhoneNumber(format: Int) -> String? {
 		if let formatCase = FPNFormat(rawValue: format) {
 			return try? phoneUtil.format(nbPhoneNumber, numberFormat: convert(format: formatCase))
 		}
 		return nil
 	}
 
-		/// Get the current raw phone number
-	@objc public func getRawPhoneNumber() -> String? {
+	/// Get the current raw phone number
+	@objc open func getRawPhoneNumber() -> String? {
 		let phoneNumber = getFormattedPhoneNumber(format: .E164)
 		var nationalNumber: NSString?
 
@@ -257,7 +250,7 @@ open class FPNTextField: UITextField {
 	}
 
 	/// Set directly the phone number. e.g "+33612345678"
-	@objc public func set(phoneNumber: String) {
+	@objc open func set(phoneNumber: String) {
 		let cleanedPhoneNumber: String = clean(string: phoneNumber)
 
 		if let validPhoneNumber = getValidNumber(phoneNumber: cleanedPhoneNumber) {
@@ -271,7 +264,7 @@ open class FPNTextField: UITextField {
 	}
 
 	/// Set the country image according to country code. Example "FR"
-	public func setFlag(countryCode: FPNCountryCode) {
+	open func setFlag(countryCode: FPNCountryCode) {
 		let countries = countryRepository.countries
 
 		for country in countries {
@@ -282,7 +275,7 @@ open class FPNTextField: UITextField {
 	}
 
 	/// Set the country image according to country code. Example "FR"
-	@objc public func setFlag(key: FPNOBJCCountryKey) {
+	@objc open func setFlag(key: FPNOBJCCountryKey) {
 		if let code = FPNOBJCCountryCode[key], let countryCode = FPNCountryCode(rawValue: code) {
 
 			setFlag(countryCode: countryCode)
@@ -290,7 +283,7 @@ open class FPNTextField: UITextField {
 	}
 
 	/// Set the country list excluding the provided countries
-	public func setCountries(excluding countries: [FPNCountryCode]) {
+	open func setCountries(excluding countries: [FPNCountryCode]) {
 		countryRepository.setup(without: countries)
 
 		if let selectedCountry = selectedCountry, countryRepository.countries.contains(selectedCountry) {
@@ -301,7 +294,7 @@ open class FPNTextField: UITextField {
 	}
 
 	/// Set the country list including the provided countries
-	public func setCountries(including countries: [FPNCountryCode]) {
+	open func setCountries(including countries: [FPNCountryCode]) {
 		countryRepository.setup(with: countries)
 
 		if let selectedCountry = selectedCountry, countryRepository.countries.contains(selectedCountry) {
@@ -312,7 +305,7 @@ open class FPNTextField: UITextField {
 	}
 
 	/// Set the country list excluding the provided countries
-	@objc public func setCountries(excluding countries: [Int]) {
+	@objc open func setCountries(excluding countries: [Int]) {
 		let countryCodes: [FPNCountryCode] = countries.compactMap({ index in
 			if let key = FPNOBJCCountryKey(rawValue: index), let code = FPNOBJCCountryCode[key], let countryCode = FPNCountryCode(rawValue: code) {
 				return countryCode
@@ -324,7 +317,7 @@ open class FPNTextField: UITextField {
 	}
 
 	/// Set the country list including the provided countries
-	@objc public func setCountries(including countries: [Int]) {
+	@objc open func setCountries(including countries: [Int]) {
 		let countryCodes: [FPNCountryCode] = countries.compactMap({ index in
 			if let key = FPNOBJCCountryKey(rawValue: index), let code = FPNOBJCCountryCode[key], let countryCode = FPNCountryCode(rawValue: code) {
 				return countryCode
@@ -443,7 +436,7 @@ open class FPNTextField: UITextField {
 
 	private func getCountryListBarButtonItems() -> [UIBarButtonItem] {
 		let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-		let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(resetKeyBoard))
+		let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissCountries))
 
 		doneButton.accessibilityLabel = "doneButton"
 
@@ -467,12 +460,5 @@ open class FPNTextField: UITextField {
 		} else {
 			placeholder = nil
 		}
-	}
-
-	// - FPNDelegate
-
-	private func fpnDidSelect(country: FPNCountry) {
-		selectedCountry = country
-		(delegate as? FPNTextFieldDelegate)?.fpnDidSelectCountry(name: country.name, dialCode: country.phoneCode, code: country.code.rawValue)
 	}
 }

@@ -9,7 +9,7 @@ import Foundation
 
 public extension Bundle {
 
-	@objc	static var FlagIcons = FlagPhoneNumber()
+	@objc static var FlagIcons = FlagPhoneNumber()
 
 	@objc static func FlagPhoneNumber() -> Bundle {
 		let bundle = Bundle(for: FPNTextField.self)

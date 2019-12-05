@@ -2,18 +2,11 @@ import UIKit
 
 open class FPNCountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource {
 
-	var countries: [FPNCountry] {
-		didSet {
-			reloadAllComponents()
-		}
-	}
+	open var repository: FPNCountryRepository?
+	open var showPhoneNumbers: Bool
+	open var didSelect: ((FPNCountry) -> Void)?
 
-	var showPhoneNumbers: Bool
-
-	public var didSelect: ((FPNCountry) -> Void)?
-
-	public init(countries: [FPNCountry], showPhoneNumbers: Bool = true) {
-		self.countries = countries
+	public init(showPhoneNumbers: Bool = true) {
 		self.showPhoneNumbers = showPhoneNumbers
 
 		super.init(frame: .zero)
@@ -26,23 +19,22 @@ open class FPNCountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDat
 		fatalError("init(coder:) has not been implemented")
 	}
 
+	open func setup(repository: FPNCountryRepository) {
+		self.repository = repository
+
+		reloadAllComponents()
+	}
+
 	// MARK: - FPNCountry Methods
 
 	open func setCountry(_ code: FPNCountryCode) {
-		for index in 0..<countries.count {
-			if countries[index].code == code {
-				return self.setCountryByRow(row: index)
+		guard let countries = repository?.countries else { return }
+
+		for (index, country) in countries.enumerated() {
+			if country.code == code {
+				selectRow(index, inComponent: 0, animated: true)
+				didSelect?(country)
 			}
-		}
-	}
-
-	private func setCountryByRow(row: Int) {
-		self.selectRow(row, inComponent: 0, animated: true)
-
-		if countries.count > 0 {
-			let country = countries[row]
-
-			didSelect?(country)
 		}
 	}
 
@@ -53,11 +45,12 @@ open class FPNCountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDat
 	}
 
 	open func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-		return countries.count
+		return repository?.countries.count ?? 0
 	}
 
 	open func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
 		var resultView: FPNCountryView
+		let country = repository!.countries[row]
 
 		if view == nil {
 			resultView = FPNCountryView()
@@ -65,7 +58,7 @@ open class FPNCountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDat
 			resultView = view as! FPNCountryView
 		}
 
-		resultView.setup(countries[row])
+		resultView.setup(country)
 
 		if !showPhoneNumbers {
 			resultView.countryCodeLabel.isHidden = true
@@ -74,10 +67,10 @@ open class FPNCountryPicker: UIPickerView, UIPickerViewDelegate, UIPickerViewDat
 	}
 
 	open func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-		if countries.count > 0 {
-			let country = countries[row]
+		guard let countries = repository?.countries else { return }
 
-			didSelect?(country)
-		}
+		let country = countries[row]
+
+		didSelect?(country)
 	}
 }

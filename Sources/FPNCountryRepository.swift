@@ -9,11 +9,12 @@ import Foundation
 
 open class FPNCountryRepository {
 
-	public var countries: [FPNCountry] = []
+	open var locale: Locale
+	open var countries: [FPNCountry] = []
 
-	private var selectedLocale: Locale = Locale.current
-
-	public init() {
+	public init(locale: Locale = Locale.current) {
+		self.locale = locale
+		
 		countries = getAllCountries()
 	}
 
@@ -39,7 +40,7 @@ open class FPNCountryRepository {
 					guard let code = countryObj["code"] as? String, let phoneCode = countryObj["dial_code"] as? String, let name = countryObj["name"] as? String else { return countries }
 
 
-					let country = FPNCountry(code: code, name: selectedLocale.localizedString(forRegionCode: code) ?? name, phoneCode: phoneCode)
+					let country = FPNCountry(code: code, name: locale.localizedString(forRegionCode: code) ?? name, phoneCode: phoneCode)
 
 					countries.append(country)
 				}
@@ -76,11 +77,11 @@ open class FPNCountryRepository {
 		return countries
 	}
 
-	public func setup(with countryCodes: [FPNCountryCode]) {
+	open func setup(with countryCodes: [FPNCountryCode]) {
 		countries = getAllCountries(equalTo: countryCodes)
 	}
 
-	public func setup(without countryCodes: [FPNCountryCode]) {
+	open func setup(without countryCodes: [FPNCountryCode]) {
 		countries = getAllCountries(excluding: countryCodes)
 	}
 

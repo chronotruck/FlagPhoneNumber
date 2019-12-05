@@ -26,7 +26,7 @@ class SimpleViewController: UIViewController {
 		phoneNumberTextField.borderStyle = .roundedRect
 
 		// Comment this line to not have access to the country list
-		phoneNumberTextField.countryListDisplayMode = .picker
+		phoneNumberTextField.displayMode = .picker
 		phoneNumberTextField.delegate = self
 
 		phoneNumberTextField.font = UIFont.systemFont(ofSize: 14)
@@ -76,6 +76,8 @@ class SimpleViewController: UIViewController {
 }
 
 extension SimpleViewController: FPNTextFieldDelegate {
+
+	func fpnDisplayCountryList() {}
 
 	func fpnDidValidatePhoneNumber(textField: FPNTextField, isValid: Bool) {
 		textField.rightViewMode = .always
