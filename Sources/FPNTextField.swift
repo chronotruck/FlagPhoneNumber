@@ -374,7 +374,7 @@ open class FPNTextField: UITextField {
 			formatter = NBAsYouTypeFormatter(regionCode: countryCode.rawValue)
 		}
 
-		flagButton.setImage(selectedCountry?.flag, for: .normal)
+		flagButton.setTitle(selectedCountry?.flag, for: .normal)
 
 		if let phoneCode = selectedCountry?.phoneCode {
 			phoneCodeTextField.text = phoneCode
