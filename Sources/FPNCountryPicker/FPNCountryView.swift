@@ -2,7 +2,7 @@ import UIKit
 
 class FPNCountryView: NibLoadingView {
 
-	@IBOutlet weak var flagImageView: UIImageView!
+	@IBOutlet weak var flagLabel: UILabel!
 	@IBOutlet weak var countryNameLabel: UILabel!
 	@IBOutlet weak var countryCodeLabel: UILabel!
 
@@ -15,7 +15,7 @@ class FPNCountryView: NibLoadingView {
 	}
 
 	func setup(_ country: FPNCountry) {
-		flagImageView.image = country.flag
+		flagLabel.text = country.flag
 		countryCodeLabel.text = country.phoneCode
 		countryNameLabel.text = country.name
 	}
