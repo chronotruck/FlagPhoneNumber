@@ -343,7 +343,15 @@ open class FPNTextField: UITextField {
 					text = remove(dialCode: phoneCode, in: inputString)
 				}
 				(delegate as? FPNTextFieldDelegate)?.fpnDidValidatePhoneNumber(textField: self, isValid: true)
-			} else {
+            } else if let validPhoneNumber = getValidNumber(phoneNumber: clean(string: number)) {
+                //To handle copy paste number with country code
+                if validPhoneNumber.italianLeadingZero {
+                    text = "0\(validPhoneNumber.nationalNumber.stringValue)"
+                } else {
+                    text = validPhoneNumber.nationalNumber.stringValue
+                }
+                setFlag(countryCode: FPNCountryCode(rawValue: phoneUtil.getRegionCode(for: validPhoneNumber))!)
+            } else {
 				nbPhoneNumber = nil
 
 				if let dialCode = selectedCountry?.phoneCode {
