@@ -8,12 +8,12 @@
 
 import UIKit
 
-open class FPNCountryListViewController: UITableViewController, UISearchResultsUpdating, UISearchControllerDelegate {
+ open class FPNCountryListViewController: UITableViewController, UISearchResultsUpdating, UISearchControllerDelegate {
 
-	open var repository: FPNCountryRepository?
-	open var showCountryPhoneCode: Bool = true
-	open var searchController: UISearchController = UISearchController(searchResultsController: nil)
-	open var didSelect: ((FPNCountry) -> Void)?
+	@objc open var repository: FPNCountryRepository?
+	@objc open var showCountryPhoneCode: Bool = true
+	@objc open var searchController: UISearchController = UISearchController(searchResultsController: nil)
+	@objc open var didSelect: ((FPNCountry) -> Void)?
 
 	var results: [FPNCountry]?
 
@@ -25,7 +25,7 @@ open class FPNCountryListViewController: UITableViewController, UISearchResultsU
 		initSearchBarController()
 	}
 
-	open func setup(repository: FPNCountryRepository) {
+	@objc open func setup(repository: FPNCountryRepository) {
 		self.repository = repository
 	}
 
