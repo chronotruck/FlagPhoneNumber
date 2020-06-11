@@ -152,7 +152,7 @@ open class FPNTextField: UITextField {
 
         var distanceFromFlag: CGFloat = 0.0
         if #available(iOS 13, *) {
-            distanceFromFlag = -4.0
+            distanceFromFlag = -8.0
         }
 
         NSLayoutConstraint(item: phoneCodeTextField, attribute: .leading, relatedBy: .equal, toItem: flagButton, attribute: .trailing, multiplier: 1, constant: distanceFromFlag).isActive = true
