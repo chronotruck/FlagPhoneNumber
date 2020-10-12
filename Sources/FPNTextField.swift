@@ -54,8 +54,9 @@ open class FPNTextField: UITextField {
 		didSet {
 			if hasPhoneNumberExample == false {
 				placeholder = nil
-			}
-			updatePlaceholder()
+            } else {
+                updatePlaceholder()
+            }
 		}
 	}
 
