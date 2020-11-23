@@ -9,6 +9,16 @@
 import UIKit
 
 open class FPNTextField: UITextField {
+    
+    var initialValue: String? {
+        didSet {
+            text = initialValue
+        }
+    }
+    
+    var isInitialValueChanged: Bool {
+        return text != initialValue
+    }
 
 	/// The size of the flag button
 	@objc open var flagButtonSize: CGSize = CGSize(width: 32, height: 32) {
@@ -22,7 +32,7 @@ open class FPNTextField: UITextField {
 
 	/// The size of the leftView
 	private var leftViewSize: CGSize {
-		let width = flagButtonSize.width + getWidth(text: phoneCodeTextField.text!)
+		let width = flagButtonSize.width + getWidth(text: phoneCodeTextField.text!) + 20
 		let height = bounds.height
 
 		return CGSize(width: width, height: height)
@@ -149,8 +159,8 @@ open class FPNTextField: UITextField {
 		flagHeightConstraint?.isActive = true
 
 		NSLayoutConstraint(item: flagButton, attribute: .centerY, relatedBy: .equal, toItem: leftView, attribute: .centerY, multiplier: 1, constant: 0).isActive = true
-
 		NSLayoutConstraint(item: flagButton, attribute: .leading, relatedBy: .equal, toItem: leftView, attribute: .leading, multiplier: 1, constant: 0).isActive = true
+        
 		NSLayoutConstraint(item: phoneCodeTextField, attribute: .leading, relatedBy: .equal, toItem: flagButton, attribute: .trailing, multiplier: 1, constant: 0).isActive = true
 		NSLayoutConstraint(item: phoneCodeTextField, attribute: .trailing, relatedBy: .equal, toItem: leftView, attribute: .trailing, multiplier: 1, constant: 0).isActive = true
 		NSLayoutConstraint(item: phoneCodeTextField, attribute: .top, relatedBy: .equal, toItem: leftView, attribute: .top, multiplier: 1, constant: 0).isActive = true
