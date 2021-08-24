@@ -148,26 +148,18 @@
 				0D192FE22293078B002583B1 /* NBNumberFormat.m */,
 				0D192FD72293078B002583B1 /* NBPhoneMetaData.m */,
 				0D192FE62293078B002583B1 /* NBPhoneNumber.m */,
+				0D192FDD2293078B002583B1 /* NBRegExMatcher.h */,
+				0D192FDE2293078B002583B1 /* NBRegularExpressionCache.h */,
+				0D192FDF2293078B002583B1 /* NBRegExMatcher.m */,
+				0D192FE02293078B002583B1 /* NBRegularExpressionCache.m */,
 				0D192FF02293078B002583B1 /* NBPhoneNumberDefines.m */,
 				0D192FEE2293078B002583B1 /* NBPhoneNumberDesc.m */,
 				0D192FD82293078B002583B1 /* NBPhoneNumberUtil.m */,
 				0D192FE42293078B002583B1 /* NBPhoneNumberUtil+ShortNumber.m */,
 				0D192FD92293078B002583B1 /* NSArray+NBAdditions.m */,
 				0D192FEB2293078B002583B1 /* NBPhoneNumberMetadata.plist */,
-				0D192FDC2293078B002583B1 /* Internal */,
 			);
 			path = libPhoneNumber;
-			sourceTree = "<group>";
-		};
-		0D192FDC2293078B002583B1 /* Internal */ = {
-			isa = PBXGroup;
-			children = (
-				0D192FDD2293078B002583B1 /* NBRegExMatcher.h */,
-				0D192FDE2293078B002583B1 /* NBRegularExpressionCache.h */,
-				0D192FDF2293078B002583B1 /* NBRegExMatcher.m */,
-				0D192FE02293078B002583B1 /* NBRegularExpressionCache.m */,
-			);
-			path = Internal;
 			sourceTree = "<group>";
 		};
 		0D192FF22293078B002583B1 /* Resources */ = {
@@ -206,19 +198,35 @@
 		0DF48B1422916F9F006AB39C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				9F4C9FB726D524EE00BA6F7B /* SwiftSources */,
+				9F4C9FB626D524E700BA6F7B /* ObjcSources */,
+				0D8C7135229296D40026E0C7 /* Info.plist */,
+				0D192FD42293078B002583B1 /* libPhoneNumber */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		9F4C9FB626D524E700BA6F7B /* ObjcSources */ = {
+			isa = PBXGroup;
+			children = (
 				0D79D5C82397CAAA00DD3E14 /* FlagPhoneNumber-Bridging-Header.h */,
 				0D8C7134229296D40026E0C7 /* FlagPhoneNumber.h */,
-				0D8C7135229296D40026E0C7 /* Info.plist */,
+			);
+			path = ObjcSources;
+			sourceTree = "<group>";
+		};
+		9F4C9FB726D524EE00BA6F7B /* SwiftSources */ = {
+			isa = PBXGroup;
+			children = (
 				0D79D5CA2397CAAA00DD3E14 /* FPNCountry.swift */,
 				0D79D5CB2397CAAA00DD3E14 /* FPNCountryListViewController.swift */,
 				0D79D5C52397CAA900DD3E14 /* FPNCountryRepository.swift */,
 				0D192FFF2293078C002583B1 /* FPNTextField.swift */,
 				0D192FF62293078B002583B1 /* FPNCountryPicker */,
 				0D79D5D72397CB3600DD3E14 /* Helpers */,
-				0D192FD42293078B002583B1 /* libPhoneNumber */,
 				0D192FF22293078B002583B1 /* Resources */,
 			);
-			path = Sources;
+			path = SwiftSources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
