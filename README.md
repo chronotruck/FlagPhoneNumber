@@ -115,6 +115,7 @@ phoneNumberTextField.displayMode = .list // .picker by default
 listController.setup(repository: textField.countryRepository)
 listController.didSelect = { [weak self] country in
 self?.textField.setFlag(countryCode: country.code)
+}
 ```
 
 Don't forget to implement the `fpnDisplayCountryList`:
