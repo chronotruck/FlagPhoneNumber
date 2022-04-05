@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
 	s.name             = 'FlagPhoneNumber'
-	s.version          = '0.8.0'
+	s.version          = '0.8.1'
 	s.summary          = 'A formatted phone number UITextField with country flag picker.'
 
 	# This description is used to generate tags and improve search results.
@@ -28,7 +28,8 @@ Pod::Spec.new do |s|
 
 	s.ios.deployment_target = '8.0'
 	s.source_files = 'Sources/**/*.swift'
-	s.resource_bundles = {'FlagPhoneNumber' => ['Sources/Resources/**/*']}
+	#s.resource_bundles = {'FlagPhoneNumber' => ['Sources/Resources/**/*']}
+	s.resources = 'Sources/Resources/**'
 	s.swift_version = '5.0'
 	s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
 
