@@ -7,13 +7,15 @@
 
 import Foundation
 
-open class FPNCountryRepository {
+open class FPNCountryRepository : NSObject {
 
-	open var locale: Locale
+    open var locale: Locale
 	open var countries: [FPNCountry] = []
 
 	public init(locale: Locale = Locale.current) {
-		self.locale = locale
+        self.locale = locale
+
+        super.init()
 		
 		countries = getAllCountries()
 	}

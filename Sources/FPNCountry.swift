@@ -1,6 +1,6 @@
 import UIKit
 
-public struct FPNCountry: Equatable {
+public class FPNCountry: NSObject {
 
 	public var code: FPNCountryCode
 	public var name: String
