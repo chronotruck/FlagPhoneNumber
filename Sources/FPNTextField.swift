@@ -16,13 +16,20 @@ open class FPNTextField: UITextField {
 			layoutIfNeeded()
 		}
 	}
+    
+    @IBInspectable
+    var manualPhoneCode: Bool = false {
+        didSet {
+            layoutIfNeeded()
+        }
+    }
 
 	private var flagWidthConstraint: NSLayoutConstraint?
 	private var flagHeightConstraint: NSLayoutConstraint?
 
 	/// The size of the leftView
 	private var leftViewSize: CGSize {
-		let width = flagButtonSize.width + getWidth(text: phoneCodeTextField.text!)
+        let width = (manualPhoneCode ? 0 : flagButtonSize.width) + getWidth(text: phoneCodeTextField.text!)
 		let height = bounds.height
 
 		return CGSize(width: width, height: height)
@@ -34,7 +41,7 @@ open class FPNTextField: UITextField {
 	private var nbPhoneNumber: NBPhoneNumber?
 	private var formatter: NBAsYouTypeFormatter?
 
-	@objc open var flagButton: UIButton = UIButton()
+    @objc open var flagButton: UIButton = UIButton()
 
 	open override var font: UIFont? {
 		didSet {
@@ -126,35 +133,42 @@ open class FPNTextField: UITextField {
 
 	private func setupPhoneCodeTextField() {
 		phoneCodeTextField.font = font
-		phoneCodeTextField.isUserInteractionEnabled = false
+        phoneCodeTextField.isUserInteractionEnabled = manualPhoneCode ? true : false
 		phoneCodeTextField.translatesAutoresizingMaskIntoConstraints = false
+        
+        phoneCodeTextField.addTarget(self, action: #selector(didEditCountryCode), for: .editingChanged)
 	}
 
 	private func setupLeftView() {
 		leftView = UIView()
 		leftViewMode = .always
-		if #available(iOS 9.0, *) {
-			phoneCodeTextField.semanticContentAttribute = .forceLeftToRight
-		} else {
-			// Fallback on earlier versions
-		}
+        
+        leftView?.addSubview(phoneCodeTextField)
+        
+        if #available(iOS 9.0, *) {
+            phoneCodeTextField.semanticContentAttribute = .forceLeftToRight
+        } else {
+            // Fallback on earlier versions
+        }
+		
+        if !manualPhoneCode {
+            leftView?.addSubview(flagButton)
 
-		leftView?.addSubview(flagButton)
-		leftView?.addSubview(phoneCodeTextField)
+            flagWidthConstraint = NSLayoutConstraint(item: flagButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant: flagButtonSize.width)
+            flagHeightConstraint = NSLayoutConstraint(item: flagButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant: flagButtonSize.height)
 
-		flagWidthConstraint = NSLayoutConstraint(item: flagButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant: flagButtonSize.width)
-		flagHeightConstraint = NSLayoutConstraint(item: flagButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0, constant: flagButtonSize.height)
+            flagWidthConstraint?.isActive = true
+            flagHeightConstraint?.isActive = true
 
-		flagWidthConstraint?.isActive = true
-		flagHeightConstraint?.isActive = true
+            NSLayoutConstraint(item: flagButton, attribute: .centerY, relatedBy: .equal, toItem: leftView, attribute: .centerY, multiplier: 1, constant: 0).isActive = true
 
-		NSLayoutConstraint(item: flagButton, attribute: .centerY, relatedBy: .equal, toItem: leftView, attribute: .centerY, multiplier: 1, constant: 0).isActive = true
-
-		NSLayoutConstraint(item: flagButton, attribute: .leading, relatedBy: .equal, toItem: leftView, attribute: .leading, multiplier: 1, constant: 0).isActive = true
-		NSLayoutConstraint(item: phoneCodeTextField, attribute: .leading, relatedBy: .equal, toItem: flagButton, attribute: .trailing, multiplier: 1, constant: 0).isActive = true
-		NSLayoutConstraint(item: phoneCodeTextField, attribute: .trailing, relatedBy: .equal, toItem: leftView, attribute: .trailing, multiplier: 1, constant: 0).isActive = true
-		NSLayoutConstraint(item: phoneCodeTextField, attribute: .top, relatedBy: .equal, toItem: leftView, attribute: .top, multiplier: 1, constant: 0).isActive = true
-		NSLayoutConstraint(item: phoneCodeTextField, attribute: .bottom, relatedBy: .equal, toItem: leftView, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
+            NSLayoutConstraint(item: flagButton, attribute: .leading, relatedBy: .equal, toItem: leftView, attribute: .leading, multiplier: 1, constant: 0).isActive = true
+        }
+        
+        NSLayoutConstraint(item: phoneCodeTextField, attribute: .leading, relatedBy: .equal, toItem: manualPhoneCode ? leftView : flagButton, attribute: .trailing, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: phoneCodeTextField, attribute: .trailing, relatedBy: .equal, toItem: leftView, attribute: .trailing, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: phoneCodeTextField, attribute: .top, relatedBy: .equal, toItem: leftView, attribute: .top, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: phoneCodeTextField, attribute: .bottom, relatedBy: .equal, toItem: leftView, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
 	}
 
 	open override func updateConstraints() {
@@ -335,7 +349,10 @@ open class FPNTextField: UITextField {
 	}
 
 	// Private
-
+    @objc private func didEditCountryCode() {
+        selectedCountry = countryRepository.getCountry(with: phoneCodeTextField.text ?? "+1")
+    }
+    
 	@objc private func didEditText() {
 		if let phoneCode = selectedCountry?.phoneCode, let number = text {
 			var cleanedPhoneNumber = clean(string: "\(phoneCode) \(number)")
