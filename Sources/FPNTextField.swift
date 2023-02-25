@@ -21,6 +21,7 @@ open class FPNTextField: UITextField {
     var manualPhoneCode: Bool = false {
         didSet {
             layoutIfNeeded()
+            setup()
         }
     }
 
@@ -142,6 +143,11 @@ open class FPNTextField: UITextField {
 	private func setupLeftView() {
 		leftView = UIView()
 		leftViewMode = .always
+        
+        phoneCodeTextField.removeFromSuperview()
+        flagButton.removeFromSuperview()
+        phoneCodeTextField.removeConstraints(phoneCodeTextField.constraints)
+        flagButton.removeConstraints(flagButton.constraints)
         
         leftView?.addSubview(phoneCodeTextField)
         
