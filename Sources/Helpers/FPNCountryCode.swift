@@ -104,6 +104,7 @@ public enum FPNCountryCode: String {
 	case KE = "KE"
 	case KG = "KG"
 	case KI = "KI"
+    case KT = "KT"
 	case KW = "KW"
 	case RE = "RE"
 	case LA = "LA"
