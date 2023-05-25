@@ -79,6 +79,18 @@ open class FPNCountryRepository : NSObject {
 		return countries
 	}
 
+    func getCountry(with phoneCode: String) -> FPNCountry? {
+        let allCountries = countries;
+        for country in allCountries {
+            if country.phoneCode == phoneCode {
+                return country
+            }
+        }
+        
+        return nil
+    }
+    
+    
 	open func setup(with countryCodes: [FPNCountryCode]) {
 		countries = getAllCountries(equalTo: countryCodes)
 	}
