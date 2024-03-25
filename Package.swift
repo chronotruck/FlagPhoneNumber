@@ -12,7 +12,7 @@ let package = Package(
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "FlagPhoneNumber",
-            targets: ["FlagPhoneNumber"]),
+            targets: ["FlagPhoneNumber", "libPhoneNumber"]),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -25,7 +25,12 @@ let package = Package(
             name: "FlagPhoneNumber",
             dependencies: [],
             path: "Sources",
-            exclude: ["Info.plist"],
+            exclude: ["Info.plist", "libPhoneNumber"],
+            publicHeadersPath: "."),
+        .target(
+            name: "libPhoneNumber",
+            dependencies: [],
+            path: "Sources/libPhoneNumber",
             publicHeadersPath: "."),
     ]
 )
