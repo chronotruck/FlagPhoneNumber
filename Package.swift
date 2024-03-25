@@ -25,6 +25,7 @@ let package = Package(
             name: "FlagPhoneNumber",
             dependencies: [],
             path: "Sources",
+            exclude: ["Info.plist"],
             publicHeadersPath: "."),
     ]
 )
