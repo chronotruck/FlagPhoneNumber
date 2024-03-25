@@ -22,7 +22,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## ⬇️ Installation
 
-FlagPhoneNumber is available through [SPM](https://github.com/apple/swift-package-manager), [CocoaPods](http://cocoapods.org) and [Carthage](https://github.com/Carthage/Carthage). 
+FlagPhoneNumber is available through [Swift Package Manager](https://github.com/apple/swift-package-manager), [CocoaPods](http://cocoapods.org) and [Carthage](https://github.com/Carthage/Carthage). 
 
 ### Swift Package Manager
 
