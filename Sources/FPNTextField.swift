@@ -19,6 +19,7 @@ open class FPNTextField: UITextField {
 
 	private var flagWidthConstraint: NSLayoutConstraint?
 	private var flagHeightConstraint: NSLayoutConstraint?
+    private var padding = UIEdgeInsets(top: 0, left: 70, bottom: 0, right: 5)
 
 	/// The size of the leftView
 	private var leftViewSize: CGSize {
@@ -48,6 +49,20 @@ open class FPNTextField: UITextField {
 		}
 	}
 
+    override open func textRect(forBounds bounds: CGRect) -> CGRect {
+        super.textRect(forBounds: bounds)
+        return bounds.inset(by: padding)
+    }
+
+    override open func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+        super.placeholderRect(forBounds: bounds)
+        return bounds.inset(by: padding)
+    }
+
+    override open func editingRect(forBounds bounds: CGRect) -> CGRect {
+        super.editingRect(forBounds: bounds)
+        return bounds.inset(by: padding)
+    }
 	/// Present in the placeholder an example of a phone number according to the selected country code.
 	/// If false, you can set your own placeholder. Set to true by default.
 	@objc open var hasPhoneNumberExample: Bool = true {
@@ -150,8 +165,7 @@ open class FPNTextField: UITextField {
 
 		NSLayoutConstraint(item: flagButton, attribute: .centerY, relatedBy: .equal, toItem: leftView, attribute: .centerY, multiplier: 1, constant: 0).isActive = true
 
-		NSLayoutConstraint(item: flagButton, attribute: .leading, relatedBy: .equal, toItem: leftView, attribute: .leading, multiplier: 1, constant: 0).isActive = true
-		NSLayoutConstraint(item: phoneCodeTextField, attribute: .leading, relatedBy: .equal, toItem: flagButton, attribute: .trailing, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: phoneCodeTextField, attribute: .leading, relatedBy: .equal, toItem: flagButton, attribute: .trailing, multiplier: 1, constant: 0).isActive = true
 		NSLayoutConstraint(item: phoneCodeTextField, attribute: .trailing, relatedBy: .equal, toItem: leftView, attribute: .trailing, multiplier: 1, constant: 0).isActive = true
 		NSLayoutConstraint(item: phoneCodeTextField, attribute: .top, relatedBy: .equal, toItem: leftView, attribute: .top, multiplier: 1, constant: 0).isActive = true
 		NSLayoutConstraint(item: phoneCodeTextField, attribute: .bottom, relatedBy: .equal, toItem: leftView, attribute: .bottom, multiplier: 1, constant: 0).isActive = true
@@ -378,6 +392,7 @@ open class FPNTextField: UITextField {
 
 		if let phoneCode = selectedCountry?.phoneCode {
 			phoneCodeTextField.text = phoneCode
+            padding = UIEdgeInsets(top: 0, left: CGFloat(70 + (phoneCode.count-2) * 10), bottom: 0, right: 5)
 		}
 
 		if hasPhoneNumberExample == true {
