@@ -34,7 +34,7 @@ open class FPNTextField: UITextField {
 	private var nbPhoneNumber: NBPhoneNumber?
 	private var formatter: NBAsYouTypeFormatter?
 
-	open var flagButton: UIButton = UIButton()
+	@objc open var flagButton: UIButton = UIButton()
 
 	open override var font: UIFont? {
 		didSet {
@@ -59,7 +59,7 @@ open class FPNTextField: UITextField {
 		}
 	}
 
-	open var countryRepository = FPNCountryRepository()
+	@objc open var countryRepository = FPNCountryRepository()
 
 	open var selectedCountry: FPNCountry? {
 		didSet {
@@ -281,6 +281,12 @@ open class FPNTextField: UITextField {
 			setFlag(countryCode: countryCode)
 		}
 	}
+    
+    /// Set the country image according to country.code
+    @objc open func setFlag(country: FPNCountry) {
+        setFlag(countryCode: country.code)
+    }
+
 
 	/// Set the country list excluding the provided countries
 	open func setCountries(excluding countries: [FPNCountryCode]) {
