@@ -202,17 +202,17 @@ open class FPNCountryListViewController: UITableViewController, UISearchResultsU
                 self.countrySections = [String](self.countryDictionaries.keys).sorted()
             }
             
-            self.countrySections.insert("COMMON COUNTRIES", at: 0)
-            for country in countries {
-                if(country.code.rawValue == "AW" || country.code.rawValue == "CW" || country.code.rawValue == "BQ" || country.code.rawValue == "MF" || country.code.rawValue == "SX"){
-                    if var countryValue = self.countryDictionaries["COMMON COUNTRIES"] {
-                        countryValue.append(country)
-                        self.countryDictionaries["COMMON COUNTRIES"] = countryValue
-                    } else {
-                        self.countryDictionaries["COMMON COUNTRIES"] = [country]
-                    }
-                }
-            }
+//            self.countrySections.insert("COMMON COUNTRIES", at: 0)
+//            for country in countries {
+//                if(country.code.rawValue == "AW" || country.code.rawValue == "CW" || country.code.rawValue == "BQ" || country.code.rawValue == "MF" || country.code.rawValue == "SX"){
+//                    if var countryValue = self.countryDictionaries["COMMON COUNTRIES"] {
+//                        countryValue.append(country)
+//                        self.countryDictionaries["COMMON COUNTRIES"] = countryValue
+//                    } else {
+//                        self.countryDictionaries["COMMON COUNTRIES"] = [country]
+//                    }
+//                }
+//            }
             
             self.tableView.reloadData()
         }
